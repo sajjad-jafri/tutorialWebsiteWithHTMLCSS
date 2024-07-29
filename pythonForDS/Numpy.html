@@ -1,0 +1,157 @@
+<html>
+   <head>
+      <title>Numpy Introduction</title>
+      <link rel="stylesheet" href="../mystyle.css">
+   </head>
+	
+   <body>
+     <header>
+        <h1>Numpy Introduction</h1>
+     </header>
+
+     <main id = content>
+
+       <nav id = "navbar">
+	  <ul>
+	    <li><a href = "../index.html">Home</a></li>
+	    <li><a href="../course.html">Courses</a></li>
+	    <li><a href="#about">About</a></li>
+	    <li><a href="#contact">Contact</a></li>
+	  </ul>
+       </nav>
+
+	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+
+	<section id = "course-details"> 
+        <div class = "syllabi">
+	<ul>
+	   <li class="selected"><a href="Numpy.html">What is Numpy</a></li>
+	   <li><a href="numpyArrays.html">Numpy Arrays</a></li>
+	   <li><a href="numpyIndexingSelecting.html">Numpy Indexing and Selection</a></li> 
+	   <li><a href="numpyOperations.html">Numpy Operations</a></li>
+  	  </ul>
+	</div>
+
+	<div class = "content" >
+		<h2>What is Numpy?</h2>
+          	<p>NumPy stands for <b>Nu</b>meric <b>py</b>thon which is a python package for creating multidimensional (N-D) and single-dimensional (1-D) array elements.</p>
+		<p>Numpy has the ability to quickly broadcast functions, and is also used in linear algebra, Fourier transform, statistical distributions, trigonometric functions and random number of capabilities.</p> 
+		<p>While NumPy structures look similar to standard Python lists, they are much more efficient! It provides an array object much faster than traditional Python lists.</p>
+        	<p>NumPy provides a convenient and efficient way to handle the vast amount of data. NumPy is also very convenient with Matrix 			multiplication and data reshaping. NumPy is fast which makes it reasonable to work with a large set of data.</p>
+		<p>Numpy arrays essentially come in two flovors: <b>Vectors</b> and <b>Matrices</b>. Vectors are strictly 1-d arrays and matrices are 2-d (but you should note a matrix can still have only one row or one column).</p>
+		
+		<p>You can install NumPy simply using pip command in your command prompt window using <b>'pip install numpy'</b></p>
+		
+
+		<br><br><br>
+		<hr color = "dustyrose">
+		<h2>Types of Array:</h2>
+		<ul>	
+			<li><p>One Dimensional Array</p></li>
+			<li><p>Multi-Dimensional Arra</p></li>
+		</ul>
+		<br><br>
+		<p><b>One Dimensional Array:</b></p>
+		<p>A one-dimensional array is a type of linear array.</p>
+		<center><table border = 1 style="border: 2px solid black; width: 50%; text-align: center; border-collapse: collapse; caption-side: bottom;">
+			<caption>One Dimensional Array</caption>
+			<tr>	
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+		</table></center><br>
+  <h3>Python Code</h3>
+  <pre><code>
+  <span style="color: #8b0000"># importing numpy module</span>
+  import numpy as np
+
+  <span style="color: #8b0000"># creating list</span>
+  l = [1, 2, 3, 4]
+
+  <span style="color: #8b0000"># Creating numpy array</span>
+  arr = np.array(l)
+
+  print("List in Python: ", l)
+  print("Numpy Array in Python: ", arr)
+        		</code>
+	    </pre>
+<h3>Output:</h3>
+    <pre>
+        <code>
+  List in Python:  [1, 2, 3, 4]
+  Numpy Array in Python:  [1 2 3 4]
+        </code>
+    </pre>
+	<br><br><br>
+
+	<p><b>Multi-Dimensional Array:</b></p>
+	<p>Data in multidimensional arrays are stored in tabular form.</p>
+			<center><table border = 1 style="border: 2px solid black; width: 50%; text-align: center; border-collapse: collapse; caption-side: bottom;">
+			<caption>Two Dimensional Array</caption>
+			<tr>	
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>	
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+		</table></center><br>
+<h3>Python Code</h3>
+<pre>
+	<code>
+  <span style="color: #8b0000"># importing numpy module</span>
+  import numpy as np
+
+  <span style="color: #8b0000"># creating list</span>
+  list_1 = [1, 2, 3, 4]
+  list_2 = [5, 6, 7, 8]
+
+  <span style="color: #8b0000"># Creating numpy array</span>
+  arr = np.array([list_1, list_2])
+
+
+  print("Numpy multi dimensional array in Python:\n ", arr)
+	</code>
+</pre>
+<h3>Output</h3>
+<pre>
+	<code>
+  Numpy multi dimensional array in Python:
+    [[1 2 3 4]
+   [5 6 7 8]]
+	</code>
+</pre>
+<p><b>Note:</b> use [ ] operators inside numpy.array() for multi-dimensional</p><br><br><br>
+
+
+
+
+		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+		<a href = "numpyArrays.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+
+        </div>
+     	</section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+	
+</body>
+</html>
+

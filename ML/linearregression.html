@@ -1,0 +1,374 @@
+<html>
+   <head>
+      <title>Linear Regression</title>
+      <link rel="stylesheet" href="../mystyle.css">
+   </head>
+	
+   <body>
+     <header>
+        <h1>Linear Regression</h1>
+     </header>
+
+     <main id = content>
+
+       <nav id = "navbar">
+	  <ul>
+	    <li><a href = "../index.html">Home</a></li>
+	    <li><a href="../course.html">Courses</a></li>
+	    <li><a href="#about">About</a></li>
+	    <li><a href="#contact">Contact</a></li>
+	  </ul>
+       </nav>
+
+       <hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+     
+     <section id = "course-details"> 
+        <div class = "syllabi">
+	  <ul>
+	   <li><a href="ML_intro.html">Introduction to Machine Learning</a></li>
+	   <li class="selected"><a href="linearregression.html">Linear Regression</a></li>
+	   <li><a href="logisticregression.html">Logistic Regression</a></li>
+ 	   <li><a href="#control-flow">Control Flow</a></li>
+	   <li><a href="#functions">Functions</a></li>
+	   <li><a href="#lists">Lists, Tuples, and Dictionaries</a></li>
+  	   <li><a href="#file-handling">File Handling</a></li>
+	   <li><a href="#error-handling">Error Handling</a></li>
+ 	   <li><a href="#modules">Modules and Packages</a></li>
+	   <li><a href="#oops">Object Oriented Programming</a></li>
+  	  </ul>
+	</div>
+	
+	<div class = "content" >
+	 <p>So far we have learnt the introduction part of Machine Learning. In this tutorial we will start by looking at the Linear Regression model, one of the simplest models there is. We will discuss to train this model. Lets start!</p><br>
+	 <h2>Linear Regression</h2>
+          <p>Linear Regression is one of the simplest <i>supervised learning</i> algorithms that computes the linear relationship between the <i>dependent variable</i> and one or more <i>independent features</i> by fitting a linear equation to observe data.</p> 
+	  <p>When there is only one independent feature, it is known as <b>Simple Linear Regression</b>, and when there are more than one feature, it is known as <b>Multiple Linear Regression</b>.</p>
+	  <p>Linear regression makes predictions for continuous/real or numeric variables such as <b>sales, salary, age, product price,</b> etc.
+	  <br><br><br>
+	  <h3>What is Regression?</h3>
+	  <p>Regression is a technique to determine the relationship between two or more variables.</p>
+	  <p>Regress means predicting one variable from another.</p>
+	  <p>Correlation is a measure that describes the strength of relationship between two variables. Regression explains in more detail about this strength</p>
+	  <br>
+	  <hr color = "dustyrose" style="clear:left;">
+
+	  <h2>Types of Linear Regression</h2>
+	  <p>There are two main types of linear regression:</p>
+	  <ul>
+	    <li><p><i>Simple Linear Regression</i></p></li>
+	    <li><p><i>Multiple Linear regression</i></p></li>
+	  </ul><br>
+	  <p><b>Simple Linear Regression</b></p>
+	  <p>Linear regression shows the linear relationship between the <b>features</b> (independent variable) and the <b>target</b>(dependent variable), consequently called linear regression.</p>
+	  <p>If there is a single feature i.e. input variable (x), such linear regression is called <i>Simple Linear Regression</i>.</p>
+	  <p style="line-height: 1.7; font-family:segoe print">The equation for simple linear regression is:<br>	  
+	  Y = &theta;<sub>0</sub> + &theta;<sub>1</sub>x</p>
+	  <p>Where:</p>
+	  <ul>
+	    <li><p style="font-family:segoe print">&bullet; Y is the target or dependent variable</p></li>
+	    <li><p style="font-family:segoe print">&bullet; x is the feature or independent variable</p></li>
+ 	    <li><p style="font-family:segoe print">&bullet; &theta;<sub>0</sub> is the intercept</p></li>
+	    <li><p style="font-family:segoe print">&bullet; &theta;<sub>1</sub> is the slope</p></li>
+  	  </ul>
+	  <img src = "../images/ML/simplelr.png">
+	  <p>In machine learning, these variables (no. of bedrooms, sq. ft. area) are called <i>features.</i></p><br><br>
+	  <p><b>Multiple Linear Regression</b></p>
+	  <p>what if we have 2 features?</p>
+	  <p style="line-height: 1.7; font-family:segoe print">The equation of linear regression with 2 features will be:<br>
+	  Y = &theta;<sub>0</sub> + &theta;<sub>1</sub>x<sub>1</sub> + &theta;<sub>2</sub>x<sub>2</sub></p> 
+	  <img src = "../images/ML/multiplelr.png"><br>
+	  <p>What about n number of features?</p>
+	  <p>If there are more than one input variable (features), such linear regression is called <i>multiple linear regression</i>.</p>
+	  <p style="line-height: 1.7; font-family:segoe print">The equation for multiple linear regression is:<br>
+	  Y = &theta;<sub>0</sub> + &theta;<sub>1</sub>x<sub>1</sub> + &theta;<sub>2</sub>x<sub>2</sub> + &theta;<sub>3</sub>x<sub>3</sub> + .... + &theta;<sub>n</sub>x<sub>n</sub></p> 
+	  <p>Where:</p>
+	  <ul>
+	    <li><p style="font-family:segoe print">&bullet; Y is the target or predicted or dependent variable</p></li>
+ 	    <li><p style="font-family:segoe print">&bullet; n is the number of features</p></li>
+	    <li><p style="font-family:segoe print">&bullet; x<sub>1</sub>, x<sub>2</sub>,....,x<sub>n</sub> are the features or independent variable. So x<sub>i</sub> is the i<sup>th</sup> feature value</p></li>
+ 	    <li><p style="font-family:segoe print">&bullet; &theta;<sub>0</sub> is the intercept</p></li>
+	    <li><p style="font-family:segoe print">&bullet; &theta;<sub>1</sub>, &theta;<sub>2</sub>,...,&theta;<sub>n</sub>  are the model parameters</p></li>
+  	  </ul><br> 
+	  <hr color="dustyrose">
+	  
+	  <h2>Linear Regression Line</h2>
+	  <img src = "../images/ML/lr1.png">
+
+	  <p>The above graph presents the linear relationship between the <i>dependent variables</i> and <i>independent variables</i>. The line is referred to as the best fit straight line. Based on the given data points <i>(obervations)</i>, we try to plot a line that fits the best.</p><br>
+	  <p>A regression line can be a Positive Linear Relationship or a Negative Linear Relationship.</p>
+
+	  <p><b>Positive Linear Relationship</b></p>
+	  <p>If the dependent variable increases on the Y-axis and independent variable increases on X-axis, then such a relationship is termed as a positive linear relationship.</p>
+	  <img src = "../images/ML/lr2.png" /></p><br><br>
+	  
+	  <p><b>Negative Linear Relationship</b></p>
+	  <p>If the dependent variable decreases on the Y-axis and independent variable increases on the X-axis, then such a relationship is called a negative linear relationship.</p>
+	  <img src = "../images/ML/lr3.png" /></p><br>
+
+
+	  <p><b>The goal of the linear regression algorithm is to get the best values for &theta;<sub>0</sub> and &theta;<sub>1</sub> to find the best fit line.</p> 	  <p>The best fit line should have the least error means the error between predicted values and actual values should be minimized.</b></p><br>
+	  <hr color="dustyrose">
+	  
+	  
+	  <h2>What is best fit line?</h2>
+	  <p>Our primary objective while using linear regression is to locate the best-fit line. Let's understand this with below snaps.</p>
+	  <ul>
+	    <li><p>&bullet; Suppose we have three variables.</p></li> 
+	    <img src = "../images/ML/lr4.png" width="260" height="200"/><br><br><br>
+	    <li><p>&bullet; Start by drawing a random lines to see how bad or good this line is.</p></li> 
+	    <img src = "../images/ML/lr5.png" width="200" height="170"/>
+	    <img src = "../images/ML/lr6.png" width="200" height="170"/>
+	    <img src = "../images/ML/lr7.png" width="200" height="170"/>
+	    <img src = "../images/ML/lr8.png" width="200" height="170"/><br><br><br>
+	    <li><p>&bullet; Lets calculate the error between these data points and line to see the distances if the error line increases or decreases.</p></li>
+	    <img src = "../images/ML/lr5-1.png" width="200" height="170"/>
+	    <img src = "../images/ML/lr6-1.png" width="200" height="170"/>
+	    <img src = "../images/ML/lr7-1.png" width="200" height="170"/>
+	    <img src = "../images/ML/lr8-1.png" width="200" height="170"/><br><br><br>
+	    <center><img src = "../images/ML/lrError.png" width="500" height="120"/></center><br><br>
+	  </ul>
+	  <p><i>From above error representation, we can conclude that line of (iv) graph is having less error compared to others lines.</i></p> 
+	  <p><i>To get best-fit line, the error between the predicted (point on line) and actual values should be kept to a minimum.</i></p>
+	  <img src = "../images/ML/lr1-Copy.png" />
+	  <p>Above graph shows the the best fit line withing the data points which can be get by minimizing the error between actual data point and predicted point (which lies on the line). Best fit line can be achieved by adjusting the &theta;<sub>0</sub> and &theta;<sub>1</sub> value.</p>
+	  <p>We utilize the <i>cost function</i> to compute the best values in order to get the best fit line since different values for weights or the coefficient of lines result in different regression lines.</p><br>
+	  <p><i>Lets understand what the cost function is in brief.</i></p>
+	  <hr color="dustyrose">
+	  
+	  <h2>Cost function</h2>
+	  <p>The <i>cost function</i> (also known as <i>loss function</i>) is the error representation between the actual value y<sub>i</sub> and the predicted value &ycirc;<sub>i</sub>.</p>
+	  <p>It measures the performance of a machine learning model for a data set. The returned value is usually called cost, loss or error. The goal is to find the values of model parameters (&theta;-slope, c-intercept) for which cost function return as small a number as possible.</p><br>
+
+	  <p style="line-height: 1.7; font-family:segoe print">The residual error at some point i is the difference between the actual value (y<sub>i</sub>) and predicted value (&ycirc;<sub>i</sub>) : <br>
+	  <table>
+	  <tr>
+	  <td>&emsp;&emsp;<b>y<sub>i</sub> - &ycirc;<sub>i</sub></b></tr>
+	  <tr><td></td><td></td><td></td>
+	  <td><img src = "../images/ML/LRresidualerror.png" align="right"/></td>
+	  </tr>	  
+	  </table></p><br><br><br>
+
+
+	  <p style="line-height: 1.5; font-family:segoe print">Lets say we have some data samples given below:<br>
+	  <table border=1>
+	  <tr>
+	  <th>data sample</th>
+	  <th>output</th>
+	  <th>predicted values, &ycirc; = &theta;<sub>1</sub>x, [&theta;<sub>1</sub> = 5]</th>
+	  </tr>
+	  <tr>
+	  <td>x<sub>0</sub> = 0</td>
+	  <td><b>y<sub>0</sub> = 0</b></td>
+	  <td bgcolor = "orange">&ycirc; = 5 x 0 = 0</td>
+	  </tr>
+	  <tr>
+	  <td>x<sub>1</sub> = 1</td>
+	  <td><b>y<sub>1</sub> = 2</b></td>
+	  <td bgcolor = "orange">&ycirc; = 5 x 1 = 5</td>
+	  </tr>
+	  <tr>
+	  <td>x<sub>2</sub> = 2</td>
+	  <td><b>y<sub>2</sub> = 4</b></td>
+	  <td bgcolor = "orange">&ycirc; = 5 x 2 = 10</td>
+	  </tr>
+	  <tr>
+	  <td>x<sub>3</sub> = 3</td>
+	  <td><b>y<sub>3</sub> = 6</b></td>
+	  <td bgcolor = "orange">&ycirc; = 5 x 3 = 15</td>
+	  </tr>
+ 	  </table></p><br>
+	  
+	  <p style="line-height: 1.5; font-family:segoe print">visualize the model’s results. For &theta;<sub>1</sub> = 5.0 for now.</p>
+	  <img src = "../images/ML/sumofreserr.png" />
+	  <p style="line-height: 1.5; font-family:segoe print">We can observe that the model predictions are different than expected values. Lets calculate the error distances. We already know the distance formula.</p>
+	  <p style="line-height: 1.5; font-family:segoe print">&emsp;&emsp; <b>distance = &ycirc; - y</b></p>
+	  <p style="line-height: 1.5; font-family:segoe print">According to the formula, calculate the errors between the predictions and expected values:<br>
+	  &emsp;&emsp; d<sub>0</sub> = 0 - 0 = 0<br>
+	  &emsp;&emsp; d<sub>1</sub> = 5 - 2 = 3<br>
+	  &emsp;&emsp; d<sub>2</sub> = 10 - 4 = 6<br>
+	  &emsp;&emsp; d<sub>3</sub> = 15 - 6 = 9<br>
+	  <p style="line-height: 1.5; font-family:segoe print">Lets sum up these errors:<br>
+	  &emsp;&emsp;Total error = d<sub>0</sub> + d<sub>1</sub> + d<sub>2</sub> + d<sub>3</sub><br>
+	  &emsp;&emsp;Total error = 0 + 3 + 6 + 9 = 18</p><br><br><br>
+
+	  <p style="line-height: 1.5; font-family:segoe print">Unfortunately, we still have to consider all cases so let’s try picking smaller weights and see if the created cost function works. We’ll set weight to &theta;<sub>1</sub> = 1.<br><br>
+	  Above table will be recalculated as below:<br>
+	  <table border=1>
+	  <tr>
+	  <th>data sample</th>
+	  <th>output</th>
+	  <th>predicted values, &ycirc; = &theta;<sub>1</sub>x, [&theta;<sub>1</sub> = 1]</th>
+	  </tr>
+	  <tr>
+	  <td>x<sub>0</sub> = 0</td>
+	  <td><b>y<sub>0</sub> = 0</b></td>
+	  <td bgcolor = "orange">&ycirc; = 1 x 0 = 0</td>
+	  </tr>
+	  <tr>
+	  <td>x<sub>1</sub> = 1</td>
+	  <td><b>y<sub>1</sub> = 2</b></td>
+	  <td bgcolor = "orange">&ycirc; = 1 x 1 = 1</td>
+	  </tr>
+	  <tr>
+	  <td>x<sub>2</sub> = 2</td>
+	  <td><b>y<sub>2</sub> = 4</b></td>
+	  <td bgcolor = "orange">&ycirc; = 1 x 2 = 2</td>
+	  </tr>
+	  <tr>
+	  <td>x<sub>3</sub> = 3</td>
+	  <td><b>y<sub>3</sub> = 6</b></td>
+	  <td bgcolor = "orange">&ycirc; = 1 x 3 = 3</td>
+	  </tr>
+ 	  </table></p><br>
+	  <p style="line-height: 1.5; font-family:segoe print">visualize the model’s results. For &theta;<sub>1</sub> = 1.</p>
+ 	  <img src = "../images/ML/sumofnegreserr.png" />
+ 	  <p style="line-height: 1.5; font-family:segoe print">Lets calculate the error distance again:<br>
+	  &emsp;&emsp; d<sub>0</sub> = 0 - 0 = 0<br>
+	  &emsp;&emsp; d<sub>1</sub> = 1 - 2 = -1<br>
+	  &emsp;&emsp; d<sub>2</sub> = 2 - 4 = -2<br>
+	  &emsp;&emsp; d<sub>3</sub> = 3 - 6 = -3<br>
+	  <p style="line-height: 1.5; font-family:segoe print">Lets sum up these errors:<br>
+	  &emsp;&emsp;Total error = d<sub>0</sub> + d<sub>1</sub> + d<sub>2</sub> + d<sub>3</sub><br>
+	  &emsp;&emsp;Total error = 0 + (-1) + (-2) + (-3) = -6</p><br><br>
+	  <p style="line-height: 1.5; font-family:segoe print">Since distance can’t have a negative value, so we can square the error to fix this issue as:</br>
+	  &emsp;&emsp;<b>error = (y<sub>i</sub> - &ycirc;<sub>i</sub>)<sup>2</sup></b><br>
+	  We could also use the absolute to these error value but we will understand this thing also in later part.</p><br><br>
+	  <p style="line-height: 1.5; font-family:segoe print">The error with each &theta;<sub>1</sub> values are:<br>
+	  &emsp;&emsp; error(&theta;<sub>1</sub>=5) = (0 + 3 + 6 + 9)<sup>2</sup> = 324<br>
+	  &emsp;&emsp; error(&theta;<sub>1</sub>=1) = (0 + (-1) + (-2) + (-3))<sup>2</sup> = 36<br></p>
+	  <p style="line-height: 1.5; font-family:segoe print">The model achieves better results for w = 1 as the cost value is smaller.</p><br><br><br>
+	
+	  <p style="line-height: 1.5; font-family:segoe print">However, now imagine there are a million points instead of four. So the summation of errors from all (lets say n) data points would be:</p>
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;<b>n<br>&emsp;&sum;&nbsp;(y<sub>i</sub> - &ycirc;<sub>i</sub>)<sup>2</sup><br>&emsp;<sub>i=1</sub> </b></p><br><br>
+	  <p style="line-height: 1.5; font-family:segoe print">Since the value would be very bigger. That’s why we have to scale in some way. The right idea is to divide the accumulated errors by the number of points:</p>
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;&emsp;&emsp;&nbsp;<b>n<br>&emsp;1/n&nbsp;&sum;&nbsp;(y<sub>i</sub> - &ycirc;<sub>i</sub>)<sup>2</sup><br>&emsp;&emsp;&emsp;<sub>i=1</sub> </b></p><br><br>
+
+	  <p style="line-height:1.7; font-family:segoe print">The above formula is known as Mean Squared Error (MSE). MSE is the average of the summation of squared errors for n data points:</p>
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>n<br>&emsp;MSE = 1/n&nbsp;&sum;&nbsp;(y<sub>i</sub> - &ycirc;<sub>i</sub>)<sup>2</sup><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<sub>i=1</sub> </b></p><br><br>
+
+	  <p style="line-height:1.7; font-family:segoe print">when you take the derivative of the MSE loss function, dividing it by 2 simplifies the simplify mathematical calculations and derivatives and eliminates the constant term, but it does not fundamentally change the interpretation or relative performance of different models.</p>
+	  <p style="line-height:0.9; font-family:segoe print">Cost function is 1/2(MSE). That is, additional 1/2 is for convinience for derivative.</p>
+
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<b>n<br>&emsp;Cost Function: J(&theta;<sub>0</sub>, &theta;<sub>1</sub>) = 1/2n&nbsp;&sum;&nbsp;(y<sub>i</sub> - &ycirc;<sub>i</sub>)<sup>2</sup><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<sub>i=1</sub> </b></p>
+	  
+	  <p style="line-height:1.7; font-family:segoe print">where,</p>
+	  <p style="line-height:1.7; font-family:segoe print">&emsp;&emsp;<b>Hypothesis:</b> &emsp;&emsp;h<sub>&theta;</sub>(x) = &theta;<sub>0</sub> + &theta;<sub>1</sub>x</p>
+ 	  <p style="line-height:1.7; font-family:segoe print">&emsp;&emsp;<b>Parameters:</b> &emsp;&ensp;&theta;<sub>0</sub>, &theta;<sub>1</sub></p>
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;n<br>&emsp;&emsp;<b>MSE:</b> &emsp;&emsp;&emsp;&emsp;&emsp;1/n&nbsp;&sum;&nbsp;(h<sub>&theta;</sub>(x)<sub>i</sub>) - &ycirc;<sub>i</sub>)<sup>2</sup><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<sub>i=1</sub> </b></p>
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;&emsp;<b>Cost Function:</b> &ensp;J(&theta;<sub>0</sub>, &theta;<sub>1</sub>)= 1/2 (MSE)</p> <br>
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;&emsp;<b>Goal:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;minimize J(&theta;<sub>0</sub>, &theta;<sub>1</sub>)</p><br><br><br>
+
+	  <h3>What Is Mean Absolute Error (MAE)?</h3>
+	  <hr />
+	  <p>Two commonly used loss functions are Mean Squared Error (MSE) and Mean Absolute Error (MAE). MAE is a mean of absolute differences among predictions and expected results.</p>
+	  <p style="line-height:0.9; font-family:segoe print">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<b>n<br>&emsp;MAE = 1/n&nbsp;&sum;&nbsp;|y<sub>i</sub> - &ycirc;<sub>i</sub>|<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<sub>i=1</sub> </b></p>
+	  <p style="line-height:1.4; font-family:segoe print">In this formula:<br>
+	  &emsp;&emsp; i = index of sample<br>
+	  &emsp;&emsp; y = expected value<br>
+	  &emsp;&emsp; &ycirc; = predicted value<br>
+	  &emsp;&emsp; n = number of samples in the data set.</p>
+	  <p><b>Note: </b>Sometimes it’s possible to see the form of a formula with swapped predicted and expected values, but it works the same.</p>
+	  <p>Equivalent code:<br>
+	  <img src = "../images/ML/costFunCode1.png" /> </p>
+	  <p style="line-height:1.9; font-family:segoe print">The function takes as an input two arrays of the same size: predictions and expected. The parameter n of the formula, which is the number of samples, equals the length of sent arrays. The absolute value of the difference between each prediction and target is calculated and added to the accumulated_error variable. After gathering errors from all pairs, the accumulated result is averaged by the parameter n that returns MAE error for given data.</p><br><br><br>
+
+  	  <h3>What Is Mean Squared Error (MSE)?</h3>
+	  <hr />
+	  <p>Mean squared error is one of the most commonly used regression metrics. MSE represents the average squared difference between the predictions and expected results. In other words, MSE is an alteration of MAE where, instead of taking the absolute value of differences, we square those differences.</p>
+	  <p>In MAE, the partial error values were equal to the distances between points in the coordinate system. Regarding MSE, each partial error is equivalent to the area of the square created out of the geometrical distance between the measured points. All regional areas are summed up and averaged.</p>
+	  <img src="../images/ML/sumofsqerr.png" /><br>
+	  <p style="line-height:0.9; font-family:segoe print">We can write the MSE formula like this:<br>
+	  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;<b>n<br>&emsp;MSE = 1/2n&nbsp;&sum;&nbsp;(y<sub>i</sub> - &ycirc;<sub>i</sub>)<sup>2</sup><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<sub>i=1</sub> </b></p><br>
+ 	  <p>There are different forms of MSE formula, where there is no division by two in the denominator. Its presence makes MSE derivation calculus cleaner.</p><br>
+	  <p>Equivalent code:<br>
+	  <img src = "../images/ML/costFunCode2.png" /> </p>	
+	  <p style="line-height:1.7; font-family:segoe print">The only distinctions from MAE are: <br>
+	  &emsp;&bullet; The difference between prediction and target is squared.<br>
+	  &emsp;&bullet; 2 is in the averaging denominator.</p><br><br><br>
+
+
+	  <h3>MSE Vs MAE</h3>
+	  <hr />
+	  <p>The distance between ideal result and predictions have a penalty attached by metric, based on the magnitude and direction in the coordinate system. Below are some points to be observed:</p>
+	  <p style="line-height:1.7; font-family:segoe print">&emsp;&bullet; MAE doesn’t add any additional weight to the distance between points. The error growth is linear.<br><br>
+	  &emsp;&bullet; MSE errors grow exponentially with larger values of distance. So, if your dataset includes outliers — data points that don’t conform to the general pattern — it’s advisable to opt for MAE.<br><br>
+
+	  &emsp;&bullet; MSE is more efficient when using a model that relies on the gradient descent algorithm as the error curve has a parabolic shape so can be derivative but MAE cannot be derivative.</p><br><br>
+
+	  <p>So how do MAE and MSE treat the differences between points? To check, let’s calculate the cost for different weight values:</p>
+	  <table  cellspacing="20">
+	  <tr>
+	  <th>w or &theta;</th>
+	  <th>-3.0</th>
+	  <th>-2.0</th>
+	  <th>-1.0</th>
+	  <th>0.0</th>
+	  <th>1.0</th>
+	  <th>2.0</th>
+	  <th>3.0</th>
+	  <th>4.0</th>
+	  <th>5.0</th>
+	  <th>6.0</th>
+	  <th>7.0</th></tr>
+	  <tr>
+	  <td><b>MAE</b></td>
+	  <td>7.5</td>
+	  <td>6.0</td>
+	  <td>4.5</td>
+	  <td>3.0</td>
+	  <td>1.5</td>
+	  <td>0.0</td>
+	  <td>1.5</td>
+	  <td>3.0</td>
+	  <td>4.5</td>
+	  <td>6.0</td>
+	  <td>7.5</td></tr>
+	  <tr>
+	  <td><b>MSE</b></td>
+	  <td>43.75</td><td>28.0</td><td>15.75</td><td>7.0</td><td>1.75</td><td>0.0</td><td>1.75</td><td>7.0</td><td>15.75</td><td>28.0</td><td>43.75</td>
+	  </tr>
+	  </table><br><br>
+	  <p>Here’s how it displays on graphs when you draw a graph between w and cost: </p>
+
+
+	  
+
+	  
+
+	  
+	  <br><br><br>
+	  <p>Next we will learn to use <b>gradient descent</b> to minimize this <b>cost function</b>.</p>
+	  <hr color="dustyrose">
+	  
+	  <h2>Gradient Descent</h2>
+
+
+	
+
+
+
+
+
+
+
+
+
+	<hr color = "dustyrose" style="clear:left;">
+	<p><i>This introductory guide has covered the basics, but there's more to explore! For a deeper dive, refer to additional resources such as books and online tutorials. </i></p>
+	<p><i> Now that we've covered the basic of machine learning, let's dive deeper into the first machine learning algorithm - linear regression.</i></p>
+	
+	<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	<a href = "linearregression.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+
+        </div>
+     </section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+</body>
+</html>

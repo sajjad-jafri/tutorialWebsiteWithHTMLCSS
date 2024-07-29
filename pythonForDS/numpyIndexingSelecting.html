@@ -1,0 +1,361 @@
+<html>
+   <head>
+      <title>Numpy Indexing and Selection</title>
+      <link rel="stylesheet" href="../mystyle.css">
+   </head>
+	
+   <body>
+     <header>
+        <h1>Numpy Indexing and Selection</h1>
+     </header>
+
+     <main id = content>
+
+       <nav id = "navbar">
+	  <ul>
+	    <li><a href = "../index.html">Home</a></li>
+	    <li><a href="../course.html">Courses</a></li>
+	    <li><a href="#about">About</a></li>
+	    <li><a href="#contact">Contact</a></li>
+	  </ul>
+       </nav>
+
+	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+
+	<section id = "course-details"> 
+        <div class = "syllabi">
+	<ul>
+	   <li><a href="Numpy.html">What is Numpy</a></li>
+	   <li><a href="numpyArrays.html">Numpy Arrays</a></li>
+	   <li class="selected"><a href="numpyIndexingSelecting.html">Numpy Indexing and Selection</a></li> 
+	   <li><a href="numpyOperations.html">Numpy Operations</a></li>
+  	  </ul>
+	</div>
+
+	<div class = "content" >
+		<h2>Indexing and Selection</h2>
+          	<p>Indexing a NumPy array means accessing the elements of the NumPy array at the given index.</p> 
+		<p>It is used to extract individual elements from a one-dimensional array.</p> 
+		<p>It can also be used to extract rows, columns, or planes in a multi-dimensional NumPy array.</p><br>
+		<p><b>Example:</b> Index in NumPy array</p>
+		<center>
+		<table style="border: 2px solid black; width: 50%; text-align: center; border-collapse: collapse;">
+		<tr>	
+			<th style="background-color: darkgray; padding: 10px; border: 1px solid #ddd;">Element</th>
+			<td>93</td>
+			<td>51</td>
+			<td>2</td>
+			<td><b>25</b></td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<th style="background-color: darkgray; padding: 10px; border: 1px solid #ddd;">Index</th>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td><b>3</b></td>
+			<td>4</td>
+		</tr>
+		</table>
+		</center>
+		<p>In the above example, we have highlighted the element “25” which is at index “3”.</p>
+		<br><br><br>
+
+		<hr color="dustyrose">
+		<p><b>In Indexing and Selection, we will study the following:</b></p>
+		<ul style="list-style-type:circle">
+			<li><p>Grabbing single element</p></li>
+			<li><p>Grabbing a slice of elements</p></li>
+			<li><p>Broadcasting selections</p></li>
+			<li><p>Indexing and selection in 2-d array or matrices</p></li>
+			<li><p>Conditional selection</p></li>
+		</ul><br><br>
+		<hr color="gray">
+		<p><b>Grabbing single element</b></p>
+
+<h3>Python Code</h3>
+<pre>
+	<code>
+import numpy as np
+
+arr = np.arange(11,21)
+print(arr)
+
+<span style="color: #8b0000"># selecting single element</span>
+print("Value at index 8 = ",arr[8])		<span style="color: #8b0000"># Grab the value at index 8</span>
+
+	</code>
+</pre>		
+
+<h3>Output</h3>
+<pre>
+<code>
+[11 12 13 14 15 16 17 18 19 20]
+
+Value at index 8 =  19
+</code>
+</pre><br><br>
+<hr color="gray">
+
+		<p><b>Grabbing a slice of elements</b></p>
+<h3>Python Code</h3>
+<pre>
+<code>
+import numpy as np
+
+arr = np.arange(10, 21)
+print(arr)
+
+print("Slice of values from index 1 to 5 - 1: ",arr[1:5])
+
+print("From beginning to 5 - 1: ",arr[:5]) 
+
+print("From index 5 to end: ",arr[5:])
+
+print("All values: ",arr[:])
+
+print("From index 1 to 8 - 1 with gap of 2: ",arr[1:8:2])
+</code></pre><br>
+<h3>Output</h3>
+<pre>
+<code>
+[10 11 12 13 14 15 16 17 18 19 20]
+
+Slice of values from index 1 to 5 - 1:  [11 12 13 14]
+
+From beginning to 5 - 1:  [10 11 12 13 14]
+
+From index 5 to end:  [15 16 17 18 19 20]
+
+All values:  [10 11 12 13 14 15 16 17 18 19 20]
+
+From index 1 to 8 - 1 with gap of 2:  [11 13 15 17]
+</code></pre><br><br>
+
+<hr color="gray">
+		<p><b>Broadcasting selections</b></p>
+<p>Python list doesn't support broadcasting so Numpy array is different from python list because of this ability to broadcast with lists and in many other ways</p>.
+
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+arr = np.arange(11,21)
+print(arr)
+
+<span style="color: #8b0000"># Grab all elements from 0 to 5 and set them to 100</span>
+arr[0:5] = 100
+print("Setting elements to 100 from 0 to 5: ",arr)
+
+</code></pre><br>
+
+<h3>Output</h3>
+<pre><code>
+[10 11 12 13 14 15 16 17 18 19 20]
+Setting elements to 100 from 0 to 5:  [100 100 100 100 100  15  16  17  18  19  20]
+</code></pre><br>
+
+<p><b>Note: </b>Slicing a section of an array and setting it to a new variable will actually act as a pointer to the original array.</p>
+<p>Let's understand it by an example:</p>
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+arr = np.arange(0, 11)
+print("Original array:\n",arr)
+
+slice_of_arr = arr[0:5]
+print("Slice of an array\n",slice_of_arr)
+
+<span style="color: #8b0000"># Lets print the original array again</span>
+print("Original array\n", arr)
+
+<span style="color: #8b0000"># Lets change slice of an array</span>
+slice_of_arr[:] = 99	<span style="color: #8b0000"># changing every element to 99</span>
+
+print("Slice of an array\n", slice_of_arr)
+
+<span style="color: #8b0000"># Lets print the Original array again</span>
+print("Original array:\n", arr)
+
+</code></pre><br>
+
+<h3>Output</h3>
+<pre><code>
+Original array:
+ [ 0  1  2  3  4  5  6  7  8  9 10]
+
+Slice of an array
+ [0 1 2 3 4]
+
+Original array
+ [ 0  1  2  3  4  5  6  7  8  9 10]
+
+Slice of an array
+ [99 99 99 99 99]
+
+Original array:
+ [99 99 99 99 99  5  6  7  8  9 10]
+</code></pre>
+
+<p>When we assign a slice from an original array is actually points to original array. This means the boraodcasting an element in above example has affected the original array. Simply if you make any change to an array's slice, it will affect the original array.</p><br><br>
+
+<p>If you don't want to affect the original array, you would need to explicitely set a copy of an original array.</p>
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+arr = np.arange(0, 11)
+print("Original array:\n",arr)
+
+arr_copy = arr.copy()
+print("Copied array:\n",arr_copy)
+
+<span style="color: #8b0000"># Now we can make any changes to the copy of an array which will not affect the original array</span>
+arr_copy[:] = 100
+
+print("Copied array after changes:\n",arr_copy)
+
+<span style="color: #8b0000"># print the original array if changes affected</span>
+print("Original array:\n", arr)
+</code></pre><br>
+
+<h3>Output</h3>
+<pre><code>
+Original array:
+ [ 0  1  2  3  4  5  6  7  8  9 10]
+
+Copied array:
+ [ 0  1  2  3  4  5  6  7  8  9 10]
+
+Copied array after changes:
+ [100 100 100 100 100 100 100 100 100 100 100]
+
+Original array:
+ [ 0  1  2  3  4  5  6  7  8  9 10]
+</code></pre>
+<p>Original array has not been changed because of the <b>.copy()</b></p>
+<br><br>
+<hr color="gray">
+
+		<p><b>Indexing and selection in 2-d array or matrices</b></p>
+<p>Lets understand it with a python code</p>
+
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+arr_2d = np.array([[5,10,15],[20,25,30],[35,40,45]])
+print(arr_2d)
+
+print("Shape: ",arr_2d.shape)  <span style="color: #8b0000"># first will be row then column</span>
+
+<span style="color: #8b0000"># Grab first row</span>
+print("Firsty row:\n",arr_2d[0])
+
+<span style="color: #8b0000"># Grab last row</span>
+print("Last row:\n",arr_2d[2])
+
+<span style="color: #8b0000"># Grab 25 which is at row = 1 and col = 1</span>
+print("Grabbing 25:\n",arr_2d[1][1])
+
+print("Grabbing 25 again with different notation\n",arr_2d[1,1])
+
+<span style="color: #8b0000"># Grab 15</span>
+print("Grabbing 15 which is at row = 0 and col = 2:\n",arr_2d[0,2])
+
+<span style="color: #8b0000"># Grab first 2 rows</span>
+print("Grabbing first 2 rows:\n",arr_2d[:2])
+
+<span style="color: #8b0000"># Grab first 2 rows and col = 1 & 2</span>
+print("Grabbing first 2 rows and last 2 column:\n",arr_2d[:2, 1:])
+</code></pre><br>
+
+<h3>Output</h3>
+<pre><code>
+[[ 5 10 15]
+ [20 25 30]
+ [35 40 45]]
+
+Shape: (3, 3)
+
+Firsty row:
+ [ 5 10 15]
+
+Last row:
+ [35 40 45]
+
+Grabbing 25:
+ 25
+
+Grabbing 25 again with different notation
+ 25
+
+Grabbing 15 which is at row = 0 and col = 2:
+ 15
+
+Grabbing first 2 rows:
+ [[ 5 10 15]
+ [20 25 30]]
+
+Grabbing first 2 rows and last 2 column:
+ [[10 15]
+ [25 30]]
+</code></pre><br><br>
+
+<hr color="gray">
+<p><b>Conditional Selection</b></p>
+<p>NumPy elements can be indexed using conditionals.</p><br>
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+arr = np.arange(0,11)
+print(arr)
+
+bool_arr = arr>4
+print(bool_arr)
+
+<span style="color: #8b0000"># Pass it to original to get elements greater than 4</span>
+print("Array having element greater than 4:\n",arr[bool_arr])
+
+<span style="color: #8b0000"># shortcut to above method is</span>
+print("Array having element greater than 2:\n",arr[arr>2])
+</code></pre><br>
+<h3>Output</h3>
+<pre><code>
+[ 0  1  2  3  4  5  6  7  8  9 10]
+
+[False False False False False  True  True  True  True  True  True]
+
+Array having element greater than 4:
+ [ 5  6  7  8  9 10]
+
+Array having element greater than 2:
+ [ 3  4  5  6  7  8  9 10]
+</code></pre>
+
+<br><br><br><br>
+
+	<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+		<a href = "numpyOperations.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+
+        </div>
+     	</section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+	
+</body>
+</html>
+

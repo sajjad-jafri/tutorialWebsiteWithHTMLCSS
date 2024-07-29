@@ -1,0 +1,415 @@
+<html>
+   <head>
+      <title>Numpy Arrays</title>
+      <link rel="stylesheet" href="../mystyle.css">
+   </head>
+	
+   <body>
+     <header>
+        <h1>Numpy Arrays</h1>
+     </header>
+
+     <main id = content>
+
+       <nav id = "navbar">
+	  <ul>
+	    <li><a href = "../index.html">Home</a></li>
+	    <li><a href="../course.html">Courses</a></li>
+	    <li><a href="#about">About</a></li>
+	    <li><a href="#contact">Contact</a></li>
+	  </ul>
+       </nav>
+
+	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+
+	<section id = "course-details"> 
+        <div class = "syllabi">
+	<ul>
+	   <li><a href="Numpy.html">What is Numpy</a></li>
+	   <li class="selected"><a href="numpyArrays.html">Numpy Arrays</a></li>
+	   <li><a href="numpyIndexingSelecting.html">Numpy Indexing and Selection</a></li> 
+	   <li><a href="numpyOperations.html">Numpy Operations</a></li>
+  	  </ul>
+	</div>
+
+	<div class = "content" >
+		<h2>Ways to create NumPy Arrays</h2>
+          	<p>Lets explore how to create NumPy Arrays</p>
+		<ul>
+			<li><p>Transforming standard list</p></li> 
+			<li><p>Built-in functions</p></li>
+			<li><p>Generating random data</p></li>
+		</ul><br>
+		<p><b>Create Numpy Arrays Using Lists or Tuples</b></p>
+		<p>The simplest way to create a NumPy array is by passing a Python list or tuple to the numpy.array() function.</p>
+<h3>Python Code</h3>
+<pre>
+	<code>
+  import numpy as np
+
+  my_list = [1, 2, 3, 4, 5]
+  numpy_array = np.array(my_list)
+
+  print("NumPy Array using Python List:\n",numpy_array)
+	</code>
+</pre>		
+
+<h3>Output</h3>
+<pre>
+<code>
+NumPy Array using Python List:
+[1 2 3 4 5]
+</code>
+</pre><br><br>
+
+<p>For a matrix, we will use list of list as shown below using Python code</p>
+<h3>Python Code</h3>
+<pre>
+<code>
+  import numpy as np
+
+  my_matrix = [[1,2,3],[4,5,6],[7,8,9]]	
+
+  arr = np.array(my_matrix)
+
+ print(arr)
+</code></pre><br>
+<h3>Output</h3>
+<pre>
+<code>
+  [[1 2 3]
+   [4 5 6]
+   [7 8 9]]
+</code></pre><br><br><br>
+
+<hr color="gray">
+		<p><b>Creating NumPy Array Using Built-in Functions</b></p>
+		<p>NumPy provides several built-in functions to generate arrays with specific properties.</p>
+		<ul style="list-style-type:disc">
+			<li><p><b>np.arange():</b> Creates an array with values that are evenly spaced within a given range.</p></li>
+			<li><p><b>np.zeros():</b> Creates an array filled with zeros.</p></li>
+			<li><p><b>np.ones():</b> Creates an array filled with ones.</p></li>
+			<li><p><b>np.full():</b> Creates an array filled with a specified value.</p></li>
+			<li><p><b>np.linspace():</b> Creates an array with values that are evenly spaced over a specified interval.</p></li>
+			<li><p><b>np.eye():</b> Creates an identity matrix.</p></li>
+			<li><p><b>np.diag():</b> Constructs a diagonal array.</p></li>
+		</ul><br>
+<h3>Python Code</h3>
+<pre><code>
+<span style="color: #8b0000"># importing numpy module</span>
+import numpy as np
+
+range_array = np.arange(0, 10, 2)  <span style="color: #8b0000"># start, stop, step</span>
+zeros_array = np.zeros((2, 3))      <span style="color: #8b0000"># num of row, num of column</span>
+ones_array = np.ones((3, 3))
+constant_array = np.full((2, 2), 7)
+linspace_array = np.linspace(0, 10, 3)  <span style="color: #8b0000"># start, stop, how many num between start and stop</span>
+identity_matrix = np.eye(4)   <span style="color: #8b0000"># num of row = num of column</span>
+diagonal_array = np.diag([1, 2, 3])
+
+print("Range Array:","\n",range_array)
+print()
+print("Zero Array:","\n",zeros_array)
+print()
+print("Ones Array:","\n",ones_array)
+print()
+print("Constant Array:","\n",constant_array)
+print()
+print("Linspace Array:","\n",linspace_array)
+print()
+print("Identity Matrix:","\n",identity_matrix)
+print()
+print("Diagonal Array:\n",diagonal_array)
+
+</code></pre><br>
+
+<h3>Output</h3>
+<pre><code>
+Range Array: 
+ [0 2 4 6 8]
+
+Zero Array: 
+ [[0. 0. 0.]
+ [0. 0. 0.]]
+
+Ones Array: 
+ [[1. 1. 1.]
+ [1. 1. 1.]
+ [1. 1. 1.]]
+
+Constant Array: 
+ [[7 7]
+ [7 7]]
+
+Linspace Array: 
+ [ 0.  5. 10.]
+
+Identity Matrix: 
+ [[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+
+Diagonal Array:
+[[1 0 0]
+ [0 2 0]
+ [0 0 3]]
+</code></pre><br><br><br>
+
+<hr color="gray">
+		<p><b>Creating Numpy Arrays Using Random Number Generation</b></p>
+		<p>NumPy comes with its own random library and provides functions to create arrays filled with random numbers.</p>
+		<ul style="list-style-type:disc">
+			<li><p><b>np.random.rand()</b></p></li>
+			<li><p><b>np.random.randn()</b></p></li>
+			<li><p><b>np.random.randint()</b></p></li>
+		</ul><br>
+<p><b>np.random.rand():</b> Creates an array of specified shape and fills it with random values sampled from a uniform distribution over [0, 1). Here 0 is inclusive and 1 is exclusive, meaning it can return back 0, but it can't return back 1.</p>
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+random_single_num = np.random.rand(1)  <span style="color: #8b0000"># Single num to fall between 0 and 1</span>
+
+print("Random Single Num:\n",random_single_num)
+
+<span style="color: #8b0000"># Can give the shape as well</span>
+another_random_5_by_2 = np.random.rand(5,2) <span style="color: #8b0000"># 5 rows, 2 columns </span>
+print("5 Rows 2 Columns:\n", another_random_5_by_2)
+</code></pre><br>
+<h3>Output</h3>
+<pre><code>
+Random Single Num:  
+[0.85518742]
+
+5 Rows 2 Columns:
+ [[0.81326532 0.39351299]
+ [0.61477625 0.60763054]
+ [0.38763695 0.55048548]
+ [0.43550949 0.32708931]
+ [0.26035038 0.84531517]]
+</code></pre>
+<p>If you run it again and again, it will give you always different result.</p>
+<p>Notice all these numbers fall between 0 and 1, and it's from a <b>uniform distribution.</b> So all the numbers between 0 and 1 have the same likelihood of being returned.</p><br><br>
+
+<hr color="gray">
+<p><b>np.random.randn():</b> Creates an array of specified shape and fills it with random values sampled from a standard normal distribution.</p><br>
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+random_5_num = np.random.randn(5)  <span style="color: #8b0000"># Give 5 num from standard normal distribution</span>
+
+print("Random 5 number from standard Normal Distribution:\n",random_5_num)
+
+<span style="color: #8b0000"># Arrang in shape</span>
+another_random = np.random.randn(2,3)
+print("Another random num with shape 2 and 3:\n", another_random)
+</code></pre><br>
+<h3>Output</h3>
+<pre><code>
+Random 5 number from standard Normal Distribution:
+ [ 0.61273118 -0.94130053 -0.65722781  0.40961921  0.64256434]
+
+Another random num with shape 2 and 3:
+ [[-2.11003834  2.60083029  0.68792849]
+ [ 0.0760018  -0.94904411 -1.2672804 ]]
+</code></pre>
+<p>The standard normal distribution is one of the forms of the normal distribution. It occurs when a normal random variable has a mean equal to zero and a standard deviation equal to one. So if mean is 0 so the fact is we can get negative numbers.</p><br><br>
+
+<hr color="gray">
+<p><b>np.random.randint():</b> Creates an array of specified shape and fills it with random integers within a given range.</p><br>
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+<span style="color: #8b0000"># show 5 random numbers between 0(inclusive) to 101(exclusive)</span>
+random_int = np.random.randint(0, 101, 5)  <span style="color: #8b0000"># 5 is size here, not step like in range</span>
+
+print("Random 5 Integers between 0 to 101\n",random_int)
+
+<span style="color: #8b0000"># Show random numbers between 0 to 101 in shape of 4(row) and 5(column)</span>
+random_int_4_by_5 = np.random.randint(0, 101, (4,5))
+print("Random integers with shape 4 and 5:\n", random_int_4_by_5)
+</code></pre><br>
+<h3>Output</h3>
+<pre><code>
+Random 5 Integers between 0 to 101
+ [36  0 27 10 83]
+
+Random integers with shape 4 and 5:
+ [[52 56 40 60 72]
+ [22 77 83 51 26]
+ [14 54 14 81 82]
+ [47 33 72 79 22]]
+</code></pre><br><br><br>
+
+		<hr color = "dustyrose">
+		<p>Something to be note above, If you run any above programs we have discussed, every time you the run the random function program you will get the different result. random() function is used to generate random numbers in Python, so they can be random at every run.</p><br><br>
+		<p><b>random.seed( ) in Python</b></p>
+		<p>Seed function is used to save the state of a random function, so that it can generate same random numbers on multiple executions of the code on the same machine or on different machines (for a specific seed value).</p><br>
+
+<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+np.random.seed(42)   <span style="color: #8b0000"># Any arbitrary number can be passed</span>
+
+r = np.random.rand(4)
+
+print(r)
+</code></pre>
+<br>
+<h3>Output</h3>
+<pre><code>
+[0.37454012 0.95071431 0.73199394 0.59865848]
+</code></pre>
+<p>When you run this same program multiple times, you will get the same output.</p>
+
+		<br><br><br>
+		<hr color = "dustyrose">
+		<h2>Reshaping an Array:</h2>
+		<p>We can use reshape method to reshape an array.</p>
+		<br>
+		<h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+arr = np.arange(20)
+print("Array:\n", arr)
+
+reshaped_array = arr.reshape(5, 4)
+print("Reshaping Array with 5 by 4:\n", reshaped_array)
+
+reshaped_array2 = arr.reshape(4,5)
+print("Reshaping Array with 4 by 5:\n", reshaped_array2)
+</code></pre><br>
+
+<h3>Output:</h3>
+<pre><code>
+Array:
+ [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]
+
+Reshaping Array with 5 by 4:
+ [[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]
+ [12 13 14 15]
+ [16 17 18 19]]
+
+Reshaping Array with 4 by 5:
+ [[ 0  1  2  3  4]
+ [ 5  6  7  8  9]
+ [10 11 12 13 14]
+ [15 16 17 18 19]]
+</code></pre> 	
+
+	<p>Note here: If you reshape the above example using other than '<b>arr.reshape.(5, 4)</b> or (4, 5) or (10, 2) etc., you may get error.</p><br><br>
+	<p>Lets check it with below Python code.</p>
+<h3>Python Code</h3>
+<pre>
+	<code>
+import numpy as np
+
+arr = np.arange(20)
+
+r_arr = arr.reshape(3, 6)
+
+print("Reshaping Array with 3 by 6:\n", r_arr)
+	</code>
+</pre><br>
+<h3>Output</h3>
+<pre><code>
+<span style="color: #8b0000">
+Traceback (most recent call last):
+  File "C:\Users\2617126\check.py", line 5, in <module>
+    r_arr = arr.reshape(3, 6)
+ValueError: cannot reshape array of size 20 into shape (3,6)  
+</span>
+</code></pre>
+<p>You got <b>cannot reshape array of size 20 into shape (3,6).</b></p>
+<p>Its because 3 x 6 = 18, it cannot squeeze to 20 elements which we are reshaping. So when you multiply the dimensions, they should equal the same number of elements you had originally.</p><br><br><br>
+
+<hr color="dustyrose">
+<p><b>Some methods to remember</b></p>
+<ul>
+<li><p><b>max()</b> - to give the maximum element from the given array.</p></li>
+<li><p><b>min()</b> - to give the minimum element from the given array.</p></li>
+<li><p><b>argmax()</b> - to get the index location of the maximum element of the array.</p></li>
+<li><p><b>argmin()</b> - to get the index location of the minimum element of the array.</p></li>
+<li><p><b>shape()</b> - to get the dimension/shape of the array.</p></li>
+</ul><br>
+
+</h3>Python Code</h3>
+<pre><code>
+import numpy as np
+
+arr = np.random.randint(0, 101, 10) 
+
+print("Given Array\n", arr)
+
+print("Maximum number\n", arr.max())
+print("Minimum number\n", arr.min())
+print("Index location of the maximum number\n", arr.argmax())
+print("Index location of the minimum number\n", arr.argmin())
+print("Its Dimension\n", arr.shape)  <span style="color: #8b0000"># Its attribut not function </span>
+      
+r_arr = arr.reshape(5,2)
+print("Reshaping Array with 5 by 2:\n", r_arr)
+print("New Dimension\n",r_arr.shape)
+</code></pre><br>
+
+<h3>Output</h3>
+<pre><code>
+Given Array
+ [43 73 84 54 10 14  3 89 19  6]
+
+Maximum number
+ 89
+
+Minimum number
+ 3
+
+Index location of the maximum number
+ 7
+
+Index location of the minimum number
+ 6
+
+Its Dimension
+ (10,)
+
+Reshaping Array with 5 by 2:
+ [[43 73]
+ [84 54]
+ [10 14]
+ [ 3 89]
+ [19  6]]
+
+New Dimension
+ (5, 2)
+</code></pre>
+<br><br><br><br>
+
+	<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+		<a href = "numpyIndexingSelecting.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+
+        </div>
+     	</section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+	
+</body>
+</html>
+

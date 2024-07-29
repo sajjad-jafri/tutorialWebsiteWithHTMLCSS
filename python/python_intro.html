@@ -1,0 +1,185 @@
+<html>
+   	<head>
+      		<title>Introduction to Python</title>
+      		<link rel="stylesheet" href="../mystyle.css">
+   	</head>
+	
+   	<body>
+     	<header>
+        	<h1>Introduction to Python</h1>
+     	</header>
+
+     	<main id = content>
+
+       		<nav id = "navbar">
+	  		<ul>
+	    			<li><a href = "../index.html">Home</a></li>
+	    			<li><a href="../course.html">Courses</a></li>
+	    			<li><a href="#about">About</a></li>
+	    			<li><a href="#contact">Contact</a></li>
+	  		</ul>
+       		</nav>
+
+       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+     
+     	<section id = "course-details"> 
+        	<div class = "syllabi">
+	  		<ul>
+	   			<li class="selected"><a href="python_intro.html">Introduction to Python</a></li>
+	   			<li><a href="inpOut.html">Input/Output in Python</a></li>
+	   			<li><a href="dataTypes.html">Data Types in Python</a></li>
+ 	   			<li><a href="#control-flow">Control Flow</a></li>
+	   			<li><a href="#functions">Functions</a></li>
+	   			<li><a href="#lists">Lists, Tuples, and Dictionaries</a></li>
+  	   			<li><a href="#file-handling">File Handling</a></li>
+	   			<li><a href="#error-handling">Error Handling</a></li>
+ 	   			<li><a href="#modules">Modules and Packages</a></li>
+	   			<li><a href="#oops">Object Oriented Programming</a></li>
+  	  		</ul>
+		</div>
+	
+		<div class = "content" >
+	  		<h2>What is Python?</h2>
+          		<p>Python is a high-level, interpreted, object oriented programming language for genral purpose programming. It is known for its simplicity 
+           		and readability. It was created by Guido Van Rossum and first released in 1991.</p> 
+			<p>It is widely used in various fields such as web development, data analysis, artificial intelligence, and more.</p>
+	  		<br>
+	  		<hr color="dustyrose">
+			<h2>Python Features</h2>
+	  		<ul type = "disc">
+	  			<li><p>&bullet; Simple and easy to learn</p></li>
+	  			<li><p>&bullet; Free and open source</p></li>
+	  			<li><p>&bullet; Platform Independent</p></li>  
+          			<li><p>&bullet; Dynamically typed</p></li>
+	  			<li><p>&bullet; Multi Paradigm</p></li>
+	  		</ul>	  
+	  		<br>
+	  		<hr color="dustyrose">
+	  		<h2>Applications</h2>
+	  		<ul type="disc">
+	  			<li><p>&bullet; Desktop application</p></li>
+				<li><p>&bullet; Web and Internet application</p></li>
+	  			<li><p>&bullet; Database application</p></li>
+	  			<li><p>&bullet; Games</p></li>
+	  			<li><p>&bullet; Data Analysis</p></li>
+	  			<li><p>&bullet; Machine Learning</p></li>
+	  			<li><p>&bullet; Artificial Applications</p></li>
+	  		</ul>
+	  		<br>
+	  		<hr color="dustyrose">
+
+	  		<h2>Tokens in Python</h2>
+	  		<p>Tokens or lexical units are the smallest fractions in the python programme. There are 5 types of tokens in python which are listed 				below:</p>
+	  
+	  		<ol>
+	  			<li><p><b><i>Keywords</i></b></p>
+	    				<ol style="list-style-type: none;">
+	      					<li><p>These are reserved words that has a specific meaning. There are 33 keywords used in version 3.7.</p></li>
+	      					<li><p>Ex: del, True, if, while, break, etc.</p></li>
+	    				</ol>
+	  			</li>
+
+	  			<li><p><b><i>Identifiers</i></b></p>
+	    				<ol style="list-style-type: none;">
+	      					<li><p>Various names of variables, functions, list, dictionary, etc.</p></li>
+	    				</ol>
+	  			</li>
+
+	  			<li><p><b><i>Literals</i></b></p>
+	    				<ol style="list-style-type: none;">
+	      					<li><p>Constant values. Python supports a variety of literals:</p>
+		  					<ul style="list-style-type:disc">
+								<li><p>String literals</p></li>
+								<li><p>Numeric literals</p></li>
+								<li><p>Boolean literals</p></li>
+								<li><p>Literal Collection (Lists, Tuples, Dictionaries, and Sets)</p></li>
+		  					</ul>
+						</li>
+	    				</ol>
+	  			</li>
+
+	  			<li><p><b><i>Operators</i></b></p>
+	    				<ol style="list-style-type: none;">
+						<li><p>There are 7 different operators.</p>
+		  					<ol type=i>
+								<li><p>Arithmetic Operators (+, -, x, /, %)</p></li>
+								<li><p>Relational Operators (==, !=, >, <)</p></li>
+								<li><p>Assignment Operators (+=, -=)</p></li>
+								<li><p>Logical Operators (AND, OR)</p></li>
+								<li><p>Bitwise Operators (XOR or ^)</p></li>
+								<li><p>Membership Operators</p></li>
+								<li><p>Identity Operators</p></li>
+		  					</ol>
+	      					</li>
+	    				</ol>
+	  			</li>
+	  
+	  			<li><p><b><i>Punctuators</i></b></p>
+	    				<ul>
+	      					<li><p>Some commonly used punctuators are: ‘, #, \ ,( ) ,{ },[ ] ,@ ,: , = </p></li>
+	    				</ul>
+	  			</li>
+
+	  		</ol>
+
+	  		<br>
+	  		<hr color="dustyrose">
+	  		<h2>Comments</h2>
+	  		<p>Python comments are simple sentences that we use to make the code easier to understand. It is ignored by the interpretor.</p>
+	  		<ul>
+	    			<li><p><b>Single-Line Comments</b></p>
+					<ul>
+	  	  				<li><p>Single-line comments begin with the “#” character.</p></li>
+					</ul>
+	    			</li>
+
+	    			<li><p><b>Multi-Line Comments</b></p>
+	  				<ul>
+	  	  				<li><p>Python does not support multi-line comments. However, there are multiple ways to overcome this issue. None of 						these ways are technically multi-line comments, but you can use them as one. The first way is by using # at the 						beginning of each line of the comment.</p></li>
+	        				<li><p>The next way is by using string literals but not assigning them to any variables. If you do not assign a string 						literal to a variable, the Python interpreter ignores it. Use this to your advantage to write multi-line comments. You 						can either use a single (‘’) quotation or double (“”) quotation.</p></li>
+	      				</ul>
+	    			</li>
+	  		</ul>
+	  		<br>
+
+	  		<hr color="dustyrose">
+	  		<h2>Variables</h2>
+	  		<p>Variable is a named location used to store data in the memory.</p> 
+	  		<p>E.g., a = 'Hello' &emsp; // a is variable</p>
+	  		<br>
+	  		<p>Python gives <b><i>del</i></b> statement to remove a variable.</p>
+	  		<p>del a</p>
+	  		<br>
+          		<p>In Python, variable do not need declaration. Python create a variable of the type similar to the type of value assigned</p>
+	  		<p>E.g., a = 70 &emsp; // a is numeric variable</p>
+	  		<br>
+       	  		<hr color="dustyrose">
+	  		<h2>Multiple assignment</h2>
+	  		<p>&nbsp; &rarr; a = b = c = 10 &emsp; //assigning same value to multiple variable.</p>
+	  		<p>&nbsp; &rarr; p, q, r = 5, 10, 15 &emsp; //multiple values to multiple variables</p>
+	  		<br>
+	  		<p>Multiple assignment makes swapping easy</p>
+	  		<p>&nbsp; a, b = 10, 20</p>
+	  		<p>&nbsp; b, a = 10, 20</p>
+	  		<br>
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "inpOut.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>
