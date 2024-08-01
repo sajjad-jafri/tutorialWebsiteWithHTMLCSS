@@ -1,0 +1,306 @@
+<html>
+   	<head>
+      		<title>Funcions</title>
+      		<link rel="stylesheet" href="../mystyle.css">
+   	</head>
+	
+   	<body>
+     	<header>
+        	<h1>Functions in Python</h1>
+     	</header>
+
+     	<main id = content>
+
+       		<nav id = "navbar">
+	  		<ul>
+	    			<li><a href = "../index.html">Home</a></li>
+	    			<li><a href="../course.html">Courses</a></li>
+	    			<li><a href="#about">About</a></li>
+	    			<li><a href="#contact">Contact</a></li>
+	  		</ul>
+       		</nav>
+
+       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+     
+     	<section id = "course-details"> 
+        	<div class = "syllabi">
+	  		<ul>
+	   			<li><a href="python_intro.html">Introduction to Python</a></li>
+	   			<li><a href="inpOut.html">Input/Output in Python</a></li>
+	   			<li><a href="dataTypes.html">Data Types in Python</a></li>
+ 	   			<li><a href="pythonControlFlow.html">Control Flow</a></li>
+	   			<li class="selected"><a href="pythonFunctions.html">Functions</a></li>
+	   			<li><a href="#lists">Lists, Tuples, and Dictionaries</a></li>
+  	   			<li><a href="#file-handling">File Handling</a></li>
+	   			<li><a href="#error-handling">Error Handling</a></li>
+ 	   			<li><a href="#modules">Modules and Packages</a></li>
+	   			<li><a href="#oops">Object Oriented Programming</a></li>
+  	  		</ul>
+		</div>
+	
+		<div class = "content" >
+	  		<h2>Functions in Python</h2>
+          		<p>Control flow in Python refers to the order in which the statements, or instructions are executed or evaluated.</p>
+			<p>Here are the main control flow tools in Python:</p>
+	  		<br>
+			<img src="../images/Python/controlFlow-1.png" /><br><br>
+			
+			<p><b>Note: </b>Unlike other programming languages, Python doesn't support switch statements</p>
+			<br><br><br>
+
+
+			<hr color="dustyrose">
+			<h2>Conditional Statements</h2>
+	  		<p>Conditional statements are also known as Selection statements.</p> 
+			<p>Conditional statements allow you to execute certain pieces of code based on whether a condition is true or false.</p><br>
+			<p>Below are the main types of conditional statements in Python:</p><br>
+			<p><b>if statement:</b></p> 
+			<ul>
+				<li><p>Executes a block of code if a condition is true.</p></li><br>
+				<li><p><b>Syntax:</b></p></li>
+				<li><pre>
+if condition:
+    <span style="color: #8b0000"># Code to execute if the condition is true</span>
+				</pre></li><br><br>
+				<li><p><b>Python Code Example</b></p></li>
+				<li><p><pre>
+number = 10
+if number > 0:
+    print('Number is positive')
+print('This statement always executes')
+</p></pre></li><br>
+				<li><p><b>Output</b></p></li>
+				<li><p><pre>
+Number is positive
+This statement always executes
+</pre></p></li>
+			</ul>
+			<br><br><br>	
+  			<hr color="gray">
+	  		<p><b>if-else statement:</b></p>
+			<ul>	
+				<li><p>Executes one block of code if a condition is true, and another block if it is false.</p></li><br>
+				<li><p><b>Syntax:</b></p></li>
+				<li><pre>
+if condition:
+    <span style="color: #8b0000"># code to execute if condition is true</span>
+else:
+    # code to execute if condition is false
+				</pre></li>
+				<li><p><b>Note: </b>else is always optional</p</li><br><br>
+				<li><p><b>Python Code Example</b></p></li>
+				<li><p><pre>
+number = 10
+if number > 0:
+    print('Positive number')
+else:
+    print('Negative number')
+print('This statement always executes')
+				</pre></p></li><br>
+				<li><p><b>Output</b></p></li>
+				<li><p><pre>
+Positive number
+This statement always executes
+</pre></p></li>
+			</ul>
+			<br><br><br>	
+  			<hr color="gray">
+
+
+
+			<p><b>if-elif-else statement:</b></p> 
+			<ul>
+				<li><p>Checks multiple conditions.</p></li><br>
+				<li><p><b>Syntax:</b></p></li>
+				<li><pre>
+if condition1:
+    # code to execute if condition1 is true
+elif condition2:
+    # code to execute if condition2 is true
+else:
+    # code to execute if none of the conditions are true
+</pre></li><br><br>
+				<li><p><b>Python Code Example</b></p></li>
+				<li><p><pre>
+price = 100
+if price > 100:
+    print("Price is greater than 100")
+if price == 100:
+    print("Price is 100")
+if price < 100:
+    print("Price is less than 100")
+				</pre></p></li><br>
+				<li><p><b>Output</b></p></li>
+				<li><p><pre>
+Price is 100
+</pre></p></li>
+			</ul>
+			<br><br><br>	
+  			<hr color="dustyrose">
+
+	  		
+	  		<h2>Iterative Statements</h2>
+	  		<p>Iterative statements are also knows as Loops.</p>
+			<p>In Python, there are two main types of iterative statements: <i>for loops</i> and <i>while loops</i>. Let’s explore them:</p><br>
+			<p><b>for loop</b></p>
+			<ul>
+			   <li><p>Iterates over a sequence (like a list, tuple, or string).</p></li><br>
+			   <li><p><b>Syntax:</b></p></li>
+			   <li><pre>
+for item in sequence:
+    # code to execute for each item in the sequence
+</pre></li><br>
+			   <li><p><b>Python Code Example</b></p></li>
+			   <li><p><pre>
+for i in range(1, 5):
+    print(i)
+			   </pre></p></li><br>
+			   <li><p><b>Output</b></p></li>
+			   <li><p><pre>
+1
+2
+3
+4
+			</ul>
+			<br><br><br>	
+  			<hr color="gray">
+
+
+	  		<p><b>while loop</b></p>
+			<ul>
+			  <li><p>Repeats a block of code as long as a condition is true.</p></li><br>			
+			  <li><p><b>Syntax</b></p></li>
+			  <li><pre>
+while condition:
+    # code to execute while condition is true
+			  </pre></li><br>
+			  <li><p><b>Python Code Example</b></p></li>
+			  <li><p><pre>
+num = 1
+while num <= 5:
+    print(num)
+    num += 1	 
+			  </pre></p></li><br>
+			  <li><p><b>Output</b></p></li>
+			  <li><p><pre> 		
+1
+2
+3
+4
+5
+			</ul>
+			<br><br><br>	
+  			<hr color="dustyrose">
+
+
+	  		<h2>Transfer Statements</h2>
+			<p>Transfer statements are also known as jump statements or Loop control statements.</p>
+			<p>These statements alter a way a logic gets executed. They are used to transfer the control from one place to another.</p> <br>
+			<p><b>break</b></p>
+			<ul>
+			  <li><p>Exits the nearest enclosing loop.</p></li><br>
+			  <li><p><b>Syntax</b></p></li>
+			  <li><pre>
+for item in sequence:
+    if condition:
+        break
+			  </pre></li><br>
+			  <li><p><b>Python Code Example</b></p></li>
+			  <li><p><pre>
+for i in range(10):
+    if i == 6:
+        print("processing enough")
+	break
+    print(i)
+			  </pre></p></li><br>
+			  <li><p><b>Output</b></p></li>
+			  <li><p><pre>
+0
+1
+2
+3
+4
+5
+processing enough
+			</ul>
+			<br><br>
+	
+  			<hr color="gray">
+			<p><b>continue</b></p>
+			<ul>
+			  <li><p>skip current iteration and continue for the next iteration.</p></li><br>
+			  <li><p><b>Syntax</b></p></li>
+			  <li><pre>
+for item in sequence:
+    if condition:
+        continue
+    # code to execute if condition is false
+			  </pre></li><br>
+			  <li><p><b>Python Code Example</b></p></li>
+			  <li><p><pre>
+for i in range(10):
+    if i%2 ==0:
+        continue	#skip this part and forces for next iteration
+    print(i)
+			  </pre></p></li><br>
+			  <li><p><b>Output</b></p></li>
+			  <li><p><pre>
+1
+3
+5
+7
+9
+			</ul>
+			<br><br>
+	
+  			<hr color="gray">
+			<p><b>pass</b></p>
+			<ul>
+			  <li><p>Does nothing; it’s a placeholder for future code.
+</p></li>
+			  <li><p><b>Syntax</b></p></li>
+			  <li><pre>
+if condition:
+    pass  # TODO: implement this later
+			  </pre></li><br>
+			  <li><p><b>Python Code Example</b></p></li>
+			  <li><p><pre>
+for i in range(50):
+    if i%10 == 0:
+	print(i)
+    else:
+	pass
+			  </pre></p></li><br>
+			  <li><p><b>Output</b></p></li>
+			  <li><p><pre>
+0
+10
+20
+30
+40
+			</ul>
+
+	  		
+
+			<br><br><br><br>
+			
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "pythonFunction.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>
