@@ -1,0 +1,386 @@
+<html>
+   	<head>
+      		<title>Dictionary</title>
+      		<link rel="stylesheet" href="../mystyle.css">
+   	</head>
+	
+   	<body>
+     	<header>
+        	<h1>Dictionary</h1>
+     	</header>
+
+     	<main id = content>
+
+       		<nav id = "navbar">
+	  		<ul>
+	    			<li><a href = "../index.html">Home</a></li>
+	    			<li><a href="../course.html">Courses</a></li>
+	    			<li><a href="#about">About</a></li>
+	    			<li><a href="#contact">Contact</a></li>
+	  		</ul>
+       		</nav>
+
+       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+     
+     	<section id = "course-details"> 
+        	<div class = "syllabi">
+	  		<ul>
+	   			<li><a href="python_intro.html">Introduction to Python</a></li>
+	   			<li><a href="inpOut.html">Input/Output in Python</a></li>
+	   			<li><a href="dataTypes.html">Data Types in Python</a></li>
+ 	   			<li><a href="pythonControlFlow.html">Control Flow</a></li>
+	   			<li><a href="pythonFunctions.html">Functions</a></li>
+	   			<li><a href="dataStructure.html">Built-in Data Structure</a></li>
+ 	   			<li><a href="list.html">Lists</a></li>
+	   			<li><a href="tuple.html">Tuples</a></li>
+	   			<li><a href="set.html">Sets</a></li>
+	   			<li class="selected"><a href="dictionary.html">Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+	
+		<div class = "content" >
+			<h2>Dictionary</h2>
+			<p>A dictionary is a data structure in python that stores a collection of key-value pairs. It is an Unordered collection of items, where each item is a pair of a unique key and a value.</p>
+			<ul>
+				<li><p><b>Keys: </b>Must be Unique and Immutable for each item. It can be strings, numbers, or tuples. Keys cannot be List(mutable), Dictionary(mutable), Sets(Mutable).</p></li>
+				<li><p><b>Values: </b>Associated data for each key. Values can be any python object.</p></li>
+			</ul><br>
+			<p><b>Example</b></p>
+			<pre>
+person = {'name':'John', 'age':30, 'city':'New York'}
+			</pre><br>
+			<p><b>Dictionaries are:</b></p>
+			<ul>
+				<li><p><b>Mutable: </b>Can add, remove, or modify key-value pair.</p></li>
+				<li><p><b>Dynamic: </b>Can grow or shrink as needed.</p></li>	
+				<li><p><b>Fast lookups: </b>Efficiently retrieve values by their keys.</p></li>
+			</ul><br>
+			
+			<p><b>Dictionaries are useful for:</b></p>
+			<ul style="list-style-type: square">
+				<li><p>Data storage and retrieval</p></li>
+				<li><p>Configuration files</p></li>
+				<li><p>JSON data handling</p></li>
+				<li><p>Counting and grouping data</p></li>
+			</ul><br><br><br>
+	
+			<hr color="gray">
+			<p><b>Common dictionaries operations</b></p>
+			<ul  style="list-style-type: square">
+				<li><p><b>Create: </b><mark>my_dict = {'key': 'value'}</mark></p></li>
+				<li><p><b>Access: </b><mark>my_dict['key']</mark></p></li>
+				<li><p><b>Update: </b><mark>my_dict['key'] = 'new_value'</mark></p></li>
+				<li><p><b>Delete: </b><mark>del my_dict['key']</mark></p></li>
+				<li><p><b>Check existance: </b><mark> 'key' in my_dict</mark</p></li>
+			</ul><br><br><br>
+	
+			<hr color="gray">
+			<p><b>Creating Dictionaries</b></p><br>
+			<p><b>Empty dictionary</b></p>
+			<ul style="list-style-type: square">
+				<li><p>my_dict = {}</p></li>
+				<li><p>my_dict = dict()</p></li><br>
+				<li style="list-style-type:none"><p>We can insert key-value pair later after creating empty dictionary using <mark>my_dict[key] = value</mark></p></li>
+				<pre>
+my_dict = {}
+
+my_dict['name'] = 'John'
+my_dict['age'] = 30
+	
+print(my_dict)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+{'name': 'John', 'age': 30}
+				</pre>
+			</ul><br>
+			<p><b>Initialize with key-value pairs</b></p>
+			<ul style="list-style-type: square">
+				<li><p>my_dict = {'name': 'John', 'age': 30}</p></li>
+				<li><p>my_dict = dict(name='John', age=30)</p></li>
+			</ul><br>
+			<p><b>From a list of tuples</b></p>
+			<ul style="list-style-type: square">
+				<li><p>my_dict = dict([('name', 'John'), ('age', 30)])
+			</ul><br>
+			<p><b>Using dictionary comprehension</b><p>
+			<ul style="list-style-type: square">
+				<li><p>my_dict = {x: x**2 for x in range(5)} 
+					<ul><li><p><span style="color: blue">{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</p></span></li></ul>
+				</p></li>
+			</ul><br><br><br>
+			<hr color="gray">
+			<p><b>Accessing elements from dictionary</b></p><br>
+			<p><b>Using Key</b></p>
+			<ul>
+				<li><p>Elements can be accessed through key, you will get keyerror if key is not present.</p></li>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+print(my_dict['b'])
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+banana
+				</pre>
+			</ul><br><br><br>
+			<p><b>Using get() method</b></p>
+			<ul>
+				<li><p>Using get() method, we don't get keyerror if key is not present instead you will get the default value.</p></li>
+				<li><p><i>Syntax: </i>my_dict.get(key, default_value). default_value is optional.</p></li><br>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+print(my_dict.get('b'))
+
+print(my_dict.get('d', "key is not present, Sorry!"))
+
+print(my_dict.get('e'))	 <span style="color: #8b0000"># When default-value and key both not present</span>
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+banana
+
+key is not present, Sorry!
+
+None
+				</pre>
+			</ul><br><br><br>
+			<p><b>Accessing multiple values</b></p><br>
+			<p><b>using keys() method</b></p>
+			<ul>
+				<li><p>returns a view object with all keys</p></li>
+				<li><p><b>Python Code</b></p></li>
+			<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+print(my_dict.keys())
+
+for k in my_dict.keys():
+    print(k)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+dict_keys(['a', 'b', 'c'])
+
+a
+b
+c
+			</pre>
+			</ul><br><br>
+
+			<p><b>using values() method</b></p>
+			<ul>
+				<li><p>returns a view object with all values</p></li>
+				<li><p><b>Python Code</b></p></li>
+			
+			<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+print(my_dict.values())
+
+for v in my_dict.values():
+    print(v)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+dict_values(['apple', 'banana', 'cat'])
+
+apple
+banana
+cat
+			</pre>
+			</ul><br><br>
+			<p><b>using items() method</b></p>
+			<ul>
+				<li><p>returns a view object with key-value pairs</p></li>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+print(my_dict.items())
+
+for k,v in my_dict.items():
+    print(k,"....",v)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+dict_items([('a', 'apple'), ('b', 'banana'), ('c', 'cat')])
+
+a .... apple
+b .... banana
+c .... cat
+			</pre>
+			</ul><br><br><br>
+			
+			<hr color="gray">
+			<p><b>Updating dictionaries</b></p><br>
+			<p><b>Update a single key-value pair</b></p>
+			<ul>
+				<li><p>my_dict[key]  = value</p></li>
+				<li><p><b>If key is not present </b> - it adds a new record</p></li>
+				<li><p><b>If key is already present </b> - it will update the old value</p></li><br>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+my_dict['b'] = 'bat'
+my_dict['d'] = 'dog'
+
+print(my_dict)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+{'a': 'apple', 'b': 'bat', 'c': 'cat', 'd': 'dog'}
+				</pre>
+			</ul><br><br>
+			<p><b>Update multiple key-value pair</b></p>
+			<ul>	
+				<li><p>can update multiple key-value pair using update() method</p></li><br>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+my_dict.update({'b': 'bat', 'c': 'cricket'})
+
+print(my_dict)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+{'a': 'apple', 'b': 'bat', 'c': 'cricket'}
+				</pre><br><br><br>
+				<li><p>update using multiple dictionary</p></li>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+dict1 = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+dict2 = {'d': 'dog', 'e': 'egg'}
+dict1.update(dict2)
+
+print(dict1)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+{'a': 'apple', 'b': 'banana', 'c': 'cat', 'd': 'dog', 'e': 'egg'}
+				</pre>
+			</ul><br><br><br>
+
+			<hr color="gray">
+			<p><b>Deleting/Removing element from the dictionary</b></p><br>
+			<p><b>del my_dict[key]</b></p>
+			<ul>
+				<li><p><b>If key is present - </b>will delete the key-value pair.</p></li>
+				<li><p><b>If key is not present - </b>keyError</p></li><br>
+				<p><b>Python Code</b></p>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+print("Original dictionary: ",my_dict)
+
+del my_dict['b']
+
+print("After deleting key: ",my_dict)
+
+del my_dict['d']	<span style="color: #8b0000"># 'd' is not present</span>
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+Original dictionary:  {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+After deleting key:  {'a': 'apple', 'c': 'cat'}
+
+<span style="color: #8b0000">KeyError: 'd'<span>
+				</pre>
+			</ul><br><br><br>
+
+			<p><b>my_dict.clear()</b></p>
+			<ul>
+				<li><p>It will delete all content of the dictionary not the dictionary meaning empty dictionary will remail available with same name</p></li><br>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+print("Original dictionary: ",my_dict)
+
+my_dict.clear()
+
+print("After clearing the content: ",my_dict)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+riginal dictionary:  {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+After clearing the content:  {}
+				</pre>
+			</ul><br><br><br>
+
+			<p><b>del my_dict</b></p>
+			<ul>
+				<li><p>It will delete the dictionary.</p></li><br>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+print("Original dictionary: ",my_dict)
+
+del my_dict
+
+print(my_dict)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+Original dictionary:  {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+<span style="color: #8b0000">NameError: name 'my_dict' is not defined</span>
+				</pre>
+			</ul><br><br><br>
+			<p><b>pop() method</b></p>
+			<ul>
+				<li><p><b>Python Code</b></p></li>
+				<pre>
+my_dict = {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+print("Original dictionary: ",my_dict)
+
+my_dict.pop('b', "key not present")
+
+print(my_dict)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+Original dictionary:  {'a': 'apple', 'b': 'banana', 'c': 'cat'}
+
+{'a': 'apple', 'c': 'cat'}
+				</pre>
+			</ul><br><br><br><br>
+
+			<hr color = "dustyrose">
+			<h2>Dictionary Comprension</h2><br>
+			<p><b>Python Code</b></p>
+			<pre>
+squares = {x:x*x for x in range(1, 6)}
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+{1:1, 2:4, 3:9, 4:16, 5:25}
+			</pre>
+
+			<br><br><br><br>			
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "fileHandling.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

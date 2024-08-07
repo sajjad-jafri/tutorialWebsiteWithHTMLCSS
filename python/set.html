@@ -1,0 +1,213 @@
+<html>
+   	<head>
+      		<title>Sets</title>
+      		<link rel="stylesheet" href="../mystyle.css">
+   	</head>
+	
+   	<body>
+     	<header>
+        	<h1>Sets</h1>
+     	</header>
+
+     	<main id = content>
+
+       		<nav id = "navbar">
+	  		<ul>
+	    			<li><a href = "../index.html">Home</a></li>
+	    			<li><a href="../course.html">Courses</a></li>
+	    			<li><a href="#about">About</a></li>
+	    			<li><a href="#contact">Contact</a></li>
+	  		</ul>
+       		</nav>
+
+       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+     
+     	<section id = "course-details"> 
+        	<div class = "syllabi">
+	  		<ul>
+	   			<li><a href="python_intro.html">Introduction to Python</a></li>
+	   			<li><a href="inpOut.html">Input/Output in Python</a></li>
+	   			<li><a href="dataTypes.html">Data Types in Python</a></li>
+ 	   			<li><a href="pythonControlFlow.html">Control Flow</a></li>
+	   			<li><a href="pythonFunctions.html">Functions</a></li>
+	   			<li><a href="dataStructure.html">Built-in Data Structure</a></li>
+ 	   			<li><a href="list.html">Lists</a></li>
+	   			<li><a href="tuple.html">Tuples</a></li>
+	   			<li class="selected"><a href="set.html">Sets</a></li>
+	   			<li><a href="dictionary.html">Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+	
+		<div class = "content" >
+			<h2>Sets</h2>
+			<p>A set is a data structure in Python that is:</p>
+			<ul style="list-style-type: square">
+				<li><p><i>Unordered: </i>Sets do not maintain the order of elements.</p></li>
+				<li><p><i>Mutable: </i>Sets can be modified after creation. While the set itself is mutable, the elements contained within the set must be of an immutable type, meaning <mark>my_set = {1,2, [3,4]}</mark> witll throw an error as list is mutable.</p></li>
+				<li><p><i>Unindexed: </i>Since sets are unordered, so you cannot access or sliced elements by index like lists or tuples.</p></li>
+				<li><p><i>Iterable: </i>Sets can be iterated over</p></li>
+			</ul><br>
+			<p>Sets are defined by enclosing elements in curly braces <mark>{}</mark> or using the <mark>set()</mark> function.</p><br>
+			<p><b>Example</b></p>
+			<pre>
+my_set = {1, 2, 3, 4, 5}
+			</pre><br><br>
+			<p>Sets are useful when:</p>
+			<ul style="list-style-type: square">
+				<li><p>You need to store a collection of unique elements (sets automatically remove duplicates).</p></li>
+				<li><p>You need to remove duplicates from a list.</p></li>
+				<li><p>You need to perform set operations like union, intersection, or difference.</p></li>
+			</ul><br><br>
+
+			<hr color="gray">
+			<p><b>How to declare empty set</b></p><br>
+			<p>Here is an example of declaring empty set</p>
+			<p><b>Python Code</b></p>
+			<pre>
+my_set = {}
+print(type(my_set))
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+<span style="color: blue">class 'dict'</span>
+			</pre>
+			<p>What we can see here, with empty curly braces <mark>{}</mark>, we got the type - dictionary</p><br>
+			<p>For empty set we can use <mark>set()</mark> function.</p>
+			<p><b>Python Code</b></p>
+			<pre>
+my_set = set()
+print(type(my_set))
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+<span style="color: blue">class 'set'</span>
+			</pre><br><br><br>
+
+			<hr color="gray">
+			<p><b>Set Operations</b></p>
+			<ul>
+				<li><p><b><i>Union: </i></b>Combine elements from two sets <mark>(set1 | set2)</mark>. "+" is unsupported in set.</p></li>
+				<li><p><b><i>Intersection: </i></b>Find common elements between two sets <mark>( set1 & set2)</mark>.</p></li>
+				<li><p><b><i>Difference: </i></b>Find elements in one set but not in another <mark>(set1 - set2)</mark>.</p></li>
+				<li><p><b><i>Symmetric difference: </i></b> Find elements in either set but not both <mark>(set1 ^ set2)</mark>.</p></li><br>
+				<li><p><b>Python Code</b></p>
+				<pre>
+set1 = {1, 2, 3}
+set2 = {4, 5, 3}
+
+print("set1: ",set1)
+print("set2: ",set2)
+
+union_res = set1 | set2   
+print("Union of set1 and set 2: ", union_res)
+
+intersection_res = set1 & set2
+print("Intersection between set1 and set2: ", intersection_res)
+
+diff_res = set1 - set2
+print("Difference in set1 to set2: ",diff_res)
+
+Symdiff_res = set1 ^ set2
+print("Elements which are not common from both set: ",Symdiff_res)
+				</pre><br>
+				<p><b>Output</b></p>
+				<pre>
+set1:  {1, 2, 3}
+set2:  {3, 4, 5}
+
+Union of set1 and set 2:  {1, 2, 3, 4, 5}
+
+Intersection between set1 and set2:  {3}
+
+Difference in set1 to set2:  {1, 2}
+
+Elements which are not common from both set:  {1, 2, 4, 5}
+				</pre></li>
+			</ul><br><br><br>
+			<hr color="gray">
+			<p><b>Adding and Removing element from a set</b></p>
+			<p>Since set is Unindexed, so we cannot access the elements but we can still add and remove the elements</p></br>
+			<p>Below is the python code which demonstrate how to add and remove elements from a set</p>
+			<p><b>Python Code</b></p>
+			<pre>
+my_set = {10, 20, 30, 40, 50, 60, 70, 80}
+
+print(my_set[0])    <span style="color: #8b0000"># type error</span>
+my_set[1] = 200     <span style="color: #8b0000"># type error</span>
+
+<span style="color: #8b0000"># Adding element</span>
+my_set.add(100)
+print(my_set)
+
+<span style="color: #8b0000"># Removing element</span>
+my_set.remove(70)
+print(my_set)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+<span style="color: #8b0000">TypeError: 'set' object is not subscriptable</span>
+<span style="color: #8b0000">TypeError: 'set' object does not support item assignment</span>
+
+{100, 70, 40, 10, 80, 50, 20, 60, 30}
+
+{100, 40, 10, 80, 50, 20, 60, 30}								
+			</pre><br>
+			<p><b>Note: </b><mark>append()</mark> doesn't work in set. Since append adds the element at end but set is Unindexed.</p>
+			<br><br><br>
+
+			<hr color = "dustyrose">
+			<p>Befor going to dictionary, Lets recall the List, Tuple, and Set</p>
+			<table style = "text-align: left; border-spacing: 20px;">
+			<tr>
+				<th>List</th>
+				<th>Tuple</th>
+				<th>Set</th>
+			</tr>
+			<tr>
+				<td>Mutable</td>
+				<td>Immutable</td>
+				<td>Mutable</td>
+			</tr>
+			<tr>
+				<td>Odered</td>
+				<td>Odered</td>
+				<td>Unordered</td>
+			</tr>
+			<tr>
+				<td>Duplicate is allowed</td>
+				<td>Duplicate is allowed</td>
+				<td>No duplication allowed</td>
+			</tr>
+			<tr>
+				<td>Enclosed within [ ]</td>
+				<td>Enclosed within ( )</td>
+				<td>Enclosed within { }</td>
+			</tr>
+			<tr>
+				<td>Indexing is allowed</td>
+				<td>Indexing is allowed</td>
+				<td>Indexing is not allowed</td>
+			</table>
+
+  			<br><br><br><br>
+			<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "dictionary.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

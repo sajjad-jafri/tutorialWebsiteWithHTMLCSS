@@ -34,6 +34,12 @@ ul {
    font-size: 1.5rem;
 }
 
+mark {
+   background: black;
+   color: white;
+   padding: 1;
+}
+
 main {
    flex: 1;
 }

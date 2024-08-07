@@ -1,0 +1,142 @@
+<html>
+   	<head>
+      		<title>Tuples</title>
+      		<link rel="stylesheet" href="../mystyle.css">
+   	</head>
+	
+   	<body>
+     	<header>
+        	<h1>Tuples</h1>
+     	</header>
+
+     	<main id = content>
+
+       		<nav id = "navbar">
+	  		<ul>
+	    			<li><a href = "../index.html">Home</a></li>
+	    			<li><a href="../course.html">Courses</a></li>
+	    			<li><a href="#about">About</a></li>
+	    			<li><a href="#contact">Contact</a></li>
+	  		</ul>
+       		</nav>
+
+       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+     
+     	<section id = "course-details"> 
+        	<div class = "syllabi">
+	  		<ul>
+	   			<li><a href="python_intro.html">Introduction to Python</a></li>
+	   			<li><a href="inpOut.html">Input/Output in Python</a></li>
+	   			<li><a href="dataTypes.html">Data Types in Python</a></li>
+ 	   			<li><a href="pythonControlFlow.html">Control Flow</a></li>
+	   			<li><a href="pythonFunctions.html">Functions</a></li>
+	   			<li><a href="dataStructure.html">Built-in Data Structure</a></li>
+ 	   			<li><a href="list.html">Lists</a></li>
+	   			<li class="selected"><a href="tuple.html">Tuples</a></li>
+	   			<li><a href="sets.html">Set</a></li>
+	   			<li><a href="dictionary.html">Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+	
+		<div class = "content" >
+			<h2>Tuples</h2>
+			<p>A tuple is a data structure in Python that similar to a list, but it is immutable, meaning its contents cannot be modified after creation.</p>
+			<p>Tuples are defined by enclosing elements in paranthesis <mark>()</mark> instead of square brackets <mark>[]</mark> like lists.</p><br>
+			<p>Here is an Example of tuple</p>
+			<p><b><i>PythonCode</i></b></p>
+			<pre>
+my_tuple = (1, 2, 3)
+			</pre><br><br>
+			<p>Tuples are useful when:</p>
+			<ul style="list-style-type: square">
+				<li><p>You need to store a collection of data that shouldn't be changed.</p></li>
+				<li><p>You need to use a collection as a dictionary key (tuples can be used as keys, but lists can't).</p></li>
+				<li><p>You need to return multiple values from a function (tuples can be used to return multiple values).</p></li>
+			</ul><br><br>
+
+			<hr color = "gray">
+			<p><b>Accessing elements in a tuple</b></p><br>
+			<p><b><i>Python Code</i></b></p>
+			<pre>
+my_tuple = (1, 20, 30, 4, 'boy', 100)
+print(my_tuple[0])
+
+print(my_tuple[-1])
+
+print(my_tuple[1:4])
+			</pre><br>
+			<p><b><i>Output</i></b></p>
+			<pre>
+1
+
+100
+
+(20, 30, 4)
+			</pre><br><br>
+
+			<p>We cannot modify tuple element as it is immutable</p>
+			<p><b><i>Python Code</i></b></p>
+			<pre>
+my_tuple = (1, 2, 3)
+my_tuple[1] = 20
+			</pre><br>
+			<p><b><i>Output</i></b></p>
+			<pre>
+<span style="color: #8b0000">TypeError: 'tuple' object does not support item assignment</span>
+			</pre><br>
+			<p>Similary <i>append()</i> and <i>remove()</i> also doesn't work in tuple</p>
+
+														
+			<br><br><br>
+			<hr color="gray">
+										
+			<p><b>Basic tuple Operations</b></p><br>
+			<p><b>Python Code</b></p>	
+			<pre>
+my_tuple = (1, 2, 3)
+
+print(len(my_tuple))
+
+tuple2 = (4,5)
+
+<span style="color: #8b0000"># Concatenation</span>
+print(my_tuple + tuple2)
+
+<span style="color: #8b0000">#Replication</span>
+print(my_tuple * 3)
+
+<span style="color: #8b0000"># in operator</span>
+print(3 in my_tuple)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+3
+
+(1, 2, 3, 4, 5)
+
+(1, 2, 3, 1, 2, 3, 1, 2, 3)
+
+True			</pre>
+			
+			<br><br><br><br>			
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "set.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>
