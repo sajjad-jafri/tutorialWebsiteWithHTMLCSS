@@ -1,0 +1,261 @@
+<html>
+   	<head>
+      		<title>Understanding Big Data and Data Lake</title>
+      		<link rel="stylesheet" href="../mystyle.css">
+   	</head>
+	
+   	<body>
+     	<header>
+        	<h1>Understanding Big Data and Data Lake</h1>
+     	</header>
+
+     	<main id = content>
+
+       		<nav id = "navbar">
+	  		<ul>
+	    			<li><a href = "../index.html">Home</a></li>
+	    			<li><a href="../course.html">Courses</a></li>
+	    			<li><a href="#about">About</a></li>
+	    			<li><a href="#contact">Contact</a></li>
+	  		</ul>
+       		</nav>
+
+       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+     
+     	<section id = "course-details"> 
+        	<div class = "syllabi">
+	  		<ul>
+	   			<li class="selected"><a href="bigDataAndDataLake.html">Understanding Big Data and Data Lake</a></li>
+	   			<li><a href=#"installingApacheSpark.html">Installing and Using Apache Spark</a></li>
+  	  		</ul>
+		</div>
+	
+		<div class = "content" >
+	  		<h2>What is Big Data and How it Started</h2><br>
+          		<p><b>What is Data?</b></p>
+			<p>Data is the facts, figures, and details we collect, store, and use to understand something, make decisions, or solve problems.</p><br><br><br>
+
+			<hr color="gray", width="50%">
+			<p><b>Data categories</b></p>
+			<p>Mainly data is categorized in 3 types. It can be:</p>
+			<ul>
+				<li><p><b>Structured Data: </b>Data is Organized, in standardized format, and easily searchable. Mostly available in row-column format (tabular).</p></li>
+				<li><p><b>Semi-Structured Data: </b>It is Partially organized, with some formatting. It does not obey tabular format. However, it has another well-defined key/value pair structures such as JSON and XML.</p></li>
+				<li><p><b>Unstructured Data: </b>Unorganized, raw, and requires processing. It comes in text files, pdf, and other documents, images, and video files.</p></li>
+			</ul><br><br><br>
+
+			<hr color="gray", width="50%">			
+			<p><b>What is Big Data?</b></p>
+			<p>Big Data refers to:</p>																										<ul>
+				<li><p><i>Volume</i> - Massive amount for data.</p></li>
+				<li><p><i>Variety</i> - Data can be structured, semi-structured, and unstructured.</p></li>
+				<li><p><i>Velocity</i> - rapid data generation and processing (Social media, sensors, transactions, etc.).</p></li>	
+			</ul>
+	    	  	<br><br><br>
+
+			<hr color="gray", width="50%">
+			<p><b>History and Evolution of Big Data</b></p>
+			<p>Big Data has a fascinating history and evolution. Let's dive in:</p><br>
+			<p style = "color: #ff6347;"><i><b>Early Beginning (1960s-1980s)</b></i></p>
+			<ul>
+				<li><p><i><b>Data processing Applications:</b></i> 
+				    <ul style = "list-style-type: square">
+					<li><p>Mainframe computers proccessed large datasets for scientific and governmental applications.</p></li> 
+				    	<li><p>COBOL was the first programming language specifically designed for data processing and was designed in 1959.</p></li>
+					<li><p>COBOL allowed us to store data in files, create index files, and process data efficiently.</p></li>
+					<li><p>COBOL store and accessed the data in plain text files such as CSV files.</p></li>
+					<li><p>However, we saw data processing shift from COBOL to relational databases such as Oracle and Microsoft SQL Server.</p></li>
+				    </ul>
+				</p></li><br>
+
+				<li><p><i><b>Database management: </b></i>
+				    <ul style = "list-style-type: square">
+					<li><p>Relational datasets emerged, enabling structured data storage and querying.</p></li>
+					<li><p>Some Popular RDBMS are Oracle, SQL Server, PostgreSQL, MySQL, Teradata, and Exadata.</p></li>
+					<li><p>COBOL stored data in CSV, whereas Oracle or any other RDBMS store data in advanced file format - DBF files (usually stored in row-column format).</p></li>
+					<li><p>RDBMS could not store and process data in JSON and XML data files (known as Semi-Structured Data).</p></li>
+					<li><p>Some RDBMS can handle semi-structure data to some extend like PostgreSQL, MySQL 5.7, Amazon Aurora, etc.</p></li>
+					<li><p>With the growth of Internet, we developed unstructured data which is failed to handle by RDBMS.</p></li> 
+				    </ul>
+				</p></li>
+			</ul><br><br><br> 
+
+			<p style = "color: #ff6347;"><i><b>The Dawn of Big Data(1990s-2000s)</b></i></p>
+			<ul>
+				<li><p><i><b>Internet explosion:</b></i> 
+				    <ul style = "list-style-type: square">
+					<li><p>Web 2.0 and social media generated vast amounts of unstructured data such as pdf, doc, jpg, png, mp3, etc.</p></li>
+					<li><p>RDBMS was not designed to handle such an expansion of file format.</p></li>
+					<li><p>Business are now collecting more semi-structure and unstructure data.</p></li>
+					<li><p>One of the most complex Big Data issue is the <b>constantly increasing Volume</b> that requires adequate management, processing power, and storage capacity.</p></li>
+					<li><p>Point is straight, Modern data processing application must be able to handle the following problem:</p>
+					    <ul>
+						<li><p><i>Variety:</i> Modern applications must be able to handle all variety of data. It means we need to handle structured, Semi-structured, and Unstructured data.</p></li>
+						<li><p><i>Volume:</i> The volume of data is high these days. Companies generating large amount of data in a short period so we need capabilities to handle large volumes of data.</p></li>
+						<li><p><i>Velocity:</i> Modern data is generated at very high speed. It takes very less time to collect perabytes of volume. We want to process these large data in faster time. So the velocity of collecting data is very high, and the requirement of processing velocity is also high.</p></li>
+					    </ul>
+					</p></li>
+					<li><p>Above 3 problems combined are also known as the Big Data problem.</p></li>
+					<li><p>RDBMS was not designed to handle Big Data problem. So industries need Big Data management platform to do the following:
+					    <ul>
+						<li><p>Store high volumes of data arriving at higher speed.</p></li>
+						<li><p>Accomodate structured, semi-structured, and unstructured data variety.</p></li>
+						<li><p>Process gigh volumes of a variety of data at a very higher velocity.</p></li>
+					    </ul>
+					</p></li>
+				    </ul>
+				</p></li><br>
+
+				<li><p><i><b>Early Big Data tools and Solution:</b></i> 
+				    <ul style = "list-style-type: square">
+					<li><p>As RDBMS is failed to handle Big Data problem, Industries needed Big Data Management platform to hand Big Data problem (3V's - Variety, Volume, and Velocity).</p></li>
+					<li><p>Two approaches of Big Data Solution:
+     					    <ul>
+						<li><p>Monolithic approach</p></li>
+						<li><p>Distributed approach</p></li>
+					    </ul>
+					</p></li>
+					<li><p><b>Monolithic approach: </b>Monolithic systems uses one massive system with a vast capacity of CPU, RAM, and Disk storage.</p></li>
+					<li><p><b>Distributed approach: </b>It uses a cluster of computers connected to work as a single system. The combined capacity of the cluster may be equal to or even higher than single Monolithic system.</p></li>
+					<li><p>These 2 approaches can be compared on the following criteria:</p></li>
+					<br><br>
+					<li><table style="table-layout: fixed; width:90%;">
+						<tr>
+						  <th>Monolithic Approach</th>
+						  <th>Distributed Approach</th>
+						</tr>
+						<tr>
+						  <td><img src = "../images/pyspark/monolithic.jpg"></td>
+						  <td><img src = "../images/pyspark/distributed.png"></td>
+						</tr>
+						<tr>
+						  <td  colspan=2 style="text-align:center;"><p><b>Scalability</b></p></td>
+						</tr>
+						<tr>
+						  <td  colspan=2><p>Scalability is the ability of the system to increase or decrease performance in response to the demand. The system is scalable if you are able to increase its capacity (RAM, Processor, or storing etc.).</p></td>
+						</tr>
+						
+						<tr>
+						  <td style="padding:15px; text-align:justify;"><p>Scalabilty is more complex. In this approach, we increase the Tower's height. This approach is known as Verical scalability. We may need to call the vendor and request them to increase or decrease the capacity.</p></td>
+						  <td style="padding:12px; text-align:justify;"><p>Easy scalable. Scaling is as simple as adding a few more computers to the network. This approach is known as horizontal scalablity.</p></td>
+						</tr>
+						<tr>
+						  <td style="padding:15px; text-align:justify;"><p>Vertically Scalable.</p></td>
+						  <td style="padding:15px; text-align:justify;"><p>Horizontally Scalable.</p></td>
+						</tr>
+						<tr><td colspan="2">&nbsp;</td></tr>
+						<tr>
+						  <td  colspan=2 style="text-align:center;"><p><b>Fault tolerance and high availability</b></p></td>
+						</tr>
+						<tr>
+						  <td  colspan=2><p>Fault tolerance is the ability of a system to maintain proper operation in the event of failures or faults in one or more of its components like if a cpu burns out, a network card fails, or the sysem's motherboard fails.</p></td>
+						</tr>
+						<tr>
+						  <td style="padding:15px; text-align:justify;"><p>Monolithic system may not tolerate a hardware failure. If a hardware component of a monolithic system fails, it may stop working and your application will not remain available for the users.</p></td>
+						  <td style="padding:12px; text-align:justify;"><p>If a system fails in cluster, than other systems remain working. So a distributed system can tolerate many failures. A system failure in a cluster will only reduce its capacity, but the overall system remains working.</p></td>
+						</tr>
+						<tr>
+						  <td style="padding:15px; text-align:justify;"><p>cannot tolerate hardware failures.</p></td>
+						  <td style="padding:15px; text-align:justify;"><p>can tolerate hardware failures.</p></td>
+						</tr>
+						<tr><td colspan="2">&nbsp;</td></tr>
+						<tr>
+						  <td  colspan=2 style="text-align:center;"><p><b>Cost-Effictiveness</b></p></td>
+						</tr>
+						<tr>
+						  <td style="padding:15px; text-align:justify;"><p>Monolithic system are expensive. Scaling them takes a lot of time. So you may have to start with a large machine even if you need a smaller one.</p></td>
+						  <td style="padding:15px; text-align:justify;"><p>The distributed architecture uses a cluster of computers. You can start with a small cluster and keep your initial investment as low as needed. You can add some more machine at a later stage as your requirement grows.</p></td>
+						</tr>
+					</table></li>
+					<li><p>Apache Hadoop (2005) and Google's MapReduce (2004) emerged.</p></li>
+				    </ul>
+				</p></li>
+			</ul><br><br><br>
+
+			<p style = "color: #ff6347;"><i><b>Big Data Era (2010s)</b></i></p>
+			<ul>
+				<li><p><i><b>Rise of Hadoop as a distributed Big Data Platfrom:</b></i></p>
+				    <ul style = "list-style-type: square">
+					<li><p>From both the approaches, Distributed system was a preferred approach.</p></li>
+					<li><p>Hadoop came as a distributed Big Data procesing platform to solve Big Data problems.</p></li>
+					<li><p>Hadoop platform was designed and developed in layers. The core platform layer offered three capabilities:</p>
+				  	    <ul>
+						<li><p><b><i>YARN: </i></b>Hadoop was developed as an operating system of a distributed cluster. For a cluster of computers, we need a cluster operating system. Cluster operating system allows us to use the cluster resources such as CPU, Memory, and disk. CPU, Memory, and Disk on a cluster setup are spread across the computers. We are not using a single computer where everything is available on a single machine. A cluster is a group of computers. Cluster Operating System makes it work like a single large computer. It allowed us to use a cluster of computers as a single large computer. So, Yarn is Distributed cluster formation or Cluster Operating System.</p></li>
+						<li><p><b><i>HDFS: </i></b>Hadoop also allowed us to store data and retrieve it back. The data is internally distributed on the hard disks on the cluster. However, Hadoop offered us a distrbuted storage system and allowed us to save and read the data file as we do it on a single machine.</p></li>
+						<li><p><b><i>Map/Reduce: </b></i>Hadoop also allowed us to write a data processing application in Java and run it on the cluster. So Hadoop offered us a new distributed data processing framework known a s Map-Reduce framework for processing large volumes of data.</p></li>
+				  	    </ul>
+					</li>
+					<li><p>Hadoop platform was designed to use the cluster of computers as a single large machine. We can read/write and program data processing applications and run them on the Hadoop cluster without realizing that we are working on a cluster.</p></li>
+					<li><p>Hadoop simplified distributed computing for developers, programs run on a distributed computing platform and uses parallel processing.</p></li>
+					<li><p>Hadoop community developed many other tools over and above the hadoop Core platform (YARN, HDFS, Map-reduce). Some of the tools are Hive database, HBase database, Pig Scripting Language, Sqoopt data ingestion tools and Oozee workflow tool.</p></li>
+					
+				    </ul>
+				</li>
+
+				<br>
+				<li><p><i><b>NoSQL Databases:</b></i></p>
+				    <ul style = "list-style-type: square">
+					<li><p>NoSQL databases: MongoDB, Cassandra, and others addressed unstructured data needs to some extent.</p></li>
+				    </ul>
+				</li>
+
+				<br>
+				<li><p><i><b>Spark's emergence (2010):</b></i></p>
+				    <ul style = "list-style-type: square">
+					<li><p>spark's rise to popularity (2012-2015). It is In-memory processing, Faster than Hadoop 's MapReduce, Easy integration with Hadoop, NoSQL databases, and data sources.</p></li>
+				    </ul>
+				</li>
+	
+				<br>
+				<li><p><i><b>Cloud Computing:</b></i></p>
+				    <ul style = "list-style-type: square">
+					<li><p>Amazon Web Services (AWS, Microsoft Azure, and Google Cloud Platform (GCP) offered scalable infrastructure.</p></li>
+				    </ul>
+				</li>
+			</ul>
+
+			<br><br><br>
+			<p style = "color: #ff6347;"><i><b>Modern Big Data (2020s)</b></i></p>
+			<ul>
+				<li><p>AI and ML Integration</p></li>
+				<li><p>Real-time processing: Apache Spark, Apache Kafka, Apache Flink, and other enabled streaming data processing</p></li>
+				<li><p>Data Engineering and Science: Data pipelines, ETL, data warehousing</p></li>
+			</ul>
+
+			<br><br><br>
+
+			<hr color = "dustyrose">
+			<h2>Hadoop Architecture, History, and Evolution</h2>
+
+			<br><br><br>
+
+			<hr color = "dustyrose">
+			<h2>What is Data Lake and How it works</h2>
+
+			<br><br><br>
+
+			<hr color = "dustyrose">
+			<h2>Introducing Apache Spark and Databricks Cloud</h2>
+
+			<br><br><br><br>	
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "inpOut.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+     <footer>
+	<p>&copy; 2024 LeraninHub</p>
+     </footer>
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>
