@@ -1,38 +1,63 @@
 <html>
-   <head>
-      <title>Home</title>
-      <link rel="stylesheet" href="mystyle.css">
-   </head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+		<title>Home</title>
+      		<link rel="stylesheet" href="mystyle.css">
+   	</head>
 	
-   <body>
-     <header>
-        <h1>Welcome to LearningHub</h1>
-     </header>
+   	<body>
+     		<header>
+        		<h1>Welcome to LearningHub</h1>
+     		</header>
 
-     <main id = content>
-
-     <nav>
-	  <ul>
+     	<nav>
+		<ul class="sidebar">
+			<li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
 			<li><a href = "index.html">Home</a></li>
 			<li><a href="course.html">Courses</a></li>
 			<li><a href="#about">About</a></li>
 			<li><a href="#contact">Contact</a></li>
-	  </ul>
-     </nav>
+	  	</ul>
 
-     <hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
-     
-     <div class="hero-text">
-        <div class="typewriter"><h2>Learn, Explore, Grow</h2></div>
-        <p>Unlock your potential with our high-quality courses</p>
-        <p> This website is dedicated to providing high-quality courses in various fields.</p>
-	<p>"The courses are well-structured and easy to follow. The instructors are top-notch!"</p>
-     </div>
+	  	<ul>
+			<li><a href = "index.html">LearningHub</a></li>
+			<li class="hideOnMobile"><a href = "index.html">Home</a></li>
+			<li class="hideOnMobile"><a href="course.html">Courses</a></li>
+			<li class="hideOnMobile"><a href="#about">About</a></li>
+			<li class="hideOnMobile"><a href="#contact">Contact</a></li>
+			<li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+	  	</ul>
+     	</nav>
 
-     </main>
+      	<main id = content>
+     		     
+     		<div class="hero-text">
+        		<div class="typewriter">
+				<h2>Learn, Explore, Grow</h2>
+			</div>
+        		<p>Unlock your potential with our high-quality courses</p>
+        		<p> This website is dedicated to providing high-quality courses in various fields.</p>
+			<p>"The courses are well-structured and easy to follow. The instructors are top-notch!"</p>
+     		</div>
+
+     	</main>
 	
-     <footer>
-	     <p>&copy; 2024 LeraninHub</p>
-     </footer>
-   </body>
+	<script>
+		function showSidebar(){
+		  const sidebar = document.querySelector('.sidebar')
+		  sidebar.style.display = 'flex'
+		}
+
+		function hideSidebar(){
+		  const sidebar = document.querySelector('.sidebar')
+		  sidebar.style.display = 'none'
+		}
+	</script>
+
+     	<footer>
+	     	<p>&copy; 2024 LeraninHub</p>
+     	</footer>
+
+   	</body>
 </html>

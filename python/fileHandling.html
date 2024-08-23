@@ -63,18 +63,299 @@ open(filename, mode)
 			<br>
 			<p>Modes can be one of the following:</p>
 			<ul>
-			  <li><p>r - read</p></li>
-			  <li><p>w - write</p></li>
-			  <li><p>a - append</p></li>
-			  <li><p>r+ - read & write</p></li>
-			  <li><p>w+ - write then read</p></li>
-			  <li><p>a+ - append then read</p></li>
-			  <li><p>x - exclusive mode</p></li>
+			  <li><p><b>r:</b> 
+			    <ul style="list-style-type:square">
+				<li><p>Open an existing file for read operation.</p></li>	
+				<li><p>f = open('abc.txt') OR f = open('abc.txt', 'r')
+				<li><p>This is the default mode, means if no mode is specified, it will be selected automatically.</p></li> 
+				<li><p>You will get FileNotFoundError if file is not present.</p></li>
+			    </p></li>
+			    </ul><br>
+			  <li><p><b>w:</b>
+			    <ul style="list-style-type:square">
+				<li><p>Open a file for write operation.</p></li>
+				<li><p>f = open('abc.txt', 'w')</p></li>
+				<li><p>If the file doesn’t exist, it creates a new one.</p></li>
+				<li><p>If the file exists, It will overwrite (clears) an existing data.</p></li>
+			    </ul>
+			    </p></li>
+			    <br>
+			  <li><p><b>a:</b>
+			    <ul style="list-style-type:square">
+				<li><p>Open a file for append operation.</p></li>
+				<li><p>f = open(abc.txt', 'a')</p></li>
+				<li><p>If the file doesn’t exist, it creates a new one.</p></li>
+				<li><p>The file pointer is at the end, so you can add content to the existing file - means old data will not be cleared.</p></li>
+			    </ul>
+			    </p></li>
+			    <br>
+			  <li><p><b>r+:</b>
+			    <ul style="list-style-type:square">
+				<li><p>read and write</p></li>
+				<li><p>f = open('abc.txt', 'r+')</p></li>
+			    </ul>
+			    </p></li>
+			    <br>
+			  <li><p><b>w+:</b>
+			    <ul style="list-style-type:square">
+				<li><p>write then read</p></li>
+			    </ul>
+			    </p></li>
+			    <br>
+			  <li><p><b>a+:</b>
+			    <ul style="list-style-type:square">
+				<li><p>append and read</p></li>
+			    </ul>
+			  </li> 
+			  <br> 
+			  <li><p><b>x:</b>
+			    <ul style="list-style-type:square">
+				<li><p>Open a file in exclusive mode for write operation.</p></li>
+				<li><p>f = open('abc.txt', 'x')</p></li>
+				<li><p>Specified file should not be present, if file is already present - FileExistsError.</p></li>
+				<li><p>It will create a new file.</p></li>  				
+				<li><p>Same as 'w' mode except file should not be available.</p></li>
+			    </ul>
+			  </li>
 			</ul><br><br><br>
 
 			<hr color="dustyrose">
 			<h2>Reading files</h2>
+			<p>To read a file we can use any of the below method:</p>
+			<ul style="list-style-type:square">
+				<li><p>read() - reads the entire file content.</p></li>
+				<li><p>readline() - reads a single line.</p></li>
+				<li><p>readlines() - reads all lines into a list.</p></li>
+			</ul><br>
+			<p>Use <mark>close()</mark> method to close the file object after reading.</p>
+			<p>Alternatively, use a <mark>with</mark> statement to automatically close the file.</p>
+			<br>
+			<p>Lets understand it with an example</p><br> 
+			<p><i>abc.txt</i></p>
+			<pre style = "background-color: white; border-left:None; max-width: fit-content;">
+Lorem Ipsum is simply dummy text 
+of the printing and typesetting 
+industry. Lorem Ipsum has been 
+the industry's standard dummy 
+text ever since the 1500s, when 
+an unknown printer took a galley 
+of type and scrambled it to make
+a type specimen book.			
+ 			</pre><br>
+			<p><b>Python Code</b></p>
+			<pre>
+file = open('abc.txt', 'r')
+content = file.read()
+file.close()
+print(content)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre style = "color:blue">
+Lorem Ipsum is simply dummy text 
+of the printing and typesetting 
+industry. Lorem Ipsum has been 
+the industry's standard dummy 
+text ever since the 1500s, when 
+an unknown printer took a galley 
+of type and scrambled it to make
+a type specimen book.	
+			</pre>
+			<br><br>
+			<p>Using <mark>with</mark> statement</p>
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">'abc.txt'</span>, <span style="color:green">'r'</span>) as file:
+    content = file.read()
+<span style="color:purple">print</span>(content)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre style = "color:blue">
+Lorem Ipsum is simply dummy text 
+of the printing and typesetting 
+industry. Lorem Ipsum has been 
+the industry's standard dummy 
+text ever since the 1500s, when 
+an unknown printer took a galley 
+of type and scrambled it to make
+a type specimen book.	
+			</pre><br><br>
+			<p>Reading single line</p>
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">'abc.txt'</span>, <span style="color:green">'r'</span>) as file:
+    line1 = file.readline()
+    line2 = file.readline()	<span style="color:red"># To read next line</span>
+<span style="color:purple">print</span>(line1)
+<span style="color:purple">print</span>(line1)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre style = "color:blue">
+Lorem Ipsum is simply dummy text
 
+of the printing and typesetting
+			</pre><br><br>
+
+			<p>Reading all lines into a list
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">'abc.txt'</span>, <span style="color:green">'r'</span>) as file:
+    lines = file.readlines()
+<span style="color:purple">print</span>(lines)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre style = "color:blue">
+['Lorem Ipsum is simply dummy text\n', 'of the printing and typesetting\n', 'industry. Lorem Ipsum has been\n', "the industry's standard dummy\n", 'text ever since the 1500s, when\n', 'an unknown printer took a galley\n', 'of type and scrambled it to make\n', 'a type specimen book.']
+			</pre><br><br><br><br>
+
+			<hr color="dustyrose">
+			<h2>Writing data to files</h2>
+			<p>Writing to a file can be achieved by two methods:</p>
+			<ul style="list-style-type:square">
+				<li><p><i>write(str)</i> - writes a single string.</p></li>
+				<li><p><i>writelines(list of lines)</i> - writes a list of strings.</p></li>
+			</ul><br>
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">'abc.txt'</span>, <span style="color:green">'w'</span>) as file:
+    file.write(<span style="color:green">'Hello'</span>)
+    file.write(<span style="color:green">'Learn'</span>)
+    file.write(<span style="color:green">'Python\n'</span>)
+    file.write(<span style="color:green">'C++\n'</span>)
+    file.write(<span style="color:green">'Java'</span>)
+			</pre><br>
+			<p>If the file exists, it truncates (clears) its content before writing, as the pointer is at beginning for 'w' mode. If the file doesn’t exist, it creates a new one.</p><br>
+			<p><i>abc.txt</i></p>
+			<pre style = "background-color: white; border-left:None; max-width: fit-content;">
+HelloLearnPython
+C++
+Java
+			</pre><br><br>
+			<p>writing multiple lines</p>
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">'abc.txt'</span>, <span style="color:green">'w'</span>) as file:
+    lst = [<span style="color:green">"Python\n"</span>, <span style="color:green">"Scala\n"</span>, <span style="color:green">"R"</span>]
+    file.writelines(lst)
+			</pre><br>
+			<p><i>abc.txt</i></p>
+			<pre style = "background-color: white; border-left:None; max-width: fit-content;">
+Python
+Scala
+R
+			</pre><br><br>
+			<p><b>Exclusive mode</b></p>
+			<p><mark>'x'</mark> mode opens a file for exclusive creation.</p>
+			<p>Sometimes <mark>'w'</mark> mode can raise a problem as it clears out the existing data, so for this solution we have <mark>'x'</mark mode</p>
+			<p>In exclusive mode - if the file already exists, it raises a polite little FileExistsError exception.</p>
+			<p>Essentially, it dont want mess with already existing and creates a new file if it is already not created.</p>
+			<br>
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">'abx.txt'</span>, <span style="color:green">'x'</span>) as file:
+    file.write(<span style="color:green">"Text example"</span>)
+			</pre>
+
+			<br><br><br>
+
+			<hr color="dustyrose">
+			<h2>Append data to files</h2>
+			<p>We can append text to a file in Python with <mark>'a'</mark> mode.</p>
+			<p><mark>'w'</mark> mode clears out the existing data because file pointer is at the beginning.</p>
+			<p><mark>'a'</mark> is used to append the data, the file pointer is the end so it doesnot clears the existing data.</p>
+			<br><br>
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">'abc.txt'</span>, <span style="color:green">'a'</span>) as file:
+    file.write(<span style="color:green">"Text to append"</span>)
+			</pre><br>
+			<p><i>abc.txt</i></p>
+			<pre style = "background-color: white; border-left:None; max-width: fit-content;">
+This data is already present.
+
+Text to append
+			</pre>
+			<br><br><br>
+			
+			<hr color="dustyrose">
+			<h2>Python's built-in modules for advanced file handling</h2>
+			<ul style="list-style-type:square">
+				<li><p>OS - Operating System interactions</p></li>
+				<li><p>shutil - High level file operations</p></li>
+				<li><p>pathlib - object-oriented file system manipulation</p></li>
+				<li><p>csv - Comma-Separated file handling</p></li>
+				<li><p>json - JavaScript Object Notation file handling</p></li>
+			</ul><br><br>
+			<hr color="gray" width=90%>
+			<p><b>OS</b></p>
+			<p>The OS module in Python provides a way to interact with the operating system and perform various file handling tasks. Here are some common os module functions for file handling:</p>
+			<ul style="list-style-type:square">
+				<li><p><b>os.getcwd():</b> Returns the current working directory</p></li>
+				<li><p><b>os.chdir(path):</b> Changes the current working directory to path.</p></li>
+				<li><p><b>os.listdir(path):</b> Returns a list of files and directories in path.</p></li>
+				<li><p><b>os.mkdir(path):</b> Creates a new directory at path.</p></li>
+				<li><p><b>os.rmdir(path):</b> Removes an empty directory at path. you will get error if any file or directory inside the path exists. To delete a directory which is not empty - <mark>shutil</mark> module will be used.</p></li>
+				<li><p><b>os.rename(src, dst):</b> Renames a fileor directory from src to dst.</p></li>
+				<li><p><b>os.remove(path):</b> Deletes a file at path.</p></li>
+				<li><p><b>os.path.join(path1, path2, ...):</b> Joins multiple path components into a single path.</p></li>
+				<li><p><b>os.path.exists(path):</b> Checks if a file or directory exists at path.</p></li>
+				<li><p><b>os.path.isfile(path):</b> Checks if path is a file.</p></li>
+				<li><p><b>os.path.isdir(path):</b> Checks if path is a directory.</p></li>
+				<li><p><b>os.path.getsize(path): </b>Returns the size of a file at path.</p></li>
+			</ul><br><br>
+
+			<p><b>Python Code</b></p>
+			<pre>
+<span style="color:tomato">import</span> os
+
+<span style="color:red"># if new_dir exists, Removing new_file (inside new_dir)</span>
+<span style="color:tomato">if </span>os.path.exists("new_dir"):
+    os.remove(<span style="color:green">"new_dir/new_file.txt"</span>)
+<span style="color:tomato">else</span>:
+    <span style="color:red"># Create a new directory</span>
+    os.mkdir(<span style="color:green">"new_dir"</span>)
+
+    <span style="color:red"># Change into the new directory</span>
+    os.chdir(<span style="color:green">"new_dir"</span>)
+
+    <span style="color:red"># List files and directories</span>
+    <span style="color:purple">print</span>(<span style="color:green">"Files and Directories under new_dir: "</span>,os.listdir())
+
+    <span style="color:red"># Create a new file</span>
+    <span style="color:tomato">with</span> <span style="color:purple">open</span>(<span style="color:green">"new_file.txt"</span>, <span style="color:green">"w"</span>) as f:
+        f.write(<span style="color:green">"Hello"</span>)
+
+    <span style="color:red"># Check if the file exists</span>
+    <span style="color:purple">print</span>(<span style="color:green">"Is file exists: "</span>,os.path.exists(<span style="color:green">"new_file.txt"</span>))
+
+    <span style="color:red"># Get the file size</span>
+    <span style="color:purple">print</span>(<span style="color:green">"File Size: "</span>,os.path.getsize(<span style="color:green">"new_file.txt"</span>))
+
+    <span style="color:red"># Remove the file</span>
+    os.remove(<span style="color:green">"new_file.txt"</span>)
+
+    <span style="color:red"># Remove the directory</span>
+    os.chdir(<span style="color:green">".."</span>)  <span style="color:red"># back to main directory</span>
+    os.rmdir(<span style="color:green">"new_dir"</span>)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre style= "color:blue">
+Files and Directories under new_dir:  []
+Is file exists:  True
+File Size:  5
+			</pre><br><br>
+
+			<hr color="gray" width=90%>
+			<p><b>shutil</b><p>
+			<p>The <mar>shutil</mark> module in python provides high-level file handling operations, including:</p>
+			<ul style="list-style-type:square">
+				<li><p>Copying files and directories</p></li>
+				<li><p>Moving files and directories</p></li>
+				<li><p>Removing files and directories</p></li>
+				<li><p>Archiving files</p></li>
+			</ul><br>
+			<p>Common <mark>shutil</mark> functions:</p>
+			<ul style="list-style-type:square">
+				<li><p><b>shutil.copy(src, dst): </b>Copies a file from src to dst.</p></li>
 
 			<br><br><br><br>			
 	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;

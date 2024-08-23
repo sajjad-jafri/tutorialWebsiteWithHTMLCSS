@@ -9,18 +9,27 @@
         <h1>Courses</h1>
      </header>
  
-     <main id=content>
+     
      <nav>
-	<ul>
+		<ul class="sidebar">
+			<li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
 			<li><a href = "index.html">Home</a></li>
 			<li><a href="course.html">Courses</a></li>
 			<li><a href="#about">About</a></li>
-			<li><a href="#contact">contact</a></li>
-	</ul>
-     </nav>
+			<li><a href="#contact">Contact</a></li>
+	  	</ul>
 
-     <hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
+	  	<ul>
+			<li><a href = "index.html">LearningHub</a></li>
+			<li class="hideOnMobile"><a href = "index.html">Home</a></li>
+			<li class="hideOnMobile"><a href="course.html">Courses</a></li>
+			<li class="hideOnMobile"><a href="#about">About</a></li>
+			<li class="hideOnMobile"><a href="#contact">Contact</a></li>
+			<li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+	  	</ul>
+     	</nav>
 
+	<main id=content>
      <section id="courses">
         <div class="course">
            <a href="python\python.html">
