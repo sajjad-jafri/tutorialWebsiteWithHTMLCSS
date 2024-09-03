@@ -82,13 +82,13 @@ exports.handler = async (event, context) => {
   let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: process.env.EMAIL_USER, // Environment variable for your email address
-      pass: process.env.EMAIL_PASS, // Environment variable for your email password or app password
+      user: process.env.EMAIL_USERR, // Environment variable for your email address
+      pass: process.env.EMAIL_PASSS, // Environment variable for your email password or app password
     },
   });
 
   let mailOptions = {
-    from: process.env.EMAIL_USER, // Use environment variable for the sender's email
+    from: process.env.EMAIL_USERR, // Use environment variable for the sender's email
     to: email,
     subject: 'Thank You for Your Message!',
     text: `Hi ${name},\n\nThank you for reaching out. We have received your message:\n\n${message}\n\nWe will get back to you soon.\n\nBest regards,\nYour Company`,
