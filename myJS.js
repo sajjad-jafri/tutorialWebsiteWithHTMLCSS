@@ -1,22 +1,68 @@
 //Loading Navigation
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('nav.html')
+    fetch('../nav.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('nav-placeholder').innerHTML = data;
+
+         // Ensure the elements exist before adding event listeners
+            let menuBtn = document.querySelector('#menu-btn');
+            let navbar = document.querySelector('.header .flex .navbar');
+
+            if (menuBtn && navbar) {
+                menuBtn.onclick = () => {
+                    menuBtn.classList.toggle('fa-times');
+                    navbar.classList.toggle('active');
+                };
+            }
         });
 });
 
 
-//For mobile view to show menu bar
-function showSidebar(){
-	const sidebar = document.querySelector('.sidebar')
-	sidebar.style.display = 'flex'
-}
+
+//course swiper
+var swiper = new Swiper(".course-slider", {
+  spaceBetween: 20,
+  grabCursor: true,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    540: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
 
 
-// To hide menu bar
-function hideSidebar(){
-	const sidebar = document.querySelector('.sidebar')
-	sidebar.style.display = 'none'
-}
+//review swiper
+var swiper = new Swiper(".reviews-slider", {
+  spaceBetween: 20,
+  grabCursor: true,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    540: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
+
+

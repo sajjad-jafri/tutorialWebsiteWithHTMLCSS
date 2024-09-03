@@ -1,39 +1,331 @@
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
-		<title>Home</title>
-      		<link rel="stylesheet" href="mystyle.css">
-		<script src="myJS.js" defer></script>
-   	</head>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<title>Home</title>
 	
-   	<body>
-     		<header>
-               		<h1>Welcome to LearningHub</h1>
-     		</header>
+	<!-- swiper css link -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+		
+	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="mystyle.css">
+
+</head>
+
+	
+<body>
+     		
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+		
+
+	<!-- home section starts -->
+	<section class="home" id="home">
+
+		<div class="row">
+			<div class="content">
+    				<h3>Learn, Explore, Grow</h3> 
+				<h3><span>Unlock your potential with our high-quality courses.</span></h3>
+			<a href="course.html" class="btn">Find Courses</a>
+			</div>
+			
+			<div class="image">
+    				<img src="images/home-edu-image.png" alt="">
+       			</div>
+
+ 		</div>
+	</section>
+	<!-- home section ends -->
 
 
-     		<!-- Navigation will be loaded here from myJS.js file-->
-    		<div id="nav-placeholder"></div>
+	<!-- counter section starts -->
+	<section class="count">
 
-
-      		<main id = content>     
-     			<div class="hero-text">
-        			<div class="typewriter">
-					<h2>Learn, Explore, Grow</h2>
+		<div class="box-container">
+			<div class="box">
+				<i class="fas fa-graduation-cap"></i>
+				<div class="content">
+					<h3>20+</h3>
+					<p>courses</p>
 				</div>
-        			<p>Unlock your potential with our high-quality courses</p>
-        			<p> This website is dedicated to providing high-quality courses in various fields.</p>
-				<p>"The courses are well-structured and easy to follow. The instructors are top-notch!"</p>
-     			</div>
+			</div>
 
-     		</main>
+			<div class="box">
+				<i class="fa-solid fa-gears"></i>
+				<div class="content">
+					<h3>50+</h3>
+					<p>projects</p>
+				</div>
+			</div>
+
+			<div class="box">
+				<i class="fa-solid fa-robot"></i>
+				<div class="content">
+					<h3>AI</h3>
+					<p>Powered</p>
+				</div>
+			</div>
+
+			<div class="box">
+				<i class="fas fa-face-smile"></i>
+				<div class="content">
+					<h3>100%</h3>
+					<p>satisfaction</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- counter section ends -->
+
+
+	<!-- about section starts -->
+	<section class="about" id="about">
+		<div class="row">
+			<div class="image">
+				<img src="images/about-us.png" alt="">
+			</div>
+			
+			<div class="content">
+				<h3>why choose us?</h3>
+				<p>Lorem Ipsum dolar set amet Lorem Ipsum dolar set amet</p>
+				<a href="#contact" class="btn">contact us</a>
+			</div>
+		</div>
+	</section>
+	<!-- about section ends -->
+
+
+	<!-- courses section start -->
+	<section class="courses" id="courses">
+    		<h1 class="heading">Our <span>courses</span></h1>
+    
+    		<div class="swiper course-slider">
+        		<div class="swiper-wrapper">
+
+            			<div class="swiper-slide slide">
+                			<img src="images/course-1.jpg" alt="Python Course">
+                			<h3>Python</h3>
+                			<p>Lorem Ipsum Lorem Ipsum</p>
+            			</div>
+
+            			<div class="swiper-slide slide">
+                			<img src="images/course-2.jpg" alt="Python for DS">
+                			<h3>Python For Data Science</h3>
+                			<p>Lorem Ipsum Lorem Ipsum</p>
+            			</div>
+
+				<div class="swiper-slide slide">
+                			<img src="images/course-3.jpg" alt="MySQL Course">
+                			<h3>MySQL</h3>
+                			<p>Lorem Ipsum Lorem Ipsum</p>
+            			</div>
+
+				<div class="swiper-slide slide">
+                			<img src="images/course-4.jpg" alt="Course 2">
+                			<h3>Machine Learning</h3>
+                			<p>Lorem Ipsum Lorem Ipsum</p>
+            			</div>
+
+				<div class="swiper-slide slide">
+                			<img src="images/course-21.jpg" alt="Course 2">
+                			<h3>Computer Vision</h3>
+                			<p>Lorem Ipsum Lorem Ipsum</p>
+            			</div>
+
+				<div class="swiper-slide slide">
+                			<img src="images/course-31.jpg" alt="Course 2">
+                			<h3>Pyspark</h3>
+                			<p>Lorem Ipsum Lorem Ipsum</p>
+            			</div>
+        		</div>
+			<!-- Pagination -->
+			<div class="swiper-pagination"></div>
+    		</div>
+		<div class="courses-btn">
+			<a href="#courses" class="btn">All Courses</a>
+		</div>
+	</section>
+	<!-- courses section ends -->
+
 	
+	<!-- reviews section starts -->
+	<section class="reviews" id="reviews">
+		<h1 class="heading">Your <span>reviews</span></h1>
+		<div class="swiper reviews-slider">
+        		<div class="swiper-wrapper">
 
-     		<footer>
-	     		<p>&copy; 2024 LeraninHub</p>
-     		</footer>
+            			<div class="swiper-slide slide">
+					<p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+					<div class="user">
+                				<img src="images/reviewer-1.jpg" alt="reviewer">
+						<div class="user-info">
+							<h3>John Deo</h3>
+							<div class="stars">
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star-half-alt"></i>
+							</div>
+						</div>
+                			</div>
+            			</div>
 
-   	
-	</body>
+            			<div class="swiper-slide slide">
+					<p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+					<div class="user">
+                				<img src="images/reviewer-2.jpg" alt="reviewer">
+						<div class="user-info">
+							<h3>John Deo</h3>
+							<div class="stars">
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star-half-alt"></i>
+							</div>
+						</div>
+                			</div>
+            			</div>
+
+				<div class="swiper-slide slide">
+					<p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+					<div class="user">
+                				<img src="images/reviewer-3.jpg" alt="reviewer">
+						<div class="user-info">
+							<h3>John Deo</h3>
+							<div class="stars">
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star-half-alt"></i>
+							</div>
+						</div>
+                			</div>
+            			</div>
+
+				<div class="swiper-slide slide">
+					<p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+					<div class="user">
+                				<img src="images/reviewer-4.jpg" alt="reviewer">
+						<div class="user-info">
+							<h3>John Deo</h3>
+							<div class="stars">
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star-half-alt"></i>
+							</div>
+						</div>
+                			</div>
+            			</div>
+
+				<div class="swiper-slide slide">
+					<p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+					<div class="user">
+                				<img src="images/reviewer-5.jpg" alt="reviewer">
+						<div class="user-info">
+							<h3>John Deo</h3>
+							<div class="stars">
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star-half-alt"></i>
+							</div>
+						</div>
+                			</div>
+            			</div>
+
+				<div class="swiper-slide slide">
+					<p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+					<div class="user">
+                				<img src="images/reviewer-6.jpg" alt="reviewer">
+						<div class="user-info">
+							<h3>John Deo</h3>
+							<div class="stars">
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star"></i>
+								<i class ="fas fa-star-half-alt"></i>
+							</div>
+						</div>
+                			</div>
+            			</div>
+        		</div>
+			<!-- Pagination -->
+			<div class="swiper-pagination"></div>
+    		</div>
+	</section>
+	<!-- reviews section ends -->
+
+	
+	<!-- contact-us section starts -->
+	<section class="contact" id="contact">
+    		<h1 class="heading"><span>Contact</span> us</h1>
+    		<div class="row">
+			<div class="image">
+        			<img src="images/contact-us-000.png" alt="contact-us">    
+    			</div>
+
+    			<form name="contact" action="" method="post" netlify>
+       				<span>Your Name</span>
+        			<input type="text" required placeholder="Enter your fulll name" maxlength="50" name="name" class="box">
+        
+        			<span>Your Email</span>
+        			<input type="email" required placeholder="Enter your valid email" maxlength="50" name="email" class="box">
+        
+        			<span>Your Number</span>
+        			<input type="tel" required placeholder="Enter your number" maxlength="10" name="number" class="box" pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+        
+        			<span>Select Gender</span>
+        			<div class="radio">
+            				<input type="radio" name="gender" value="male" id="male">
+            				<label for="male">Male</label>
+            				<input type="radio" name="gender" value="female" id="female">
+            				<label for="female">Female</label>
+        			</div>
+
+				<span>Comments</span>
+    				<textarea name="comments" class="box" rows="4" placeholder="Enter your comments"></textarea>
+        		
+        			<input type="submit" value="Send Message" class="btn" name="send">
+    			</form>
+		</div>
+	</section>
+   	<!-- contact-us section ends -->
+      	
+
+	<!-- footer section starts -->
+     	<footer class="footer">
+	     	<section>
+			<div class="share">
+				<a href="#" class="fab fa-facebook-f"></a>
+				<a href="#" class="fab fa-twitter"></a>
+				<a href="#" class="fab fa-linkedin"></a>
+				<a href="#" class="fab fa-instagram"></a>
+			</div>
+
+			<div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+		</section>
+     	</footer>
+	<!-- footer section ends -->
+
+
+<!-- swiper JS link -->
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script> 
+
+<!-- custom JS -->
+<script src="../myJS.js" defer></script>
+  	
+</body>
 </html>
