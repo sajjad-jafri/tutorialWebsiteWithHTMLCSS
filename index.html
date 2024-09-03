@@ -277,7 +277,8 @@
         			<img src="images/contact-us-000.png" alt="contact-us">    
     			</div>
 
-    			<form name="contact" action="" method="post" netlify>
+    			<form name="contact" method="post" data-netlify="true">
+				<input type="hidden" name="form-name" value="contact">
        				<span>Your Name</span>
         			<input type="text" required placeholder="Enter your fulll name" maxlength="50" name="name" class="box">
         
@@ -296,7 +297,7 @@
         			</div>
 
 				<span>Comments</span>
-    				<textarea name="comments" class="box" rows="4" placeholder="Enter your comments"></textarea>
+    				<textarea name="message" class="box" rows="4" placeholder="Enter your comments"></textarea>
         		
         			<input type="submit" value="Send Message" class="btn" name="send">
     			</form>
