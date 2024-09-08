@@ -255,7 +255,7 @@ section {
 .courses .slide img{
   height: 25rem;
   width: 100%;
-  border-radius: 15px 50px; 
+  border-radius: .5rem;; 
 }
 
 .courses .slide h3{
@@ -282,6 +282,7 @@ section {
   display: flex;
   justify-content: center; 
 }
+
 
 
 
@@ -439,6 +440,204 @@ section {
 .footer .credit span{
   color: var(--green);
 }
+
+
+
+/* course.html Page */
+/* Courses Overview section */
+.courses-overview {
+  margin: 6rem auto;
+  text-align: center;
+}
+
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.course-item {
+  background-color: var(--light-bg);
+  border-radius: .5rem;
+  padding: 2rem;
+  text-align: center;
+  width: 30rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.course-item img {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: .5rem;
+}
+
+.course-item h2 {
+  font-size: 2rem;
+  color: var(--white);
+  margin: 1rem 0;
+}
+
+.course-item p {
+  font-size: 1.6rem;
+  color: var(--light-white);
+  margin-bottom: 1.5rem;
+}
+
+.course-item .btn {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  text-decoration: none;
+}
+
+.course-item .btn:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+
+
+
+
+/* Course detail Page */
+.course-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+
+.course-details .overview {
+  margin-top: 12rem;
+  width: 70%;
+}
+
+.course-details .overview .course-img{
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.course-details .overview h2{
+  color: var(--white);
+}
+
+.course-details .overview h3{
+  padding: 35px 0 25px 0;
+  color: var(--white);
+}
+
+.course-details .overview h4{
+  color: var(--white);
+}
+
+.course-details hr{
+  border: none; 
+  height: 2px; 
+  background-color: var(--green); 
+  margin: 40px;
+}
+
+
+.course-details .overview .stars{
+  color: var(--green);
+  font-size:1.5rem;
+  margin: 6px 0;
+}
+
+.course-details .overview p{
+  width: 90%;
+}
+
+.course-details .tutor{
+  display: flex;
+}
+
+.course-details .tutor img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.course-details .tutor h4{
+
+}
+
+.course-details .learn p{
+  padding-bottom: 15px;
+}
+
+.course-details .learn p i{
+  color: var(--green);
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.course-details .enroll {
+ 
+  /* background-color: var(--light-bg); */
+  margin-top: 12rem;
+  width: 300px;padding: 0 30px 30px 30px;
+  border-radius: .5rem;
+  box-shadow: 4px 4px 14px 0 var(--light-bg);
+ /* box-shadow: 0 20px 40px 0 rgb(11 2 55 / 8%); */
+}
+
+.course-details .enroll h3{
+   padding-top: 20px;
+  padding-bottom: 10px;
+  color: var(--white);
+}
+
+.course-details .enroll p{
+  margin: 15px;
+}
+
+.course-details .enroll p i{
+  color: var(--green);
+  font-weight: 500;
+  margin-right: 18px;
+  width:16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.course-details .enroll .enroll-btn{
+  padding: 25px 0 20px 0;
+  margin: auto;
+  text-align: center;
+}
+
+.course-details .enroll .enroll-btn:hover{
+  background-color: var(--light-bg);
+  color: var(--black);
+
+}
+
+.course-details .enroll .enroll-btn a{
+  text-decoration: none;
+  font-size: 1.8rem;
+  padding: 13px 45px;
+  border-radius: 5px;
+  font-weight: 600;
+  color: var(--black);
+  background: var(--white);
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -653,7 +852,6 @@ background-color: #0056b3;
   .count .box-container .box{
     min-width: 20rem;
   } 
-
 }
 
 @media (max-width:940px){
@@ -684,6 +882,37 @@ background-color: #0056b3;
   .count .box-container .box{
     min-width: 40%;
   } 
+
+  /* course-detail */
+  .course-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+  }
+  .course-details .overview{
+    width: 100%;
+     padding: 2rem;
+  }
+  .course-details .overview .course-img{
+    width: 100%;
+    height: auto;
+  }
+  .course-details .enroll{
+    width: calc(100% - 40px);
+    padding: 2rem;
+    margin: 25px 20px;
+  }
+  .course-details .enroll h3{
+   font-size: 18px;
+}
+
+.course-details .enroll p{
+  font-size: 16px;
+
+}
+
 }
 
 @media (max-width:525px){
@@ -697,6 +926,17 @@ background-color: #0056b3;
   
   .heading{
     font-size: 3rem;
+  }
+
+  .course-details .overview{
+    padding: 2rem;
+  }
+  .course-details .overview {
+    margin-top: 8rem;
+  }
+  .course-details .enroll {
+    background-color: none;
+    box-shadow: 4px 4px 10px 0 var(--light-bg);
   }
 }
 

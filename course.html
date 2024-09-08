@@ -1,6 +1,8 @@
-<html>
-
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Courses</title>
 
       	<!-- font awesome cdn limk -->
@@ -8,77 +10,99 @@
 
 	<!-- custom CSS -->
       	<link rel="stylesheet" href="mystyle.css">
-
-	<!-- custom JS -->
-	<script src="../myJS.js" defer></script>
 </head>
 	
 
 <body>
 
 	<!-- header starts -->
-
    	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
-    	<div id="nav-placeholder"></div>
-	
+    	<div id="nav-placeholder"></div>	
 	<!-- header ends -->
 
  
-     
+     	<!-- courses section starts -->
+    	<section class="courses-overview" id="courses-overview">
+        	<h1 class="heading">Our <span>Courses</span></h1>
+        	<div class="course-container">
+        		<div class="course-item">
+	      			<img src="images\python.png" alt="Python Courses">
+              			<h2>Python Programming</h2>
+           			<p>Learn the fundamental of Python programming. Ideal for beginners and those looking to enhance their programming skills.</p>	
+				<a href="python\python-course-detail.html" class="btn">Learn More</a>
+			</div>
 
+			<div class="course-item">
+           			<img src="images\pythonDS.jpg"alt="Python For Data Science Courses">
+              			<h2>Python For Data Science</h2>
+				<p>Deep dive into Python for data science. This course covers libraries like Pandas, NumPy, and Matplotlib, and real-world data projects.</p>
+           			<a href="pythonForDS\pythonForDS.html" class="btn">Learn More</a>
+			</div>
 
-		<main id=content>
-     			<section id="courses">
-        			<div class="course">
-           				<a href="python\python.html">
-	      					<img src="images\python.png" width=220px height=160px alt="Python Courses">
-              					<h4>Python Programming</h4>
-           				</a>
-				</div>
+			<div class="course-item">
+                		<img src="images/course-31.jpg" alt="MySQL Course">
+                		<h2>MySQL</h2>
+                		<p>Master SQL with MySQL. Learn database design, querying, and management for effective data handling and analysis.</p>
+                		<a href="#mysql.html" class="btn">Learn More</a>
+            		</div>
 
-				<div class="course">
-           				<a href="pythonForDS\pythonForDS.html">
-	      					<img src="images\pythonDS.jpg" width=220px height=160px alt="Python For Data Science Courses">
-              					<h4>Python For Data Science</h4>
-           				</a>
-				</div>
+			<div class="course-item">
+	      			<img src="images\ml.jpeg" alt="Machine Learning Courses">
+              			<h2>Machine Learning</h2>
+           			<p>Master in fundamentals of ML with this comprehensive course. Ideal to understand the algorithms and techniques used in predictive modeling and analysis. </p>
+				<a href="ML\ml.html" class="btn">Learn More</a>	
+			</div>
 
-				<div class="course">
-           				<a href="ML\ml.html">
-	      					<img src="images\ml.jpeg" width=220px height=160px alt="Machine Learning Courses">
-              					<h4>Machine Learning</h4>
-           				</a>
-				</div>
+			<div class="course-item">
+           			<img src="images\nlp.jpg" alt="NLP Courses">
+              			<h2>NLP</h2>
+           			<p>Dive into Natural Language Processing with a focus on extracting insights from textual data. This course covers key NLP techniques, including tokenization, sentiment analysis.</p>
+				<a href="#nlp.html" class="btn">Learn More</a>	
+			</div>
 
-				<div class="course">
-           				<a href="nlp.html">
-	      					<img src="images\nlp.jpg" width=220px height=160px alt="NLP Courses">
-              					<h4>Natural Language Processing</h4>
-           				</a>
-				</div>
+			<div class="course-item">
+           			<img src="images\course-2.jpg" alt="Computer Vision">
+              			<h2>Computer Vision</h2>
+           			<p>Explore the field of Computer Vision and its applications in analyzing and interpreting visual data. From basic image processing to advanced techniques like object detection.</p>
+				<a href="#computerVision.html" class="btn">Learn More</a>	
+			</div>
 
-				<div class="course">
-           				<a href="deepLearning.html">
-	      					<img src="images\dl.jpg" width=220px height=160px alt="Deep Learning Courses">
-              					<h4>Deep Learning</h4>
-           				</a>
-				</div>
+			<div class="course-item">
+           			<img src="images\dl.jpg" alt="Deep Learning">
+              			<h2>Deep Learning</h2>
+           			<p>Unlock the power of Deep Learning with this in-depth course on neural networks and advanced architectures. Learn about deep neural networks, convolutional networks, ANN.</p>
+				<a href="#deepLearning.html" class="btn">Learn More</a>		
+			</div>
 
-				<div class="course">
-           				<a href="pyspark\pysparkSyllabus.html">
-	      					<img src="images\pyspark.jpg" width=220px height=160px alt="Pyspark Courses">
-              					<h4>Pyspark</h4>
-           				</a>
-				</div>
+			<div class="course-item">
+				<img src="images\pyspark.jpg" alt="Pyspark">
+				<h2>Pyspark</h2>
+				<p>Harness the power of PySpark for big data processing and analysis. This course covers the fundamentals of Spark, including data processing, transformations, and actions using PySpark.</p>
+           			<a href="pyspark\pysparkSyllabus.html" class="btn">Learn More</a>			
+			</div>
+		</div>
+     	</section>
 
-     			</section>
-
-     		</main>
 	
 
-     		<footer>
-			<p>&copy; 2024 LeraninHub</p>
-     		</footer>
+     	<!-- footer section starts -->
+    	<footer class="footer">
+        	<section>
+            		<div class="share">
+                		<a href="#" class="fab fa-facebook-f"></a>
+                		<a href="#" class="fab fa-twitter"></a>
+                		<a href="#" class="fab fa-linkedin"></a>
+                		<a href="#" class="fab fa-instagram"></a>
+            		</div>
 
-	</body>
+            		<div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        	</section>
+    	</footer>
+    	<!-- footer section ends -->
+
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+
+</body>
 </html>
