@@ -1,170 +1,192 @@
-<html>
-   
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Input/Output in Python</title>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>Input/Output in Python</title>
 
-      	<!-- font awesome cdn limk -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     	<!-- font awesome cdn limk -->
+     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-	<!-- custom CSS -->
-      	<link rel="stylesheet" href="../mystyle.css">
+     	<!-- custom CSS -->
+     	<link rel="stylesheet" href="../mystyle.css">
 
-	<!-- custom JS -->
-	<script src="../myJS.js" defer></script>
+     	<!-- custom JS -->
+     	<script src="../myJS.js" defer></script>
 </head>
 
 	
 <body>
 	<!-- header starts -->
-
    	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
     	<div id="nav-placeholder"></div>
-	
 	<!-- header ends -->
 
-  
-     <main id = content>
+     	
+	<section class="course-inner">
+		<div class = "syllabi">
+	  		<ul>
+	   			<li><a href="python_intro.html">Introduction to Python</a></li>
+	   			<li class="selected"><a href="inpOut.html">Input and Output Statements</a></li>
+	   			<li><a href="dataTypes.html">Python Data Types</a></li>
+ 	   			<li><a href="pythonControlFlow.html">Python Control Flow</a></li>
+				<li><a href="pythonStrings.html">Python Strings</a></li>
+	   			<li><a href="pythonFunctions.html">Python Functions</a></li>
+	   			<li><a href="list.html">Data Structure: Lists</a></li>
+	   			<li><a href="tuple.html">Data Structure: Tuples</a></li>
+	   			<li><a href="set.html">Data Structure: Sets</a></li>
+	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
 
-           
-     <section id = "course-details"> 
-        <div class = "syllabi">
-	  <ul>
-	   <li><a href="python_intro.html">Introduction to Python</a></li>
-	   <li class="selected"><a href="inpOut.html">Input and Output Statements</a></li>
-	   <li><a href="dataTypes.html">Python Data Types</a></li>
- 	   <li><a href="pythonControlFlow.html">Python Control Flow</a></li>
-	   <li><a href="pythonStrings.html">Python Strings</a></li>
-	   <li><a href="pythonFunctions.html">Python Functions</a></li>
-	   <li><a href="list.html">Data Structure: Lists</a></li>
-	   <li><a href="tuple.html">Data Structure: Tuples</a></li>
-	   <li><a href="set.html">Data Structure: Sets</a></li>
-	   <li><a href="dictionary.html">Data Structure: Dictionary</a></li>
-  	   <li><a href="fileHandling.html">File Handling</a></li>
-  	  </ul>
-	</div>
-	
-	<div class = "content" >
-	  <h2>Taking input in Python</h2>
-          <p>Input function is used to interact with users to get data.</p><br>
-	  <p><i>Python 2.7</i> offers two built in functions to read data from the keyboard.</p>
-	  <ul>
-	  <li><p><b><i>raw_input()</i></b></p>
-	  <ul>
-	  <li><p>It returns string always.</p></li></ul></li> 
-	  <li><p><b><i>input()</i></b></p>
-	  <ul>
-	  <li><p>Not recommended in 2.7.</p></li></ul></li>
-	  </ul>
-	  <br>
-          <p>In <i>Python 3.x</i>, <i>raw_input()</i> has been renamed as <i>input()</i></p><br>
-	  <p style="line-height: 0.5"><i><b>Syntax:</i></b></p> 
-	  <p style="line-height: 1.7; font-family:segoe print">inp = input("Statement")</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example 1:</br>
-	  <img src="../images/Python/input1python.png" /></p><br>
-	  <p style="line-height: 1.7; font-family:segoe print">Example 2:</br>
-	  <img src="../images/Python/input2python.png" /></p>
-	  <p>In above example, we got error when we incremented the x by 1, it's because string type value (5 in this case) cannot be add with integer type value (1 in this case).</p> 
-	  <p style="line-height: 1.7; font-family:segoe print"><b>By default input() returns string type value.</b></p>
-	  <p>So we need to do type casting to convert from string to int.</p><br>
-	  <hr color="gray">
-	  <h2>Type casting with input():</h2>
-	  <p>Type conversion or type casting refers to the method to convert one data type to another. Mainly type casting can be done using <b>int(), float(), str(), tuple(), set(), list(), or dict()</b> functions.</p> 
-	  <p style="line-height: 1.7; font-family:segoe print">Example 3:<br>
-	  <img src="../images/Python/input3python.png" /></p><br>
-	  <p style="line-height: 1.7; font-family:segoe print">Example 4:<br>
-	  <img src="../images/Python/input4python.png" /></p><br>
-	  <hr color="gray">
-	  <h2>Taking multiple inputs</h2>
-	  <p style="line-height: 1.7; font-family:segoe print">Example 5:</br>
-	  <img src="../images/Python/input5python.png" /></p>
-	  <p> --> split() is a function to split the input() function into multiple values.</p>
-	  <p> --> By default, split() divide the string with respect to space between them.</p>
-	  <p> --> Below is the example where the input string will be divided by comma (,).</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example 6:</br>
-	  <img src="../images/Python/input6python.png" /></p>
-	  <br><br><br><br>
-	  <hr color="dustyrose">
-	  <h2>Output Statement in Python</h2>
-	  <p><i>print()</i> function is used to print output in python. This function allows us to display text, variables, and expressions.</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output1python.png" /></p>
-	  <p>In this example, “Hello World!” is a string literal enclosed within double quotes. Above example written in python 3.x. Let's see some below example for python 2.7.</p>
-	  <ul>
-	    <li><p style="line-height: 1.2; font-family:segoe print">print "Hello World!"</p></li>
-	    <li><p style="line-height: 1.2; font-family:segoe print">print 5</p></li>
-	  </ul><br>
-	  <p>We focus on python 3.x.</p><br><br><br><br>
-	  <hr color="gray">
-	  <p>We can assigns values to variables name and age, then prints them with labels.</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output2python.png" /></p><br><br><br><br>
+		
+		<div class = "course-content" >
+	  		<h2>Taking input in Python</h2>
+          		<p>Input function is used to interact with users to get data.</p><br>
+	  		<p><i>Python 2.7</i> offers two built in functions to read data from the keyboard.</p>
+	  		<ul>
+	  			<li><p><b><i>raw_input()</i></b></p>
+	  				<ul>
+	  					<li><p>It returns string always.</p></li>
+					</ul>
+				</li> 
+				
+				<br>
 
-	  <hr color="gray">
-	  <p style="line-height: 1.7; font-family:segoe print"><b>print()</b> --> prints a blank line. It is a line separator.</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output3python.png" /></p><br><br><br><br>
+	  			<li><p><b><i>input()</i></b></p>
+	  				<ul>
+	  					<li><p>Not recommended in 2.7.</p></li>
+					</ul>
+				</li>
+	  		</ul>
+	  		<br>
+          		<p>In <i>Python 3.x</i>, <i>raw_input()</i> has been renamed as <i>input()</i></p><br>
+	  		<p style="line-height: 0.5"><i><b>Syntax:</i></b></p> 
+	  		<p style="line-height: 1.7; font-family:segoe print">inp = input("Statement")</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example 1:</br>
+	  		<img src="../images/Python/input1python.png" /></p><br>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example 2:</br>
+	  		<img src="../images/Python/input2python.png" /></p>
+	  		<p>In above example, we got error when we incremented the x by 1, it's because string type value (5 in this case) cannot be add with integer type value (1 in this case).</p> 
+	  		<p style="line-height: 1.7; font-family:segoe print"><b>By default input() returns string type value.</b></p>
+	  		<p>So we need to do type casting to convert from string to int.</p>
 
-	  <hr color="gray">
-	  <p>Difference between print("Hello"+"World") and print("Hello","World")</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output4python.png" /></p>
-	  <p style="line-height: 1.7; font-family:segoe print">print() function insert spaces between objects automatically.</p><br><br><br><br>
+			<br><br>
 
-	  <hr color = "gray">
-	  <p><b>Syntax:</b></p>
-	  <p style="line-height: 1.7; font-family:segoe print">print(*Objects, sep=' ', end='\n', file=sys.stout, flush=false)</p><br><br>
-	  <p style="line-height: 1.7"><b>sep attribute</b><br>
-	  The <i>sep</i> parameter in Python is used with the <i>print()</i> function to specify the separator between the arguments. By default, the separator is a space character, but you can customize it to any character, integer, or string of your choice. It is found only in python 3.x or later.</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output5python.png" /></p><br><br>
+	  		<hr color="gray">
+	  		<h2>Type casting with input():</h2>
+	  		<p>Type conversion or type casting refers to the method to convert one data type to another. Mainly type casting can be done using <b>int(), float(), str(), tuple(), set(), list(), or dict()</b> functions.</p> 
+	  		<p style="line-height: 1.7; font-family:segoe print">Example 3:<br>
+	  		<img src="../images/Python/input3python.png" /></p><br>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example 4:<br>
+	  		<img src="../images/Python/input4python.png" /></p><br>
+	  		<hr color="gray">
+	  		<h2>Taking multiple inputs</h2>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example 5:</br>
+	  		<img src="../images/Python/input5python.png" /></p>
+	  		<p> --> split() is a function to split the input() function into multiple values.</p>
+	  		<p> --> By default, split() divide the string with respect to space between them.</p>
+	  		<p> --> Below is the example where the input string will be divided by comma (,).</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example 6:</br>
+	  		<img src="../images/Python/input6python.png" /></p>
+	  		<br><br>
+	  		<hr color="dustyrose">
+	  		<h2>Output Statement in Python</h2>
+	  		<p><i>print()</i> function is used to print output in python. This function allows us to display text, variables, and expressions.</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output1python.png" /></p>
+	  		<p>In this example, “Hello World!” is a string literal enclosed within double quotes. Above example written in python 3.x. Let's see some below example for python 2.7.</p>
+	  		<ul>
+	    			<li><p style="line-height: 1.2; font-family:segoe print">print "Hello World!"</p></li>
+	    			<li><p style="line-height: 1.2; font-family:segoe print">print 5</p></li>
+	  		</ul><br>
+	  		<p>We focus on python 3.x.</p><br><br><br><br>
+	  		<hr color="gray">
+	  		<p>We can assigns values to variables name and age, then prints them with labels.</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output2python.png" /></p><br><br><br><br>
 
-	  <p style="line-height: 1.7"><b>end attribute</b><br>
-	  In Python, the <i>end</i> parameter in the <i>print()</i> function controls what character(s) are printed at the end of the printed text. By default, print() ends with a newline character (\n), which means that each call to print() will print the output on a new line. However, you can customize the behavior using the end parameter.</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output6python.png" /></p><br><br>
+	  		<hr color="gray">
+	  		<p style="line-height: 1.7; font-family:segoe print"><b>print()</b> --> prints a blank line. It is a line separator.</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output3python.png" /></p><br><br><br><br>
 
-	  <p style="line-height: 1.7; font-family:segoe print">More Example:</br>
-	  <img src="../images/Python/output7python.png" /></p><br><br><br><br>
+	  		<hr color="gray">
+	  		<p>Difference between print("Hello"+"World") and print("Hello","World")</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output4python.png" /></p>
+	  		<p style="line-height: 1.7; font-family:segoe print">print() function insert spaces between objects automatically.</p><br><br><br><br>
 
-	  <hr color = "gray">
-	  <h2>Formatted string with print() function</h2>
-	  <p style="line-height:1.7"><b>Using % Operator</b><br>
+	  		<hr color = "gray">
+	  		<p><b>Syntax:</b></p>
+	  		<p style="line-height: 1.7; font-family:segoe print">print(*Objects, sep=' ', end='\n', file=sys.stout, flush=false)</p><br><br>
+	  		<p style="line-height: 1.7"><b>sep attribute</b><br>
+	  		The <i>sep</i> parameter in Python is used with the <i>print()</i> function to specify the separator between the arguments. By default, the separator is a space character, but you can customize it to any character, integer, or string of your choice. It is found only in python 3.x or later.</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output5python.png" /></p><br><br>
+
+	  		<p style="line-height: 1.7"><b>end attribute</b><br>
+	  		In Python, the <i>end</i> parameter in the <i>print()</i> function controls what character(s) are printed at the end of the printed text. By default, print() ends with a newline character (\n), which means that each call to print() will print the output on a new line. However, you can customize the behavior using the end parameter.</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output6python.png" /></p><br><br>
+
+	  		<p style="line-height: 1.7; font-family:segoe print">More Example:</br>
+	  		<img src="../images/Python/output7python.png" /></p><br><br><br><br>
+
+	  		<hr color = "gray">
+	  		<h2>Formatted string with print() function</h2>
+	  		<p style="line-height:1.7"><b>Using % Operator</b><br>
 	  % values are replaced with zero or more value of elements.</p>
-	  <ul type="disc">
-	    <li><p>%i --> integer type</p></li>
-	    <li><p>%d --> integer type</p></li>
-	    <li><p>%f --> float type</p></li>
-	    <li><p>%s --> string type</p></li>
-	    <li><p>%x --> hexadecimal type</p></li>
-	    <li><p>%o --> octal type</p></li>
-	  </ul>
-	  <p style = "font-family:segoe print"><b><i>Syntax:</i></b><br>
-	  print("formatted string" %(Variable list))</p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output8python.png" /></p><br><br>
+	  		<ul type="disc">
+	    			<li><p>%i --> integer type</p></li>
+	    			<li><p>%d --> integer type</p></li>
+	    			<li><p>%f --> float type</p></li>
+	    			<li><p>%s --> string type</p></li>
+	    			<li><p>%x --> hexadecimal type</p></li>
+	    			<li><p>%o --> octal type</p></li>
+	  		</ul>
+	  		<p style = "font-family:segoe print"><b><i>Syntax:</i></b><br>
+	  		print("formatted string" %(Variable list))</p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output8python.png" /></p><br><br>
 	  
-	  <p><b>Using format() method</b></p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output9python.png" /></p><br><br>
+	  		<p><b>Using format() method</b></p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output9python.png" /></p><br><br>
 
-	  <p><b>Using f-string</b></p>
-	  <p style="line-height: 1.7; font-family:segoe print">Example:</br>
-	  <img src="../images/Python/output10python.png" /></p><br><br>
+	  		<p><b>Using f-string</b></p>
+	  		<p style="line-height: 1.7; font-family:segoe print">Example:</br>
+	  		<img src="../images/Python/output10python.png" /></p><br><br>
 
 	  
-	  <button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
-	  <a href = "dataTypes.html" class="next-button" id="nextButton">Next &raquo;</a>
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "dataTypes.html" class="next-button" id="nextButton">Next &raquo;</a>
 
+		</div>
+	</section>
 
-
-        </div>
-     </section>
-
-     </main>
+     	</main>
 	
-     <footer>
-	<p>&copy; 2024 LeraninHub</p>
-     </footer>
+     <!-- Footer Section starts -->
+     <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+
+	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
 
 	<script>
 	 function scrollToTop() {

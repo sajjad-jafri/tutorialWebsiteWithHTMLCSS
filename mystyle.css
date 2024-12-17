@@ -615,26 +615,108 @@ section {
   text-align: center;
 }
 
-.course-details .enroll .enroll-btn:hover{
-  background-color: var(--light-bg);
-  color: var(--black);
-
-}
-
 .course-details .enroll .enroll-btn a{
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 13px 45px;
   border-radius: 5px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--white);
+  background: var(--light-bg);
+}
+
+.course-details .enroll .enroll-btn a:hover{
+  color: var(--light-bg);
   background: var(--white);
+
 }
 
 
+/* course inner pages */
+.course-inner{
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.course-inner .syllabi{
+  margin-top: 12rem;
+  width: 33%;
+  position: sticky;
+  top: 6rem;
+  height: fit-content;
+}
+
+.course-inner .syllabi ul {
+	list-style-type: none;
+	padding: 10px 20px;
+}
+
+.course-inner .syllabi ul li {
+  background color: #f0f0f0;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.course-inner .syllabi ul li a {
+  color: var(--light-white);
+}
+
+.course-inner .syllabi li:last-child {
+  margin-bottom: 0;
+}
+
+.course-inner .syllabi li:hover {
+  border-left: 4px solid var(--green);
+  transition: border-left 0.2s;
+}
+
+.course-inner .syllabi li a:hover{
+  color: var(--white);
+  transition: color 0.1s;
+}
+
+.course-inner .syllabi .selected {
+  font-weight: bold;
+}
+
+.course-inner .syllabi ul li.selected {
+  border-left: 4px solid var(--green);
+}
+
+.course-inner .syllabi li.selected a {
+  border-radius: 2px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.course-inner .syllabi ul li .selected  {
+  border-radius: 2px 2px 2px 2px white;
+}
 
 
+.course-inner .course-content{
+ padding-left: 1rem;
+ margin-top: 12rem;
+ width: 65%;
+}
 
+.course-inner .course-content h2{
+  color: var(--white);
+}
+
+.course-inner .course-content p{
+  color: #bdbdbd;
+}
+
+.course-inner .course-content hr{
+  border: none; 
+  height: 2px; 
+  background-color: var(--green); 
+  margin: 40px;
+}
 
 
 
@@ -698,7 +780,7 @@ main {
 .course {
   margin: 20px;
   text-align: center;
-  flex-basis: calc(33.33% - 40px);
+  /* flex-basis: calc(33.33% - 40px); */
 }
 
 .course img {
@@ -740,44 +822,9 @@ main {
    	color: #333;
 }
 
-.syllabi {
-	width: 30%;
-	position: sticky;
-    	top: 0;
-    	height: fit-content;
-}
 
-.syllabi ul {
-	list-style-type: none;
-	padding: 10px 20px;
-}
 
-.syllabi li {
-  background color: #f0f0f0;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-	
-}
 
-.syllabi li:last-child {
-  margin-bottom: 0;
-}
-
-.syllabi li:hover {
-  background-color: #e0e0e0;
-  transition: background-color 0.3s;
-}
-
-.syllabi .selected {
-	font-weight: bold;
-}
-
-.syllabi .selected a {
-	color: #333;
-	text-decoration: none;
-}
 
 
 .content {

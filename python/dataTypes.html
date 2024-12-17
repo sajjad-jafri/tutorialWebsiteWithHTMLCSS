@@ -1,29 +1,31 @@
-<html>
-   	<head>
-      		<title>Data Types</title>
-      		<link rel="stylesheet" href="../mystyle.css">
-   	</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      	<title>Data Types</title>
+
+      	<!-- font awesome cdn limk -->
+     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+     	<!-- custom CSS -->
+     	<link rel="stylesheet" href="../mystyle.css">
+
+     	<!-- custom JS -->
+     	<script src="../myJS.js" defer></script>
+</head>
+
 	
-   	<body>
-     	<header>
-        	<h1>Data Types in Python</h1>
-     	</header>
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
 
-     	<main id = content>
 
-       		<nav id = "navbar">
-	  		<ul>
-	    			<li><a href = "../index.html">Home</a></li>
-	    			<li><a href="../course.html">Courses</a></li>
-	    			<li><a href="#about">About</a></li>
-	    			<li><a href="#contact">Contact</a></li>
-	  		</ul>
-       		</nav>
-
-       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
-     
-     	<section id = "course-details"> 
-        	<div class = "syllabi">
+     	<section class="course-inner">
+		<div class = "syllabi">
 	  		<ul>
 	   			<li><a href="python_intro.html">Introduction to Python</a></li>
 	   			<li><a href="inpOut.html">Input and Output Statements</a></li>
@@ -38,8 +40,9 @@
   	   			<li><a href="fileHandling.html">File Handling</a></li>
   	  		</ul>
 		</div>
+
 	
-		<div class = "content" >
+		<div class = "course-content" >
 	  		<h2>Data Types in Python</h2>
           		<p>A data type is a classification of data which tells the compiler/interpreter that how the programmer intends to use the data.</p> 
 			<p>Some built-in Python data types are:</p>
@@ -51,30 +54,30 @@
 				<li><p style="line-height: 1.7; font-family:segoe print">All fundamental data typess are <b>immutable.</b></p></li>
 				<li><p style="line-height: 1.7; font-family:segoe print">we will study about immutability more later in this section.</p></li>
 				<li><p style="line-height: 1.7; font-family:segoe print">In Python, we don't need to specify the type of the value, Python 					automatically finds the type of value you assign.</p></li>
-			</ul><br<br><br><br>
+			</ul>
+			<br><br<br>
 
 
 
-			<hr color="gray">
+			<hr>
 			<h2>Integer data type</h2>
 	  		<p>To hold integer values.</p>
-			<img src="../images/Python/dt2.png" /><br><br><br><br>	  
+			<img src="../images/Python/dt2.png" /><br><br><br>	  
 	  		<p>We can specify the type also.</p>
 			<img src="../images/Python/dt3.png" /><br>
-			<p>This is called type casting, we changed the float type to int type. But not every type can be changed to any type, for eg you can not change 			str to int - you will get error.</p><br><br><br><br>
+			<p>This is called type casting, we changed the float type to int type. But not every type can be changed to any type, for eg you can not change 			str to int - you will get error.</p><br><br>
 
 
 
 
-	  		<hr color="gray">
+	  		<hr>
 	  		<h2>Float data type</h2>
 	  		<p>The float type in Python represents the floating point number.</p>
-			<img src="../images/Python/dt4.png" /><br><br><br><br><br><br>
+			<img src="../images/Python/dt4.png" /><br><br><br><br>
 
 
 
-
-	  		<hr color="gray">
+	  		<hr>
 	  		<h2>Complex data type</h2>
 	  		<p> In Python, the complex data type represents complex numbers, which consist of a real part and an imaginary part.</p>
 			<ol>
@@ -121,11 +124,10 @@
 	      					</li>
 	    				</ul>
 	  			</li>
-	 	  	</ol><br><br><br><br>
-
+	 	  	</ol><br><br>
 	  		
 
-	  		<hr color="gray">
+	  		<hr>
 	  		<h2>Boolean data type</h2>
 	  		<p>In Python, the boolean data type represents one of two values: <b>True</b> or <b>False.</b></p>
 	  		<ol>
@@ -148,40 +150,37 @@
 						<img src ="../images/Python/dt10.png" />
 				</li>
 	  		</ol>
-	  		<br><br><br><br>
+	  		<br><br>
 
 
 
 
-	  		<hr color="gray">
+	  		<hr>
 	  		<h2>String data type</h2>
 	  		<p>In Python, the <b>string data type</b> represents text data. It’s a sequence of characters enclosed in single quotes, double quotes, or triple 			quotes. Strings are <b>immutable</b>, meaning once created, they cannot be modified directly.</p> 
 	  		<p>E.g., <br>
 			s = 'Hello'</p>
-	  		<br><br><br><br>
+	  		<br><br>
 
 
-
-			<hr color="dustyrose">
+			<hr>
 	  		<h2>Bytes data type</h2>
           		<p>In Python, the bytes data type represents a sequence of integers in the range of 0 to 255.</p>
 	  		<p>A bytes object is immutable, meaning once it’s created, its contents cannot be changed.</p>
 			<img src ="../images/Python/dt11.png" />
-			<br><br><br><br><br><br>
-				
+			<br><br><br>				
 
 
 
-       	  		<hr color="gray">
+       	  		<hr>
 	  		<h2>Bytearray data type</h2>
 	  		<p>Same as bytes data type, the only difference is <b>bytearray</b> is mutable.</p>
 			<img src ="../images/Python/dt12.png" />
-	  		<br><br><br><br><br><br>
+	  		<br><br><br>
 
 
 
-
-			<hr color="gray">
+			<hr>
 	  		<h2>Range data type</h2>
 	  		<p>The <b>range()</b> function returns an immutable sequence of numbers. By default, it starts from 0 and increments by 1, stopping before a 			specified number.</p>
 	  		<p>Some key points:</p>
@@ -201,33 +200,32 @@
 						<li><p>Create a sequence from 3 to 5: x = range(3, 6)</p>
 						<img src = "../images/Python/dt14.png" /></li><br><br>
 						<li><p>Create a sequence from 3 to 9 (increment by 2): x = range(3, 10, 2)</p>
-						<img src = "../images/Python/dt15.png" /></li><br><br>	
+						<img src = "../images/Python/dt15.png" /></li>	
 					</ul>
 				</li>
 			</ol>		
-	  		<br><br><br>
+	  		<br><br>
 
 
 
-			<hr color="gray">
+			<hr>
 			<h2>List data type</h2>
 			<p>A list is an ordered collection of elements of any data type between square brackets [].
 			<p><b>Mutability:</b> Lists are mutable, meaning you can modify them by adding, removing, or changing elements.</p>
 			<p><b>Duplication:</b> Duplication is allowed, meaning you can have same multiple items.</p>
 			<p><b>Heterogeneous</b>: Lists can contain various data types, such as integers, floats, strings, or even other lists.</p>
-			<p style="line-height: 1.7; font-family:segoe print">E.g., l = [10, 'John', 2.5]</li><br><br><br><br>
+			<p style="line-height: 1.7; font-family:segoe print">E.g., l = [10, 'John', 2.5]</li></p><br><br>
 
 
 
-			<hr color="gray">
+			<hr>
 			<h2>Tuple data type</h2>
 			<p>A <b>tuple</b> is an ordered collection of items enclosed in round brackets. Unlike lists, tuples cannot be changed once created, meaning 			tuples are immutable.</p>
 			<p>Tuples are same as lists but tuples are immutable.</p>
-			<p style="line-height: 1.7; font-family:segoe print">E.g., t = (10, 'd', 34.2)</p><br><br><br><br>
+			<p style="line-height: 1.7; font-family:segoe print">E.g., t = (10, 'd', 34.2)</p><br><br>
 
 
-
-			<hr color = "dustyrose">
+			<hr>
 			<h2>Set data type</h2>
 			<p><b>Set</b> is an unordered collection of unique items represented inside curly braces {}.</p>
 			<p>Set is <b>mutable</b>.</p>
@@ -250,19 +248,17 @@
 			</table><br><br>
 			<p syle="font-family:segoe print">Examples:<br>
 			<img src = "../images/Python/dt16.png" /></p>
-			<br><br><br><br>
-
+			<br><br>
 
 			
-			<hr color="gray">
+			<hr>
 			<h2>Frozenset data type</h2>
 			<p>Exactly same as set data type except it is immutable.</p>
 			<img src = "../images/Python/dt17.png" />
-			<br><br><br><br><br>
+			<br><br><br>
 
 
-
-			<hr color="dustyrose">
+			<hr>
 			<h2>Dictionary data type</h2>
 			<p>Dictionaries are used to store items in key:value pairs.</p>	
 			<p>Duplication in keys are not allowed but values can be duplicate.</p>
@@ -273,11 +269,11 @@
 			<img src = "../images/Python/dt18.png" /></p><br><br>
 			<p>Now what about empty set? Set elements are also enclosed within curly braces {}.</p> 
 			<p style="line-height: 1.7; font-family:segoe print">Empty set can be represented as: s = set()</p>
-			<br><br><br><br>
+			<br><br><br>
 
 			
 			
-			<hr color = "dustyrose">
+			<hr>
 			<h2>Python data  types classified according to Mutable and Immutable type:</h2>
 			<img src = "../images/Python/dt20.png">
 	  		<br><br><br><br>
@@ -289,15 +285,31 @@
 
      </main>
 	
-     <footer>
-	<p>&copy; 2024 LeraninHub</p>
-     </footer>
+     <!-- Footer Section starts -->
+     <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+
+	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
 
 	<script>
 	 function scrollToTop() {
 	  window.scrollTo({top:0, behavior: 'smooth'});
 	}
 	</script>
+
 
 </body>
 </html>

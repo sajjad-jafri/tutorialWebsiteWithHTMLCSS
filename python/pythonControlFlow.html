@@ -1,34 +1,36 @@
-<html>
-   	<head>
-      		<title>Control Flow</title>
-      		<link rel="stylesheet" href="../mystyle.css">
-   	</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">      		
+	<title>Control Flow</title>
+
+      	<!-- font awesome cdn limk -->
+     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+     	<!-- custom CSS -->
+     	<link rel="stylesheet" href="../mystyle.css">
+
+     	<!-- custom JS -->
+     	<script src="../myJS.js" defer></script>
+</head>
+
 	
-   	<body>
-     	<header>
-        	<h1>Control Flow in Python</h1>
-     	</header>
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
 
-     	<main id = content>
 
-       		<nav id = "navbar">
-	  		<ul>
-	    			<li><a href = "../index.html">Home</a></li>
-	    			<li><a href="../course.html">Courses</a></li>
-	    			<li><a href="#about">About</a></li>
-	    			<li><a href="#contact">Contact</a></li>
-	  		</ul>
-       		</nav>
-
-       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
-     
-     	<section id = "course-details"> 
-        	<div class = "syllabi">
+     	<section class="course-inner">
+		<div class = "syllabi">
 	  		<ul>
 	   			<li><a href="python_intro.html">Introduction to Python</a></li>
 	   			<li><a href="inpOut.html">Input and Output Statements</a></li>
 	   			<li><a href="dataTypes.html">Python Data Types</a></li>
- 	   			<li  class="selected"><a href="pythonControlFlow.html">Python Control Flow</a></li>
+ 	   			<li class="selected"><a href="pythonControlFlow.html">Python Control Flow</a></li>
 				<li><a href="pythonStrings.html">Python Strings</a></li>
 	   			<li><a href="pythonFunctions.html">Python Functions</a></li>
 	   			<li><a href="list.html">Data Structure: Lists</a></li>
@@ -38,8 +40,8 @@
   	   			<li><a href="fileHandling.html">File Handling</a></li>
   	  		</ul>
 		</div>
-	
-		<div class = "content" >
+     
+     		<div class = "course-content" >
 	  		<h2>Control Flow in Python</h2>
           		<p>Control flow in Python refers to the order in which the statements, or instructions are executed or evaluated.</p>
 			<p>Here are the main control flow tools in Python:</p>
@@ -47,10 +49,10 @@
 			<img src="../images/Python/controlFlow-1.png" /><br><br>
 			
 			<p><b>Note: </b>Unlike other programming languages, Python doesn't support switch statements</p>
-			<br><br><br>
+			<br><br>
 
 
-			<hr color="dustyrose">
+			<hr>
 			<h2>Conditional Statements</h2>
 	  		<p>Conditional statements are also known as Selection statements.</p> 
 			<p>Conditional statements allow you to execute certain pieces of code based on whether a condition is true or false.</p><br>
@@ -77,7 +79,7 @@ This statement always executes
 </pre></p></li>
 			</ul>
 			<br><br><br>	
-  			<hr color="gray">
+  			<hr>
 	  		<p><b>if-else statement:</b></p>
 			<ul>	
 				<li><p>Executes one block of code if a condition is true, and another block if it is false.</p></li><br>
@@ -105,7 +107,7 @@ This statement always executes
 </pre></p></li>
 			</ul>
 			<br><br><br>	
-  			<hr color="gray">
+  			<hr>
 
 
 
@@ -137,7 +139,7 @@ Price is 100
 </pre></p></li>
 			</ul>
 			<br><br><br>	
-  			<hr color="dustyrose">
+  			<hr>
 
 	  		
 	  		<h2>Iterative Statements</h2>
@@ -164,7 +166,7 @@ for i in range(1, 5):
 4
 			</ul>
 			<br><br><br>	
-  			<hr color="gray">
+  			<hr>
 
 
 	  		<p><b>while loop</b></p>
@@ -226,7 +228,7 @@ processing enough
 			</ul>
 			<br><br>
 	
-  			<hr color="gray">
+  			<hr>
 			<p><b>continue</b></p>
 			<ul>
 			  <li><p>skip current iteration and continue for the next iteration.</p></li><br>
@@ -254,7 +256,7 @@ for i in range(10):
 			</ul>
 			<br><br>
 	
-  			<hr color="gray">
+  			<hr>
 			<p><b>pass</b></p>
 			<ul>
 			  <li><p>Does nothing; it’s a placeholder for future code.
@@ -293,9 +295,24 @@ for i in range(50):
 
      </main>
 	
-     <footer>
-	<p>&copy; 2024 LeraninHub</p>
-     </footer>
+     <!-- Footer Section starts -->
+     <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+
+	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
 
 	<script>
 	 function scrollToTop() {

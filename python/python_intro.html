@@ -1,6 +1,9 @@
-<html>
-   	
+<!DOCTYPE html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Introduction to Python</title>
 
       	<!-- font awesome cdn limk -->
@@ -16,18 +19,13 @@
 	
 <body>
 	<!-- header starts -->
-
    	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
     	<div id="nav-placeholder"></div>
-	
 	<!-- header ends -->
 
      	
-     	<main id = content>
-
-       		     
-     	<section id = "course-details"> 
-        	<div class = "syllabi">
+	<section class="course-inner">
+		<div class = "syllabi">
 	  		<ul>
 	   			<li class="selected"><a href="python_intro.html">Introduction to Python</a></li>
 	   			<li><a href="inpOut.html">Input and Output Statements</a></li>
@@ -42,14 +40,15 @@
   	   			<li><a href="fileHandling.html">File Handling</a></li>
   	  		</ul>
 		</div>
+        	
 	
-		<div class = "content" >
+		<div class = "course-content" >
 	  		<h2>What is Python?</h2>
           		<p>Python is a high-level, interpreted, object oriented programming language for genral purpose programming. It is known for its simplicity 
            		and readability. It was created by Guido Van Rossum and first released in 1991.</p> 
 			<p>It is widely used in various fields such as web development, data analysis, artificial intelligence, and more.</p>
 	  		<br>
-	  		<hr color="dustyrose">
+	  		<hr>
 			<h2>Python Features</h2>
 	  		<ul type = "disc">
 	  			<li><p>&bullet; Simple and easy to learn</p></li>
@@ -59,41 +58,41 @@
 	  			<li><p>&bullet; Multi Paradigm</p></li>
 	  		</ul>	  
 	  		<br>
-	  		<hr color="dustyrose">
+	  		<hr>
 	  		<h2>Applications</h2>
-	  		<ul type="disc">
-	  			<li><p>&bullet; Desktop application</p></li>
-				<li><p>&bullet; Web and Internet application</p></li>
-	  			<li><p>&bullet; Database application</p></li>
-	  			<li><p>&bullet; Games</p></li>
-	  			<li><p>&bullet; Data Analysis</p></li>
-	  			<li><p>&bullet; Machine Learning</p></li>
-	  			<li><p>&bullet; Artificial Applications</p></li>
+	  		<ul style="list-style-type:disc; margin-left: 20px;">
+	  			<li><p>Desktop application</p></li>
+				<li><p>Web and Internet application</p></li>
+	  			<li><p>Database application</p></li>
+	  			<li><p>Games</p></li>
+	  			<li><p>Data Analysis</p></li>
+	  			<li><p>Machine Learning</p></li>
+	  			<li><p>Artificial Applications</p></li>
 	  		</ul>
 	  		<br>
-	  		<hr color="dustyrose">
+	  		<hr>
 
 	  		<h2>Tokens in Python</h2>
-	  		<p>Tokens or lexical units are the smallest fractions in the python programme. There are 5 types of tokens in python which are listed 				below:</p>
-	  
-	  		<ol>
+	  		<p>Tokens or lexical units are the smallest fractions in the python programme. There are 5 types of tokens in python which are listed below:</p>
+	  		<br>
+	  		<ol style="list-style-type:1; margin-left: 20px;">
 	  			<li><p><b><i>Keywords</i></b></p>
 	    				<ol style="list-style-type: none;">
 	      					<li><p>These are reserved words that has a specific meaning. There are 33 keywords used in version 3.7.</p></li>
 	      					<li><p>Ex: del, True, if, while, break, etc.</p></li>
 	    				</ol>
 	  			</li>
-
+				<br>
 	  			<li><p><b><i>Identifiers</i></b></p>
 	    				<ol style="list-style-type: none;">
 	      					<li><p>Various names of variables, functions, list, dictionary, etc.</p></li>
 	    				</ol>
 	  			</li>
-
+				<br>
 	  			<li><p><b><i>Literals</i></b></p>
 	    				<ol style="list-style-type: none;">
 	      					<li><p>Constant values. Python supports a variety of literals:</p>
-		  					<ul style="list-style-type:disc">
+		  					<ul style="list-style-type:disc; margin-left: 20px;">
 								<li><p>String literals</p></li>
 								<li><p>Numeric literals</p></li>
 								<li><p>Boolean literals</p></li>
@@ -102,11 +101,11 @@
 						</li>
 	    				</ol>
 	  			</li>
-
+				<br>
 	  			<li><p><b><i>Operators</i></b></p>
 	    				<ol style="list-style-type: none;">
 						<li><p>There are 7 different operators.</p>
-		  					<ol type=i>
+		  					<ul style="list-style-type:disc; margin-left: 20px;">
 								<li><p>Arithmetic Operators (+, -, x, /, %)</p></li>
 								<li><p>Relational Operators (==, !=, >, <)</p></li>
 								<li><p>Assignment Operators (+=, -=)</p></li>
@@ -114,11 +113,11 @@
 								<li><p>Bitwise Operators (XOR or ^)</p></li>
 								<li><p>Membership Operators</p></li>
 								<li><p>Identity Operators</p></li>
-		  					</ol>
+		  					</ul>
 	      					</li>
 	    				</ol>
 	  			</li>
-	  
+	  			<br>
 	  			<li><p><b><i>Punctuators</i></b></p>
 	    				<ul>
 	      					<li><p>Some commonly used punctuators are: ‘, #, \ ,( ) ,{ },[ ] ,@ ,: , = </p></li>
@@ -128,20 +127,21 @@
 	  		</ol>
 
 	  		<br>
-	  		<hr color="dustyrose">
+	  		<hr>
 	  		<h2>Comments</h2>
 	  		<p>Python comments are simple sentences that we use to make the code easier to understand. It is ignored by the interpretor.</p>
+			<br>
 	  		<ul>
 	    			<li><p><b>Single-Line Comments</b></p>
 					<ul>
 	  	  				<li><p>Single-line comments begin with the “#” character.</p></li>
 					</ul>
 	    			</li>
-
+				<br>
 	    			<li><p><b>Multi-Line Comments</b></p>
 	  				<ul>
-	  	  				<li><p>Python does not support multi-line comments. However, there are multiple ways to overcome this issue. None of 						these ways are technically multi-line comments, but you can use them as one. The first way is by using # at the 						beginning of each line of the comment.</p></li>
-	        				<li><p>The next way is by using string literals but not assigning them to any variables. If you do not assign a string 						literal to a variable, the Python interpreter ignores it. Use this to your advantage to write multi-line comments. You 						can either use a single (‘’) quotation or double (“”) quotation.</p></li>
+	  	  				<li><p>Python does not support multi-line comments. However, there are multiple ways to overcome this issue. <br><br>The first way is by using # at the 						beginning of each line of the comment.</p></li><br>
+	        				<li><p>The next way is by using string literals but not assigning them to any variables. If you do not assign a stringliteral to a variable, the Python interpreter ignores it. Use this to your advantage to write multi-line comments. You can either use a single (‘’) quotation or double (“”) quotation.</p></li>
 	      				</ul>
 	    			</li>
 	  		</ul>
@@ -176,9 +176,23 @@
 
      </main>
 	
-     <footer>
-	<p>&copy; 2024 LeraninHub</p>
-     </footer>
+    <!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
 
 	<script>
 	 function scrollToTop() {

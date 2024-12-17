@@ -1,45 +1,47 @@
-<html>
-   	<head>
-      		<title>File Handling</title>
-      		<link rel="stylesheet" href="../mystyle.css">
-   	</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">      		
+	<title>File Handling</title>
+
+      	<!-- font awesome cdn limk -->
+     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+     	<!-- custom CSS -->
+     	<link rel="stylesheet" href="../mystyle.css">
+
+     	<!-- custom JS -->
+     	<script src="../myJS.js" defer></script>
+</head>
+
 	
-   	<body>
-     	<header>
-        	<h1>File Handling</h1>
-     	</header>
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
 
-     	<main id = content>
 
-       		<nav id = "navbar">
-	  		<ul>
-	    			<li><a href = "../index.html">Home</a></li>
-	    			<li><a href="../course.html">Courses</a></li>
-	    			<li><a href="#about">About</a></li>
-	    			<li><a href="#contact">Contact</a></li>
-	  		</ul>
-       		</nav>
-
-       	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
-     
-     	<section id = "course-details"> 
-        	<div class = "syllabi">
+     	<section class="course-inner">
+		<div class = "syllabi">
 	  		<ul>
 	   			<li><a href="python_intro.html">Introduction to Python</a></li>
-	   			<li><a href="inpOut.html">Input/Output in Python</a></li>
+	   			<li><a href="inpOut.html">Input and Output Statements</a></li>
 	   			<li><a href="dataTypes.html">Python Data Types</a></li>
  	   			<li><a href="pythonControlFlow.html">Python Control Flow</a></li>
 				<li><a href="pythonStrings.html">Python Strings</a></li>
 	   			<li><a href="pythonFunctions.html">Python Functions</a></li>
- 	   			<li><a href="list.html">Data Structure: Lists</a></li>
+	   			<li><a href="list.html">Data Structure: Lists</a></li>
 	   			<li><a href="tuple.html">Data Structure: Tuples</a></li>
 	   			<li><a href="set.html">Data Structure: Sets</a></li>
 	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
   	   			<li class="selected"><a href="fileHandling.html">File Handling</a></li>
   	  		</ul>
 		</div>
-	
-		<div class = "content" >
+     
+     		<div class = "course-content" >
 	  		<h2>File Handling</h2>
 			<p>Python supports file handling which allows users to read, write, and manipulating files. Python provides built-in functions and modules to interact with files, allowing you to:</p>
 			<ul>
@@ -367,16 +369,31 @@ shutil.copy("source.txt", "dest_folder\destination.txt")
 
 			<br><br><br><br>			
 	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
-	  		<a href = "list.html" class="next-button" id="nextButton">Next &raquo;</a>
+	  		<a href = "python_intro.html" class="next-button" id="nextButton">Next &raquo;</a>
 
         	</div>
      </section>
 
      </main>
 	
-     <footer>
-	<p>&copy; 2024 LeraninHub</p>
-     </footer>
+     <!-- Footer Section starts -->
+     <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+
+	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
 
 	<script>
 	 function scrollToTop() {
