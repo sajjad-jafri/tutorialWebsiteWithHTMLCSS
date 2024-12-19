@@ -61,6 +61,13 @@ body{
     min-height: 100vh;
 }
 
+ul {
+  padding-left: 20px;  /* Creates a gap on the left side of the list */
+}
+ul li p {
+  margin-left: 8px;  /* Adds a little space between the bullet and the text (optional) */
+}
+
 
 .heading{
   margin-bottom: 2.5rem;
@@ -849,7 +856,7 @@ pre {
 .scroll-top-button {
 bottom: 80px;
 right: 80px;
-background-color: #007bff;
+background-color: var(--light-bg);
 color:#fff;
 width:40px;
 height:40px;
@@ -861,13 +868,13 @@ z-index:999;
 }
 
 .scroll-top-button:hover {
-background-color: #0056b3;
+background-color: var(--green);
 }
 
 .next-button {
 bottom: 20px;
 right: 20px;
-background-color: #007bff;
+background-color: var(--light-bg);
 color:#fff;
 padding: 10px 20px;
 border-radius:5px;
@@ -877,8 +884,20 @@ z-index:999;
 }
 
 .next-button:hover {
-background-color: #0056b3;
+background-color: var(--green);
 }
+
+#chapter-btn{
+  cursor:pointer;
+  left: 0;
+  color:var(--white);
+  font-size:2.5rem;
+  padding: 0.8rem;
+  padding-top:6rem;
+  background-color:var(--green);
+  display:none; 
+}
+
 
 @media (max-width:1920px){
   html{
@@ -951,14 +970,14 @@ background-color: #0056b3;
     padding: 2rem;
     margin: 25px 20px;
   }
+
   .course-details .enroll h3{
-   font-size: 18px;
-}
+     font-size: 18px;
+  }
 
-.course-details .enroll p{
-  font-size: 16px;
-
-}
+  .course-details .enroll p{
+    font-size: 16px;
+  }
 
 }
 
@@ -985,7 +1004,29 @@ background-color: #0056b3;
     background-color: none;
     box-shadow: 4px 4px 10px 0 var(--light-bg);
   }
-}
+  .course-inner .syllabi {
+    display: none;
+  }
+
+  /* this is to hide chapter name which are coming in left in mobile view */
+  div.syllabi {
+      display: none !important;
+    }
+
+    #chapter-btn{
+    display: inline-block;
+    position: fixed;
+    
+    z-index: 90;
+    width: 100%;
+    text-align: center;
+  }
+ .course-inner .course-content{
+    width: 100%;
+    padding: 2rem;
+  }
+
+ }
 
 
 footer {
