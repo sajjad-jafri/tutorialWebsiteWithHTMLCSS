@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Understanding Big Data And Data Lake</title>
+	<title>Understanding Hadoop</title>
 
       	<!-- font awesome cdn limk -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -24,10 +24,11 @@
 	<!-- header ends -->
 
 	<section class="course-inner">
-		<div id="chapter-btn">Understanding Big Data and Data Lake</div>
+		<div id="chapter-btn">Understanding Hadoop</div>
 		<div class = "syllabi">
 			<ul>
-	   			<li class="selected"><a href="python_intro.html">Understanding Big Data and Data Lake</a></li>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li class="selected"><a href="hadoop.html">Understanding Hadoop</a></li>
 	   			<li><a href="inpOut.html">Installing and Using Apache Spark</a></li>
 	   			<li><a href="dataTypes.html">Python Data Types</a></li>
  	   			<li><a href="pythonControlFlow.html">Python Control Flow</a></li>
@@ -42,8 +43,7 @@
 		</div>
 
 		<div class = "course-content" >
-	  		<h2>What is Big Data and How it Started</h2><br>
-          		<p><b>What is Data?</b></p>
+	  		<h2>What is Hadoop?</h2><br>
 			<p>Data is the facts, figures, and details we collect, store, and use to understand something, make decisions, or solve problems.</p><br><br>
 			<hr>
 			<p><b>Data categories</b></p>
@@ -105,7 +105,7 @@
 						<li><p><i>Velocity:</i> Modern data is generated at very high speed. It takes very less time to collect perabytes of volume. We want to process these large data in faster time. So the velocity of collecting data is very high, and the requirement of processing velocity is also high.</p></li><br>
 					    </ul>
 					</p></li>
-					<li><p>Above 3 problems combined are also known as the Big Data problem.</p></li>
+					<li><p>Above 3 problems combined are also known as the <b>Big Data problem.</b></p></li>
 					<li><p>RDBMS was not designed to handle Big Data problem. So industries need Big Data management platform to do the following:
 					    <ul>
 						<li><p>Store high volumes of data arriving at higher speed.</p></li>
@@ -124,19 +124,19 @@
 						<li><p>Monolithic approach</p></li>
 						<li><p>Distributed approach</p></li>
 					    </ul>
-					</p></li>
-					<li><p><b>Monolithic approach: </b>Monolithic systems uses one massive system with a vast capacity of CPU, RAM, and Disk storage.</p></li>
-					<li><p><b>Distributed approach: </b>It uses a cluster of computers connected to work as a single system. The combined capacity of the cluster may be equal to or even higher than single Monolithic system.</p></li>
+					</p></li><br>
+					<li><p><b>Monolithic approach: </b>Monolithic systems uses one massive system with a vast capacity of CPU, RAM, and Disk storage.</p></li><br>
+					<li><p><b>Distributed approach: </b>It uses a cluster of computers connected to work as a single system. The combined capacity of the cluster may be equal to or even higher than single Monolithic system.</p></li><br>
 					<li><p>These 2 approaches can be compared on the following criteria:</p></li>
-					<br><br>
-					<li><table style="table-layout: fixed; width:90%;">
+					<br>
+					<li style="list-style-type: none;"><table style="table-layout: fixed; width:90%;">
 						<tr>
-						  <th>Monolithic Approach</th>
-						  <th>Distributed Approach</th>
+						  <th style="padding-right: 10px;">Monolithic Approach</th>
+						  <th style="padding-left: 10px;">Distributed Approach</th>
 						</tr>
 						<tr>
-						  <td><img src = "../images/pyspark/monolithic.jpg"></td>
-						  <td><img src = "../images/pyspark/distributed.png"></td>
+						  <td style="padding: 10px;"><img src = "../images/pyspark/monolithic.jpg" alt="Monolithic Architecture" style="width: 100%; height: auto;"></td>
+						  <td style="padding: 10px;"><img src = "../images/pyspark/distributed.png" alt="Distributed Architecture" style="width:100%; height: auto;"></td>
 						</tr>
 						<tr>
 						  <td  colspan=2 style="text-align:center;"><p><b>Scalability</b></p></td>
@@ -190,11 +190,11 @@
 					<li><p>Hadoop came as a distributed Big Data procesing platform to solve Big Data problems.</p></li>
 					<li><p>Hadoop platform was designed and developed in layers. The core platform layer offered three capabilities:</p>
 				  	    <ul>
-						<li><p><b><i>YARN: </i></b>Hadoop was developed as an operating system of a distributed cluster. For a cluster of computers, we need a cluster operating system. Cluster operating system allows us to use the cluster resources such as CPU, Memory, and disk. CPU, Memory, and Disk on a cluster setup are spread across the computers. We are not using a single computer where everything is available on a single machine. A cluster is a group of computers. Cluster Operating System makes it work like a single large computer. It allowed us to use a cluster of computers as a single large computer. So, Yarn is Distributed cluster formation or Cluster Operating System.</p></li>
-						<li><p><b><i>HDFS: </i></b>Hadoop also allowed us to store data and retrieve it back. The data is internally distributed on the hard disks on the cluster. However, Hadoop offered us a distrbuted storage system and allowed us to save and read the data file as we do it on a single machine.</p></li>
+						<li><p><b><i>YARN: </i></b>Hadoop was developed as an operating system of a distributed cluster. For a cluster of computers, we need a cluster operating system. Cluster operating system allows us to use the cluster resources such as CPU, Memory, and disk. CPU, Memory, and Disk on a cluster setup are spread across the computers. We are not using a single computer where everything is available on a single machine. A cluster is a group of computers. Cluster Operating System makes it work like a single large computer. It allowed us to use a cluster of computers as a single large computer. So, Yarn is Distributed cluster formation or Cluster Operating System.</p></li><br>
+						<li><p><b><i>HDFS: </i></b>Hadoop also allowed us to store data and retrieve it back. The data is internally distributed on the hard disks on the cluster. However, Hadoop offered us a distrbuted storage system and allowed us to save and read the data file as we do it on a single machine.</p></li><br>
 						<li><p><b><i>Map/Reduce: </b></i>Hadoop also allowed us to write a data processing application in Java and run it on the cluster. So Hadoop offered us a new distributed data processing framework known a s Map-Reduce framework for processing large volumes of data.</p></li>
 				  	    </ul>
-					</li>
+					</li><br>
 					<li><p>Hadoop platform was designed to use the cluster of computers as a single large machine. We can read/write and program data processing applications and run them on the Hadoop cluster without realizing that we are working on a cluster.</p></li>
 					<li><p>Hadoop simplified distributed computing for developers, programs run on a distributed computing platform and uses parallel processing.</p></li>
 					<li><p>Hadoop community developed many other tools over and above the hadoop Core platform (YARN, HDFS, Map-reduce). Some of the tools are Hive database, HBase database, Pig Scripting Language, Sqoopt data ingestion tools and Oozee workflow tool.</p></li>
@@ -252,7 +252,7 @@
 			<br><br><br><br>	
 	  
 	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
-	  		<a href = "inpOut.html" class="next-button" id="nextButton">Next &raquo;</a>
+	  		<a href = "hadoop.html" class="next-button" id="nextButton">Next &raquo;</a>
 
         	</div>
      </section>
