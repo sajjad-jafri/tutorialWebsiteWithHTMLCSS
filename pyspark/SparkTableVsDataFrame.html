@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spark Table Vs Spark DataFrame</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Spark Table Vs Spark DataFrame</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li class="selected"><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="set.html">Data Structure: Sets</a></li>
+	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<h2>Data Processing Platform</h2>
+			<p>Spark is a data processing platform.</p><br>
+			<h3>What others data processing platform?</h3>
+			<p>Databases are other data processing platform. Databases are the most popular and most widely used data processing platform which offers the following:</p>
+			<ul>
+				<li style="list-style-type:disc"><p>Tables</p></li>
+				<li style="list-style-type:disc"><p>SQL</p></li>
+			</ul><br>
+			<p>Before learning Spark Table and Spark Dataframe, lets study about typical database table.</p><br><br>
+
+
+			<hr>
+			<h2>Understanding Database Table</h2>
+			<p>We have 3 layers to form a table:</p>
+			<ul>
+				<li style="list-style-type:disc"><p>Storage Layer</p></li>
+				<li style="list-style-type:disc"><p>Metadata Layer</p></li>
+				<li style="list-style-type:disc"><p>Logical Layer</p></li>
+			<ul><br>
+			<img src="../images/pyspark/DatabaseTable.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+			<h3><p>Storage Layer:</p></h3>It stores the table data in a file.
+			<p>Database tables allows you to load the data in the table and this data internally stored as a DBF file. These DBF files are stored in the disk.</p> <br>
+
+			<h3><p>Metadata Layer:</p></h3>
+			<p>It stores the table schema & other important information.</p><br>
+
+			<h3><p>Logical Layer:</p></h3>
+			<p>The logical layer presents you with a database table. You can execute sql query on the logical layer.</p><br><br>
+			<p><b>So basically, the table contains two things:</b></p>
+			<ul>
+				<li><p><b>Table Schema</b> - It is a list of column names and their data type. The schema information is stored in <b>database data dictionary</b> or a <b>meta data store</b>.</p></li><br>
+				<li><p><b>Table Data</b> - It is the actual data which is stored in Data File separately in Physical storage layer (Hard disk).</p></li>
+			</ul><br><br>
+
+			<h3><p>How SQL executes<p></h3>
+			<p>When you submit a SQL query to your database SQL Engine, the database will refer to the metadata store for parsing your SQL queries.</p><br>
+			<img src="../images/pyspark/Sql-DatabaseTable.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+
+			<p>The database will throw a syntax error or an analysis error if you are using a column name in your SQL that does not exist in the metadata store.</p><br>
+			<p>The table data is stored in the dbf files behind the table, so if your SQL query is correct and passes all the schema validation, you will see query results.</p><br>
+			<p>The database will read data from the "dbf" file, process it according to your SQL query, and show you the results.</p><br><br>
+			<p>That is all about the data processing in databases. Now let's try database analogy with Apache Spark.</p><br><br><br>
+			
+			<hr>
+			<h2>Data processing in Apache Spark</h2>
+			<p>Apache Spark offers you two ways of data processing:</p>
+			<ol>
+				<li style="list-style-type:1"><p>Spark Database Table and SQL</p></li>
+				<li style="list-style-type:1"><p>Spark Data frame and API</p></li>
+			</ol><br>
+			<p>Let's read them ony by one</p><br>
+			
+			<hr>
+			<h2>Understanding Spark Table</h2>
+			<p><b>Spark Database and SQL</b></p>
+			<p>The first approach (Spark Database and SQL) precisely the same as a typical database except Spark table data is internally stored in the data files (not dbf files) in many formats such as CSV, JSON, Parquet, AVRO, XML, etc. and that is the reson spark supports structured, semi-structured, and unstructured data.</p>
+			<p>The DBF file format and database engine were designed to support structured data. But Spark is designed to support variety of file formats.</p><br>
+			<img src="../images/pyspark/SparkDatabaseTable.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+			<p>The spark sorage layer also supports distributed storage such as HDFS and clud storage (Amazon S3 and Azure ADLS). So you are not limited to disk storage capacity. You can use distributed storage and store large data files.</p><br>
+
+			<p>Spark also has a metdata layer which is similar to typical database table.</p>
+			<br><br>
+
+			<hr>
+			<h2>Understanding Spark Dataframe</h2>
+			<p>It is the same as the table without metadata store. What does it mean?</p><br>
+			<p>Spark Dataframe is structurally the same as the table. However, it does not store any schema information in the metadata store. Instead, we have a runtime metadata catalog to store the dataframe schema information.</p><br> 
+			<p>The catalog is similar to the metadata store, but Spark will create it at the runtime to store schema information in the catalog. This catalog is only valid until your application is running. Spark will delete this catalog when your Spark application terminates.</p><br>
+			<img src="../images/pyspark/SparkDataframe.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+			<p><br>What is the benefit of runtime catalog and not metadata store?</b></p>
+			<p>Well, we have two reasons for this.</p>
+			<p>Stark Dataframe is a runtime object and Spark Dataframe supports schema-on-read.</p><br>
+			<p>You can create a Spark Data frame at runtime and keep it in memory until your program terminates. Once your program terminates, your dataframe is gone. It is an in-memory object.</p><br>
+			<p>Spark tables are permanent. Once created, you will have a table forever. You can drop a table and remove it. But it remains in the system until you drop the table.</p><br>
+			<p>However, Spark Dataframe is a runtime and temporary object which lives in Spark memory and goes away when the application terminates. So the metadata is also stored in the temporary metadata catalog.</p><br><br>
+			<p>The second reason is due to the schema-on-read feature. Spark Dataframe is designed to support the idea of schema-on-read.</p><br>
+			<p>Dataframe does not have a fixed and predefined schema stored in the metadata store. Instead, we define the schema when we want to read the data from a file and load it into the Dataframe.</p><br>
+			<p>So the difference is straightforward.</p>
+			<p>We define a schema for the table when creating a table. Then we load data into the table. The data must comply with the table schema, or you will get an error.</p>
+			<p>However, Dataframe is different. We load the data into a Dataframe and tell the schema when loading the data. And Spark will read the file, apply the schema at the time of reading, create the Dataframe using the schema and load the data. So a Dataframe is always loaded with some data, whereas a Table can be empty.</p><br><br>
+			<p>That's all about Table vs. Dataframe.</p>
+			<p>You can use SQL on the table. However, Dataframe does not support SQL expressions.You must use Dataframe APIs to process data from a Dataframe.</p><br>
+			<p>Since the table and dataframe are structurally the same, you can convert them to each other.  mean, you can convert a table into a dataframe and vice versa.</p><br>
+			<p>You have two ways of processing data in Spark:</p>
+			<ul>
+				<li><p>SQL</p></li>
+				<li><p>Dataframe API</p></li>
+			</ul>
+			<p>you can use both at your convenience.</p><br><br><br>
+
+			<hr>
+			<h2>Let's summarize the difference</h2>
+			<br>
+			<table>
+			<tr>
+				<td><p>1. Tables store schema information in the metadata store</p></td>
+				<td><p>1. Dataframe stores schema information in runtime catalog</p></td>
+			</tr>
+			<tr><td></td><td></td></tr>
+			<tr>
+				<td><p>2. Table and metadata stores are persistent objects and visible across applications</p></td>
+				<td><p>2. Dataframe and Catalog are runtime objects and live only during the application runtime</p></td>
+			</tr>
+			<tr>
+				<td><p>3. We create tables with a predefined table schema</p></td>
+				<td><p>3. Dataframe supports schema-on-read</p></td>
+			</tr>
+			<tr>
+				<td><p>4. Table supports SQL Expressions and does not support API</p></td>
+				<td><p>4. Dataframe offers APIs and does not support SQL expressions</p></td>
+			</tr>
+			</table><br>
+			<center><p>A Spark table and a Dataframe are convertible objects.</p></center>
+
+
+
+	
+
+
+
+
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "creatingSparkDF.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

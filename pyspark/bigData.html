@@ -29,13 +29,13 @@
 			<ul>
 	   			<li class="selected"><a href="bigData.html">Understanding Big Data</a></li>
 				<li><a href="hadoop.html">Understanding Hadoop</a></li>
-	   			<li><a href="inpOut.html">Installing and Using Apache Spark</a></li>
-	   			<li><a href="dataTypes.html">Python Data Types</a></li>
- 	   			<li><a href="pythonControlFlow.html">Python Control Flow</a></li>
-				<li><a href="pythonStrings.html">Python Strings</a></li>
-	   			<li><a href="pythonFunctions.html">Python Functions</a></li>
-	   			<li><a href="list.html">Data Structure: Lists</a></li>
-	   			<li><a href="tuple.html">Data Structure: Tuples</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
 	   			<li><a href="set.html">Data Structure: Sets</a></li>
 	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
   	   			<li><a href="fileHandling.html">File Handling</a></li>
@@ -189,12 +189,12 @@
 				    <ul style = "list-style-type: square">
 					<li><p>From both the approaches, Distributed system was a preferred approach.</p></li>
 					<li><p>Hadoop came as a distributed Big Data procesing platform to solve Big Data problems.</p></li>
-					<li><p>Hadoop platform was designed and developed in layers. The core platform layer offered three capabilities:</p>
+					<li><p>Hadoop is a distributed data processing platform that offers the following core capabilities:</p>
 				  	    <ul>
-						<li><p><b><i>YARN: </i></b>Hadoop was developed as an operating system of a distributed cluster. For a cluster of computers, we need a cluster operating system. Cluster operating system allows us to use the cluster resources such as CPU, Memory, and disk. CPU, Memory, and Disk on a cluster setup are spread across the computers. We are not using a single computer where everything is available on a single machine. A cluster is a group of computers. Cluster Operating System makes it work like a single large computer. It allowed us to use a cluster of computers as a single large computer. So, Yarn is Distributed cluster formation or Cluster Operating System.</p></li><br>
-						<li><p><b><i>HDFS: </i></b>Hadoop also allowed us to store data and retrieve it back. The data is internally distributed on the hard disks on the cluster. However, Hadoop offered us a distrbuted storage system and allowed us to save and read the data file as we do it on a single machine.</p></li><br>
-						<li><p><b><i>Map/Reduce: </b></i>Hadoop also allowed us to write a data processing application in Java and run it on the cluster. So Hadoop offered us a new distributed data processing framework known a s Map-Reduce framework for processing large volumes of data.</p></li>
-				  	    </ul>
+						<li><p><b><i>YARN: </i></b>Cluster Resource Manager</p></li>
+						<li><p><b><i>HDFS: </i></b>Distributed Storage</p></li>
+						<li><p><b><i>Map/Reduce: </b></i>Distributed Computing</p><li>
+					   </ul>
 					</li><br>
 					<li><p>Hadoop platform was designed to use the cluster of computers as a single large machine. We can read/write and program data processing applications and run them on the Hadoop cluster without realizing that we are working on a cluster.</p></li>
 					<li><p>Hadoop simplified distributed computing for developers, programs run on a distributed computing platform and uses parallel processing.</p></li>
@@ -235,14 +235,7 @@
 
 			<br><br><br>
 
-			<hr color = "dustyrose">
-			<h2>Hadoop Architecture, History, and Evolution</h2>
-			<br>
-			<p><b>What is Hadoop?</b></p>
-			<p>Hadoop is a distributed data processing </p>
-			<br><br><br>
-
-			<hr color = "dustyrose">
+			<hr>
 			<h2>What is Data Lake and How it works</h2>
 
 			<br><br><br>

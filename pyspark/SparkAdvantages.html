@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spark Advantages</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Spark Advantages over Hadoop</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li class="selected"><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="set.html">Data Structure: Sets</a></li>
+	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<p>Before reading the advanges of Spark over Hadoop, Lets read the history and Evolution of Hadoop.</p>
+			<br><br>
+			<h2>Hadoop History and Evolution</h2>
+			<p>Google was the first company to realize the big data problem. Google successfully solved all the above problems, and they were generous enough to reveal their solution to the rest of the world in a series of white papers.</p><br>
+			<p>Google published the first whitepaper in 2003, and it talked about solving the Data Storage and Management problem. They termed the solution as <b>Google File System (GFS)</b>.</p>
+			<p>The second whitepaper was published by Google in 2004, and talked about the Data Processing and Transformation problem. They termed it as <b>MapReduce (MR) programming model</b>.</p><br>
+			<p>The open-source community well appreciated these whitepapers, and they formed the basis for the design and the development of a similar open-source implementation - The Hadoop.</p>
+			<p>The open-source community implemented the GFS as a Hadoop Distributed File System – HDFS. They applied Google MR as the Hadoop MapReduce programming framework.</p><br>
+			<p>Hadoop grabbed immense attention and popularity among organizations and professionals. During the development of Hadoop, there have been many other solutions developed over the Hadoop platform and open-sourced by various organizations. Some of the most widely adopted systems were Pig, Hive, and Hbase.</p><br>
+			<p>Apache Hive was one of the most popular components of Hadoop. HIVE offered the following core capabilities on the Hadoop Platform:</p>
+			<ul>
+				<li><p>Create Databases, Tables, and Views</p></li>
+				<li><p>Run SQL queries</p></li>
+			</ul><br>
+			<p>Map Reduce Programming model was complex to use. Application developers struggled to solve data processing problems using Map Reduce. Hive came to the rescue. It allowed us to create databases and tables using DDL Statement. Then they also allowed us to use SQL queries on the table. Hive SQL engine internally translated SQL queries into M/R programs. But application developers were saved from writing Map Reduce code in Java.</p><br>
+
+			<p>Hadoop as a platform and Hive as a Hadoop database became very popular. But we still had some other problems which needed improvements. Here are some critical problems.</p>
+			<ul>
+				<li><p><b>Performance</b> - MapReduce was slow</p></li><br>
+				<li><p><b>Ease of development</b> - Hadoop offered only Map/Reduce model. But writing Map/Reduce programs was a black art. Only a few highly-skilled engineers were writing M/R code.</p></li><br>
+				<li><p><b>Language Support</b> - Hadoop M/R was only available in Java. Industry wanted to support some other languages.</p></li><br>
+				<li><p><b>Storage</b> - If you want more storage, add more computers to the Hadoop cluster. It was a cheaper option in the beginning. But when Cloud platforms started to offer storage at throw-away prices, adding computers for creating Hadoop storage started to look expensive. The business wanted to use cloud storage instead of HDFS storage because Cloud storage was a cheaper option.</p></li></br>
+				<li><p><b>Resource Management</b> -  industries developed some other container management solutions such as Mesos, Docker, and Kubernetes which are lighweight container management options.</p></li>
+			</ul>
+			<br><br>
+			<p>Hadoop left a lot of scope for improvements. And that's where Apache Spark came into existence as an improvement over the Hadoop Map/Reduce.</p><br><br><br>
+
+			<hr>
+			<h2>Apache Spark Advantages over Hadoop</h2>
+			<p>Apache Spark was invented at UC Berkeley to simplify and improve the ideas of the MapReduce Framework. However, it soon gained popularity and took a direction for solving all the problems listed earlier.</p><br>
+			<ul>
+				<li><p><b>Performance:</b></p>
+				<ul>
+					<li><p>Spark programs worked 10 to 100 times faster than the Hadoop M/R programs.</p></li>
+				</ul></li><br>
+				<li><p><b>Ease of development:</b></p> 
+				<ul>
+					<li><p>Spark SQL - Like Hive, Spark also offered SQL, but Spark SQL was also 10 to 100 times faster than Hive SQL.</p></li>
+					<li><p>Composable Function API - Spark offered the idea of composable functional APIs instead of a complex M/R model.</p></li>
+				</ul></li><br>
+				<li><p><b>Language Support:</b></p>
+				<ul>
+					<li><p>Spark supported Java, Scala, Python, and R programming language.</p></li>
+				</ul></li><br>
+				<li><p><b>Storage:</b></p>
+				<ul>
+					<li><p>Spark also decoupled the HDFS and started supporting cloud storage such as Amazon S3 and Azure Blob storage.</p></li>
+				</ul></li><br>
+				<li><p><b>Resource Management:</b></p>
+				<ul>
+					<li><p>Spark also removed the dependency on Hadoop YARN. The Spark community designed it to work on multiple containers and resource management options such as Mesos, Kubernets etc.</p></li>
+				</ul></li>
+			</ul><br>
+			<p>You can use Spark in two kinds of setups.</p>
+			<ul>
+				<li><p>Spark with Hadoop</p></li>
+				<li><p>Spark without Hadoop</p></li>
+			</ul><br>
+			<p>And in both kinds of setup, you will gain all the benefits that Hadoop brought to the table. Everything we achieved with Hadoop is now possible in Cloud platforms using Spark without Hadoop.</p><br>
+			<p>Spark exists on two kinds of platforms.</p>
+			<ul>
+				<li><p>Data Lake - On Hadoop</p></li>
+				<li><p>Lakehouse - On Cloud</p></li>
+			</ul><br>
+			<p>The driving force behind Cloud Lakehouse is the Databricks Spark platform.</p>
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "sparkIntroduction.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

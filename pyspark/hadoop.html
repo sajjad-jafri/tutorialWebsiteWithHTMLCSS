@@ -29,13 +29,13 @@
 			<ul>
 	   			<li><a href="bigData.html">Understanding Big Data</a></li>
 				<li class="selected"><a href="hadoop.html">Understanding Hadoop</a></li>
-	   			<li><a href="inpOut.html">Installing and Using Apache Spark</a></li>
-	   			<li><a href="dataTypes.html">Python Data Types</a></li>
- 	   			<li><a href="pythonControlFlow.html">Python Control Flow</a></li>
-				<li><a href="pythonStrings.html">Python Strings</a></li>
-	   			<li><a href="pythonFunctions.html">Python Functions</a></li>
-	   			<li><a href="list.html">Data Structure: Lists</a></li>
-	   			<li><a href="tuple.html">Data Structure: Tuples</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
 	   			<li><a href="set.html">Data Structure: Sets</a></li>
 	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
   	   			<li><a href="fileHandling.html">File Handling</a></li>
@@ -43,216 +43,238 @@
 		</div>
 
 		<div class = "course-content" >
-	  		<h2>What is Hadoop?</h2><br>
-			<p>Data is the facts, figures, and details we collect, store, and use to understand something, make decisions, or solve problems.</p><br><br>
-			<hr>
-			<p><b>Data categories</b></p>
-			<p>Mainly data is categorized in 3 types. It can be:</p>
+	  		<h2>What is Hadoop?</h2>
+			<p>Hadoop is a distributed data processing platform/framework written in Java that utilizes a large cluster of computers(hardware) to maintain and store big size data.</p><br>
+			<p>Hadoop was designed and developed in layers. The core platform layer offered three capabilities:</p>
 			<ul>
-				<li><p><b>Structured Data: </b>Data is Organized, in standardized format, and easily searchable. Mostly available in row-column format (tabular).</p></li><br>
-				<li><p><b>Semi-Structured Data: </b>It is Partially organized, with some formatting. It does not obey tabular format. However, it has another well-defined key/value pair structures such as JSON and XML.</p></li><br>
-				<li><p><b>Unstructured Data: </b>Unorganized, raw, and requires processing. It comes in text files, pdf, and other documents, images, and video files.</p></li>
+				<li><p><b><i>YARN: </i></b>Cluster Resource Manager</p></li>
+				<li><p><b><i>HDFS: </i></b>Distributed Storage</p></li>
+				<li><p><b><i>Map/Reduce: </b></i>Distributed Computing</p><li>
+			</ul><br>
+			<hr>
+
+			<h2>Hadoop Architecture</h2>
+			<p>We have already studied that Hadoop Architecture mainly consists of 3 components. Lets read about them one by one.</p><br>
+			<ul>
+				<li>
+				<p><b><i>YARN: </i></b></p>
+				<p>YARN stands for <b>Yet Another Resource Negotiator</b> also known as <b>Hadoop cluster Operating System</b> but Hadoop creator prefer to name it as a <b>Cluster Resource Manager</b>.</p><br>
+				<p>Hadoop was developed as an operating system of a distributed cluster. For a cluster of computers, we need a cluster operating system. Cluster operating system allows us to use the cluster resources such as CPU, Memory, and disk which are spread across the computers. We are not using a single computer where everything is available on a single machine. A cluster is a group of computers. Cluster Operating System makes it work like a single large computer. It allowed us to use a cluster of computers as a single large computer. So, Yarn is Distributed cluster formation or Cluster Operating System.		</p><br>
+				<p>Simply, YARN is a resource manager layer in the Apache Hadoop ecosystem, responsible for managing resource and scheduling jobs (applications) on a Hadoop cluster.</p><br>
+				<p>Hadoop's YARN has three main components:
+				<ul>
+					<li style="list-style-type:circle"><p>RM - Resource Manager</p></li>
+					<li style="list-style-type:circle"><p>NM - Node Manager</p></li>
+					<li style="list-style-type:circle"><p>AM - Application Master</p></li>
+				</ul><br>
+				<p>Lets assume we have 5 computers, we want to make a Hadoop cluster using these computers. So we will install the Hadoop on these computers and configure them to make a Hadoop cluster. Installing and configure Hadoop is as simple as installing a software in our computers.</p>
+				<br>
+				<p>Hadoop uses a master-slave architecture. So one of these machines will become the master, and the remaining will act as the worker node.</p><br>
+				<p>Configuring Hadoop will also install a YARN resource manager service on the master. It also installs a node manger service on all the worker nodes.</p>
+				<br>
+				<img src="../images/pyspark/h1.png" alt="Hadoop Cluster" style="width:100%; height: auto;">
+				<br><br>
+				<p>We have 5 node cluster. One node acts as a master and runs the YARN resource manager service. The other four nodes act as a Worker and run a node manager service.</p>
+				<p>The node manager will regularly send the node status report to the resource manager.</p><br><br>
+				<p>To run a data processing application, User will submit a application to the YARN resource manager using a command line submit tool.</p><br>
+				<p>Now the resource manager should run this application on this cluster. So, the resource manager will request one of the node managers to start a resource container and run an AM (application master) in the container. Thats all, your application starts running inside the Application Master container.</p>
+				
+				<br>
+				<img src="../images/pyspark/h2.png" alt="Hadoop Cluster" style="width:100%; height: auto;">
+				<br><br>
+				<p><b>Container</b> is a set of resources that includes memory and CPU. For example, a YARN container may be a set of 2 CPU cores and 4 GB of Memory. So, wherever we refer to YARN Container, you should think of a box of some CPU and Memory.</p>
+				<br><br>
+				<p><b>Highlights to YARN</b></p>
+				<p>-- We submit our application to the Resource Manager.</p>
+				<p>-- The resource manager requests the node manager for allocating an application master container and starting your application inside the AM container.</p>
+				<p>-- Your application runs inside the AM container.</p> 
+				<p>-- Lets assume we submit another application. The RM will again repeat the same process. It will ask another NM to allocate a new AM container and start this new application inside the AM conatiner.</p>
+				<p>-- Each application on YARN runs inside a different AM container.</p>
+				<p>-- If you have 10 applications running in parallel, you will see 10 AM containers on your Hadoop cluster.</p>
+				</li>
+				<br><br><br><br>
+
+				<hr width="50%" color="gray" align="center" />
+				<li>
+				<p><b><i>HDFS: </i></b></p>
+				<p>HDFS stands for <b>Hadoop Distributed File System</b>. It allows us to store data and retrieve data files in Hadoop cluster. The data is internally distributed on the hard disks on the cluster. However, Hadoop offered us a distrbuted storage system and allowed us to save and read the data file as we do it on a single machine.</p>
+				<br>
+				<p>HDFS has two main components:
+				<ul>
+					<li style="list-style-type:circle"><p>NN - Name Node</p></li>
+					<li style="list-style-type:circle"><p>DN - Data Node</p></li>
+				</ul><br>
+				<p>Let's assume we have five computers shown below in which Hadoop is already installed and form a Hadoop cluster.</p>
+				<p>Hadoop will install the <b>Name Node</b> service on the master and each worker node runs a <b>data node</b> service.</p>
+				<img src="../images/pyspark/h3.png" alt="HDFS" style="width:100%; height: auto;"><br><br>
+				<p>The name node with the data node service forms the <b>HDFS</b>. The primary purpose of the HDFS is to allow us to save files on this Hadoop cluster and read them whenever required.</p><br><br>
+				<p>Let's assume you want to copy a large data file on your Hadoop cluster. So you will initiate the file copy command. The file copy request will go to the name node.</p><br>
+				<img src="../images/pyspark/h4.png" alt="HDFS" style="width:100%; height: auto;"><br><br><br>
+				<p>The name node will redirect the file Copy command to one or more data nodes. Let's assume you get redirection for three data nodes.</p>
+				<p>The file copy command will split the file into smaller parts and write those parts on the three data nodes.</p>
+				<img src="../images/pyspark/h5.png" alt="HDFS" style="width:100%; height: auto;"><br><br><br>
+				<p>The file copy command will break your file into smaller parts. Each part is known as a block. The typical block size is 128 MB. Now the file copy command will write some blocks to data node 1, some other blocks will go to data node 2, and the remaining ones will go and sit at data node 3.</p><br>
+				<img src="../images/pyspark/h6.png" alt="HDFS" style="width:100%; height: auto;"><br><br><br>
+				<p>So your date file data will break into blocks, and Hadoop will distribute these blocks on the data nodes. The name node facilitates this process and keeps track of all the file metadata.</p><br>
+				<p><b>What is the file metadata?</b>
+				<ul>
+					<li style="list-style-type:circle"><p>File Name - What is the file name?</p></li>
+					<li style="list-style-type:circle"><p>Directory Location - In which directory did you create the file?</p></li>
+					<li style="list-style-type:circle"><p>File Size - What is the total size of the file?</p></li>
+					<li style="list-style-type:circle"><p>File Blocks - How the HDFS breaks the file into blocks, and how many blocks are there?</p></li>
+					<li style="list-style-type:circle"><p>Block ID - What is the block id for each block?</p></li>
+					<li style="list-style-type:circle"><p>Block Sequence - What is the sequence of the blocks?</p></li>
+					<li style="list-style-type:circle"><p>Block Location - Where can we find the block? Meaning  the list of the block IDs stored at each data node.</p></li>
+				</ul><br>
+				<p>Point is straight - The file is broken and spared on the data nodes. And all the information required to reassemble the file is kept at the name node.</p><br><br>
+				<p><b>Now let's come back to the read operation.</b></p>
+				<p>The request goes to the name node.</p>
+				<img src="../images/pyspark/h7.png" alt="HDFS" style="width:100%; height: auto;"><br><br>
+
+				<p>The name node owns all the information for reassembling the file from the blocks stored at the data node.</p>
+				<p>So the name node will redirect the read operation to the target data nodes.</p>
+				<p>The read API will receive data blocks from the data node.</p>
+				<img src="../images/pyspark/h8.png" alt="HDFS" style="width:100%; height: auto;"><br><br>
+				<p>And reassemble the file using the metadata provided by the name node.</p>
+				<img src="../images/pyspark/h9.png" alt="HDFS" style="width:100%; height: auto;"><br><br>
+				</li>
+				<br><br><br><br>
+
+				<hr width="50%" color="gray" align="center" />
+				<li>
+				<p><b><i>Map/Reduce: </i></b></p>
+				<p>Map Reduce is</p>
+				<ul >
+				<li style="list-style-type:circle"><p>Programming Model</p></li>
+				<li style="list-style-type:circle"><p>Programming Framework</p></li>
+				</ul><br>
+				<p>Map Reduce is a programming model and framework used for processing large data sets in parallel across a cluster of computers.</p>
+				<br><br>
+				<p><b>What is Programming Model?</b></p>
+				<p>A <b>programming model</b> is a technique or a way of solving problems.</p><br>
+				<p>Let's try focusing on the map-reduce programming model with an example:</p>
+				<p>You have a CSV file of 20 TB size.</p>
+				<p>Here is a pseudo-code of the program to count the number of lines in the file.</p>
+				<pre>
+open file as f_hd:
+	for each t_line in f_hd.get_line():
+		n_count = n_count + 1
+close f_hd
+print n_count
+				</pre><br>
+				<p>Open the file, then loop through each line in the file. Every time you read a line, you can increment a counter. You will come out of the loop on reaching the end of the file. Now you can close the file and then print the count.</p>
+				<p>You got the line count of the file.</p><br>
+				<p>But we have a small problem. The file size is 20 TB. Can you find a machine to store a 20 TB file and run your line count program on this file?</p><br>
+				<p>It is hard to find such machines. Even if you find a high-end server machine, your program will take hours or days to count the lines.</p><br><br>
+				<p>So we have two problems here.</p>
+				<ul>
+				<li><p>Storage capacity problem</p></li>
+				<li><p>Processing time problem</p></li>
+				</ul>
+				<br>
+				<p>Hadoop offered to solution to both problems. You can use the Hadoop cluster to store the file.</p><br>
+				<p>Let's assume you have a 21 node Hadoop cluster. One node becomes the master, and the other 20 nodes are the workers. Each node comes with four hard disks of 2 TB. So single node storage capacity is 8 TB. However, the overall Hadoop cluster storage capacity is 160 TB.</p>
+				<p>Each node also comes with four dual-core CPUs and 64 GB of memory. So the total cluster capacity is 160 CPU Cores and 1280 GB of memory.</p><br>
+				<img src="../images/pyspark/h10-1.png" alt="HDFS" style="width:100%; height: auto;"><br><br>
+				<p>You can use HDFS to copy your 20 TB file on this cluster. HDFS will break the file into small 128 MB blocks and spread them across the cluster. So some data nodes will store data blocks and all togeather they can easily store your 20 TB file.</p><br>
+				<img src="../images/pyspark/h11.png" alt="HDFS" style="width:100%; height: auto;"><br><br>
+ 				<p>So Storage problem is taken care by Hadoop cluster. If you need more storage, you can increase the cluster size and add more computers.</p><br>
+				<p>Now, what about the processing time problem??? Thats where the Map Reduce model comes into picture.</p><br>
+				<p>Let's write the count line logic once again</p>
+				<pre>
+def map(file_block):
+    open file_block as fb_hd
+    for each t_line in fb_hd.get_line():
+        n_count = n_count + 1
+    close fb_hd
+    return n_count
+
+
+def reduce(list_counts):
+    for each cnt in list_counts:
+        total_count = total_count + cnt
+
+print total_count
+				</pre><br>
+				<p>We have broken the logic into 2 parts, first part is known as map function and the second part is known as reduce function.</p><br>
+				<p>Old logic was opening the file and count the lines but in new logic we have map function (almost same as old) but it opens the file block and counts the line instead file as in old.</p><br>
+				<p>Let's see how we can achieve this.</p>
+				<p>We run the map function on all the data nodes in parallel.</p>
+				<img src="../images/pyspark/h12.png" alt="HDFS" style="width:100%; height: auto;"><br>
+				<p>This map() will open each block on the data node and count the lines. End of the execution, we can have the number of lines in blocks at the given data node.</p><br>
+				<p>So basically with use of this function we can count the lines of 14 data nodes in parallel. Everything will run at the same time and will get the line counts in 1/14th of the time compared to doing it on a single machine.</p><br><br>
+
+				<p>However we have 14 line counts, each count represents the number of lines on their respective data nodes.</p>
+				<p>Now we can start a reduce() at one node.</p> 
+				<img src="../images/pyspark/h13.png" alt="HDFS" style="width:100%; height: auto;"><br>
+				<p>All the data nodes will send their counts to the reduce function. The reduce() will receive 14 line counts in an array. So, we can loop through the array and can sum of all the counts. This is the logic of the reduce function.</p><br><br>
+
+				<p>In short, Map/Reduce is a programming model to break your application logic into 2 parts:
+				<ul>
+					<li style="list-style-type:circle"><p>map() - where we can do the parallel calculation/processing.</p></li>
+					<li style="list-style-type:circle"><p>Reduce() - we can do the summation or other type of aggregation and consolidation.</p></li>
+				</ul>
+				</p><br>
+				<p>This was just an example for line count but hadoop can do every type of data processing work. Hadoop offered HIve database as an additional component. Hive allows you to write SQL expressions. However, the Hive SQL engine translates all your SQL expressions into Map Reduce programs.</p><br>
+				<p>However, now we do not use the raw Map-reduce on Hadoop. We use high-level solutions such as Hive SQL, Spark SQL, Spark Scripting, etc., and develop data processing applications. We do not go down to the Map-reduce level.</p><br><br>
+		
+				<p><b>What is Map/Reduce Programming Framework</b></p>
+				<p>The Map/Reduce Program we have written needs to be submit to hadoop cluster so user will submit the prog to YARN. The YARN resource manager is responsible for running the program. So the YARN resource manager will request one node manager to start a YARN resource container and run the program in the container. This first container is known as Application Master Container.</p>
+				<img src="../images/pyspark/h14.png" alt="HDFS" style="width:100%; height: auto;"><br>
+				<p>Now the program is running in the container. But the program is a Hadoop map-reduce program. And these functions using Hadoop Map Reduce Framework API. So running the program will trigger the Hadoop Map-Reduce Framework. And the M/R framework will take control of my program.</p><br>
+				<p>Now, the M/R framework will again request the resource manager to start 14 more containers and run the map function in those containers. The resource manager will pass on the request to node managers, and they will start 14 new containers. So now one new container is running on 14 workers.
+And these new containers will run the map function.</p>
+				<img src="../images/pyspark/h15.png" alt="HDFS" style="width:100%; height: auto;"><br>
+				<p>The Hadoop Map Reduce framework does that for us. We only write a map() function and implement the logic inside it. But when we run our program, the Hadoop M/R framework will take control and work with the YARN resource manager to execute the map function on all the data nodes.</p><br>
+				<p>The M/R framework will not stop there. It will wait for all the map functions to be complete. Then it will collect the block counts from all the map methods, pack those values into an array, and then start the reduce method on a single node.</p>
+				<p>Simple, The M/R framework will start the map methods and wait for completion. Once completed, it will collect the output from all the map methods. Then, it goes back to the resource manager and requests a new container to run the reduce function. The RM will coordinate with the node manager to give one more container and start the reduce function. The Reduce function needs the output of all the map functions. The M/R framework will facilitate the output of map functions to the Reduce function. The reduce function will sum up the counts and print them.</p>
+
+				</li>
 			</ul><br><br>
 
-			<hr>			
-			<p><b>What is Big Data?</b></p>
-			<p>Big Data refers to:</p>																										<ul>
-				<li><p><i>Volume</i> - Massive amount for data.</p></li>
-				<li><p><i>Variety</i> - Data can be structured, semi-structured, and unstructured.</p></li>
-				<li><p><i>Velocity</i> - rapid data generation and processing (Social media, sensors, transactions, etc.).</p></li>	
-			</ul>
-	    	  	<br><br>
-
 			<hr>
-			<p><b>History and Evolution of Big Data</b></p>
-			<p>Big Data has a fascinating history and evolution. Let's dive in:</p><br>
-			<p style = "color: #ff6347;"><i><b>Early Beginning (1960s-1980s)</b></i></p>
+			<h2>Let's Summarize the Hadoop Architecture again</h2>
+			<p>When you install <b>Hadoop</b> on a cluster of machines, a set of key services or components come into play to enable distributed storage and processing of large datasets. Here's an overview of these core services:</p><br>
 			<ul>
-				<li><p><i><b>Data processing Applications:</b></i> 
-				    <ul style = "list-style-type: square">
-					<li><p>Mainframe computers proccessed large datasets for scientific and governmental applications.</p></li> 
-				    	<li><p>COBOL was the first programming language specifically designed for data processing and was designed in 1959.</p></li>
-					<li><p>COBOL allowed us to store data in files, create index files, and process data efficiently.</p></li>
-					<li><p>COBOL store and accessed the data in plain text files such as CSV files.</p></li>
-					<li><p>However, we saw data processing shift from COBOL to relational databases such as Oracle and Microsoft SQL Server.</p></li>
-				    </ul>
-				</p></li><br>
-
-				<li><p><i><b>Database management: </b></i>
-				    <ul style = "list-style-type: square">
-					<li><p>Relational datasets emerged, enabling structured data storage and querying.</p></li>
-					<li><p>Some Popular RDBMS are Oracle, SQL Server, PostgreSQL, MySQL, Teradata, and Exadata.</p></li>
-					<li><p>COBOL stored data in CSV, whereas Oracle or any other RDBMS store data in advanced file format - DBF files (usually stored in row-column format).</p></li>
-					<li><p>RDBMS could not store and process data in JSON and XML data files (known as Semi-Structured Data).</p></li>
-					<li><p>Some RDBMS can handle semi-structure data to some extend like PostgreSQL, MySQL 5.7, Amazon Aurora, etc.</p></li>
-					<li><p>With the growth of Internet, we developed unstructured data which is failed to handle by RDBMS.</p></li> 
-				    </ul>
-				</p></li>
-			</ul><br><br><br> 
-
-			<p style = "color: #ff6347;"><i><b>The Dawn of Big Data(1990s-2000s)</b></i></p>
-			<ul>
-				<li><p><i><b>Internet explosion:</b></i> 
-				    <ul style = "list-style-type: square">
-					<li><p>Web 2.0 and social media generated vast amounts of unstructured data such as pdf, doc, jpg, png, mp3, etc.</p></li>
-					<li><p>RDBMS was not designed to handle such an expansion of file format.</p></li>
-					<li><p>Business are now collecting more semi-structure and unstructure data.</p></li>
-					<li><p>One of the most complex Big Data issue is the <b>constantly increasing Volume</b> that requires adequate management, processing power, and storage capacity.</p></li>
-					<li><p>Point is straight, Modern data processing application must be able to handle the following problem:</p>
-					    <ul>
-						<li><p><i>Variety:</i> Modern applications must be able to handle all variety of data. It means we need to handle structured, Semi-structured, and Unstructured data.</p></li><br>
-						<li><p><i>Volume:</i> The volume of data is high these days. Companies generating large amount of data in a short period so we need capabilities to handle large volumes of data.</p></li><br>
-						<li><p><i>Velocity:</i> Modern data is generated at very high speed. It takes very less time to collect perabytes of volume. We want to process these large data in faster time. So the velocity of collecting data is very high, and the requirement of processing velocity is also high.</p></li><br>
-					    </ul>
-					</p></li>
-					<li><p>Above 3 problems combined are also known as the <b>Big Data problem.</b></p></li>
-					<li><p>RDBMS was not designed to handle Big Data problem. So industries need Big Data management platform to do the following:
-					    <ul>
-						<li><p>Store high volumes of data arriving at higher speed.</p></li>
-						<li><p>Accomodate structured, semi-structured, and unstructured data variety.</p></li>
-						<li><p>Process gigh volumes of a variety of data at a very higher velocity.</p></li>
-					    </ul>
-					</p></li>
-				    </ul>
-				</p></li><br>
-
-				<li><p><i><b>Early Big Data tools and Solution:</b></i> 
-				    <ul style = "list-style-type: square">
-					<li><p>As RDBMS is failed to handle Big Data problem, Industries needed Big Data Management platform to hand Big Data problem (3V's - Variety, Volume, and Velocity).</p></li>
-					<li><p>Two approaches of Big Data Solution:
-     					    <ul>
-						<li><p>Monolithic approach</p></li>
-						<li><p>Distributed approach</p></li>
-					    </ul>
-					</p></li><br>
-					<li><p><b>Monolithic approach: </b>Monolithic systems uses one massive system with a vast capacity of CPU, RAM, and Disk storage.</p></li><br>
-					<li><p><b>Distributed approach: </b>It uses a cluster of computers connected to work as a single system. The combined capacity of the cluster may be equal to or even higher than single Monolithic system.</p></li><br>
-					<li><p>These 2 approaches can be compared on the following criteria:</p></li>
-					<br>
-					<li style="list-style-type: none;"><table style="table-layout: fixed; width:90%;">
-						<tr>
-						  <th style="padding-right: 10px;">Monolithic Approach</th>
-						  <th style="padding-left: 10px;">Distributed Approach</th>
-						</tr>
-						<tr>
-						  <td style="padding: 10px;"><img src = "../images/pyspark/monolithic.jpg" alt="Monolithic Architecture" style="width: 100%; height: auto;"></td>
-						  <td style="padding: 10px;"><img src = "../images/pyspark/distributed.png" alt="Distributed Architecture" style="width:100%; height: auto;"></td>
-						</tr>
-						<tr>
-						  <td  colspan=2 style="text-align:center;"><p><b>Scalability</b></p></td>
-						</tr>
-						<tr>
-						  <td  colspan=2><p>Scalability is the ability of the system to increase or decrease performance in response to the demand. The system is scalable if you are able to increase its capacity (RAM, Processor, or storing etc.).</p></td>
-						</tr>
-						
-						<tr>
-						  <td style="padding:15px; text-align:justify;"><p>Scalabilty is more complex. In this approach, we increase the Tower's height. This approach is known as Verical scalability. We may need to call the vendor and request them to increase or decrease the capacity.</p></td>
-						  <td style="padding:12px; text-align:justify;"><p>Easy scalable. Scaling is as simple as adding a few more computers to the network. This approach is known as horizontal scalablity.</p></td>
-						</tr>
-						<tr>
-						  <td style="padding:15px; text-align:justify;"><p>Vertically Scalable.</p></td>
-						  <td style="padding:15px; text-align:justify;"><p>Horizontally Scalable.</p></td>
-						</tr>
-						<tr><td colspan="2">&nbsp;</td></tr>
-						<tr>
-						  <td  colspan=2 style="text-align:center;"><p><b>Fault tolerance and high availability</b></p></td>
-						</tr>
-						<tr>
-						  <td  colspan=2><p>Fault tolerance is the ability of a system to maintain proper operation in the event of failures or faults in one or more of its components like if a cpu burns out, a network card fails, or the sysem's motherboard fails.</p></td>
-						</tr>
-						<tr>
-						  <td style="padding:15px; text-align:justify;"><p>Monolithic system may not tolerate a hardware failure. If a hardware component of a monolithic system fails, it may stop working and your application will not remain available for the users.</p></td>
-						  <td style="padding:12px; text-align:justify;"><p>If a system fails in cluster, than other systems remain working. So a distributed system can tolerate many failures. A system failure in a cluster will only reduce its capacity, but the overall system remains working.</p></td>
-						</tr>
-						<tr>
-						  <td style="padding:15px; text-align:justify;"><p>cannot tolerate hardware failures.</p></td>
-						  <td style="padding:15px; text-align:justify;"><p>can tolerate hardware failures.</p></td>
-						</tr>
-						<tr><td colspan="2">&nbsp;</td></tr>
-						<tr>
-						  <td  colspan=2 style="text-align:center;"><p><b>Cost-Effictiveness</b></p></td>
-						</tr>
-						<tr>
-						  <td style="padding:15px; text-align:justify;"><p>Monolithic system are expensive. Scaling them takes a lot of time. So you may have to start with a large machine even if you need a smaller one.</p></td>
-						  <td style="padding:15px; text-align:justify;"><p>The distributed architecture uses a cluster of computers. You can start with a small cluster and keep your initial investment as low as needed. You can add some more machine at a later stage as your requirement grows.</p></td>
-						</tr>
-					</table></li>
-					<li><p>Apache Hadoop (2005) and Google's MapReduce (2004) emerged.</p></li>
-				    </ul>
-				</p></li>
-			</ul><br><br><br>
-
-			<p style = "color: #ff6347;"><i><b>Big Data Era (2010s)</b></i></p>
-			<ul>
-				<li><p><i><b>Rise of Hadoop as a distributed Big Data Platfrom:</b></i></p>
-				    <ul style = "list-style-type: square">
-					<li><p>From both the approaches, Distributed system was a preferred approach.</p></li>
-					<li><p>Hadoop came as a distributed Big Data procesing platform to solve Big Data problems.</p></li>
-					<li><p>Hadoop platform was designed and developed in layers. The core platform layer offered three capabilities:</p>
-				  	    <ul>
-						<li><p><b><i>YARN: </i></b>Hadoop was developed as an operating system of a distributed cluster. For a cluster of computers, we need a cluster operating system. Cluster operating system allows us to use the cluster resources such as CPU, Memory, and disk. CPU, Memory, and Disk on a cluster setup are spread across the computers. We are not using a single computer where everything is available on a single machine. A cluster is a group of computers. Cluster Operating System makes it work like a single large computer. It allowed us to use a cluster of computers as a single large computer. So, Yarn is Distributed cluster formation or Cluster Operating System.</p></li><br>
-						<li><p><b><i>HDFS: </i></b>Hadoop also allowed us to store data and retrieve it back. The data is internally distributed on the hard disks on the cluster. However, Hadoop offered us a distrbuted storage system and allowed us to save and read the data file as we do it on a single machine.</p></li><br>
-						<li><p><b><i>Map/Reduce: </b></i>Hadoop also allowed us to write a data processing application in Java and run it on the cluster. So Hadoop offered us a new distributed data processing framework known a s Map-Reduce framework for processing large volumes of data.</p></li>
-				  	    </ul>
-					</li><br>
-					<li><p>Hadoop platform was designed to use the cluster of computers as a single large machine. We can read/write and program data processing applications and run them on the Hadoop cluster without realizing that we are working on a cluster.</p></li>
-					<li><p>Hadoop simplified distributed computing for developers, programs run on a distributed computing platform and uses parallel processing.</p></li>
-					<li><p>Hadoop community developed many other tools over and above the hadoop Core platform (YARN, HDFS, Map-reduce). Some of the tools are Hive database, HBase database, Pig Scripting Language, Sqoopt data ingestion tools and Oozee workflow tool.</p></li>
-					
-				    </ul>
-				</li>
-
-				<br>
-				<li><p><i><b>NoSQL Databases:</b></i></p>
-				    <ul style = "list-style-type: square">
-					<li><p>NoSQL databases: MongoDB, Cassandra, and others addressed unstructured data needs to some extent.</p></li>
-				    </ul>
-				</li>
-
-				<br>
-				<li><p><i><b>Spark's emergence (2010):</b></i></p>
-				    <ul style = "list-style-type: square">
-					<li><p>spark's rise to popularity (2012-2015). It is In-memory processing, Faster than Hadoop 's MapReduce, Easy integration with Hadoop, NoSQL databases, and data sources.</p></li>
-				    </ul>
-				</li>
-	
-				<br>
-				<li><p><i><b>Cloud Computing:</b></i></p>
-				    <ul style = "list-style-type: square">
-					<li><p>Amazon Web Services (AWS, Microsoft Azure, and Google Cloud Platform (GCP) offered scalable infrastructure.</p></li>
-				    </ul>
-				</li>
-			</ul>
-
-			<br><br><br>
-			<p style = "color: #ff6347;"><i><b>Modern Big Data (2020s)</b></i></p>
-			<ul>
-				<li><p>AI and ML Integration</p></li>
-				<li><p>Real-time processing: Apache Spark, Apache Kafka, Apache Flink, and other enabled streaming data processing</p></li>
-				<li><p>Data Engineering and Science: Data pipelines, ETL, data warehousing</p></li>
-			</ul>
-
-			<br><br><br>
-
-			<hr color = "dustyrose">
-			<h2>Hadoop Architecture, History, and Evolution</h2>
-			<br>
-			<p><b>What is Hadoop?</b></p>
-			<p>Hadoop is a distributed data processing </p>
-			<br><br><br>
-
-			<hr color = "dustyrose">
-			<h2>What is Data Lake and How it works</h2>
-
-			<br><br><br>
-
-			<hr color = "dustyrose">
-			<h2>Introducing Apache Spark and Databricks Cloud</h2>
-
-			<br><br><br><br>	
+				<li style="list-style-type:number"><p><b>HDFS (Hadoop Distributed File System)</b></p>
+				<ul>
+					<li style="list-style-type:disc"><p><b>Purpose:</b> A distributed file system that stores data across the cluster.</li></p><br>
+					<li style="list-style-type:disc"><p><b>Key Components</b></p>
+					<ul>
+						<li style="list-style-type:circle"><p><b>NameNode:</b> Manages the metadata of the file system (e.g., file locations, permissions).</p></li>
+						<li style="list-style-type:circle"><p><b>DataNode:</b> Handles the actual storage of data blocks and communicates with the NameNode.</p></li>
+					</ul>
+					</li>
+				</ul><br><br><br>
+				<li style="list-style-type:number"><p><b>YARN (Yet Another Resource Negotiator):</b></p>
+				<ul>
+					<li style="list-style-type:disc"><p><b>Purpose:</b> Manages cluster resources (CPU, memory) and schedules tasks for processing.</li></p><br>
+					<li style="list-style-type:disc"><p><b>Key Components</b></p>
+					<ul>
+						<li style="list-style-type:circle"><p><b>ResourceManager:</b> Allocates resources to applications.</p></li>
+						<li style="list-style-type:circle"><p><b>NodeManager:</b> Monitors resources on individual nodes in the cluster.</p></li>
+					</ul>
+					</li>
+				</ul><br><br><br>
+				<li style="list-style-type:number"><p><b>MapReduce:</b></p>
+				<ul>
+					<li style="list-style-type:disc"><p><b>Purpose:</b> The Map-reduce is a programming technique or a programming model.</li></p><br>
+					<li style="list-style-type:disc"><p><b>Key Components</b></p>
+					<ul>
+						<li style="list-style-type:circle"><p><b>MapFunction:</b>reads data blocks and applies them to process logic at the block level. Map output is sent to Reduce.</p></li>
+						<li style="list-style-type:circle"><p><b>ReduceFunction:</b> Receives Map output from all the map functions and consolidates the result.</p></li>
+						<li style="list-style-type:circle"><p><b>MapReduce Framework:</b> It implement the map-reduce model.</p></li> 
+					</ul>
+					</li>
+				</ul>
+			</ul><br>
+			<p>All three components of Hadoop work together. The YARN, the HDFS, and the M/R framework work together to help you run parallel copies of the map function. And one copy of Reduce function for result consolidation.</p>
+			
+			<br><br><br><br>
+			
 	  
 	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
-	  		<a href = "hadoop.html" class="next-button" id="nextButton">Next &raquo;</a>
+	  		<a href = "SparkAdvantages.html" class="next-button" id="nextButton">Next &raquo;</a>
 
         	</div>
      </section>

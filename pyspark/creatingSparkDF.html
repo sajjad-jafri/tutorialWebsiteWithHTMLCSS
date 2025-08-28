@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Creaing Spark Dataframe</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Spark Table Vs Spark DataFrame</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li class="selected"><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="set.html">Data Structure: Sets</a></li>
+	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<p>In this tutorial, we will create a Dataframe using the San Fransisco fire call response data set. The data set is already available in the Databricks community cloud, and it is made available for you by the Databricks for learning purposes.</p><br>
+			
+			<p>You can access it from the following location in your Databricks community cloud.</p>
+			<ul>
+				<li><p>/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv</p></li>
+			</ul><br>
+			<p>So we do not need to download the data from the source and bring it to the cloud.</p><br><br>
+
+
+			<hr>
+			<p>Below is the code for creating a Spark Dataframe  using the San Fransisco fire call response data set. The code written here is a standard code for creating a Spark Dataframe.</p><br>
+			<pre>
+fire_df = spark.read \
+	.format(<span style="color: red">"csv"</span>) \
+	.option(<span style="color: red">"header", "true"</span>) \
+	.option(<span style="color: red">"inferSchema", "true"</span>) \
+	.load(<span style="color: red">"/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv"</span>)
+			</pre><br><br><br>
+			<p><b>Now let's see what we are doing.</b></p>
+			<p>we are using spark.read and then four lines to create a Dataframe.</p><br>
+			<p>The code will return a dataframe, and we are assigning the dataframe to the <b>fire_df</b> variable.</p><br><br>
+			<p>Now let's try to understand the spark.read.</p>
+			<p><b>spark.read - </b> The spark here is a Spark Session object. Spark session is your entry point for the Spark programming APIs. Every Spark program starts with the Spark Session because Spark APIs are available to you via the Spark Session object.</p><br>
+			<p>The read is an attribute of the spark session object. The read attribute gives you a <b>DataframeReader</b> object.</p><br>
+			<p>So the first line of code spark.read gives you a DataframeReader.</p><br>
+			<p>The rest of the code, such as format, option, and load, are the methods of the DataframeReader.</p><br>
+			<p><b>.format("csv") - </b> This is the format method which is tells the DataframeReader that which format the data file will be. In this case we have CSV format. We have other file format also like - JSON, Parquet, etc. Parquet is the default file format of Spark.</p>
+			<p>.format() is optional because if we don't pass it, the Spark will treat as parquet file format.</p><br><br>
+			<p><b>.option() - </b> .option() is to given as a key and value pair. keys can be header, inferschema, mode, etc. In this example, the CSV file comes with a header row and infer schema. It is also an optional field.</p><br>
+			<p>Finally, I call the load method so the DataframeReader can load the file from the given location. load() is not optional.</p><br><br><br>
+
+			<hr>
+			<p>In above dataframe creation, we were loading a CSV file there but we didn't use csv method instead we used format method to tell that we want to load a CSV file and the option method to set other configurations.</p><br>
+			<p>If we wanted to use the CSV method, the code would look like this.</p>
+			<pre>
+fire_df = spark.read \
+	.csv(<span style="color: red">"/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv"</span>,
+	    header = <span style="color: red">"true"</span>,
+	    inferschema = <span style="color: red">"true"</span>)
+			</pre><br>
+			<p>We are doing the same thing but CSV method is a shortcut method.</p>
+			<p>We are not setting the format and options. The CSV method implicitly tells that the format is CSV, and all other details will go as function arguments.</p><br><br>
+			<p>This long-form method(which we used earlier) is preferred because that code is standardized for loading data from any file format.</p><br><br>
+
+			<hr>
+			<h2>show method</h2>
+			<p>We created a DataFrame, and now we want to see some records from this dataframe. Wecan use the show method.</p><br>
+			<p>Lets code to show 10 records</p><br>
+			<pre>
+fire_df.show(10)
+			</pre><br>
+			<img src="../images/pyspark/dfShowOutput.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+			<p>It doesn't look nice. No problem. We can use display() function.</p>
+			<p>The display function is not part of Apache Spark. It is an additional tool by Databricks to format the output of a DataFrame.</p></br>
+			<pre>
+display(fire_df)
+			</pre><br>
+			<img src="../images/pyspark/firedfoutput.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+
+
+			<hr>
+			<h2>Converting a Dataframe into a table</h2>
+			<p>Below is the code to convert the dataframe into a table</p><br>
+			<pre>
+fire_df.createGlobalTempView(<span style="color: red">"fire_service_calls_view"</span>)
+			</pre><br>
+			<p><b>fire_df</b> is the dataframe.</p>
+			<p><b>createGlobalTempView</b> - Creating a global temporary view</p>
+			<p><b>fire_service_calls_view</b> - This is the view name.</p><br>
+			<p>we are not converting the Dataframe to a table. Instead, We are creating a global-temporary view that is similar to the table. We can run SQL expression on this view.</p><br>
+			<p>Below is the sql query to run on the temporary view</p>
+			<pre>
+select * from global_temp.fire_service_calls_view
+			</pre><br>
+			<p>Below is the output</p>
+			<img src="../images/pyspark/temporaryviewoutput.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+			<p>Make sure to change the cell type from Python to SQL hen run it.</p><br>
+			<p>The global_temp is a hidden database, and all global temporary tables are created in this global_temp database. So you must use global_temp for accessing a global-temporary view.</p>
+
+
+
+
+
+
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "creatingSparkTables.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

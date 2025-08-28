@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Create First App in Databricks cloud</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Create First App in Databricks cloud</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li class="selected"><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="set.html">Data Structure: Sets</a></li>
+	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<h2>Create First App in Databricks cloud</h2>
+			<p>This lecture will help you set up Databricks Community Edition and create your first Application inside it.</p><br>
+			<p>We'll use a free, lightweight community version but you should register for the account creation. You can use <a href="https://community.cloud.databricks.com/" target="_blank" style="color:white;">Databricks Community</a> to start with the signup process if you haven't any account yet.</p>
+
+
+			<hr>
+
+			<h2>Logging into Databricks</h2>
+			<p>After successfull login, You can see the home page of the Databricks community edition.</p><br>
+			<p>Lets  create a small, very simple, Spark project, using the Databricks Workspace:</p>
+			<ul>
+				<li><p>You can go to Workspace. Workspace menu allows you to create project directories. By default, you will see two directories
+already created here, Shared and Users. Shared directory is a shared location for sharing your project code with other users, but you should have a multi-user environment. But currently, we are into a single user environment.</p></li><br>
+				<li><p>Once your project directory is created, you can create notebooks inside your project directory. Notebook is a file where you can write code and execute it.</p></li><br>
+				<li><p>This is where you can write your code. I want to read a data file from some directory location and bring it into the Spark memory, and then display, very simple thing.</p></li><br>
+				<li><img src="../images/pyspark/firstapp.png" alt="spark" style="width:100%; height: auto;"></li><br>
+				<li><p>What it will do, it will read the data file, load it, bring it into the memory in the data frame variable df, and display that data frame.</p></li><br>
+				<li><p>Spark programs execute on a cluster of machines, so we need a cluster machine.</p></li><br>
+				<li><p>Databricks gives you one single-node free cluster facility in the Community Edition. You can see this Compute menu, click this Compute menu, and we can create a cluster.</p></li><br>
+				<li><p>Hit the Create compute button, and Databricks environment will allow you to create one free cluster</p></li><br>
+				<li><p>For executing this code, We need to attach it to a cluster. For attaching a cluster, we can come at the top of the notebook, hit the Connect button. It usually takes five minutes to start a cluster. Once the cluster is created you can attach it.</p></li><br>
+				<li><p>This program needs to read data file from some location and then bring it into the Spark memory and then display.</p></li><br>
+				<li><p>Spark applications are usually designed to do data processing, so you need data. Databricks Community Edition also gives you facility to upload some data files in the cloud.</p></li><br>
+				<li><p>Databricks Community Edition got some free storage in the cloud for keeping your data.</p></li><br>
+				<li><p>You can come to the Catalog menu	and you will see something called DBFS here.</p></li><br>
+				<li><img src="../images/pyspark/DBFS.png" alt="spark" style="width:100%; height: auto;"></li><br>
+				<li><p>DBFS is Databricks file system. It is a wrapper on the cloud storage. Behind this DBFS, we have Amazon S3 storage. Databricks mounts the S3 storage on the DBFS file system and allows us to upload or save or read or write data into the DBFS.</p></li><br>
+				<li><p>In some cases, you might not see this DBFS so if that is the case, you can come to this setting and make it enable.</p></li><br>
+			</ul>
+			
+	
+
+
+
+
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "SparkTableVsDataFrame.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

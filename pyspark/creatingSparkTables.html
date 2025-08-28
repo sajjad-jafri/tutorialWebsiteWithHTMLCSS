@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Creating Spark Tables</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Creaing Spark Tables</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li class="selected"><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="set.html">Data Structure: Sets</a></li>
+	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
+  	   			<li><a href="fileHandling.html">File Handling</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<p>In this tutorial, we will mainly use sql queries on spark Table. To create new Notebook in databricks community make sure to choose sql as default language.</p><br>
+			<p>Lets creat a new database below.</p>
+			<br><br>
+
+
+			<hr>
+			<h2>Creating Spark Database</h2>
+			<pre>
+<span style="color: blue">create database if not exists</span> demo_db
+			</pre><br><br><br>
+			<p>You can see the created database by clicking the catalog in databrick community or by running the query - <span style="color: blue">show database</span>.</p><br>
+			<img src="../images/pyspark/dbindatabricks.png" alt="dbTable" style="width:100%; height: auto;"><br><br>
+			<p>you can see 2 databases here. Spark creates one default database for us, if you create a table it will created inside the default database but we will use demo_db database and keep the tables inside this db.</p><br><br>
+			<p><b>Note: The database will be removed when the cluster is terminated. So when you create new cluster, you have to create again new database.</b></p>
+			<p>Once your cluster is terminated, Databricks will clean up the following things.
+			<ul>
+				<li><p>Cluster VM (Compute Layer)</li></p>
+				<li><p>Spark Metadata Store</li></p>
+			</ul></p><br>
+			<p>compute and metadata layers are permanently gone.</p>
+			<br><br>
+
+			<hr>
+			<h2>Creating Table</h2>
+			<p>Creating table will follow a create table DDL statement. Below is the query:</p><br>
+			<pre>
+<span style="color: blue">create table if not exists</span> demo_db.fire_service_calls_tbl(
+CallNumber integer,
+CallType string,
+CallDate string,
+Zipcode integer,
+NumAlarms integer,
+Neighborhood string,
+Delay float
+) <span style="color: blue">using</span> parquet
+			</pre><br>
+			<p>Every database table internally stores data in files. We have used parquet file format.</p>
+			<br><br>
+
+			<hr>
+			<h2>Inserting data into table</h2>
+			<p>we can use the insert-into command to insert some records into the table in a traditional database table.</p>
+			<pre>
+<span style="color: blue">insert into</span> demo_db.fire_service_calls_tbl
+values(1234, null, null, null, null, null, null)	
+			</pre><br>
+			<br><br>
+
+			<hr>
+			<h2>select * Expression</h2>
+			<p>we use select * expression to see the content of the table.</p><br>
+			<pre>
+<span style="color: blue">select * from</span> demo_db.fire_service_calls_tbl
+			</pre><br>
+			<img src="../images/pyspark/selectOutput.png" alt="dbTable" style="width:100%; height: auto;"><br>
+			<p>We have inserted the data into spark table but it is not the proper way to insert into spark tables because spark tables are expected to hold big data meaning millions of records.</p><br>
+			<p>The insert into values expression doesn't make much sense in the big data world. You will not find a project that uses insert into values to load data into Spark tables.</p><br><br>
+			<p><b>Then how do we load data into Spark tables?</b></p>
+			<p>There are many ways but for now, we will insert records into the table from another table.</p>
+
+
+			<br><br>
+			<hr>
+			<h2>Inserting records into table from another table</h2>
+			<pre>
+<span style="color: blue">insert into</span> demo_db.fire_service_calls_tbl
+<span style="color: blue">select * from</span> global_temp.fire_service_calls_view
+			</pre><br>
+			<p>We created this global temporary table in the previous lecture.</p><br>
+			<pre>
+<span style="color: blue">select * from</span> demo_db.fire_service_calls_tbl
+			</pre><br>
+			<img src="../images/pyspark/sparkTable.png" alt="dbTable" style="width:100%; height: auto;"><br>
+			
+
+
+
+
+
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "queryingSparkTable.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>
