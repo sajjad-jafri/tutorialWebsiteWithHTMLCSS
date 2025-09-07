@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Applying Transformations</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Creaing Spark Tables</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="DFTransformationsAndActions.html">Dataframe Transformation & Actions</a></li>
+	   			<li class="selected"><a href="applyingTransformations.html">Applying Transformations</a></li>
+  	   			<li><a href="queryingSparkDF.html">Querying Spark DF</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<p>In this lecture, we will learn to apply the transformations.</p><br>
+			<p>We have already learned to create a data frame for the fire call response data set. Let me recreate it again:</p>
+			<br>
+			<pre>
+raw_fire_df = spark.read \
+	.format(<span style="color: red">"csv"</span>) \
+	.option(<span style="color: red">"header", "true"</span>) \
+	.option(<span style="color: red">"inferSchema", "true"</span>) \
+	.load(<span style="color: red">"/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv"</span>)
+
+display(raw_fire_df)
+			</pre><br>
+			<img src="../images/pyspark/DFoutput.png" alt="DF Output" style="width:100%; height: auto;">
+			<br><br>
+			<p>This dataframe has got two problems.</p>
+			<ul>
+				<li><p>Column Names are not standardized(blank space)</p></li>
+				<li><p>Date fields are of string type.</p></li>
+			</ul>
+			<br>
+			<p>Note: Spark dataframe column names are case insensitive. So upper case or lower case column names are the same.</p>
+			<br><br>
+			<p>We can use the withColumnRenamed() transformation to rename the column and remove the space. This method takes two arguments. Old column name and New column name.</p>
+			<pre>
+renamed_fire_df = raw_fire_df \
+    .withColumnRenamed("Call Number", "CallNumber") \
+    .withColumnRenamed("Unit ID", "UnitID")
+			</pre><br>
+
+
+			<p>This operation will return a new dataframe(2 column renamed) transforming the old dataframe. And will hold the new dataframe in a new variable remaned_fire_df. Old dataframe i.e raw_fire_df remain unchanged.</p>
+			<br><br>
+			
+			<p>In this code, you should also learn the following concept:</p>
+			<ul>
+				<li><p>You can create a chain of Spark transformation methods one after the other. eg .withColumnRenamed(...).withColumnRenamed(...)...</p></li><br>
+				<li><p>Spark transformation returns a new dataframe after transforming the old dataframe.</p></li><br>
+				<li><p>Spark dataframe is immutable - We cannot change them. We will always create a new dataframe from an existing dataframe.</p></li><br>
+			</ul>
+			<br><br>
+
+
+			<p>So we fixed the first problem in our raw dataframe and created a new dataframe called remaned_fire_df. But we still have another problem. Date fields are of string type.</p><br>
+			<p>The call date and watch date represent a date. And the AvailableDtTm represents a timestamp. But what is the data type for these fields?</p>
+			<p>You can see the data type information using the printSchema() utility method.</p>
+			<br>
+			<img src="../images/pyspark/DFdatatype.png" alt="DF datatype" style="width:100%; height: auto;"><br>
+			<p>We can see CallDate and Watch are of date type which is expected but AvailableDtTm is of string type which should be a timestamp.</p><br>
+			<pre>
+fire_df = renamed_fire_df \
+    .withColumn("AvailableDtTm", to_timestamp("AvailableDtTm", "MM/dd/yyy hh:mm:ss a")) \
+    .withColumn("Delay", round('Delay', 2))
+			</pre><br><br>
+			<p>We are using to_timespamp() function here. So we must import this function from the pyspark.sql.functions package - from pyspark.sql.functions import *</p><br>
+			<p>The withColumn() can transform one column into another column. The withColumn() transformation converts only one column in the given dataframe.</p><br>
+
+<p>It takes two arguments: the column name and the conversion logic. We have chain one more withColumn() transformation here. We transformed the Delay column too - to round the Delay column for two digits(from 3.666789 to 3.66).</p><br>
+			
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "queryingSparkDF.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

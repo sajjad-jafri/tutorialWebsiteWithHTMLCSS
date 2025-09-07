@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Querying Spark Dataframe</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Creaing Spark Tables</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="DFTransformationsAndActions.html">Dataframe Transformation & Actions</a></li>
+	   			<li><a href="applyingTransformations.html">Applying Transformations</a></li>
+  	   			<li class="selected"><a href="queryingSparkDF.html">Querying Spark DF</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<p>In this lecture, we will query on the Spark Dataframe.</p><br>
+			<p>To query the DF, we have 2 approach:</p>
+			<ul>
+				<li><p>SQL Approach</p></li>
+				<li><p>Dataframe Transformation Approach</p></li>
+			</ul>
+			<br><br>
+			<hr>
+			<h2>SQL Approach</h2>
+			<p>The SQL approach is a two step process:</p>
+			<ul>
+				<li><p>Convert your Dataframe to a temporary view</p></li>
+				<li><p>Run your SQL on the view</p></li>
+			</ul>
+			<br>
+			<p>Let's start with creating a fire_df dataframe first</p>
+			<pre>
+fire_df = spark.read \
+    .format("csv") \
+    .option("header", "true") \
+    .option("inferSchema", "true") \
+    .load("/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv")
+			</pre><br>
+			
+			<p>Now, we will convert our Dataframe to a temporary view.</p>
+			<pre>
+fire_df.createOrReplaceTempView("fire_service_calls_view")			
+			</pre>
+			<br>
+			<p>The createOrReplaceTempView() is a utility method, and it takes the view name as an argument. This method will create a temporary view. Once you have a temporary view, you can use SQL on the view.</p>
+			<br>
+			<p>Before running the sql on the Temp view, Let's see the queries which we have used in earlier chapters (querying with Spark Table).</p>
+			<p><b>Q1. How many distinct types of calls were made to the fire department?</b></p>
+			
+			<pre>
+select count(distinct CallType) as distinct_call_type_count
+	from demo_db.fire_service_calls_tbl
+	where CallType is not null
+			</pre><br>
+
+
+			<p>This is same query we can use in spar.sql() method as below:</p>
+			<pre>
+fire_df.createOrReplaceTempView("fire_service_calls_view")
+q1_sql_df = spark.sql("""
+            select count(distinct CallType) as distinct_call_type_count
+            from fire_service_calls_view
+            where CallType is not null          
+                      """)
+display(q1_sql_df)
+			</pre><br>
+			<p><b>Output</b></p>
+			<p>32</p><br>
+			<p>So we have used the same SQL that we used on the table. But we changed the table name to the view name.</p><br>
+			<p>The spark.sql method takes a SQL expression, executes the SQL, and returns the result into a new dataframe. So q1_sql_df is the DF from result of the SQL query.</p><br>
+			<p>So we learned to run analysis queries on a dataframe. It is a two-step process:</p> 
+			<ul>	
+				<li><p>The first step is to create a view of your dataframe.</p></li>
+				<li><p>The second step is to run SQL queries on the view. The second step will give you a dataframe.</p></li>
+			</ul><br>
+			<p>We can take that dataframe for further analysis or simply display it. This is one easy way to use Spark for those who are more comfortable using SQL queries.</p><br>
+			<p>Now, we will use the second approach - Dataframe Transformation Approach</p>
+			<br><br>
+			
+			<hr>
+			<h2>Dataframe Transformation Approach</h2>
+			<p>Before writing the code, let's build the logic:</p>
+			<ul>
+				<li><p>Filter the records and take only those where CallType is not null</p></li>
+				<li><p>select the CallType column</p></li>
+				<li><p>Take only distinct call types</p></li>
+				<li><p>And finally show the count</p></li>
+			</ul><br>
+			<p>Let's write a code</p>
+			<pre>
+q1_df = fire_df.select("CallType") \
+        .where("CallType is not null") \
+        .distinct()
+print(q1_df.count())
+			</pre><br>
+			<p>We are calling a chain of three methods and each method represents one step of logic.</p><br>
+			<p>We have used 3 transformation method:</p>
+			<ul>
+				<li><p>where()</p></li>
+				<li><p>select()</p></li>
+				<li><p>distinct()</p></li>
+			</ul>
+			<p>They are transformations because they return a dataframe, and we can chain one or more transformations together.</p><br>
+			<p>We used 1 action method:</p>
+			<ul>
+				<li><p>count()</p></li>
+			</ul>
+			<p>Action doesn't return a dataframe. It returns the result to the driver.</p>
+			
+			<br><br>
+
+			<p>Let's look at the second question and the query we used in table for earlier chapter (querying with Spark Table).</p><br>
+			<p><b>Q2. What are distinct types of calls made to the fire department?</b></p>
+			<pre>
+select distinct CallType as distinct_call_type
+	from demo_db.fire_service_calls_tbl
+	where CallType is not null
+			</pre>
+			<br>
+			<p>Now look at the code for querying the Dataframe</p>
+			<pre>
+q2_df = fire_df.select("CallType") \
+        .where("CallType is not null") \
+        .distinct()
+display(q2_df)
+			</pre>
+			<br>
+			<p> will give you the output as 32 different calltype.</p><br><br>
+			
+			<p><b>Q3. Find out all responses for delayed times greater than 5 mins?</b></p>
+			<pre>
+SQL:
+select CallNumber, Delay
+	from demo_db.fire_service_calls_tbl
+	where Delay > 5
+			</pre>
+			<br>
+			<pre>
+Dataframe Transformation:
+q3_df = fire_df.select("Call Number", "Delay") \
+        .where("Delay > 5") \
+        .show()
+			</pre><br><br>
+			
+			<p><b>Q4. What were the most common call types?</b></p>
+			<pre>
+SQL:
+select CallType, count(*) as Count
+from demo_db.fire_service_calls_tbl
+	where CallType is not null
+	group by CallType
+	order by Count desc
+			</pre><br>
+			
+			<pre>
+Dataframe Transformation:
+q4_df = fire_df.select("CallType") \
+    .where("CallType is not null") \
+    .groupBy("CallType") \
+    .count() \
+    .orderBy("count", ascending=False) \
+    .show()
+			</pre>
+			<br>
+			<p></b>Output</b></p>
+			<pre>
++--------------------+-------+
+|            CallType|  count|
++--------------------+-------+
+|    Medical Incident|2843475|
+|      Structure Fire| 578998|
+|              Alarms| 483518|
+|   Traffic Collision| 175507|
+|Citizen Assist / ...|  65360|
+|               Other|  56961|
+|        Outside Fire|  51603|
+|        Vehicle Fire|  20939|
+| ...................|  .....|
+			</pre>
+			<br>
+			<p><b>Note:</b>If count is used after groupBy then it is a Transformation, not an action.</p>
+			<p>We have two count() methods in Spark. DataFrame.count() and GroupedData.count()</p>
+			<p>If you are using a count before the groupBy(), it will be an action</p>
+			<p>However, if you use a count() method after the groupBy(), it will be a transformation</p>
+
+
+		
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "queryingSparkDF.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

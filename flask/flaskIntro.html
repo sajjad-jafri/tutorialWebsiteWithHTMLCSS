@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Intro to Flask</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f57c00;
+    color: white;
+    font-weight: bold;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+      width: 100%;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+    }
+
+    td {
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #eee;
+    }
+  }
+</style>
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Introduction to Flask</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li class="selected"><a href="flaskIntro.html">Introduction to Flask</a></li>
+				<li><a href="templates.html">Templates</a></li>
+	   			<li><a href="SparkAdvantages.html">...</a></li>
+	   			<li><a href="sparkIntroduction.html">...</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">...</a></li>
+				<li><a href="SparkTableVsDataFrame.html">...</a></li>
+	   			<li><a href="creatingSparkDF.html">...</a></li>
+	   			<li><a href="creatingSparkTables.html">...</a></li>
+	   			<li><a href="queryingSparkTable.html">...</a></li>
+	   			<li><a href="DFTransformationsAndActions.html">...</a></li>
+	   			<li><a href="applyingTransformations.html">...</a></li>
+  	   			<li><a href="fileHandling.html">...</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+	  		<h2>Introduction to Flask</h2><br>
+          		<p><b>Flask</b> is a lightweight Python web framework that makes it easy to build powerful web applications.</p> 
+				<p>With its simple syntax and flexible design, Flask is perfect for beginners and pros alike. Learn to create dynamic websites, connect databases, and deploy your own web apps with ease.</p>
+			
+			<hr>
+			<p><b>Lets start with a very simple flask app</b></p>
+			<p>First we need to import the flask class from flask - from flask import Flask</p><br>
+			<p>Then, we will initiate it - app = Flask(__name__)</p><br>
+			<p>Now we want to define something called a route, which is just the endpoint that someone can go to in a browser - @app.route('/')</p><br>
+			<p>At last, we will define the index function.</p>
+			<br>
+			<pre>
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+	return "&lt;h1&gt;Hello&lt;/h1&gt;"
+			</pre><br>
+			<p>When you return a string from a route, it returns HTML. So we can use HTML tags (we used &lt;h1&gt;)</p>
+			<br><br>
+			<hr>			
+			<h2>route</h2>
+			<p>A route is a way to map a URL to a specific Python function. It’s how your app knows what to do when someone visits a certain page.</p>
+			<pre>
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Welcome to the homepage!"
+			</pre>
+			<p>Here, visiting / will trigger the home() function and return the message.</p><br><br>
+			<b>🔀 Dynamic Routes</b>
+			<p>routes with variables:</p>
+			<pre>
+@app.route('/user/&lt;username&gt;')
+def greet_user(username):
+    return f"Hello, {username}!"
+			</pre>
+			<br>
+			<b>🧠 Key Concepts</b>
+			<ul>
+				<li><p>@app.route() is a decorator that binds a URL to a function.</p></li>
+				<li><p>You can use <variable> to capture dynamic parts of the URL.</p></li>
+				<li><p>Flask supports type converters like <int:id> or <float:score>.</p></li>
+			</ul>
+
+	    	<br><br>
+
+			<hr>
+			<h2>Request Methods</h2>
+			<p>The request method refers to the HTTP method used by the client (like a browser or app) to communicate with the server.</p><br>
+			<p>So typically when you go navigate around a website or a web app in the browser, your browser is sending something called a Get request to the particular endpoint, right?</p><br>
+			<p>If you do /home it's sending a Get request to the /home endpoint.</p><br>
+			<p>So by default in flask, when you define your routes, you are defining a route that works with get requests and get requests only. But there are other methods that you can use.</p><br>
+			<p><b>🚦 Common HTTP Methods in Flask</b></p>
+			<table>
+				<tr>
+					<th>Method</th>
+					<th>Purpose</th>
+					<th>Example Use Case</th>
+				</tr>
+				<tr>
+					<td><p>GET</p></td>
+					<td><p>Retrieve data</p></td>
+					<td><p>Viewing a webpage or search query</p></td>
+				</tr>
+				<tr>
+					<td><p>POST</p></td>
+					<td><p>Submit data to the server</p></td>
+					<td><p>Login form or registration</p></td>
+				</tr>
+				<tr>
+					<td><p>PUT</p></td>
+					<td><p>Update existing data</p></td>
+					<td><p>Editing a profile</p></td>
+				</tr>
+				<tr>
+					<td><p>DELETE</p></td>
+					<td><p>Remove data</p></td>
+					<td><p>Deleting a user account</p></td>
+				</tr>
+			</table>
+			
+			
+
+			<br><br><br>
+
+			<hr>
+			<h2>🧰 Accessing the Request Method</h2>
+			<p>You can check which method was used like this:</p>
+			<pre>
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/submit', methods=['GET', 'POST'])
+def submit():
+    if request.method == 'POST':
+        return "Data submitted!"
+    else:
+        return "Send me some data!"
+			</pre>
+
+			<br><br><br>
+
+			<hr color = "dustyrose">
+			<h2>Form Data</h2>
+			<p><b>Form data</b> is accessed using the request.form object, which holds key-value pairs submitted via an HTML form using the POST method.</p><br>
+			<pre>
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/submit', methods=['GET', 'POST'])
+def submit():
+    if request.method == 'POST':
+        username = request.form.get('user_input')
+        return f"Welcome {username}"
+
+    return '&lt;form method="POST"&gt;&lt;input type="text" name="user_input"/&gt;&lt;input type="submit"&gt;&lt;/form&gt;'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+			</pre><br>
+			<img src="../images/flask/flask3.png" alt="flask output" style="width:100%; height: auto;"><br><br><br>
+			<b>🔍 Key Notes</b>
+			<ul>
+				<li><p>It won't go to if condition as by default the method is GET but after hitting the submit button, it will go to if condition.</p></li><br>
+				<li><p>request.form is a dictionary-like object containing form fields.</p></li><br>
+				<li><p>Use .get('fieldname') to safely retrieve values.</p></li><br>
+				<li><p>Works only with POST requests</p></li>
+			</ul>
+			<br><br>
+			<hr>
+			<h2>Redirects</h2>
+			<p>redirects are super handy for sending users to a different URL—whether it's after a form submission, login, or just rerouting traffic. Here's how to use them:</p><br>
+			<pre>
+from flask import Flask, redirect
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return redirect('/welcome')  # Redirects to /welcome
+
+@app.route('/welcome')
+def welcome():
+    return 'Welcome to the redirected page!'
+			</pre><br>
+			<img src="../images/flask/flask4.png" alt="flask output" style="width:100%; height: auto;"><br><br>
+			<p>It will take you directly to /welcome page.</p><br><br>
+			
+			<p><b>🔗 Redirect with url_for()</b></p>
+			<p>This is cleaner and more flexible—especially if you change route names later.</p><br>
+			<pre>
+from flask import Flask, redirect, url_for
+
+app = Flask(__name__)
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    # Imagine login logic here
+    return redirect(url_for('dashboard'))
+
+@app.route('/dashboard')
+def dashboard():
+    return 'Logged in successfully!'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+			</pre>
+			
+			<br><br><br><br>	
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "templates.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

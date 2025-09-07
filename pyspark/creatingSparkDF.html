@@ -36,9 +36,9 @@
 	   			<li class="selected"><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
 	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
 	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
-	   			<li><a href="set.html">Data Structure: Sets</a></li>
-	   			<li><a href="dictionary.html">Data Structure: Dictionary</a></li>
-  	   			<li><a href="fileHandling.html">File Handling</a></li>
+	   			<li><a href="DFTransformationsAndActions.html">Dataframe Transformation & Actions</a></li>
+	   			<li><a href="applyingTransformations.html">Applying Transformations</a></li>
+  	   			<li><a href="queryingSparkDF.html">Querying Spark DF</a></li>
   	  		</ul>
 		</div>
 
@@ -47,7 +47,7 @@
 			
 			<p>You can access it from the following location in your Databricks community cloud.</p>
 			<ul>
-				<li><p>/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv</p></li>
+				<li><p><b>/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv</b></p></li>
 			</ul><br>
 			<p>So we do not need to download the data from the source and bring it to the cloud.</p><br><br>
 
@@ -60,17 +60,15 @@ fire_df = spark.read \
 	.option(<span style="color: red">"header", "true"</span>) \
 	.option(<span style="color: red">"inferSchema", "true"</span>) \
 	.load(<span style="color: red">"/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv"</span>)
-			</pre><br><br><br>
-			<p><b>Now let's see what we are doing.</b></p>
-			<p>we are using spark.read and then four lines to create a Dataframe.</p><br>
+			</pre><br><br>
 			<p>The code will return a dataframe, and we are assigning the dataframe to the <b>fire_df</b> variable.</p><br><br>
-			<p>Now let's try to understand the spark.read.</p>
+			<p><b>Now let's see what we are doing.</b></p>
 			<p><b>spark.read - </b> The spark here is a Spark Session object. Spark session is your entry point for the Spark programming APIs. Every Spark program starts with the Spark Session because Spark APIs are available to you via the Spark Session object.</p><br>
 			<p>The read is an attribute of the spark session object. The read attribute gives you a <b>DataframeReader</b> object.</p><br>
 			<p>So the first line of code spark.read gives you a DataframeReader.</p><br>
 			<p>The rest of the code, such as format, option, and load, are the methods of the DataframeReader.</p><br>
-			<p><b>.format("csv") - </b> This is the format method which is tells the DataframeReader that which format the data file will be. In this case we have CSV format. We have other file format also like - JSON, Parquet, etc. Parquet is the default file format of Spark.</p>
-			<p>.format() is optional because if we don't pass it, the Spark will treat as parquet file format.</p><br><br>
+			<p><b>.format("csv") - </b> Format method tells the DataframeReader that which format the data file will be. In this case we have CSV format. We have other file format also like - JSON, Parquet, etc. Parquet is the default file format of Spark.</p>
+			<p>.format() is optional because if we don't pass it, the Spark will treat as parquet file format.</p><br>
 			<p><b>.option() - </b> .option() is to given as a key and value pair. keys can be header, inferschema, mode, etc. In this example, the CSV file comes with a header row and infer schema. It is also an optional field.</p><br>
 			<p>Finally, I call the load method so the DataframeReader can load the file from the given location. load() is not optional.</p><br><br><br>
 

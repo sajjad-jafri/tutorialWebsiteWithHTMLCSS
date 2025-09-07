@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dataframe Transformations and Actions</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Creaing Spark Tables</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li class="selected"><a href="DFTransformationsAndActions.html">Dataframe Transformation & Actions</a></li>
+	   			<li><a href="applyingTransformations.html">Applying Transformations</a></li>
+  	   			<li><a href="queryingSparkDF.html">Querying Spark DF</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<p>Dataframe offers you a long list of methods.</p><br>
+			<p>However, we can classify them into three logical groups.</p>
+			<ol>
+				<li style="list-style-type:1"><p>Actions</p></li>
+				<li><p>Transformations</p></li>
+				<li><p>Functions/Methods</p></li>
+			</ol><br>
+			<h3>Actions</h3>
+			<p>Actions are DataFrame operations that kick off a Spark Job execution and return to the Spark Driver.</p>
+			<p>Spark offers you 12 actions as on date:</p>
+			<table cellspacing="25">
+				<tr>
+				<td><p>collect</p></td>
+				<td><p>count</p></td>
+				<td><p>describe</p></td>
+				</tr>
+				<tr>
+				<td><p>first</p></td>
+				<td><p>foreach</p></td>
+				<td><p>foreachPartition</p></td>
+				</tr>
+				<tr>
+				<td><p>head</p></td>
+				<td><p>show</p></td>
+				<td><p>summary</p></td>
+				</tr>
+				<tr>
+				<td><p>tail</p></td>
+				<td><p>take</p></td>
+				<td><p>toLocalIterator</p></td>
+				</tr>
+			</table><br>
+
+			<br><br>
+
+
+			<h3>Transformations</h3>
+			<p>Spark DataFrame transformation produces a newly transformed dataframe.</p>
+			<p>We have 38 transformations</p>
+			<table cellspacing="20">
+				<tr>
+				<td><p>agg</p></td>
+				<td><p>alias</p></td>
+				<td><p>coalesce</p></td>
+				<td><p>colRegex</p></td>
+				</tr>
+				<tr>
+				<td><p>crossJoin</p></td>
+				<td><p>crosstab</p></td>
+				<td><p>cube</p></td>
+				<td><p>distinct</p></td>
+				</tr>
+				<tr>
+				<td><p>drop</p></td>
+				<td><p>drop_duplicates</p></td>
+				<td><p>dropDuplicates</p></td>
+				<td><p>dropna</p></td>
+				</tr>
+				<tr>
+				<td><p>exceptall</p></td>
+				<td><p>filter</p></td>
+				<td><p>groupby</p></td>
+				<td><p>intintersect</p></td>
+				</tr>
+				<tr>
+				<td><p>ersectAll</p></td>
+				<td><p>join</p></td>
+				<td><p>limit</p></td>
+				<td><p>orderBy</p></td>
+				</tr>
+				<tr>
+				<td><p>randomSplit</p></td>
+				<td><p>repartition</p></td>
+				<td><p>repartitionByRange</p></td>
+				<td><p>rollup</p></td>
+				</tr>
+				<tr>
+				<td><p>sample</p></td>
+				<td><p>sampleBy</p></td>
+				<td><p>select</p></td>
+				<td><p>selectExpr</p></td>
+				</tr>
+				<tr>
+				<td><p>sort</p></td>
+				<td><p>sortWithinPartitions</p></td>
+				<td><p>subtract</p></td>
+				<td><p>transform</p></td>
+				</tr>
+				<tr>
+				<td><p>union</p></td>
+				<td><p>unionAll</p></td>
+				<td><p>unionByName</p></td>
+				<td><p>where</p></td>
+				</tr>
+				<tr>
+				<td><p>withColumn</p></td>
+				<td><p>withColumnRenamed</p></td>
+				</tr>
+			</table><br>
+
+			<br><br>
+			
+			<h3>Functions/Methods</h3>
+			<p>Everything other than the Actions and Transformations is a method or function.</p>
+			<p>we have 20 functions and methods:</p>
+			<table cellspacing="20">
+				<tr>
+				<td><p>approxQuantile</p></td>
+				<td><p>cache</p></td>
+				</tr>
+				<tr>
+				<td><p>checkpoint</p></td>
+				<td><p>createGlobalTempView</p></td>
+				</tr>
+				<tr>
+				<td><p>createOrReplaceGlobalTempView</p></td>
+				<td><p>createOrReplaceTempView</p></td>
+				</tr>
+				<tr>
+				<td><p>createTempView</p></td>
+				<td><p>explain</p></td>
+				</tr>
+				<tr>
+				<td><p>hint</p></td>
+				<td><p>inputFiles</p></td>
+				</tr>
+				<tr>
+				<td><p>isLocal</p></td>
+				<td><p>localCheckpoint</p></td>
+				</tr>
+				<tr>
+				<td><p>persist</p></td>
+				<td><p>printSchema</p></td>
+				</tr>
+				<tr>
+				<td><p>registerTempTable</p></td>
+				<td><p>toDF</p></td>
+				</tr>
+				<tr>
+				<td><p>toJSON</p></td>
+				<td><p>unpersist</p></td>
+				</tr>
+				<tr>
+				<td><p>writeTo</p></td>
+				<td><p>withWatermark</p></td>
+				</tr>
+			</table>			
+
+
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "applyingTransformations.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>
