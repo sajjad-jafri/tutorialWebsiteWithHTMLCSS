@@ -699,7 +699,7 @@ section {
   text-decoration: none;
 }
 
-.course-inner .syllabi ul li .selected  {
+.course-inner .syllabi ul li.selected  {
   border-radius: 2px 2px 2px 2px white;
 }
 
