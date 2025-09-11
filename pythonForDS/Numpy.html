@@ -1,49 +1,56 @@
 <html>
-   <head>
-      <title>Numpy Introduction</title>
+	<head>
+		<meta charset="UTF-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Numpy Introduction</title>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
       <link rel="stylesheet" href="../mystyle.css">
-   </head>
+	  <script src="../myJS.js" defer></script>
+	</head>
 	
-   <body>
-     <header>
-        <h1>Numpy Introduction</h1>
-     </header>
-
-     <main id = content>
-
-       <nav id = "navbar">
-	  <ul>
-	    <li><a href = "../index.html">Home</a></li>
-	    <li><a href="../course.html">Courses</a></li>
-	    <li><a href="#about">About</a></li>
-	    <li><a href="#contact">Contact</a></li>
-	  </ul>
-       </nav>
-
-	<hr color="dustyrose" style="width:95%;text-align:center;colour:blue"><br>
-
-	<section id = "course-details"> 
-        <div class = "syllabi">
-	<ul>
-	   <li class="selected"><a href="Numpy.html">What is Numpy</a></li>
-	   <li><a href="numpyArrays.html">Numpy Arrays</a></li>
-	   <li><a href="numpyIndexingSelecting.html">Numpy Indexing and Selection</a></li> 
-	   <li><a href="numpyOperations.html">Numpy Operations</a></li>
-  	  </ul>
-	</div>
-
-	<div class = "content" >
-		<h2>What is Numpy?</h2>
-          	<p>NumPy stands for <b>Nu</b>meric <b>py</b>thon which is a python package for creating multidimensional (N-D) and single-dimensional (1-D) array elements.</p>
-		<p>Numpy has the ability to quickly broadcast functions, and is also used in linear algebra, Fourier transform, statistical distributions, trigonometric functions and random number of capabilities.</p> 
-		<p>While NumPy structures look similar to standard Python lists, they are much more efficient! It provides an array object much faster than traditional Python lists.</p>
-        	<p>NumPy provides a convenient and efficient way to handle the vast amount of data. NumPy is also very convenient with Matrix 			multiplication and data reshaping. NumPy is fast which makes it reasonable to work with a large set of data.</p>
-		<p>Numpy arrays essentially come in two flovors: <b>Vectors</b> and <b>Matrices</b>. Vectors are strictly 1-d arrays and matrices are 2-d (but you should note a matrix can still have only one row or one column).</p>
+	<body>
+		<div id="nav-placeholder"></div>
 		
-		<p>You can install NumPy simply using pip command in your command prompt window using <b>'pip install numpy'</b></p>
+		<section class="course-inner">
+			<div id="chapter-btn">NumPy</div>
+     
+			<div class = "syllabi">
+				<ul>
+					<li class="selected"><a href="Numpy.html">What is Numpy</a></li>
+					<li><a href="numpyArrays.html">Numpy Arrays</a></li>
+					<li><a href="numpyIndexingSelecting.html">Numpy Indexing</a></li>
+					<li><a href="numpyOperations.html">Numpy Operation</a></li>
+				</ul>
+			</div>
+    
+			<div class = "course-content" >
+				<h2>What is NumPy?</h2>
+				<p>NumPy stands for <b>Nu</b>meric <b>Py</b>thon is a python library for working with arrays and mathematical operations in Python. It is a fundamental package for scientific computing and data analysis in Python.</p><br>
+				<p><b>🔍 Key Features</b></p>
+				<p><b>Multi-dimensional arrays:</b></p>
+				<p>NumPy provides support for single-dimensional (1-D) array and multidimensional (N-D) array elements (matrices) which are essential for numeric computations.</p>
+				<br>
+				<p><b>Vectorized operations:</b></p>
+				<p>NumPy allows you to perform operations on entire arrays at once, making it much faster than working with Python lists.</p>
+				<br>
+				<p><b>Mathematical functions:</b></p>
+				<p>NumPy provided a wide range of mathematical functions, including basic arithmetic, linear algebra, trigonometric, exponential, fourier transform, and statistical functions.</p>
+				<br><br>
+				<p><b>🧠 Advantages:</b></p>
+				<p><b>Speed:</b></p>
+				<p>While NumPy structures look similar to standard Python lists, NumPy is much faster and efficient than working with Python lists, making it ideal for large-scale numeric computations.</p><br>
+				<p><b>Effiecient memory usage:</b></p>
+				<p>NumPy arrays use less memory than Python lists, which is important when working with large datasets.</p><br> 
+				<p><b>Convinient</b></p>
+				<p>NumPy is very convenient and efficient with Matrix multiplication and data reshaping.</p><br>
+				<p><b>Different flavours:</b></p>
+				<p>Numpy arrays essentially come in two flavors: <b>Vectors</b> and <b>Matrices</b>. Vectors are strictly 1-d arrays and matrices are 2-d (but you should note a matrix can still have only one row or one column).</p><br><br>
+				
+				<p>You can install NumPy simply using pip command in your command prompt window using <b>'pip install numpy'</b></p>
 		
 
-		<br><br><br>
+		<br><br>
 		<hr color = "dustyrose">
 		<h2>Types of Array:</h2>
 		<ul>	
@@ -138,20 +145,33 @@
 
 
         </div>
-     	</section>
+     </section>
 
      </main>
 	
-     <footer>
-	<p>&copy; 2024 LeraninHub</p>
-     </footer>
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
 
 	<script>
 	 function scrollToTop() {
 	  window.scrollTo({top:0, behavior: 'smooth'});
 	}
 	</script>
-	
+
 </body>
 </html>
-

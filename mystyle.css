@@ -796,14 +796,25 @@ main {
    border-radius: 5px;
 } 
 
+.course h2,
+.course h4,
+.course p,
+.course a,
+.course .syllabus li {
+  color: var(--light-white);
+}
 
+.course a:hover {
+  color: var(--white); /* optional: highlight on hover */
+}
 .syllabus ul {
   padding: 0;
   margin: 0;
 }
 
 .syllabus li {
-  background color: #f0f0f0;
+  background-color: var(--light-bg);
+  color: var(--light-white);
   border-radius: 5px;
   padding: 10px 20px;
   margin-bottom: 10px;
@@ -811,14 +822,25 @@ main {
   text-align: center; 
 }
 
+.syllabus li a {
+  display: block;
+  color: var(--light-white);
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
 .syllabus li:last-child {
   margin-bottom: 0;
 }
 
 .syllabus li:hover {
-  background-color: #e0e0e0;
-  transition: background-color 0.3s;
+  background-color: #5c5c5c; /* darker hover background */
+  color: var(--white);       /* brighter text for contrast */
 }
+
+
+
+
 
 
 #course-details {

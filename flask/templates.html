@@ -17,47 +17,14 @@
 </head>
 	
 <style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
-  }
-
-  th, td {
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  th {
-    background-color: #f57c00;
-    color: white;
-    font-weight: bold;
-  }
-
-  tr:hover {
-    background-color: #f5f5f5;
-  }
-
-  @media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
-      width: 100%;
+    pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
     }
-
-    th {
-      position: sticky;
-      top: 0;
-    }
-
-    td {
-      padding: 10px;
-      border: none;
-      border-bottom: 1px solid #eee;
-    }
-  }
-</style>
+  </style>
 <body>
 	<!-- header starts -->
    	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
@@ -65,7 +32,7 @@
 	<!-- header ends -->
 
 	<section class="course-inner">
-		<div id="chapter-btn">Introduction to Flask</div>
+		<div id="chapter-btn">Templates</div> <!-- This is for mobile view - to see the chapter name -->
 		<div class = "syllabi">
 			<ul>
 	   			<li><a href="flaskIntro.html">Introduction to Flask</a></li>
@@ -84,180 +51,462 @@
 		</div>
 
 		<div class = "course-content" >
-	  		<h2>Introduction to Flask</h2><br>
-          		<p><b>Flask</b> is a lightweight Python web framework that makes it easy to build powerful web applications.</p> 
-				<p>With its simple syntax and flexible design, Flask is perfect for beginners and pros alike. Learn to create dynamic websites, connect databases, and deploy your own web apps with ease.</p>
+          	<p>In the last chapter, we saw that we can return HTML from our route functions like below:</p>
+			<pre>
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">index</span>():
+	<span style="color:#00bfff;">return</span> "&lt;h1&gt;<span style="color:#7CFC00;">Hello</span>&lt;/h1&gt;"
+			</pre><br>
+			<p>But this isn't the best way of doing it. What we can do instead is return a template.</p><br>
+			<p>A <b>template</b> is just a HTML file. Using template in flask app is a powerful way to build dynamic web pages using HTML combined with Python logic.</p><br>
+			
+			<p>Flask uses Jinja2 as its templating engine, which lets you embed Python-like expressions directly into your HTML files.</p><br><br>
 			
 			<hr>
-			<p><b>Lets start with a very simple flask app</b></p>
-			<p>First we need to import the flask class from flask - from flask import Flask</p><br>
-			<p>Then, we will initiate it - app = Flask(__name__)</p><br>
-			<p>Now we want to define something called a route, which is just the endpoint that someone can go to in a browser - @app.route('/')</p><br>
-			<p>At last, we will define the index function.</p>
-			<br>
-			<pre>
-from flask import Flask
+			<h2>🧰 How to set up the templates</h2>
+			<ul>
+				<li><p>Flask looks for templates in a folder named templates by default. So first in your project directory just create a folder called templates. You can create your .html files here.</p></li>
+				<pre>
+/your-app
+  ├── app.py
+  └── templates/
+        └── index.html
+				</pre><br>
+				<li><p>We can edit this index.html to load the HTML from templates. templates/index.html:</p></li>
+				<pre>
+<span style="color:#808080;">&lt;!DOCTYPE</span> <span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">head</span>&gt;
+    &lt;<span style="color:#00bfff;">title</span>&gt;Welcome&lt;/<span style="color:#00bfff;">title</span>&gt;
+&lt;/<span style="color:#00bfff;">head</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+    &lt;<span style="color:#00bfff;">h1</span>&gt;Hello, User!&lt;/<span style="color:#00bfff;">h1</span>&gt;
+    &lt;<span style="color:#00bfff;">p</span>&gt;This page rendered using Flask templates.&lt;/<span style="color:#00bfff;">p</span>&gt;
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+				</pre><br><br>
+				<li><p>And finally, we can load these HTML using the render_template() function to serve HTML files.</p></li>
+				<pre>
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-	return "&lt;h1&gt;Hello&lt;/h1&gt;"
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">home</span>():
+    <span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">'index.html'</span>)
+
+<span style="color:#00bfff;">if</span> __name__ == <span style="color:#7CFC00;">'__main__'</span>:
+    app.run(debug=<span style="color:#00bfff;">True</span>)
+				</pre>
+				
+			</ul><br>
+			<p>So this allows us to keep our Python code separate from the HTML, because they're two completely different languages.</p><br><br>
+				
+			
+			<hr>
+			<h2>Template Variables</h2>
+			<p>The most common thing that you'll use inside of a template other than HTML will be variables.</p><br>
+			<p><b>Template variables</b> are the dynamic values you pass from your Python code to your HTML templates using the render_template() function.</p><br>
+			<p><b>🧠 How Template Variables Work</b></p>
+			<ul>
+				<li><p>Flask uses <b>Jinja2</b> as its templating engine.</p></li><br>
+				<li><p>In your Python route, you use <mark>render_template("template.html", variable=value)</mark> to pass data.</p></li><br>
+				<li><p>Inside your HTML template, you access that data using double curly braces: <br><mark>{{ variable }}</mark>.</p></li><br>
+			</ul><br>
+			<p><b>🛠 Example</b></p>
+			<p><b>Python (Flask route):</b></p>
+			<pre>
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask, render_template
+app = Flask(__name__)
+
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">"/"</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">index</span>():
+    <span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">'index.html'</span>, <span style="color:#7CFC00;">page_name="index"</span>)
 			</pre><br>
-			<p>When you return a string from a route, it returns HTML. So we can use HTML tags (we used &lt;h1&gt;)</p>
+			<p>Now the template will have access to a variable called page name.</p>
+			<p>The way to bring the variable into the template is to use two curly brackets and then the name of the variable.</p>
+			<p><b>HTML (index.html):</b></p>
+			<pre>
+<span style="color:#808080;">&lt;!DOCTYPE</span> <span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+    &lt;<span style="color:#00bfff;">h1</span>&gt;The name of this page is: {{ page_name }}&lt;/<span style="color:#00bfff;">h1</span>&gt;
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+				</pre><br>
+				<p><b>Output</b></p>
+				<p>The name of this page is: index</p>
+				<br>
+				<p><b>Note:</b> We can pass multiple Variables.</p>
+				<pre>
+<span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">"profile.html"</span>, username=<span style="color:#7CFC00;">"Alex"</span>, age=<span style="color:orange;">30</span>, hobbies=[<span style="color:#7CFC00;">"reading"</span>, <span style="color:#7CFC00;">"cycling"</span>])
+				</pre>
+				<br><br>
+				
+				<hr>
+				<h2>Conditionals</h2>
+				<p><b>Example 1</b></p>
+				<p><b>🧪 Flask Route (app.py)</b></p>
+				<pre>
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask, render_template
+app = Flask(__name__)
+
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">home</span>():
+    <span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">'index.html'</span>, number=10)
+
+<span style="color:#00bfff;">if</span> __name__ == <span style="color:#7CFC00;">'__main__'</span>:
+    app.run(debug=<span style="color:#00bfff;">True</span>)
+				</pre><br><br>
+				<p><b>🖼️ Template (templates/index.html)</b></p>
+				<pre>
+<span style="color:#808080;">&lt;!DOCTYPE</span> <span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+    {% if number > 20 %}
+        &lt;<span style="color:#00bfff;">h1</span>&gt;{{ number }} is greater than 20&lt;/<span style="color:#00bfff;">h1</span>&gt;
+    {% else %}
+        &lt;<span style="color:#00bfff;">h1</span>&gt;{{ number }} is less than 20&lt;/<span style="color:#00bfff;">h1</span>&gt;
+    {% endif %}
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+				</pre><br><br><br>
+				
+				<p><b>Example 2</b></p>
+				<p><b>🧪 Flask Route (app.py)</b></p>
+				<pre>
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask, render_template
+app = Flask(__name__)
+
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">home</span>():
+    user = {
+        <span style="color:#7CFC00;">'name'</span>: <span style="color:#7CFC00;">'Aarav'</span>,
+        <span style="color:#7CFC00;">'logged_in'</span>: <span style="color:#00bfff;">True</span>
+    }
+    <span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">'index.html'</span>, user=user)
+
+<span style="color:#00bfff;">if</span> __name__ == <span style="color:#7CFC00;">'__main__'</span>:
+    app.run(debug=<span style="color:#00bfff;">True</span>)
+
+				</pre><br><br>
+				<p><b>🖼️ Template (templates/index.html)</b></p>
+				<pre>
+<span style="color:#808080;">&lt;!DOCTYPE</span> <span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">head</span>&gt;
+    &lt;<span style="color:#00bfff;">title</span>&gt;Welcome&lt;/<span style="color:#00bfff;">title</span>&gt;
+&lt;/<span style="color:#00bfff;">head</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+    {% if user.logged_in %}
+        &lt;<span style="color:#00bfff;">h1</span>&gt;Welcome back, {{ user.name }}!&lt;/<span style="color:#00bfff;">h1</span>&gt;
+        &lt;<span style="color:#00bfff;">p</span>&gt;Glad to see you again. Here's your dashboard.&lt;/<span style="color:#00bfff;">p</span>&gt;
+    {% else %}
+        &lt;<span style="color:#00bfff;">h1</span>&gt;Hello, Guest!&lt;/<span style="color:#00bfff;">h1</span>&gt;
+        &lt;<span style="color:#00bfff;">p</span>&gt;Please log in to access your account.&lt;/<span style="color:#00bfff;">p</span>&gt;	
+    {% endif %}
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+				</pre><br><br>
+				<p><b>🔍 What’s Happening Here:</b></p>
+				<ul>
+					<li><p>The user dictionary is passed to the template.</p></li><br>
+					<li><p>The {% if user.logged_in %} block checks if the user is logged in.</p></li><br>
+					<li><p>Depending on the result, it shows either a personalized welcome or a prompt to log in.</p></li>
+				</ul>
+
 			<br><br>
 			<hr>			
-			<h2>route</h2>
-			<p>A route is a way to map a URL to a specific Python function. It’s how your app knows what to do when someone visits a certain page.</p>
-			<pre>
-from flask import Flask
+			<h2>Loops</h2>
+			<p><b>🧪 Flask Route (app.py)</b></p>
+				<pre>
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask, render_template
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Welcome to the homepage!"
-			</pre>
-			<p>Here, visiting / will trigger the home() function and return the message.</p><br><br>
-			<b>🔀 Dynamic Routes</b>
-			<p>routes with variables:</p>
-			<pre>
-@app.route('/user/&lt;username&gt;')
-def greet_user(username):
-    return f"Hello, {username}!"
-			</pre>
-			<br>
-			<b>🧠 Key Concepts</b>
-			<ul>
-				<li><p>@app.route() is a decorator that binds a URL to a function.</p></li>
-				<li><p>You can use <variable> to capture dynamic parts of the URL.</p></li>
-				<li><p>Flask supports type converters like <int:id> or <float:score>.</p></li>
-			</ul>
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">home</span>():
+    <span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">'index.html'</span>, data=[<span style="color:#7CFC00;">'Milk'</span>, <span style="color:#7CFC00;">'Bread'</span>, <span style="color:#7CFC00;">'Eggs'</span>])
+
+<span style="color:#00bfff;">if</span> __name__ == <span style="color:#7CFC00;">'__main__'</span>:
+    app.run(debug=<span style="color:#00bfff;">True</span>)
+				</pre><br><br>
+				<p><b>🖼️ Template (templates/index.html)</b></p>
+				<pre>
+<span style="color:#808080;">&lt;!DOCTYPE</span> <span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+    {% for item in data %}
+        &lt;<span style="color:#00bfff;">h1</span>&gt;{{ item }}&lt;/<span style="color:#00bfff;">h1</span>&gt;
+    {% endfor %}
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+				</pre>
 
 	    	<br><br>
 
 			<hr>
-			<h2>Request Methods</h2>
-			<p>The request method refers to the HTTP method used by the client (like a browser or app) to communicate with the server.</p><br>
-			<p>So typically when you go navigate around a website or a web app in the browser, your browser is sending something called a Get request to the particular endpoint, right?</p><br>
-			<p>If you do /home it's sending a Get request to the /home endpoint.</p><br>
-			<p>So by default in flask, when you define your routes, you are defining a route that works with get requests and get requests only. But there are other methods that you can use.</p><br>
-			<p><b>🚦 Common HTTP Methods in Flask</b></p>
-			<table>
-				<tr>
-					<th>Method</th>
-					<th>Purpose</th>
-					<th>Example Use Case</th>
-				</tr>
-				<tr>
-					<td><p>GET</p></td>
-					<td><p>Retrieve data</p></td>
-					<td><p>Viewing a webpage or search query</p></td>
-				</tr>
-				<tr>
-					<td><p>POST</p></td>
-					<td><p>Submit data to the server</p></td>
-					<td><p>Login form or registration</p></td>
-				</tr>
-				<tr>
-					<td><p>PUT</p></td>
-					<td><p>Update existing data</p></td>
-					<td><p>Editing a profile</p></td>
-				</tr>
-				<tr>
-					<td><p>DELETE</p></td>
-					<td><p>Remove data</p></td>
-					<td><p>Deleting a user account</p></td>
-				</tr>
-			</table>
+			<h2>Include</h2>
+			<p>We can <b>include one template inside another</b> using Jinja2’s <mark>{% include %}</mark> directive.</p><br>
+			<p>This is super useful for reusing components like headers, footers, navbars, or any HTML snippet across multiple pages.</p><br>
 			
-			
-
-			<br><br><br>
-
-			<hr>
-			<h2>🧰 Accessing the Request Method</h2>
-			<p>You can check which method was used like this:</p>
+			<p><b>🧱 Basic Example of include</b></p>
+			<p>Let’s say you have the following structure:</p>
 			<pre>
-from flask import Flask, request
-
+/templates
+  ├── base.html
+  ├── header.html
+  ├── footer.html
+  └── home.html
+			</pre><br>
+			<p><b>header.html</b></p>
+			<pre>
+&lt;<span style="color:#00bfff;">header</span>&gt;
+  &lt;<span style="color:#00bfff;">h1</span>&gt;My Flask App&lt;/<span style="color:#00bfff;">h1</span>&gt;
+  &lt;<span style="color:#00bfff;">hr</span>&gt;
+&lt;/<span style="color:#00bfff;">header</span>&gt;
+			</pre><br>
+			<p><b>footer.html</b></p>
+			<pre>
+&lt;<span style="color:#00bfff;">footer</span>&gt;
+  &lt;<span style="color:#00bfff;">hr</span>&gt;
+  &lt;<span style="color:#00bfff;">p</span>&gt;&lt;<span style="color:purple;">&copy;</span> 2025 My Flask App&lt;/<span style="color:#00bfff;">p</span>&gt;
+&lt;/<span style="color:#00bfff;">footer</span>&gt;
+			</pre><br>
+			<p><b>home.html</b></p>
+			<pre>
+{% include 'header.html' %}
+&lt;<span style="color:#00bfff;">h2</span>&gt;Welcome to the homepage!&lt;/<span style="color:#00bfff;">h2</span>&gt;
+&lt;<span style="color:#00bfff;">p</span>&gt;This is dynamic content.&lt;/<span style="color:#00bfff;">p</span>&gt;
+{% include 'footer.html' %}
+			</pre><br>
+			<p><b>app.py</b></p>
+			<pre>
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask
 app = Flask(__name__)
 
-@app.route('/submit', methods=['GET', 'POST'])
-def submit():
-    if request.method == 'POST':
-        return "Data submitted!"
-    else:
-        return "Send me some data!"
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">home</span>():
+	<span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">'home.html'</span>)
+<span style="color:#00bfff;">if</span> __name__ == <span style="color:#7CFC00;">'__main__'</span>:
+    app.run(debug=<span style="color:#00bfff;">True</span>)
+			</pre><br><br>
+			<p><b>Output:</b></p>
+			<pre>
+My Flask App
+Welcome to the homepage!
+This is dynamic content.
+© 2025 My Flask App
 			</pre>
 
-			<br><br><br>
-
-			<hr color = "dustyrose">
-			<h2>Form Data</h2>
-			<p><b>Form data</b> is accessed using the request.form object, which holds key-value pairs submitted via an HTML form using the POST method.</p><br>
-			<pre>
-from flask import Flask, request
-
-app = Flask(__name__)
-
-@app.route('/submit', methods=['GET', 'POST'])
-def submit():
-    if request.method == 'POST':
-        username = request.form.get('user_input')
-        return f"Welcome {username}"
-
-    return '&lt;form method="POST"&gt;&lt;input type="text" name="user_input"/&gt;&lt;input type="submit"&gt;&lt;/form&gt;'
-
-if __name__ == '__main__':
-    app.run(debug=True)
-			</pre><br>
-			<img src="../images/flask/flask3.png" alt="flask output" style="width:100%; height: auto;"><br><br><br>
-			<b>🔍 Key Notes</b>
-			<ul>
-				<li><p>It won't go to if condition as by default the method is GET but after hitting the submit button, it will go to if condition.</p></li><br>
-				<li><p>request.form is a dictionary-like object containing form fields.</p></li><br>
-				<li><p>Use .get('fieldname') to safely retrieve values.</p></li><br>
-				<li><p>Works only with POST requests</p></li>
-			</ul>
 			<br><br>
 			<hr>
-			<h2>Redirects</h2>
-			<p>redirects are super handy for sending users to a different URL—whether it's after a form submission, login, or just rerouting traffic. Here's how to use them:</p><br>
-			<pre>
-from flask import Flask, redirect
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return redirect('/welcome')  # Redirects to /welcome
-
-@app.route('/welcome')
-def welcome():
-    return 'Welcome to the redirected page!'
-			</pre><br>
-			<img src="../images/flask/flask4.png" alt="flask output" style="width:100%; height: auto;"><br><br>
-			<p>It will take you directly to /welcome page.</p><br><br>
+			<h2>Inheritance</h2>
+			<p><b>Inheritance</b> allows you to create a <b>base template</b> and then build other templates on top of it. This helps you maintain a consistent layout across your web pages while keeping your code clean and modular.</p><br>
+			<p><b>🧬 What Template Inheritance Does</b></p>
+			<p>It lets you:</p>
+			<ul>
+				<li><p>Define a <b>common structure</b> (like headers, footers, navigation bars) in one file.</p></li>
+				<li><p>Create <b>child templates</b> that reuse this structure and override specific parts.</p></li>
+			</ul>
+			<br><br>
 			
-			<p><b>🔗 Redirect with url_for()</b></p>
-			<p>This is cleaner and more flexible—especially if you change route names later.</p><br>
+			<p><b>🛠 Example</b></p>
+			<p>🗂️ Base Template Example (base.html)</p>
 			<pre>
-from flask import Flask, redirect, url_for
+<span style="color:#808080;">&lt;!DOCTYPE</span> <span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">head</span>&gt;
+    &lt;<span style="color:#00bfff;">title</span>&gt;{% block title %}{% endblock %}&lt;/<span style="color:#00bfff;">title</span>&gt;
+&lt;/<span style="color:#00bfff;">head</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+	&lt;<span style="color:#00bfff;">nav</span>&gt; ...navigation bar... &lt;/<span style="color:#00bfff;">nav</span>&gt;
+	{% block content %}{% endblock %}
+	&lt;<span style="color:#00bfff;">footer</span>&gt; ...footer... &lt;/<span style="color:#00bfff;">footer</span>&gt;
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+			</pre><br>
+			<p>🧬 Child Template Example (home.html)</p>
+			<pre>
+{% extends "base.html" %}
 
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+&lt;<span style="color:#00bfff;">h1</span>&gt;Welcome to the Home Page!&lt;/<span style="color:#00bfff;">h1</span>&gt;
+&lt;<span style="color:#00bfff;">p</span>&gt;This is the main content of the homepage.&lt;/<span style="color:#00bfff;">p</span>&gt;
+{% endblock %}
+			</pre><br>
+			<p>🚀 Flask App Setup</p>
+			<pre>
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask
 app = Flask(__name__)
 
-@app.route('/login', methods=['GET','POST'])
-def login():
-    # Imagine login logic here
-    return redirect(url_for('dashboard'))
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">home</span>():
+	<span style="color:#00bfff;">return</span> render_template(<span style="color:#7CFC00;">'home.html'</span>)
+<span style="color:#00bfff;">if</span> __name__ == <span style="color:#7CFC00;">'__main__'</span>:
+    app.run(debug=<span style="color:#00bfff;">True</span>)
+			</pre><br>
+			<p><b>Output:</b></p>
+			<img src="../images/flask/flask5.png" alt="flask output" style="width:100%; height: auto;">
+			
+			<br><br><br>
+			
+			<p><b>How Child Templates Override Base Blocks</b></p>
+			<p>So far, we have seen we that are not writing anythin in base.html block. we are just leaving it as:</p>
+			<p>{% block content %}{% endblock %}</p>
+			
+			<br>
+			<p>Even if we write anything in this block, the child template will override the content. Lets understand it by an example</p><br>
+			<p>🗂️ Base Template (base.html)</p>
+			<pre>
+<span style="color:#808080;">&lt;!DOCTYPE</span> <span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">head</span>&gt;
+    &lt;<span style="color:#00bfff;">title</span>&gt;{% block title %}{% endblock %}&lt;/<span style="color:#00bfff;">title</span>&gt;
+&lt;/<span style="color:#00bfff;">head</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+	&lt;<span style="color:#00bfff;">nav</span>&gt; ...navigation bar... &lt;/<span style="color:#00bfff;">nav</span>&gt;
+	{% block intro_message %}This is from base template{% endblock %}
+	{% block content %}{% endblock %}
+	&lt;<span style="color:#00bfff;">footer</span>&gt; ...footer... &lt;/<span style="color:#00bfff;">footer</span>&gt;
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+			</pre><br>
+			<p>🧬 Child Template Example (home.html)</p>
+			<pre>
+{% extends "base.html" %}
 
-@app.route('/dashboard')
-def dashboard():
-    return 'Logged in successfully!'
+{% block title %}Home Page{% endblock %}
 
-if __name__ == '__main__':
-    app.run(debug=True)
+{% block check %}
+This is from index which has overridden the text from base
+{% endblock %}
+
+{% block content %}
+&lt;<span style="color:#00bfff;">h1</span>&gt;Welcome to the Home Page!&lt;/<span style="color:#00bfff;">h1</span>&gt;
+&lt;<span style="color:#00bfff;">p</span>&gt;This is the main content of the homepage.&lt;/<span style="color:#00bfff;">p</span>&gt;
+{% endblock %}
+			</pre><br>
+			<p><b>Output:</b></p>
+			<img src="../images/flask/flask6.png" alt="flask output" style="width:100%; height: auto;"><br><br><br>
+			
+			<h3>super()</h3>
+			<p>{{ super() }} is a special function used inside a block to <b>include the content from the parent template’s block.</b></p><br>
+			<p><b>🔍 Why Use super()?</b></p>
+			<p>When you override a block in a child template, the original content from the parent template is replaced. But sometimes, you want to keep the original content and add to it—that’s where super() comes in.</p><br><br>
+			
+			<p><b>🧪 Example - base.html</b></p>
+			<pre>
+{% block footer %}
+  &lt;<span style="color:#00bfff;">p</span>&gt;© 2025 My Website&lt;/<span style="color:#00bfff;">p</span>&gt;
+{% endblock %}
+			</pre><br>
+			<p><b>child.html</b></p>
+			<pre>
+{% extends "base.html" %}
+
+{% block footer %}
+  {{ super() }}
+  &lt;<span style="color:#00bfff;">p</span>&gt;Contact us at support@example.com&lt;/<span style="color:#00bfff;">p</span>&gt;
+{% endblock %}
+			</pre><br>
+			<p><b>Result:</b></p>
+			<pre>
+&lt;<span style="color:#00bfff;">p</span>&gt;© 2025 My Website&lt;/<span style="color:#00bfff;">p</span>&gt;
+&lt;<span style="color:#00bfff;">p</span>&gt;Contact us at support@example.com&lt;/<span style="color:#00bfff;">p</span>&gt;
 			</pre>
+			
+			<br><br>
+			<hr>
+			<h2>🧾 Comments</h2>
+			<p>In Flask templates (which use the Jinja2 engine), you can add comments in two distinct ways:</p>
+			<p><b>🧾 1. Template Comments</b></p>
+			<pre>
+<span style="color:gray;">{# 
+{% for item in items %}
+  &lt;<span style="color:gray;">p</span>&gt;{{ item }}<span style="color:gray;">p</span>&gt;
+{% endfor %}
+#}</span>
+			</pre>
+			<p>These are comments that are <b>only visible in your template code</b> and do <b>not appear in the rendered HTML</b>. Use this for internal notes, explanations, or reminders in your template logic. This is handy during development when testing different template behaviors.</p>
+			<br><br>
+			
+			<p><b>🌐 2. HTML Comments</b></p>
+			<pre>
+<span style="color:gray;">&lt;!-- This is an HTML comment. Users can see this in the page source. --&gt;</span>
+			</pre>
+			<p>Use this if you want to leave notes for front-end developers or debugging hints that are okay to be public.</p>
+			
+			<br><br>
+			<hr>
+			<h2>📄 Static Files</h2></p>
+			<p><b>Static files</b> refer to assets like CSS, JavaScript, images, fonts, and videos that don’t change dynamically and are served directly to the browser.</p><br><br>
+			<p><b>📁 Folder Structure</b></p>
+			<pre>
+your_project/
+│
+├── app.py
+├── static/
+│   ├── style.css
+│   ├── script.js
+│   └── images/
+│       └── logo.png
+└── templates/
+    └── index.html
+			</pre><br><br>
+			<p><b>🔗 Linking Static Files in Templates</b></p>
+			<p>Use Jinja2’s url_for() function to link static files in your HTML:</p>
+			<p><b>base.html</b></p>
+			<pre>
+&lt;<span style="color:#00bfff;">html</span>&gt;
+&lt;<span style="color:#00bfff;">head</span>&gt;
+	{% block css %}
+	&lt;<span style="color:#00bfff;">link</span> <span style="color:orange;">rel</span>=<span style="color:green;">"stylesheet"</span> <span style="color:orange;">href</span>=<span style="color:green;">"{{ url_for('static', filename='style.css') }}"</span>&gt;
+	{% endblock %}
+	
+	{% block js %}
+	&lt;<span style="color:#00bfff;">script</span> <span style="color:orange;">src</span>=<span style="color:green;">"{{ url_for('static', filename='script.js') }}</span>"&gt;&lt;/<span style="color:#00bfff;">script</span>&gt;
+	{% endblock %}
+&lt;/<span style="color:#00bfff;">head</span>&gt;
+&lt;<span style="color:#00bfff;">body</span>&gt;
+	...
+&lt;/<span style="color:#00bfff;">body</span>&gt;
+&lt;/<span style="color:#00bfff;">html</span>&gt;
+			</pre><br>
+			<p>We have added static files inside base.html so that every html file can use it if it extends the base.html file.</p>
+			<p>You can directly add css or JS directly in any html page using:<br>
+			&lt;!-- 🎨 Linking CSS --&gt;<br>
+			&lt;<span style="color:#00bfff;">link</span> <span style="color:orange;">rel</span>=<span style="color:green;">"stylesheet"</span> <span style="color:orange;">href</span>=<span style="color:green;">"{{ url_for('static', filename='style.css') }}"</span>&gt;<br><br>
+
+			&lt;!-- ⚙️ Linking JS --&gt;<br>
+			&lt;<span style="color:#00bfff;">script</span> <span style="color:orange;">src</span>=<span style="color:green;">"{{ url_for('static', filename='script.js') }}</span>"&gt;&lt;/<span style="color:#00bfff;">script</span>&gt;<br><br>
+
+			&lt;!-- 🖼️ Displaying an image --&gt;<br>
+			&lt;<span style="color:#00bfff;">img</span> <span style="color:orange;">src</span>=<span style="color:green;">="{{ url_for('static', filename='images/logo.png') }}"</span> <span style="color:orange;">alt</span>=<span style="color:green;">"Logo"</span>>
+			</p>
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			
 			
 			<br><br><br><br>	
 	  

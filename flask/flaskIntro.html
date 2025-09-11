@@ -40,23 +40,24 @@
     background-color: #f5f5f5;
   }
 
+  /* Mobile-friendly scrollable table */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   @media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
-      width: 100%;
-    }
-
-    th {
-      position: sticky;
-      top: 0;
-    }
-
-    td {
-      padding: 10px;
-      border: none;
-      border-bottom: 1px solid #eee;
+    table {
+      min-width: 500px; /* Ensures horizontal scroll */
     }
   }
+  
+  pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
+    }
 </style>
 <body>
 	<!-- header starts -->
@@ -65,7 +66,7 @@
 	<!-- header ends -->
 
 	<section class="course-inner">
-		<div id="chapter-btn">Introduction to Flask</div>
+		<div id="chapter-btn">Introduction to Flask</div> <!-- This is for mobile view - to see the chapter name -->
 		<div class = "syllabi">
 			<ul>
 	   			<li class="selected"><a href="flaskIntro.html">Introduction to Flask</a></li>
@@ -90,19 +91,19 @@
 			
 			<hr>
 			<p><b>Lets start with a very simple flask app</b></p>
-			<p>First we need to import the flask class from flask - from flask import Flask</p><br>
-			<p>Then, we will initiate it - app = Flask(__name__)</p><br>
+			<p>First we need to import the Flask class from flask: <i><b>from flask import Flask</b></i></p><br>
+			<p>Then, we will initiate it: <i><b>app = Flask(__name__)</b></i></p><br>
 			<p>Now we want to define something called a route, which is just the endpoint that someone can go to in a browser - @app.route('/')</p><br>
 			<p>At last, we will define the index function.</p>
 			<br>
 			<pre>
-from flask import Flask
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-	return "&lt;h1&gt;Hello&lt;/h1&gt;"
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">index</span>():
+	<span style="color:#00bfff;">return</span> "&lt;h1&gt;<span style="color:#7CFC00;">Hello</span>&lt;/h1&gt;"
 			</pre><br>
 			<p>When you return a string from a route, it returns HTML. So we can use HTML tags (we used &lt;h1&gt;)</p>
 			<br><br>
@@ -110,23 +111,24 @@ def index():
 			<h2>route</h2>
 			<p>A route is a way to map a URL to a specific Python function. It’s how your app knows what to do when someone visits a certain page.</p>
 			<pre>
-from flask import Flask
+<span style="color:#00bfff;">from</span> flask <span style="color:#00bfff;">import</span> Flask
+
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Welcome to the homepage!"
+<span style="color:#ffcc00;">@app.route</span>(<span style="color:#7CFC00;">'/'</span>)
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">home</span>():
+    <span style="color:#00bfff;">return</span> "<span style="color:#7CFC00;">Welcome to the homepage!</span>"
 			</pre>
 			<p>Here, visiting / will trigger the home() function and return the message.</p><br><br>
-			<b>🔀 Dynamic Routes</b>
+			<p><b>🔀 Dynamic Routes</b></p>
 			<p>routes with variables:</p>
 			<pre>
-@app.route('/user/&lt;username&gt;')
-def greet_user(username):
-    return f"Hello, {username}!"
+<span style="color:#ffcc00;">@app.route</span>('/user/&lt;username&gt;')
+<span style="color:#00bfff;">def</span> <span style="color:#da70d6;">reet_user</span>(username):
+    <span style="color:#00bfff;">return</span> f"Hello, {username}!"
 			</pre>
 			<br>
-			<b>🧠 Key Concepts</b>
+			<p><b>🧠 Key Concepts</b></p>
 			<ul>
 				<li><p>@app.route() is a decorator that binds a URL to a function.</p></li>
 				<li><p>You can use <variable> to capture dynamic parts of the URL.</p></li>
@@ -212,7 +214,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 			</pre><br>
 			<img src="../images/flask/flask3.png" alt="flask output" style="width:100%; height: auto;"><br><br><br>
-			<b>🔍 Key Notes</b>
+			<p><b>🔍 Key Notes</b></p>
 			<ul>
 				<li><p>It won't go to if condition as by default the method is GET but after hitting the submit button, it will go to if condition.</p></li><br>
 				<li><p>request.form is a dictionary-like object containing form fields.</p></li><br>
