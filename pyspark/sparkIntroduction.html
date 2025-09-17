@@ -68,15 +68,55 @@
 			<p>The next one is Spark Streaming libraries, and they allow you to process a continuous and unbounded stream of data.</p>
 			<p>Then you have a set of libraries specifically designed to meet your machine learning, deep learning, and AI requirements.</p>
 			<p>The last collection is for Graph Processing libraries, and they allow you to implement Graph Processing Algorithms using Apache Spark.</p><br><br>
-			<p>So the topmost layer is nothing but a set of libraries and DSLs to help you solve your data crunching problems. And all these are available in multiple languages such as Java, Scala, Python, and R.</p><br><br><br>
+			<p>So the topmost layer is nothing but a set of libraries and DSLs to help you solve your data crunching problems. And all these are available in multiple languages such as Java, Scala, Python, and R.</p><br><br>
+			
 			<hr>
-			<h2>What is Databricks</h2>
-			<p>Databricks is a cloud-based platform designed for data engineering, machine learning, and analytics, built on the open-source Apache Spark.</p><br>
-			<p>Databricks brings Apache Spark to the Cloud Platform. In fact, Databricks product is known as Databricks Cloud. And the Databricks Cloud is only available on the Cloud platforms. But they are available on AWS, Azure, and Goole Cloud.</p><br> 
-			<p>So Databricks brings Apache Spark on all the major cloud platforms. Databricks allows you to launch a Cluster for running Spark applications automatically. That takes a lot of burden from you. You do not need to configure and launch a cluster manually for running your Spark applications. Databricks allows you to start, configure, and install all the dependency and runtime libraries on all the nodes to run your Spark application.</p><br>
-			<p>So, in a nutshell, Databricks offers you an easy way to configure, launch, and shut down the clusters in the cloud environment.</p><br>
-			<p>Databricks Cloud also offers you Notebooks and Workspace for Spark development. These workspace and Notebooks are as good as IDE for spark development. You can use the notebooks to develop, share and collaborate with your colleagues for Spark development.</p><br>
-			<p>Databricks Spark runtime is 5x faster than the standard Apache Spark runtime.</p>
+			<h2>Execution Methods</h2>
+			<p>Apache Spark is a distributed computing platform. It is used to create programs and execute them on a Spark Cluster.</p>
+			<p>But this lecture is all about - How do we execute Spark programs on a Spark Cluster?</p><br>
+			
+			<p><b>How to execute Spark Programs?</b></p>
+			<p>We have two methods to run spark programs.</p>
+			<ul>
+				<li><p>Interactive Clients (REPL Mode)</p></li>
+				<li><p>Submit a Job (job submission)</p></li>
+			</ul><br>
+			<p><b>🧪 1. Interactive Clients (REPL Mode)</b></p>
+			<p>Great for learning, development phase, testing, and data exploration.</p>
+			<p><b>Tools</b></p>
+			<ul>
+				<li><p>spark-shell</p></li>
+				<li><p>Jupyter Notebook</p></li>
+			</ul><br>
+			<p><b>How It Works:</b></p>
+			<p>You launch an interactive shell, type Spark commands, and see results immediately. It’s a REPL (Read-Eval-Print Loop), so you can test snippets of code without writing a full script.</p><br><br>
+			<p><b>🚀 2. Submit a Job (Batch Mode)</b></p>
+			<p>This is the professional way to run Spark applications—perfect for production.</p>
+			<p><b>Tools</b></p>
+			<ul>
+				<li><p>spark-submit</p></li>
+				<li><p>Databricks Notebook</p></li>
+			</ul><br>
+			<p><b>How It Works:</b></p>
+			<p>You write a full Spark application, then submit it to a Spark cluster using the spark-submit command.</p><br><br>
+			
+			<hr>
+			<h2>How your program runs?</h2>
+			<p>We have already learned that we develop Spark applications and submit them to the Spark Cluster for execution.</p>
+			<p>However, we still don't know how Spark is going to execute our application on a distributed cluster.</p><br>
+			<p><b>How is the Spark distributed processing model works?</b></p>
+			<p>Spark applies a master-slave architecture to every application. So, when we submit our application to the Spark, it is going to create a master process for your application.</p><br>
+			<p>This master process is then going to create a bunch of slaves to distribute the work and complete your job.</p><br>
+			<p>In Spark terminology, the master is a driver, and the slaves are the executors.</p>
+			<img src="../images/pyspark/whatIsSpark3.png" alt="spark" style="width:100%; height: auto;"><br>
+			<p>This is about your application and the containers - Not about the cluster. The cluster itself might have a master-node and a bunch of slave nodes.</p></br>
+			<p>So, the Spark engine is going to ask for a container from the underlying cluster manager to start the driver process. Once started, the driver is again going to ask for some more containers to start the executor process.</p><br>
+			<p>And this happens for each application. Suppose you are using the spark-submit utility, and you submitted an application A1. Let's assume you submitted one more application, A2. Spark engine again will request a container and start the A2 driver.</p><br>
+			<p>A1 and A2 are two independent applications. Both of them are following a master-salve architecture and have their own dedicated driver and executors.</p>
+			<img src="../images/pyspark/whatIsSpark4.png" alt="spark" style="width:100%; height: auto;"><br>
+			<p>Every spark application applies a master-slave architecture and runs independently on the cluster.</p>
+			
+			
 			
 	
 
