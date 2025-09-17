@@ -11,6 +11,16 @@
 	<script src="../myJS.js" defer></script>
 </head>
 
+<style>
+    pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
+    }
+  </style>
+
 <body>
 	<div id="nav-placeholder"></div>
 	<section class="course-inner">
@@ -27,14 +37,70 @@
           	<p>Pandas is a powerhouse Python library for data manipulation and analysis.</p><br>
 			<p><b>🧠 Uses</b></p>
 			<ul>
+				<li><p>Reading & Writing data in many formats</p></li>
 				<li><p>Cleaning and transforming data</p></li>
 				<li><p>Filtering and querying</p></li>
+				<li><p>Handle missing data</p></li>
 				<li><p>Aggregating and visualizing</p></li>
 			</ul><br><br>
 			<p><b>📦 Pandas provides two core data structures:</b></p>
 			<ul>
 				<li><p><b>Series:</b>A one-dimensional labeled array.</p></li>
 				<li><p><b>DataFrame:</b>A two-dimensional table with rows and columns.</p></li>
+			</ul><br><br>
+			
+			<hr>
+			<h2>Series</h2>
+			<p>A Series is a data structure that holds an 1-D array of information or data along with a named index.</p>
+			<p>It can hold any data type data. You can store integers, floats, strings, or even Python objects.</p>
+			<br>
+			
+			<p><b>Example</b></p>
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+<span style="color:gray;"># From a list</span>
+data = [<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>]
+ser = pd.Series(data)
+<span style="color:yellow;">print</span>(ser)
+			</pre>
+			<br>
+			<p><b>Output</b></p>
+			<pre>
+0    10
+1    20
+2    30
+3    40
+dtype: int64
+			</pre>
+			<br><br>
+			
+			<p>Here, 0, 1, 2, 3 are the default index labels. You can also set custom labels:
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+data = [<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>]
+ser = pd.Series(data, index=['a', 'b', 'c', 'd'])
+<span style="color:yellow;">print</span>(ser)
+<span style="color:yellow;">print</span>('<span style="color:green;">Element at index b:</span>',ser['b']) <span style="color:gray;"># Accessing single element</span>
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+0    10
+1    20
+2    30
+3    40
+dtype: int64
+
+Element at index b: 20			
+			</pre><br><br>
+			
+			<p><b>🧠 Bonus Tip:</b></p>
+			<p>You can create a Series from:</p>
+			<ul>
+				<li><p>Lists or arrays</p></li>
+				<li><p>Dictionaries (keys become labels)</p></li>
+				<li><p>Scalar values (repeated across index)</p></li>
 			</ul>
 
  

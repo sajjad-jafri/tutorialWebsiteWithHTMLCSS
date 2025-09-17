@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Introduction to Apache Spark</title>
+
+      	<!-- font awesome cdn limk -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+	<!-- custom CSS -->
+      	<link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+
+<style>
+    pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
+    }
+  </style>
+	
+
+<body>
+	<!-- header starts -->
+   	<!-- Navigation will be loaded here from myJS.js file using nav.html file -->
+    	<div id="nav-placeholder"></div>
+	<!-- header ends -->
+
+	<section class="course-inner">
+		<div id="chapter-btn">Introduction to Apache Spark</div>
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="bigData.html">Understanding Big Data</a></li>
+				<li><a href="hadoop.html">Understanding Hadoop</a></li>
+	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
+	   			<li><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+				<li class="selected"><a href="setUpSparkOnLocalMachine.html">Set Up Spark On Local Machine</a></li>
+ 	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
+				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
+	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
+	   			<li><a href="creatingSparkTables.html">Creating Spark Tables</a></li>
+	   			<li><a href="queryingSparkTable.html">Querying with Spark Table</a></li>
+	   			<li><a href="DFTransformationsAndActions.html">Dataframe Transformation & Actions</a></li>
+	   			<li><a href="applyingTransformations.html">Applying Transformations</a></li>
+  	   			<li><a href="queryingSparkDF.html">Querying Spark DF</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<h2>Setting up Spark On Local Machine</h2>
+			<p>In this lecture, We will try to set up local Spark Development environment.</p><br>
+			<p>Here is the list of things that you need:</p>
+			<ul>
+				<li><p>JDK 8 or JDK 11</p></li>
+				<li><p>Python 3.6 or higher</p></li>
+				<li><p>Hadoop WinUtils</p></li>
+				<li><p>Spark Binaries</p></li>
+				<li><p>Environment Variables</p></li>
+				<li><p>Python IDE</p></li>
+			</ul><br><br>
+			<hr>
+			<h2>JDK Installation</h2>
+			<p>Let's start with the JDK installation.</p>
+			<p>Spark is a JVM application. It runs in a Java Virtual machine. You might write code in Python, but Spark runs most things in a Java Virtual Machine. So you need JDK on your local machine for installing and running your Spark application.</p><br>
+			
+			<p>The current most recent Java is JDK 26, However, as of today, Spark supports JDK 8 or JDK 11.</p><br><br> 
+			<p>Let's see how to install JDK 11 on your local machine.</p>
+			<ul>
+			<li><p>Visit <a href="https://jdk.java.net/java-se-ri/11-MR3" style="color: white;">jdk.java.net</a> and download Java SE 11 from list of all available versions.</p></li><br>
+			<li><p>Extract it, copy the JDK-11 folder and paste it at c:\program files\Java. Create a folder with name Java if not created already.</p></li><br>
+			<li><p>We have to set up two environment variables to make it work. Let add the environment variable using cmd.</p>
+				<ul>
+					<li><p>Open cmd.</p></li><br>
+					<li><p>Type setx JAVA_HOME "C:\Program Files\Java\jdk-11.0.0.2" and hit enter. You will see the screen like below:</p>
+					<pre>
+C:\Users\user_name>setx JAVA_HOME "C:\Program Files\Java\jdk-11.0.0.2"
+
+SUCCESS: Specified value was saved.
+					</pre></li><br>
+					<li><p>The second requirement is to add the JAVA_HOME\bin to your PATH environment variable. You can add using the command:</p>
+					<p>setx PATH "%PATH%;%JAVA_HOME%\bin"</p>
+					<pre>
+C:\Users\user_name>setx PATH "%PATH%;%JAVA_HOME%\bin"
+
+SUCCESS: Specified value was saved.
+					</pre></li>
+				</ul></li><br>
+			<li><p>You can exit the command prompt, restart it and test your JDK.</p>
+			<pre>
+C:\Users\user_name>java -versions
+openjdk version "11.0.0.2" 2024-07-02
+OpenJDK Runtime Environment 18.9 (build 11.0.0.2+2-2)
+OpenJDK	64-Bit Server VM 18.9 (build 11.0.0.2+2-2, mixed mode)
+			</pre></li>
+			<br><br>
+			
+			<hr>
+			<h2>Hadoop WinUtils</h2>
+			<p>Spark was initially developed to run on Linux-based Hadoop systems. It didn't work on Windows machines. If you try, it throws the following error. You might also see some file permission errors. However, the open-source community created winutils to fix those issues and allow us to run Spark on a windows machine. So we need winutils.</p><br>
+			<ul>
+				<li><p>Lets download it.</p>
+				<p>Start browser and serach for Hadoop winutils, you will see a github link <a href="github.com/cdarlint/winutils" style="color:white;">Hadoop Winutils.</a></p></li><br>
+				<li><p>You can click on green-colored Code button and select Download Zip. Extract it. You will see the winutils-master directory. </p></li><br>
+				<li><p>Go inside, and you will see many other folders. Copy the latest version folder and pasting it at another permanent location.</p></li><br>
+				<li><p>Now add environment variables using cmd</p>
+				<pre>
+C:\Users\user_name>setx HADOOP_HOME "C:\HadoopWinutils\hadoop-3.3.6"
+
+SUCCESS: Specified value was saved.
+				</pre></li><br>
+				<li><p>Now add it to the PATH environment variable.</p>
+				<pre>
+C:\Users\user_name>setx PATH "%PATH%;%HADOOP_HOME%\bin"
+
+SUCCESS: Specified value was saved.
+				</pre></li>
+			</ul>
+			
+			<br><br>
+			<hr>
+			<h2>Spark Binaries</h2>	
+			
+			
+			
+			
+	
+
+
+
+
+			<br><br><br><br>
+			
+	  
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "sparkFirstAppinDatabricksCloud.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+     </main>
+	
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

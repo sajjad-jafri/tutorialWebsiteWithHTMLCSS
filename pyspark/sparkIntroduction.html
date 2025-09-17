@@ -31,6 +31,7 @@
 				<li><a href="hadoop.html">Understanding Hadoop</a></li>
 	   			<li><a href="SparkAdvantages.html">Spark Advantages over Hadoop</a></li>
 	   			<li class="selected"><a href="sparkIntroduction.html">Introduction to Apache Spark</a></li>
+				<li><a href="setUpSparkOnLocalMachine.html">Set Up Spark On Local Machine</a></li>
  	   			<li><a href="sparkFirstAppinDatabricksCloud.html">Create First Spark Application in Databricks Cloud</a></li>
 				<li><a href="SparkTableVsDataFrame.html">Spark Table Vs Spark DataFrame</a></li>
 	   			<li><a href="creatingSparkDF.html">Creating Spark Dataframe</a></li>
@@ -115,6 +116,22 @@
 			<p>A1 and A2 are two independent applications. Both of them are following a master-salve architecture and have their own dedicated driver and executors.</p>
 			<img src="../images/pyspark/whatIsSpark4.png" alt="spark" style="width:100%; height: auto;"><br>
 			<p>Every spark application applies a master-slave architecture and runs independently on the cluster.</p>
+			<br><br>
+			
+			<hr>
+			<p>We still have two open questions</p><br>
+			<p><b>How Spark runs your application on a local machine?</b></p>
+			<p>How Spark runs your application on a local machine when we do not have a cluster</p><br>
+			<p><b>How Spark runs our application when we use interactive clients?</b></p>
+			<p> how Spark runs our application when we use interactive tools. Because in that case, we do not submit the application to the Spark cluster.</p><br>
+			
+			<p>Let's start with the first question.</p>
+			<h2>How does Spark run on a local machine?</h2>
+			<p>You can execute a Spark application on your local machine without even having a real cluster.
+			
+			<h2>How Spark runs our application when we use interactive tools?</h2>
+			
+			
 			
 			
 			
@@ -127,7 +144,7 @@
 			
 	  
 	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
-	  		<a href = "sparkFirstAppinDatabricksCloud.html" class="next-button" id="nextButton">Next &raquo;</a>
+	  		<a href = "setUpSparkOnLocalMachine.html" class="next-button" id="nextButton">Next &raquo;</a>
 
         	</div>
      </section>
