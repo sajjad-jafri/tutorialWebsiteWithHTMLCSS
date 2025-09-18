@@ -127,9 +127,38 @@
 			
 			<p>Let's start with the first question.</p>
 			<h2>How does Spark run on a local machine?</h2>
-			<p>You can execute a Spark application on your local machine without even having a real cluster.
+			<p>You can execute a Spark application on your local machine without even having a real cluster.</p>
+			<p>We can configure our application to run on a variety of clusters, Spark engine is compatible with the following cluster managers.</p>
+			<ul>
+				<li><p>local[n]</p></li>
+				<li><p>YARN</p></li>
+				<li><p>Kubernetes</p></li>
+				<li><p>Mesos</p></li>
+				<li><p>Standalone</p></li>
+			</ul><br>
+			<p>In next lecture, we will execute the pyspark in pycharm IDE on Local machine. we will write one small program but as of now just know we use spark.master = local[2] to run locally with 2 threads. This is how we can use local cluster manager.</p><br>
+			<p>So, when you configure your application to run with a single local thread spark.master = local[1] or dont provide, then you will have a driver only and no executors. And in that case, your driver is forced to do everything itself. Nothing happens in parallel.</p><br>
+			<p>local[3] means 1 driver and 2 executors.</p>
+			<br>
+			<p>Lets move to the next question</p>
+			<br><br>
 			
-			<h2>How Spark runs our application when we use interactive tools?</h2>
+			<h2>How to Spark with interactive tools?</h2>
+			<p>Spark gives you a choice to run your application in one of the following modes.</p>
+			<ul>
+				<li><p>Client mode</p></li>
+				<li><p>Cluster mode</p></li>
+			</ul><br>
+			<p><b>Client mode</b></p>
+			<p>The Client mode is designed for interactive clients, such as spark-shell and the notebooks. In this mode, the Spark driver process runs locally at your client machine. However the driver still connects to the cluster manager and starts all the executors on the cluster.</p>	
+			<img src="../images/pyspark/whatIsSpark5.png" alt="spark" style="width:100%; height: auto;"><br>
+			<p>If you are quitting your client or you log off from your client machine, then your driver dies, and hence the executors will also die in the absence of the driver. So, client mode is suitable for interactive work but not for long-running jobs.</p>
+			<br><br>
+			
+			<p><b>Cluster mode</b></p>
+			<p>The cluster mode is designed to submit your application to the cluster and let it run. In this mode, everything runs on the cluster. Your driver, as well as the executors.</p>
+			<img src="../images/pyspark/whatIsSpark6.png" alt="spark" style="width:100%; height: auto;"><br>
+			<p>Once you submit your application to run in cluster mode, you can log off from the client machine, and your driver is not impacted because it is running on the cluster.</p>
 			
 			
 			

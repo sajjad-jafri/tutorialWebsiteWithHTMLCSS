@@ -110,12 +110,14 @@ OpenJDK	64-Bit Server VM 18.9 (build 11.0.0.2+2-2, mixed mode)
 				<li><p>You can click on green-colored Code button and select Download Zip. Extract it. You will see the winutils-master directory. </p></li><br>
 				<li><p>Go inside, and you will see many other folders. Copy the latest version folder and pasting it at another permanent location.</p></li><br>
 				<li><p>Now add environment variables using cmd</p>
+				<p>setx HADOOP_HOME "C:\HadoopWinutils\hadoop-3.3.6"</p>
 				<pre>
 C:\Users\user_name>setx HADOOP_HOME "C:\HadoopWinutils\hadoop-3.3.6"
 
 SUCCESS: Specified value was saved.
 				</pre></li><br>
 				<li><p>Now add it to the PATH environment variable.</p>
+				<p>setx PATH "%PATH%;%HADOOP_HOME%\bin"</p>
 				<pre>
 C:\Users\user_name>setx PATH "%PATH%;%HADOOP_HOME%\bin"
 
@@ -126,7 +128,95 @@ SUCCESS: Specified value was saved.
 			<br><br>
 			<hr>
 			<h2>Spark Binaries</h2>	
+			<p>Visit <a href="https://spark.apache.org/" style="color:white;">https://spark.apache.org/</a></p><br>
+			<p>Click Download and choose the latest Spark release and a latest package type.</p><br>
+			<p>Finall, You can choose the download link to start the download.</p>
+			<img src="../images/pyspark/SparkDownload.png" alt="flask output" style="width:100%; height: auto;"><br>
+			<p>After complete download, you can extract the .tgz or .zip and paste the directory in some permanent location.</p><br>
+			<p>Next step is to set the environment variables. start your command prompt and use the setx command to set the SAPRK_HOME environment variable.</p>
+			<p>setx SPARK_HOME "C:\spark-4.0.1" and hit enter.</p>
+			<pre>
+C:\Users\user_name>setx SPARK_HOME "C:\spark-4.0.1"	
+
+SUCCESS: Specified value was saved.
+			</pre><br>
+			<p>We should also add the SPARK_HOME\bin to our PATH environment variable.</p>
+			<p>setx PATH "%PATH%;%SPARK_HOME%\bin" and hit enter.</p>
+			<pre>
+C:\Users\user_name>setx PATH "%PATH%;%SPARK_HOME%\bin"
+
+SUCCESS: Specified value was saved.
+			</pre><br>
+			<p>If you see any WARNING: The data being saved is truncated to 1024 characters, then you can add this path(C:\spark-4.0.1\bin) using windows UI in your environment vriable PATH.</p><br><br>
 			
+			<p>Ideally, you should be done here setting up Spark on your local machine. Few more patches are required, but Spark should start working on the local machine for most of the users. However, you can test it and see if Spark on local started working.</p><br>
+			<p>Start the command prompt and try running the pyspark. You should see some messages and finally a command prompt. If you see a command prompt and no error messages, you are good to go.</p><br>
+			<p>However, If you see any error running your PySpark shell, you may want to set up the following environment variables.</p>
+			<p>In fact, I recommend setting up these environment variables even if you do not see any error running your pyspark shell.</p>
+			<br><br>
+			
+			<hr>
+			<h2>Setting up some more Environment variable</h2>
+			<p>Start your command prompt and set the PYTHONPATH environment variable.</p>
+			<p>setx PYTHONPATH "C:\spark-4.0.1\python;C:\spark-4.0.1\python\lib\py4j-0.10.9.9-src.zip"</p>
+			<pre>
+C:\Users\user_name>setx PYTHONPATH "C:\spark-4.0.1\python;C:\spark-4.0.1\python\lib\py4j-0.10.9.9-src.zip"
+
+SUCCESS: Specified value was saved.
+			</pre><br><br>
+			<p>We also need to set up the PYSPARK_PYTHON variable. But before that, We need to see Python installation location using where command and use that path to configure Spark.</p>
+			<p>setx PYSPARK_PYTHON "C:\Program Files\Python39\python.exe"
+			<pre>
+C:\Users\user_name>setx PYSPARK_PYTHON "C:\Program Files\Python39\python.exe"
+
+SUCCESS: Specified value was saved.
+			</pre><br><br>
+			
+			<p>You can check your pyspark by running pyspark in your cmd.</p>
+			<br><br>
+			
+			<hr>
+			<h2>Python IDE</h2>
+			<p>You can use Pycharm IDE and or any other you feel comfortable with.</p>
+			<br><br>
+			
+			<hr>
+			<h2>Create Spark Application using IDE in Local Machine</h2>
+			<p>If you writing your spark program in Pycharm, make sure you have pyspark installed in your python packages. If you do not have, please install it.</p>
+			<pre>
+<span style="color:#00bfff;">from</span> pyspark.sql <span style="color:#00bfff;">import</span> SparkSession
+
+<span style="color:#00bfff;">if</span> __name__ = <span style="color:green;">'__main__'</span>:
+    spark = SparkSession.builder \
+			.appName(<span style="color:green;">"Hello Spark"</span>) \
+			.master(<span style="color:green;">"local[2]"</span>) \
+			.getOrCreate()
+			
+	data_lst = [(<span style="color:green;">"Ravi"</span>, 28),
+				(<span style="color:green;">"David"</span>, 20),
+				(<span style="color:green;">"Abdul"</span>, 32)]
+	
+	df = spark.createDataFrame(data_lst).toDF(<span style="color:green;">"Name"</span>, <span style="color:green;">"Age"</span>)
+	df.show()
+			</pre><br>
+			<ul>
+			<li><p><b>SparkSession.builder:</b> Starts building a Spark session.</p></li>
+			<li><p><b>.appName("Hello Spark"):</b> Names your Spark application.</p></li>
+			<li><p><b>.master("local[2]"):</b> Runs Spark locally using 2 threads (good for testing). Think of threads like workers: each one can perform a task independently. More threads = more parallelism (up to the limits of your CPU).</p></li>
+			<li><p><b>.getOrCreate():</b> Creates a new Spark session or reuses an existing one.</p></li>
+			<li><p><b>createDataFrame(data_lst):</b> Converts your list into a Spark DataFrame.</p></li>
+			<li><p><b>.toDF("Name", "Age"):</b> Assigns column names: "Name" and "Age".</p></li>
+			<br>
+			<p><b>Output</b></p>
+			<pre>
++-----+---+
+| Name|Age|
++-----+---+
+| Ravi| 28|
+|David| 20|
+|Abdul| 32|
++-----+---+
+			</pre>
 			
 			
 			
