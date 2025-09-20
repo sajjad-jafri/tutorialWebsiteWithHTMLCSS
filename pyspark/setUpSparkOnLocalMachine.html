@@ -129,14 +129,14 @@ SUCCESS: Specified value was saved.
 			<hr>
 			<h2>Spark Binaries</h2>	
 			<p>Visit <a href="https://spark.apache.org/" style="color:white;">https://spark.apache.org/</a></p><br>
-			<p>Click Download and choose the latest Spark release and a latest package type.</p><br>
+			<p>Click Download and choose the compatible Spark release and a package type.</p><br>
 			<p>Finall, You can choose the download link to start the download.</p>
 			<img src="../images/pyspark/SparkDownload.png" alt="flask output" style="width:100%; height: auto;"><br>
 			<p>After complete download, you can extract the .tgz or .zip and paste the directory in some permanent location.</p><br>
 			<p>Next step is to set the environment variables. start your command prompt and use the setx command to set the SAPRK_HOME environment variable.</p>
-			<p>setx SPARK_HOME "C:\spark-4.0.1" and hit enter.</p>
+			<p>setx SPARK_HOME "C:\spark-3.4.1" and hit enter.</p>
 			<pre>
-C:\Users\user_name>setx SPARK_HOME "C:\spark-4.0.1"	
+C:\Users\user_name>setx SPARK_HOME "C:\spark-3.4.1"	
 
 SUCCESS: Specified value was saved.
 			</pre><br>
@@ -158,9 +158,9 @@ SUCCESS: Specified value was saved.
 			<hr>
 			<h2>Setting up some more Environment variable</h2>
 			<p>Start your command prompt and set the PYTHONPATH environment variable.</p>
-			<p>setx PYTHONPATH "C:\spark-4.0.1\python;C:\spark-4.0.1\python\lib\py4j-0.10.9.9-src.zip"</p>
+			<p>setx PYTHONPATH "C:\spark-3.4.1\python;C:\spark-3.4.1\python\lib\py4j-0.10.9.7-src.zip"</p>
 			<pre>
-C:\Users\user_name>setx PYTHONPATH "C:\spark-4.0.1\python;C:\spark-4.0.1\python\lib\py4j-0.10.9.9-src.zip"
+C:\Users\user_name>setx PYTHONPATH "C:\spark-3.4.1\python;C:\spark-3.4.1\python\lib\py4j-0.10.9.7-src.zip"
 
 SUCCESS: Specified value was saved.
 			</pre><br><br>
@@ -186,7 +186,7 @@ SUCCESS: Specified value was saved.
 			<pre>
 <span style="color:#00bfff;">from</span> pyspark.sql <span style="color:#00bfff;">import</span> SparkSession
 
-<span style="color:#00bfff;">if</span> __name__ = <span style="color:green;">'__main__'</span>:
+<span style="color:#00bfff;">if</span> __name__ == <span style="color:green;">'__main__'</span>:
     spark = SparkSession.builder \
 			.appName(<span style="color:green;">"Hello Spark"</span>) \
 			.master(<span style="color:green;">"local[2]"</span>) \
