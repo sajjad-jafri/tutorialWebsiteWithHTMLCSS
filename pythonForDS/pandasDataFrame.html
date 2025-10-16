@@ -34,70 +34,55 @@
 		</div>
 
 		<div class = "course-content" >
-          	<p>Pandas is a powerhouse Python library for data manipulation and analysis.</p><br>
-			<p><b>🧠 Uses</b></p>
+          	<p>A <b>Pandas DataFrame</b> is one of the most powerful and widely used data structures in Python for data analysis and manipulation.</p><br>
+			<p>A DataFrame is essentially a <b>2-dimensional labeled data structure</b> — think of it like a spreadsheet or SQL table, with rows and columns.</p><br>
+			
+			<p><b>📦 Key Features</b></p>
 			<ul>
-				<li><p>Reading & Writing data in many formats</p></li>
-				<li><p>Cleaning and transforming data</p></li>
-				<li><p>Filtering and querying</p></li>
-				<li><p>Handle missing data</p></li>
-				<li><p>Aggregating and visualizing</p></li>
-			</ul><br><br>
-			<p><b>📦 Pandas provides two core data structures:</b></p>
-			<ul>
-				<li><p><b>Series:</b>A one-dimensional labeled array.</p></li>
-				<li><p><b>DataFrame:</b>A two-dimensional table with rows and columns.</p></li>
-			</ul><br><br>
+				<li><p><b>Labeled axes:</b> Rows and columns have labels (index and column names).</p></li>
+				<li><p><b>Heterogeneous data:</b> Each column can hold different data types (e.g., integers, strings, floats).</p></li>
+				<li><p><b>Missing data handling:</b> Built-in support for NaNs and flexible fill/drop options.</p></li>
+				<li><p><b>Powerful operations:</b> Filtering, grouping, merging, reshaping, and more.</p></li>
+			</ul>
 			
 			<hr>
-			<h2>Series</h2>
-			<p>A Series is a data structure that holds an 1-D array of information or data along with a named index.</p>
-			<p>It can hold any data type data. You can store integers, floats, strings, or even Python objects.</p>
-			<br>
-			
-			<p><b>Example</b></p>
+			<h2>🛠️ Creating a DataFrame</h2>
 			<pre>
 <span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
 
-<span style="color:gray;"># From a list</span>
-ser1 = pd.Series([<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>])
-<span style="color:yellow;">print</span>(ser1)
+data = {
+    <span style="color:green;">'Name'</span>: [<span style="color:green;">'Alice'</span>, <span style="color:green;">'Bob'</span>, <span style="color:green;">'Charlie'</span>],
+    <span style="color:green;">'Age'</span>: [<span style="color:orange;">25</span>, <span style="color:orange;">30</span>, <span style="color:orange;">35</span>],
+    <span style="color:green;">'City'</span>: [<span style="color:green;">'New York'</span>, <span style="color:green;">'Paris'</span>, <span style="color:green;">'London'</span>]
+}
 
-<span style="color:gray;"># With custom index</span>
-data = [<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>]
-ser2 = pd.Series(data, index=[<span style="color:green;">'a'</span>, <span style="color:green;">'b'</span>, <span style="color:green;">'c'</span>, <span style="color:green;">'d'</span>])
-<span style="color:yellow;">print</span>(ser2)
-
-<span style="color:gray;"># From a dictionary</span>
-data = {<span style="color:green;">'a'</span><span style="color:orange;"> : </span><span style="color:green;">'apple'</span>, <span style="color:green;">'b'</span><span style="color:orange;"> : </span><span style="color:green;">'banana'</span>, <span style="color:green;">'c'</span><span style="color:orange;"> : </span><span style="color:green;">'cat'</span>}
-ser3 = pd.Series(data)
-<span style="color:yellow;">print</span>(ser3)
+df = pd.DataFrame(data)
+<span style="color:yellow;">print</span>(df)
 			</pre>
 			<br>
 			<p><b>Output</b></p>
 			<pre>
-ser1
-0    10
-1    20
-2    30
-3    40
-dtype: int64
-
-ser2
-a    10
-b    20
-c    30
-d    40
-dtype: int64
-
-ser3
-a    apple
-b    ball
-c    cat
-dtype: int64
+     Name    Age    City
+0    Alice   25     New York
+1    Bob     30     Paris
+2    Charlie 35     London
 			</pre>
 			<br><br>
 			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<hr>
 			<p><b>🔍 Accessing Elements</b></p>
 			<pre>
 <span style="color:gray;"># Accessing by label</span>
