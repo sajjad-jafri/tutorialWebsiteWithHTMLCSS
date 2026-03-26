@@ -1,8 +1,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>pandas</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../mystyle.css">
@@ -19,7 +19,7 @@
       font-family: monospace;
       border-radius: 5px;
     }
-  </style>
+</style>
 
 <body>
 	<div id="nav-placeholder"></div>
@@ -29,7 +29,6 @@
 			<ul>
 	   			<li class="selected"><a href="pandasIntro.html">Introduction to Pandas</a></li>
 				<li><a href="pandasDataFrame.html">Data Frames</a></li>
-	   			
   	  		</ul>
 		</div>
 
@@ -69,7 +68,7 @@ ser2 = pd.Series(data, index=[<span style="color:green;">'a'</span>, <span style
 <span style="color:yellow;">print</span>(ser2)
 
 <span style="color:gray;"># From a dictionary</span>
-data = {<span style="color:green;">'a'</span><span style="color:orange;"> : </span><span style="color:green;">'apple'</span>, <span style="color:green;">'b'</span><span style="color:orange;"> : </span><span style="color:green;">'banana'</span>, <span style="color:green;">'c'</span><span style="color:orange;"> : </span><span style="color:green;">'cat'</span>}
+data = {<span style="color:green;">'a'</span><span style="color:orange;"> : </span><span style="color:green;">'apple'</span>, <span style="color:green;">'b'</span><span style="color:orange;"> : </span><span style="color:green;">'ball'</span>, <span style="color:green;">'c'</span><span style="color:orange;"> : </span><span style="color:green;">'cat'</span>}
 ser3 = pd.Series(data)
 <span style="color:yellow;">print</span>(ser3)
 			</pre>
@@ -103,36 +102,69 @@ dtype: int64
 <span style="color:gray;"># Accessing by label</span>
 <span style="color:yellow;">print</span>('<span style="color:green;">Element at index b:</span>',ser3['b'])
 
-<span style="color:gray;"># Accessing by position</span> 
-<span style="color:yellow;">print</span>('<span style="color:green;">Element at 2nd position:</span>',ser3.iloc[2])
+<span style="color:gray;"># Accessing by loc - location by label</span>
+<span style="color:yellow;">print</span>('<span style="color:green;">Element at index b using loc:</span>',ser3.loc['b'])
+
+<span style="color:gray;"># Accessing by iloc/integer-position - location by integer index</span>
+<span style="color:yellow;">print</span>('<span style="color:green;">Element at 2nd integer position:</span>',ser3.iloc[2])
 
 <span style="color:gray;"># Accessing keys</span> 
-<span style="color:yellow;">print</span>('Keys: ',Ser3.keys())
+<span style="color:yellow;">print</span>('Keys: ',ser3.keys())
+
+<span style="color:gray;"># Update the value</span>
+<span style="color:white;">ser3.loc["c"] = "caterpillar"</span>
+<span style="color:yellow;">print</span>(<span style="color:green;">ser3</span>)
 			</pre><br>
+
 			<p><b>Output</b></p>
 			<pre>
-Element at index b: ball	
-Element at 2nd position: cat
-Keys:  Index(['a', 'b', 'c'], dtype='object')		
+Element at index b: ball
+
+Element at index b using loc: ball
+
+Element at 2nd integer position: cat
+
+Keys:  Index(['a', 'b', 'c'], dtype='object')
+
+a          apple
+b           ball
+c    caterpillar
+dtype: str
 			</pre>
 			<br><br>
-			
+
 			<p><b>🧠 Key Features of a Pandas Series</b></p>
 			<ul style="list-style-type: circle;">
 				<li><p>Labels (Index): Each element has an associated label (index), which can be customized.</p></li>
-				<li><p>If you have specified the label explicitely, still you can access the elements via default index (0,1,2...) using iloc</p></li>
+				<li><p>If you have specified the label explicitly, still you can access the elements via default index (0,1,2...) using iloc</p></li>
 				<li><p>You can create a Series from:</p>
 					<ul style="list-style-type: square;">
 						<li><p>Lists or arrays</p></li>
 						<li><p>Dictionaries (keys become labels)</p></li>
 						<li><p>Scalar values (repeated across index)</p></li>
-						</li>
 					</ul>
 			</ul>
 			<br><br>
+
+			<p><b>Filter by value</b></p>
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+data = [<span style="color:green;">100</span>, <span style="color:green;">106</span>, <span style="color:green;">181</span>, <span style="color:green;">200</span>, <span style="color:green;">206</span>]
+series = pd.Series(data)
+
+<span style="color:gray;"># Filter by any value which are 200 or greater</span>
+<span style="color:yellow;">print</span>(series[series >= 200])
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+3    200
+4    205
+dtype: int64
+			</pre><br><br>
 			
 			<p><b>⚙️ Common Operations</b></p>
-			<p>Lets take the sales data for 1st and 2nd quarter with an example:</p>
+			<p>Let's take the sales data for 1st and 2nd quarter with an example:</p>
 			<pre>
 q1 = {<span style="color:green;">'Japan'</span>:80, <span style="color:green;">'China'</span>: 450, <span style="color:green;">'India'</span>:200, <span style="color:green;">'USA'</span>: 250}
 q2 = {<span style="color:green;">'Brazil'</span>:100, <span style="color:green;">'China'</span>: 500, <span style="color:green;">'India'</span>:210, <span style="color:green;">'USA'</span>: 260}
@@ -189,7 +221,7 @@ USA       510.0
 dtype: float64
 			</pre>
 			<br><br>
-			<p>Lets study Dataframe in next lecture.</p>
+			<p>Let's study Dataframe in next lecture.</p>
  
 
  
