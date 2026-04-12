@@ -1,0 +1,312 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pandas</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+
+<style>
+    pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
+    }
+
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  th {
+    background-color: #f5f5f5;
+  }
+
+  </style>
+
+<body>
+	<div id="nav-placeholder"></div>
+	<section class="course-inner">
+		<div id="chapter-btn">Data Frames</div> <!-- This is for mobile view - to see the chapter name -->
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="pandasIntro.html">Introduction to Pandas</a></li>
+				<li><a href="pandasSeries.html">Series</a></li>
+				<li><a href="pandasDataFrame.html">Data Frames</a></li>
+                <li class="selected"><a href="manipulatingData.html">Manipulating Data</a></li>
+
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+            <h2>🧠 Manipulating Data</h2>
+          	<p>In pandas, <b>data manipulation</b> refers to the process of programmatically transforming, cleaning, and organizing raw data into a structured and meaningful format suitable for analysis, visualization, and machine learning models.</p>
+			<br><br>
+
+			<p><b>Adding New Column</b></p>
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+data = {
+    <span style="color:green;">'Name'</span>: [<span style="color:green;">'Alice'</span>, <span style="color:green;">'Bob'</span>, <span style="color:green;">'Charlie'</span>],
+    <span style="color:green;">'Age'</span>: [<span style="color:orange;">25</span>, <span style="color:orange;">30</span>, <span style="color:orange;">35</span>],
+    <span style="color:green;">'City'</span>: [<span style="color:green;">'New York'</span>, <span style="color:green;">'Paris'</span>, <span style="color:green;">'London'</span>]
+}
+
+df = pd.DataFrame(data)
+
+<span style="color:gray;"># Adding a new column</span>
+<span style="color:gray;"># Using 'Job' as the column name and equating it to the list</span>
+df['Job'] = ["Cook", "N/A", "Cashier"]
+
+<span style="color:yellow;">print</span>(df)
+			</pre><br>
+
+			<p><b>Output</b></p>
+			<pre>
+          Name  Age      City      Job
+Emp 1    Alice   25  New York     Cook
+Emp 2      Bob   30     Paris      N/A
+Emp 3  Charlie   35    London  Cashier
+			</pre>
+			<br><br><br>
+
+            <hr>
+			<p><b>Adding New Rows</b></p>
+			<p>The easiest way to add new row is to create a dataframe and then concatenate with previous df.</p>
+			<p>We can add a dictionary for each row in a list. Let's say, we want to add 2 rows then it can be added up like: </p>
+			new_rows = pd.DataFrame([{},{}])<br><br>
+			<p><b>Example</b></p>
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+<span style="color:gray;"># Already having a DataFrame</span>
+<span style="color:yellow;">print</span>(df)
+
+<span style="color:gray;"># Adding 2 new rows</span>
+<span style="color:gray;"># new_rows will be a new separate DataFrame</span>
+new_rows = pd.DataFrame([
+	{<span style="color:green;">'Name'</span>:<span style="color:green;">'Sandy'</span>, <span style="color:green;">'Age'</span>:60, <span style="color:green;">'City'</span>:<span style="color:green;">'Washington'</span>, <span style="color:green;">'Job'</span>: <span style="color:green;">'Engineer'</span>},
+	{<span style="color:green;">'Name'</span>:<span style="color:green;">'Eve'</span>, <span style="color:green;">'Age'</span>:55, <span style="color:green;">'City'</span>:<span style="color:green;">'New York'</span>, <span style="color:green;">'Job'</span>: <span style="color:green;">'Scientist'</span>}
+		])
+
+<span style="color:gray;"># Concatenating df and new_rows DataFrame</span>
+df = pd.concant([df, new_rows])
+
+<span style="color:yellow;">print</span>(df)
+			</pre><br>
+
+			<p><b>Output</b></p>
+			<pre>
+          Name  Age      City      Job
+Emp 1    Alice   25  New York     Cook
+Emp 2      Bob   30     Paris      N/A
+Emp 3  Charlie   35    London  Cashier
+
+After adding new rows:
+          Name  Age       City        Job
+Emp 1    Alice   25   New York       Cook
+Emp 2      Bob   30      Paris        N/A
+Emp 3  Charlie   35     London    Cashier
+0        Sandy   60  Washigton   Engineer
+1          Eve   55   New York  Scientist
+			</pre>
+			<br>
+			<p>However, we didn't set the index, so index is set to 0 and 1. We could pass the index:</p>
+			<p>new_rows = pd.DataFrame([{row1 data}, {row2 data}], index = ['Emp 4', 'Emp 5'])</p>
+			<br><br><br>
+
+            <hr>
+			<p><b>Delete rows/columns from DataFrame</b></p>
+			<p>Drop() is used to remove rows or columns by specifying label names and corresponding axis, or by directly specifying index or column names.</p>
+			<br>
+			<p><b>Syntax:</b> DataFrame.drop(labels=None, axis=0, index=None, columns=None, level=None, inplace=False, errors='raise')</p>
+			<br>
+			<p><b>Parameters:</b></p>
+			<ul>
+				<li><p><b><i>labels:</i></b> String or list of strings referring row or column name. </p></li><br>
+				<li><p><b><i>axis:</i></b> int or string value, 0 'index' for Rows and 1 'columns' for Columns. </p></li><br>
+				<li><p><b><i>index or columns:</i></b> Single label or list. index or columns are an alternative to axis and cannot be used together.</p></li><br>
+				<li><p><b><i>level:</i></b> Used to specify level in case data frame is having multiple level index. </p></li><br>
+				<li><p><b><i>inplace:</i></b> Makes changes in original Data Frame if True. </p></li><br>
+				<li><p><b><i>errors:</i></b> Ignores error if any value from the list doesn't exist and drops rest of the values when <i>errors = 'ignore'</i></p></li><br>
+			</ul>
+			<p><b>Return type:</b> the remaining DataFrame after the specified rows/columns are removed</p>
+			<br><br>
+
+            <hr>
+			<p>Drop the row using the index</p>
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+<span style="color:gray;"># Already having a DataFrame</span>
+<span style="color:yellow;">print</span>(df)
+
+df.drop(index=<span style="color:green;">'Emp 2'</span>, inplace=<span style="color:orange;">True</span>)
+<span style="color:yellow;">print</span>(df)
+			</pre>
+			<p>✅ Best when working with labeled indices.</p>
+			<p>We can pass multiple index in a list to delete multiple rows.</p>
+			<br>
+			<p><b>Output</b></p>
+			<pre>
+          Name  Age       City        Job
+Emp 1    Alice   25   New York       Cook
+Emp 3  Charlie   35     London    Cashier
+Emp 4    Sandy   60  Washigton   Engineer
+Emp 5      Eve   55   New York  Scientist
+			</pre>
+			<br><br>
+			<p>Using drop() with boolean indexing</p>
+			<pre>
+				df.drop(df[df[<span style="color:green;">'Name'</span>]==<span style="color:green;">'Sandy'</span>].index, inplace=<span style="color:orange;">True</span>)
+			</pre>
+			<p>✅ Useful when removing multiple conditions</p>
+
+			<p><b>Output</b></p>
+			<pre>
+          Name  Age      City        Job
+Emp 1    Alice   25  New York       Cook
+Emp 2      Bob   30     Paris        N/A
+Emp 3  Charlie   35    London    Cashier
+Emp 5      Eve   55  New York  Scientist
+			</pre>
+			<br><br>
+			<p>Drop rows where Name == "Alice" (most common case)</p>
+			<pre>
+df = df[df[<span style="color:green;">'Name'</span>] != <span style="color:green;">'Bob'</span>]
+			</pre>
+			<p>✅ Best when filtering based on column values</p>
+
+			<p>Output</p>
+			<pre>
+          Name  Age       City        Job
+Emp 1    Alice   25   New York       Cook
+Emp 3  Charlie   35     London    Cashier
+Emp 4    Sandy   60  Washigton   Engineer
+Emp 5      Eve   55   New York  Scientist
+			</pre>
+
+			<br><br>
+
+            <hr>
+			<p>Dropping Columns with Column Name</p>
+			<p>Let's understand the concept od axis first. If I try to delete the column Age by just passing:<p>
+			<p>df = df.drop(['Age'])</p><br>
+			<p>It will through an error:</p>
+			<p><span style="color:red;">KeyError: "['Age'] not found in axis"</span></p>
+
+			<br>
+			<p><b>Meaning of axis</b></p>
+			<table>
+				<tr>
+					<th>axis value</th>
+					<th>What it refers to</th>
+				</tr>
+				<tr>
+					<td>axis=0</td>
+					<td>Rows (index)</td>
+				</tr>
+				<tr>
+					<td>axis=1</td>
+					<td>Columns</td>
+				</tr>
+			</table>
+			<br><br>
+			<p><b>Visual example</b></p>
+			<pre>
+          Name  Age       City        Job
+Emp 1    Alice   25   New York       Cook
+Emp 2      Bob   30      Paris        N/A
+Emp 3  Charlie   35     London    Cashier
+Emp 4    Sandy   60  Washigton   Engineer
+Emp 5      Eve   55   New York  Scientist
+			</pre>
+			<p>
+				<b>🔹 Rows (axis=0) →</b> Emp 1, Emp 2, Emp 3, Emp 4, Emp 5<br>
+				<b>🔹 Columns (axis=1) →</b> Name, Age, City
+			</p>
+			<br>
+			<p>Dropping a column with column name</p>
+			<pre>
+df.drop(<span style="color:green;">'Age'</span>, axis=1, inplace=True)
+<span style="color:gray;"># OR</span>
+df.drop(columns=<span style="color:green;">'Age'</span>, inplace=True)
+
+<span style="color:gray;"># Drop a row</span>
+df.drop(<span style="color:green;">'Emp 1'</span>, axis=0)
+<span style="color:gray;"># or</span>
+df.drop(index=<span style="color:green;">'Emp 1'</span>)
+
+<span style="color:gray;"># Drop multiple columns at once</span>
+df.drop(columns=[<span style="color:green;">'Age'</span>, <span style="color:green;">'City'</span>], inplace=True)
+			</pre>
+			<br><br>
+			<p>Delete a column using del</p>
+			<pre>
+del df['Age']
+				</pre>
+<p>🔹 Permanent deletion</p>
+<p>🔹 Cannot drop multiple columns at once</p>
+			<br><br>
+			<p>Using pop() (also returns the column)</p>
+			<pre>
+age_column = df.pop(<span style="color:green;">'Age'</span>)
+			</pre>
+			<p>🔹 Removes the column</p>
+			<p>🔹 Stores the removed column in age_column</p>
+            <br><br>
+
+            <hr>
+            <p><b> Pandas DataFrame.truncate</b></p>
+            <p>https://www.geeksforgeeks.org/pandas/python-pandas-dataframe-truncate/</p>
+
+
+
+
+			<br><br><br><br>
+
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "pandasDataFrame.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

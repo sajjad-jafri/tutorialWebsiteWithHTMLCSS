@@ -19,7 +19,21 @@
       font-family: monospace;
       border-radius: 5px;
     }
-  </style>
+
+
+	table {
+		border-collapse: collapse;
+		width: 50%;
+	  }
+	  th, td {
+		border: 1px solid #ccc;
+		padding: 8px 12px;
+		text-align: left;
+	  }
+	  th {
+		background-color: #f5f5f5;
+	  }
+</style>
 
 <body>
 	<div id="nav-placeholder"></div>
@@ -28,25 +42,59 @@
 		<div class = "syllabi">
 			<ul>
 	   			<li><a href="pandasIntro.html">Introduction to Pandas</a></li>
+				<li><a href="pandasSeries.html">Series</a></li>
 				<li class="selected"><a href="pandasDataFrame.html">Data Frames</a></li>
+				<li><a href="manipulatingData.html">Manipulating Data</a></li>
 	   			
   	  		</ul>
 		</div>
 
 		<div class = "course-content" >
           	<p>A <b>Pandas DataFrame</b> is one of the most powerful and widely used data structures in Python for data analysis and manipulation.</p><br>
-			<p>A DataFrame is essentially a <b>2-dimensional labeled data structure</b> — think of it like a spreadsheet or SQL table, with rows and columns.</p><br>
+			<p>A <b>DataFrame</b> is a <b>two‑dimensional, labeled, tabular data structure</b> with rows and columns—very similar to a table in a database or an Excel spreadsheet.</p>
+			<br><br>
 			
 			<p><b>📦 Key Features</b></p>
 			<ul>
-				<li><p><b>Labeled axes:</b> Rows and columns have labels (index and column names).</p></li>
-				<li><p><b>Heterogeneous data:</b> Each column can hold different data types (e.g., integers, strings, floats).</p></li>
-				<li><p><b>Missing data handling:</b> Built-in support for NaNs and flexible fill/drop options.</p></li>
+				<li><p>Contains <b>rows and columns</b></p></li><br>
+				<li><p><b>Labeled axes:</b> Rows and columns have labels (index and column names).</p></li><br>
+				<li><p><b>Heterogeneous data:</b> Each column can hold different data types (e.g., integers, strings, floats).</p></li><br>
+				<li><p><b>Missing data handling:</b> Built-in support for NaNs and flexible fill/drop options.</p></li><br>
 				<li><p><b>Powerful operations:</b> Filtering, grouping, merging, reshaping, and more.</p></li>
 			</ul>
+			<br><br>
+			<p><b>Conceptually:</b></p>
+			<table>
+				<thead>
+					<th></th>
+					<th>Name</th>
+					<th>Age</th>
+					<th>City</th>
+				</thead>
+				<tr>
+					<td>0</td>
+					<td>Alice</td>
+					<td>25</td>
+					<td>Delhi</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Bob</td>
+					<td>30</td>
+					<td>Mumbai</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Charlie</td>
+					<td>28</td>
+					<td>Chennai</td>
+				</tr>
+			</table>
 			
 			<hr>
 			<h2>🛠️ Creating a DataFrame</h2>
+			<br>
+			<p>1. From a dictionary</p>
 			<pre>
 <span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
 
@@ -68,122 +116,284 @@ df = pd.DataFrame(data)
 2    Charlie 35     London
 			</pre>
 			<br><br>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<hr>
-			<p><b>🔍 Accessing Elements</b></p>
-			<pre>
-<span style="color:gray;"># Accessing by label</span>
-<span style="color:yellow;">print</span>('<span style="color:green;">Element at index b:</span>',ser3['b'])
 
-<span style="color:gray;"># Accessing by position</span> 
-<span style="color:yellow;">print</span>('<span style="color:green;">Element at 2nd position:</span>',ser3.iloc[2])
-
-<span style="color:gray;"># Accessing keys</span> 
-<span style="color:yellow;">print</span>('Keys: ',Ser3.keys())
-			</pre><br>
-			<p><b>Output</b></p>
-			<pre>
-Element at index b: ball	
-Element at 2nd position: cat
-Keys:  Index(['a', 'b', 'c'], dtype='object')		
-			</pre>
-			<br><br>
-			
-			<p><b>🧠 Key Features of a Pandas Series</b></p>
-			<ul style="list-style-type: circle;">
-				<li><p>Labels (Index): Each element has an associated label (index), which can be customized.</p></li>
-				<li><p>If you have specified the label explicitely, still you can access the elements via default index (0,1,2...) using iloc</p></li>
-				<li><p>You can create a Series from:</p>
-					<ul style="list-style-type: square;">
-						<li><p>Lists or arrays</p></li>
-						<li><p>Dictionaries (keys become labels)</p></li>
-						<li><p>Scalar values (repeated across index)</p></li>
-						</li>
-					</ul>
-			</ul>
-			<br><br>
-			
-			<p><b>⚙️ Common Operations</b></p>
-			<p>Lets take the sales data for 1st and 2nd quarter with an example:</p>
-			<pre>
-q1 = {<span style="color:green;">'Japan'</span>:80, <span style="color:green;">'China'</span>: 450, <span style="color:green;">'India'</span>:200, <span style="color:green;">'USA'</span>: 250}
-q2 = {<span style="color:green;">'Brazil'</span>:100, <span style="color:green;">'China'</span>: 500, <span style="color:green;">'India'</span>:210, <span style="color:green;">'USA'</span>: 260}
-
-sales_q1 = pd.Series(q1)
-sales_q2 = pd.Series(q2)
-
-<span style="color:yellow;">print</span>(sales_q1 *2) <span style="color:gray;"># broadcast the multiplication to each element</span>
-
-<span style="color:yellow;">print</span>(<span style="color:green;">'Mean for q1: '</span>,sales_q1.mean())
-<span style="color:yellow;">print</span>(<span style="color:green;">'Mean for q2: '</span>,sales_q2.mean())
-
-<span style="color:gray;"># Sum of values of q1</span>
-<span style="color:yellow;">print</span>("Sum of values in quarter1: ',sales_q1.<span style="color:orange;">sum</span>()) 
-
-<span style="color:gray;"># Sum of sales of both quarter</span>
-sum_q1_q2 = sales_q1 + sales_q2
-<span style="color:gray;"># Notice in the output:</span>
-<span style="color:gray;"># We got NaN for Brazil and Japan</span>
-<span style="color:gray;"># This is one more importance of explicit label indexes.</span>
-<span style="color:gray;"># It matches same label index and summed up</span>
-
-<span style="color:gray;"># In case you want to print Brazil and Japan sale for individual quarter</span>
-print(sales_q1.add(sales_q2, fill_value=0)
-			</pre>
+<p>We can pass the custom index using:</p>
+<p><i>df = pd.DataFrame(data, index = ['Emp 1', 'Emp 2', 'Emp 3'])</i></p>
 			<br>
 			<p><b>Output</b></p>
 			<pre>
-Japan    160
-China    900
-India    400
-USA      500
-dtype: int64
-
-Mean for q1: 245.0
-Mean for q2: 267.5
-
-Sum of values in quarter1: 980
-
-sum_q1_q2
-Brazil      NaN
-China     950.0
-India     410.0
-Japan       NaN
-USA       510.0
-dtype: float64
-
-values for Brazil and Japan
-Brazil    100.0
-China     950.0
-India     410.0
-Japan      80.0
-USA       510.0
-dtype: float64
+	Name    Age    City
+Emp 1   Alice   25     New York
+Emp 2   Bob     30     Paris
+Emp 3   Charlie 35     London
 			</pre>
 			<br><br>
-			<p>Lets study <a href="pandasDataFrame.html">Dataframe</a> in next lecture.</p>
- 
+			<p>2. From a list of lists</p>
+			<pre>
 
- 
-		
+data = [
+    [<span style="color:green;">"Alice"</span>, 25, <span style="color:green;">"Delhi"</span>],
+    [<span style="color:green;">"Bob"</span>, 30, <span style="color:green;">"Mumbai"</span>],
+    [<span style="color:green;">"Carol"</span>, 28, <span style="color:green;">"Chennai"</span>]
+]
+
+df = pd.DataFrame(data, columns=[<span style="color:green;">"Name"</span>, <span style="color:green;">"Age"</span>, <span style="color:green;">"City"</span>])
+			</pre>
+
+			<br><br>
+			<hr>
+			<h2>🔍 Accessing DataFrame</h2>
+			<br>
+			<p><b>1. Accessing Columns</b></p>
+			<pre>
+<span style="color:gray;"># Access the 'Age' column</span>
+age_column = df[<span style="color:green;">'Age'</span>]
+<span style="color:yellow;">print</span>(age_column)
+
+<span style="color:gray;"># Access multiple columns</span>
+cols = df[[<span style="color:green;">'Name'</span>,<span style="color:green;">'Age'</span>]]
+<span style="color:yellow;">print</span>(cols)
+			</pre>
+			<p><b>Output</b></p>
+			<pre>
+Emp 1    25
+Emp 2    30
+Emp 3    35
+Name: Age, dtype: int64
+
+          Name  Age
+Emp 1    Alice   25
+Emp 2      Bob   30
+Emp 3  Charlie   35
+			</pre>
+			<br><br><br>
+			<hr style="width:50%; background-color: gray;">
+			<p><b>2. Accessing Rows</b></p>
+			<p>To access specific rows in a DataFrame, you can use:</p>
+			<ul>
+				<li><p><b><i>loc</i></b> (for label-based indexing) or</p></li>
+				<li><p><b><i>iloc</i></b> (for positional indexing).</p></li>
+			</ul>
+			<pre>
+<span style="color:gray;"># Accessing by label</span>
+<span style="color:yellow;">print</span>('<span style="color:green;">Employee 2:\n</span>',df.loc['Emp 2'])
+
+<span style="color:gray;"># Accessing by integer-position</span>
+<span style="color:yellow;">print</span>('<span style="color:green;">Employee 3:\n</span>',df.iloc[2])
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+Employee 2:
+Name      Bob
+Age        30
+City    Paris
+Name: Emp 2, dtype: object
+
+Employee 3:
+Name    Charlie
+Age          35
+City     London
+Name: Emp 3, dtype: object
+			</pre>
+ 			<br><br>
+			<p>Accessing multiple rows</p>
+			<pre>
+rows = df.iloc[1:2]
+<span style="color:yellow;">print</span>(rows)
+			</pre>
+			<p>Output</p>
+			<pre>
+          Name  Age    City
+Emp 2      Bob   30   Paris
+Emp 3  Charlie   35  London
+			</pre>
+			<br><br>
+			<p>Accessing Rows Based on Conditions</p>
+			<pre>
+filtered_data_age = df[df[<span style="color:green;">'Age'</span>] < 35]
+filtered_data_city = df[df[<span style="color:green;">"City"</span>] == <span style="color:green;">"London"</span>]
+<span style="color:yellow;">print</span>(filtered_data_age)
+<span style="color:yellow;">print</span>(filtered_data_city)
+			</pre>
+			<p>Output</p>
+			<pre>
+        Name  Age      City
+Emp 1  Alice   25  New York
+Emp 2    Bob   30     Paris
+
+          Name  Age    City
+Emp 3  Charlie   35  London
+			</pre>
+			<br><br><br>
+
+			<hr style="width:50%; background-color: gray;">
+			<p><b>3. Row & Column together</b></p>
+			<p>Before selecting Row & Column together, let's study <i>loc</i> and <i>iloc</i> in more details.</p><br>
+			<p><i>loc</i> and <i>iloc</i> are indexers used to select rows and columns from a DataFrame or Series.</p>
+			<hr style="height:1px; background-color: gray;">
+			<p><b>1. loc — Label-based indexing</b></p>
+			<p>loc selects data by labels (row labels and column names).</p>
+			<p><b>Example</b></p>
+			<pre>
+df = pd.DataFrame({
+    <span style="color:green;">"name"</span>: [<span style="color:green;">"Alice"</span>, <span style="color:green;">"Bob"</span>, <span style="color:green;">"Charlie"</span>],
+    <span style="color:green;">"age"</span>: [25, 30, 35],
+    <span style="color:green;">"salary"</span>: [50000, 60000, 70000]
+}, index=[<span style="color:green;">"a"</span>, <span style="color:green;">"b"</span>, <span style="color:green;">"c"</span>])
+
+<span style="color:yellow;">print</span>(df)
+			</pre>
+			<p><b>Output</b></p>
+			<pre>
+      name  age  salary
+a    Alice   25   50000
+b      Bob   30   60000
+c  Charlie   35   70000
+			</pre>
+			<br><br>
+			<pre>
+<span style="color:gray"># Select a row by label</span>
+<span style="color:yellow;">print</span>(df.loc[<span style="color:green;">"a"</span>])
+
+<span style="color:gray"># Select multiple rows</span>
+<span style="color:yellow;">print</span>(df.loc[[<span style="color:green;">"a"</span>, <span style="color:green;">"c"</span>]]
+
+<span style="color:gray"># Select rows and columns</span>
+<span style="color:yellow;">print</span>(df.loc[<span style="color:green;">"a"</span>:<span style="color:green;">"c"</span>, [<span style="color:green;">"name"</span>, <span style="color:green;">"salary"</span>]]
+			</pre>
+			<p><b>Output</b></p>
+			<pre>
+<span style="color:gray">Row by label:</span>
+name      Alice
+age          25
+salary    50000
+Name: a, dtype: object
+
+<span style="color:gray">Select multiple rows:</span>
+      name  age  salary
+a    Alice   25   50000
+c  Charlie   35   70000
+
+<span style="color:gray">Select rows and columns</span>
+      name  salary
+a    Alice   50000
+b      Bob   60000
+c  Charlie   70000
+			</pre><br>
+			<hr style="width:50%; background-color: gray;">
+			<p><b>2. iloc — Integer-position-based indexing</b></p>
+			<p>iloc selects data by integer position, similar to Python lists.</p>
+			<br>
+			<p><b>Example</b></p>
+			<pre>
+<span style="color:gray"># Select first row</span>
+<span style="color:yellow;">print</span>(df.iloc[0])
+
+<span style="color:gray"># Select multiple rows</span>
+<span style="color:yellow;">print</span>(df.iloc[[0, 2]])
+
+<span style="color:gray"># Select rows and columns</span>
+<span style="color:yellow;">print</span>(df.iloc[0:2, 0:2])
+			</pre>
+			<p><b>Output</b></p>
+			<pre>
+<span style="color:gray">Select first row:</span>
+name      Alice
+age          25
+salary    50000
+Name: a, dtype: object
+
+<span style="color:gray">Select multiple rows:</span>
+      name  age  salary
+a    Alice   25   50000
+c  Charlie   35   70000
+
+<span style="color:gray">Select rows and columns</span>
+    name  age
+a  Alice   25
+b    Bob   30
+			</pre><br><br>
+
+			<hr style="width:50%; background-color: gray;">
+			<p><b>Conclusion</b></p>
+			<p>loc or iloc takes two selectors:</p>
+			<p><i>df.loc[rows, columns]</i></p>
+			<br>
+			<p>When you see:</p>
+			<pre>
+df.loc['A']
+			</pre>
+			<br>
+			<p>It is just shorthand for:</p>
+			<pre>
+df.loc[['A'], :]
+			</pre>
+			<p>Pandas treats it as: </p>
+			<ul>
+				<li><p>row label = 'A'</p></li>
+				<li><p>all columns</p></li>
+			</ul>
+			<br><br>
+			<p><b>Common valid row selectors for .loc</b></p>
+			<pre>
+df.loc['row_label'] 	<span style="color:gray"># for 1 row</span>
+df.loc[['row1', 'row2']]	<span style="color:gray"># for multiple rows</span>
+df.loc['row1':'row5'] 	<span style="color:gray"># from row 1 to row 5</span>
+df.loc["row1":"row4", ["col1","col3"]] 	<span style="color:gray"># multiple rows and columns togeather</span>
+df.loc[boolean_series]
+			</pre>
+			<p>same will be for .iloc but with integer position</p>
+			<br><br>
+			<p>Let's understand <i>df.loc[boolean_series]</i> with one example</p><br>
+			<p><b>Example:</b></p>
+			<p>let's take one df, in which we have 2 column - <i>record</i> and <i>description</i>.</p>
+			<p>We want to print record number for description value in <i>None</i> or <i>empty string</i>.</p>
+			<br>
+			<p><b>Step 1: Create a sample DataFrame</b></p>
+			<pre>
+df = pd.DataFrame({
+    <span style="color:green">"record"</span>: [<span style="color:green">"R001"</span>, <span style="color:green">"R002"</span>, <span style="color:green">"R003"</span>, <span style="color:green">"R004"</span>],
+    <span style="color:green">"description"</span>: [<span style="color:green">"Valid entry"</span>, "", <span style="color:blue">None</span>, <span style="color:green">"Another valid entry"</span>]
+})
+<span style="color:yellow">print</span>(df)
+			</pre>
+			<br>
+			<pre>
+   record         description
+0   R001          Valid entry
+1   R002
+2   R003                  NaN
+3   R004  Another valid entry
+			</pre>
+			<br><br>
+			<p><b>Step 2: Create the boolean mask/series (empty_desc_series)</b></p>
+			<p>We want rows where desc is empty or missing.</p>
+			<pre>
+empty_desc_series = df[<span style="color:green">"description"</span>].isna() | (df[<span style="color:green">"description"</span>] == "")
+			</pre>
+			<p>This produces a boolean Series:</p>
+			<pre>
+0    False
+1     True
+2     True
+3    False
+			</pre>
+			<br>
+			<p><b>Step 3: Use loc and convert to list</b></p>
+			<pre>
+records = df.loc[empty_desc_series, <span style="color:green">"record"</span>].tolist()
+
+<span style="color:gray"># Final Output</span>
+<span style="color:yellow">print</span>(records)
+			</pre>
+			<pre>
+['R002', 'R003']
+			</pre>
 
 			<br><br><br><br>	
 	  
 	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
-	  		<a href = "pandasDataFrame.html" class="next-button" id="nextButton">Next &raquo;</a>
+	  		<a href = "manipulatingData.html" class="next-button" id="nextButton">Next &raquo;</a>
 
         	</div>
      </section>

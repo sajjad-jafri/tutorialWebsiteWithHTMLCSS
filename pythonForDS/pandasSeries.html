@@ -1,0 +1,271 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pandas</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+
+<style>
+    pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
+    }
+</style>
+
+<body>
+	<div id="nav-placeholder"></div>
+	<section class="course-inner">
+		<div id="chapter-btn">Intro to Pandas</div> <!-- This is for mobile view - to see the chapter name -->
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="pandasIntro.html">Introduction to Pandas</a></li>
+				<li class="selected"><a href="pandasSeries.html">Series</a></li>
+                <li><a href="pandasDataFrame.html">DataFrames</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<h2>Series</h2>
+			<p>A Series is a one-dimensional labeled array capable of holding any data type (integers, strings, floating-point numbers, Python objects, etc.). </p>
+            <p>It’s similar to a column in a spreadsheet or a database table.</p>
+			<br><br>
+
+            <p><b>Creating a Pandas Series</b></p>
+            <p>A Pandas Series is like a single column of data in a spreadsheet.</p>
+            <p>Each value in a Series is associated with an index, which makes data retrieval and manipulation easy.</p>
+
+            <br>
+			<p><b>Example</b></p>
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+<span style="color:gray;"># Creating an empty Series</span>
+ser = pd.Series()
+<span style="color:yellow;">print</span>(ser)
+
+<span style="color:gray;"># From a list</span>
+ser1 = pd.Series([<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>])
+<span style="color:yellow;">print</span>(ser1)
+
+<span style="color:gray;"># Using range()</span>
+ser = pd.Series(range(5,10))
+<span style="color:yellow;">print</span>("Using range()",ser)
+
+<span style="color:gray;"># With custom index</span>
+data = [<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>]
+ser2 = pd.Series(data, index=[<span style="color:green;">'a'</span>, <span style="color:green;">'b'</span>, <span style="color:green;">'c'</span>, <span style="color:green;">'d'</span>])
+<span style="color:yellow;">print</span>(ser2)
+
+<span style="color:gray;"># From a dictionary</span>
+data = {<span style="color:green;">'a'</span><span style="color:orange;"> : </span><span style="color:green;">'apple'</span>, <span style="color:green;">'b'</span><span style="color:orange;"> : </span><span style="color:green;">'ball'</span>, <span style="color:green;">'c'</span><span style="color:orange;"> : </span><span style="color:green;">'cat'</span>}
+ser3 = pd.Series(data)
+<span style="color:yellow;">print</span>(ser3)
+			</pre>
+			<br>
+			<p><b>Output</b></p>
+			<pre>
+Series([], dtype: float64)
+
+ser1
+0    10
+1    20
+2    30
+3    40
+dtype: int64
+
+using range()
+0     5
+1     6
+2     7
+3     8
+4     9
+dtype: int64
+
+ser2
+a    10
+b    20
+c    30
+d    40
+dtype: int64
+
+ser3
+a    apple
+b    ball
+c    cat
+dtype: int64
+			</pre>
+			<br><br>
+
+			<p><b>🔍 Accessing Elements</b></p>
+			<pre>
+<span style="color:gray;"># Accessing by label</span>
+<span style="color:yellow;">print</span>('<span style="color:green;">Element at index b:</span>',ser3['b'])
+
+<span style="color:gray;"># Accessing by loc - location by label</span>
+<span style="color:yellow;">print</span>('<span style="color:green;">Element at index b using loc:</span>',ser3.loc['b'])
+
+<span style="color:gray;"># Accessing by iloc/integer-position - location by integer index</span>
+<span style="color:yellow;">print</span>('<span style="color:green;">Element at 2nd integer position:</span>',ser3.iloc[2])
+
+<span style="color:gray;"># Accessing keys</span>
+<span style="color:yellow;">print</span>('Keys: ',ser3.keys())
+
+<span style="color:gray;"># Update the value</span>
+<span style="color:white;">ser3.loc["c"] = "caterpillar"</span>
+<span style="color:yellow;">print</span>(<span style="color:green;">ser3</span>)
+			</pre><br>
+
+			<p><b>Output</b></p>
+			<pre>
+Element at index b: ball
+
+Element at index b using loc: ball
+
+Element at 2nd integer position: cat
+
+Keys:  Index(['a', 'b', 'c'], dtype='object')
+
+a          apple
+b           ball
+c    caterpillar
+dtype: str
+			</pre>
+			<br><br>
+
+			<p><b>🧠 Key Features of a Pandas Series</b></p>
+			<ul style="list-style-type: circle;">
+				<li><p>Labels (Index): Each element has an associated label (index), which can be customized.</p></li>
+				<li><p>If you have specified the label explicitly, still you can access the elements via default index (0,1,2...) using iloc</p></li>
+				<li><p>You can create a Series from:</p>
+					<ul style="list-style-type: square;">
+						<li><p>Lists or arrays</p></li>
+						<li><p>Dictionaries (keys become labels)</p></li>
+						<li><p>Scalar values (repeated across index)</p></li>
+					</ul>
+			</ul>
+			<br><br>
+
+			<p><b>Filter by value</b></p>
+			<pre>
+<span style="color:#00bfff;">import</span> pandas <span style="color:#00bfff;">as</span> pd
+
+data = [<span style="color:green;">100</span>, <span style="color:green;">106</span>, <span style="color:green;">181</span>, <span style="color:green;">200</span>, <span style="color:green;">206</span>]
+series = pd.Series(data)
+
+<span style="color:gray;"># Filter by any value which are 200 or greater</span>
+<span style="color:yellow;">print</span>(series[series >= 200])
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+3    200
+4    205
+dtype: int64
+			</pre><br><br>
+
+			<p><b>⚙️ Common Operations</b></p>
+			<p>Let's take the sales data for 1st and 2nd quarter with an example:</p>
+			<pre>
+q1 = {<span style="color:green;">'Japan'</span>:80, <span style="color:green;">'China'</span>: 450, <span style="color:green;">'India'</span>:200, <span style="color:green;">'USA'</span>: 250}
+q2 = {<span style="color:green;">'Brazil'</span>:100, <span style="color:green;">'China'</span>: 500, <span style="color:green;">'India'</span>:210, <span style="color:green;">'USA'</span>: 260}
+
+sales_q1 = pd.Series(q1)
+sales_q2 = pd.Series(q2)
+
+<span style="color:yellow;">print</span>(sales_q1 *2) <span style="color:gray;"># broadcast the multiplication to each element</span>
+
+<span style="color:yellow;">print</span>(<span style="color:green;">'Mean for q1: '</span>,sales_q1.mean())
+<span style="color:yellow;">print</span>(<span style="color:green;">'Mean for q2: '</span>,sales_q2.mean())
+
+<span style="color:gray;"># Sum of values of q1</span>
+<span style="color:yellow;">print</span>("Sum of values in quarter1: ',sales_q1.<span style="color:orange;">sum</span>())
+
+<span style="color:gray;"># Sum of sales of both quarter</span>
+sum_q1_q2 = sales_q1 + sales_q2
+<span style="color:gray;"># Notice in the output:</span>
+<span style="color:gray;"># We got NaN for Brazil and Japan</span>
+<span style="color:gray;"># This is one more importance of explicit label indexes.</span>
+<span style="color:gray;"># It matches same label index and summed up</span>
+
+<span style="color:gray;"># In case you want to print Brazil and Japan sale for individual quarter</span>
+print(sales_q1.add(sales_q2, fill_value=0)
+			</pre>
+			<br>
+			<p><b>Output</b></p>
+			<pre>
+Japan    160
+China    900
+India    400
+USA      500
+dtype: int64
+
+Mean for q1: 245.0
+Mean for q2: 267.5
+
+Sum of values in quarter1: 980
+
+sum_q1_q2
+Brazil      NaN
+China     950.0
+India     410.0
+Japan       NaN
+USA       510.0
+dtype: float64
+
+values for Brazil and Japan
+Brazil    100.0
+China     950.0
+India     410.0
+Japan      80.0
+USA       510.0
+dtype: float64
+			</pre>
+			<br><br>
+			<p>Let's study Dataframe in next lecture.</p>
+
+
+
+
+
+			<br><br><br><br>
+
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "pandasDataFrame.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>
