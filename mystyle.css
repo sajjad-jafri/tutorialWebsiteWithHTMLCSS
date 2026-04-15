@@ -865,15 +865,15 @@ font-size: 1.2rem;
 }
 
 pre {
-            background-color: #e1bee7;
-            padding: 8px;
-            border-radius: 8px;
-            font-family: monospace;
-            color: #11031a;
-            white-space: pre-wrap;
-            max-width: calc(80%); /* Adjust based on your padding */
+        background-color: #e1bee7;
+        padding: 8px;
+        border-radius: 8px;
+        font-family: monospace;
+        color: #11031a;
+        white-space: pre-wrap;
+        max-width: calc(80%); /* Adjust based on your padding */
 	    border-left:5px solid #666;
-        }
+   }
 
 .scroll-top-button {
 bottom: 80px;
