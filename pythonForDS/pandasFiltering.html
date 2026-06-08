@@ -1,0 +1,148 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pandas</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+
+<style>
+    pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
+      font-size:16px;
+    }
+
+
+	table {
+		border-collapse: collapse;
+		width: 50%;
+	  }
+	  th, td {
+		border: 1px solid #ccc;
+		padding: 8px 12px;
+		text-align: left;
+	  }
+	  th {
+		background-color: #f5f5f5;
+	  }
+</style>
+
+<body>
+	<div id="nav-placeholder"></div>
+	<section class="course-inner">
+		<div id="chapter-btn">Selection</div> <!-- This is for mobile view - to see the chapter name -->
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="pandasIntro.html">Introduction to Pandas</a></li>
+				<li><a href="pandasSeries.html">Series</a></li>
+				<li><a href="pandasDataFrame.html">Data Frames</a></li>
+				<li><a href="manipulatingData.html">Manipulating Data</a></li>
+				<li><a href="pandasSelection.html">Selection</a></li>
+				<li class="selected"><a href="pandasFiltering.html">Filtering</a></li>
+				<li><a href="pandasAggregation.html">Aggregation</a></li>
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+          <h2>🧹 Filtering</h2>
+          <p>Filtering allows you to:</p>
+			<ul>
+				<li><p>Extract rows that match a condition (e.g., age > 30)</p></li>
+				<li><p>Combine multiple conditions (AND / OR logic)</p></li>
+				<li><p>Clean data by removing unwanted or invalid entries</p></li>
+			</ul>
+			<br>
+
+			<p>Let's take a sample dataframe to proceed further</p>
+			<pre>
+	Name    Age    City
+Emp 1   Alice   25     New York
+Emp 2   Bob     30     Paris
+Emp 3   Charlie 45     London
+Emp 4   Greg    42     Washigton
+Emp 5   Harry   22     London
+			</pre>
+
+			<br><br>
+			<hr>
+			<p><b>Filter df with one or multiple condition</b></p>
+			<pre>
+<span style="color:gray;"># Filter by one condition</span>
+old_emp = df[df[<span style="color:green;">"Age"</span>]>40]
+<span style="color:yellow;">print</span>(old_emp)
+
+<span style="color:gray;"># Filter by multiple condition</span>
+old_lon_emp = df[(df[<span style="color:green;">"Age"</span>]>40) |
+                 (df[<span style="color:green;">"City"</span>]==<span style="color:green;">"London"</span>)]
+<span style="color:yellow;">print</span>(old_lon_emp)
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+<span style="color:gray;"># old_emp</span>
+      Name  Age        City
+2  Charlie   45      London
+3     Greg   42  Washington
+
+<span style="color:gray;"># old_lon_emp</span>
+      Name  Age        City
+2  Charlie   45      London
+3     Greg   42  Washington
+4    Harry   22      London
+			</pre>
+			<p>Note: | --> OR, & --> AND</p>
+			<br>
+
+			<br>
+			<p>Filter by startswith</p>
+			<pre>
+New_York_emp = df[df[<span style="color:green;">"City"</span>].str.startswith(<span style="color:green;">"N"</span>)]
+<span style="color:yellow;">print</span>(New_York_emp)
+			</pre>
+			<p>Output</p>
+			<pre>
+    Name  Age      City
+0  Alice   25  New York
+			</pre>
+ 			<br><br><br><br>
+
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "pandasAggregation.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

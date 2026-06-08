@@ -1,0 +1,184 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pandas</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../mystyle.css">
+
+	<!-- custom JS -->
+	<script src="../myJS.js" defer></script>
+</head>
+
+<style>
+    pre {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.5em;
+      font-family: monospace;
+      border-radius: 5px;
+      font-size:16px;
+    }
+
+
+	table {
+		border-collapse: collapse;
+		width: 50%;
+	  }
+	  th, td {
+		border: 1px solid #ccc;
+		padding: 8px 12px;
+		text-align: left;
+	  }
+	  th {
+		background-color: #f5f5f5;
+	  }
+</style>
+
+<body>
+	<div id="nav-placeholder"></div>
+	<section class="course-inner">
+		<div id="chapter-btn">Selection</div> <!-- This is for mobile view - to see the chapter name -->
+		<div class = "syllabi">
+			<ul>
+	   			<li><a href="pandasIntro.html">Introduction to Pandas</a></li>
+				<li><a href="pandasSeries.html">Series</a></li>
+				<li><a href="pandasDataFrame.html">Data Frames</a></li>
+				<li><a href="manipulatingData.html">Manipulating Data</a></li>
+				<li><a href="pandasSelection.html">Selection</a></li>
+				<li><a href="pandasFiltering.html">Filtering</a></li>
+                <li class="selected"><a href="pandasAggregation.html">Aggregation</a></li>
+
+  	  		</ul>
+		</div>
+
+		<div class = "course-content" >
+			<h2>Aggregation</h2>
+          	<p>Aggregate functions are used to reduces a set of values into a single summary value, such as a sum, mean, min/max, or count.</p>
+			<p>It is often used with the groupby() function.</p>
+			<br>
+
+			<p>Let's take a sample dataframe to proceed further</p>
+			<pre>
+      Name  Age Team  Score
+0    Alice   25    A     10
+1      Bob   30    B     30
+2  Charlie  Nan    A     20
+3     Greg   42    A     10
+4    Harry   22    B     40
+			</pre>
+
+			<br><br>
+			<hr>
+			<p><b>Aggregation on entire dataframe</b></p>
+			<pre>
+<span style="color:yellow;">print</span>(df.sum())
+
+<span style="color:gray;"># numeric_only to consider numeric column only</span>
+<span style="color:yellow;">print</span>(df.sum(numeric_only=<span style="color:orange;">True</span>))
+
+<span style="color:gray;"># count doesn't include null values</span>
+<span style="color:yellow;">print</span>(df.count())
+			</pre><br>
+			<p><b>Output</b></p>
+			<pre>
+Name     AliceBobCharlieGregHarry
+Age                         119.0
+Team                        ABAAB
+Score                         110
+dtype: object
+
+<span style="color:gray;"># numeric_only</span>
+Age      119.0
+Score    110.0
+dtype: float64
+
+<span style="color:gray;"># count</span>
+Name     5
+Age      4
+Team     5
+Score    5
+dtype: int64
+			</pre>
+			<br><br>
+			<hr>
+			<p><b>Aggregation on single column</b></p>
+			<pre>
+<span style="color:yello;">print</span>(df[<span style="color:green;">"Score"</span>].sum())
+<span style="color:yello;">print</span>(df[<span style="color:green;">"Score"</span>].mean())
+<span style="color:yello;">print</span>(df[<span style="color:green;">"Age"</span>].min())
+<span style="color:yello;">print</span>(df[<span style="color:green;">"Name"</span>].count())
+			</pre>
+			<p>Output</p>
+			<pre>
+110
+22.0
+22.0
+5
+			</pre>
+			<br><br>
+
+			<hr>
+			<p><b>Aggregation with groupby</b></p>
+			<p>groupby is used to split data into groups.We can group together rows by something they have in common, perform operations on each group, and then combine the results.</p>
+			<br>
+			<p>Simply, groupby divides data into groups and lets you analyze each group separately.</p>
+			<pre>
+group = df.groupby(<span style="color:green;">"Team"</span>)
+<span style="color:yellow;">print</span>(group)
+			</pre>
+			<p>Output</p>
+			<pre>
+pandas.api.typing.DataFrameGroupBy object at 0x000001CEA9771430
+			</pre>
+			<p>Note: group is an object, when you apply an aggregate function, the group object will return a series for you to display.</p>
+			<br>
+			<pre>
+group = df.groupby(<span style="color:green;">"Team"</span>)
+<span style="color:yellow;">print</span>(group[<span style="color:green;">"Score"</span>].sum())
+
+<span style="color:gray;"># or simply code</span>
+<span style="color:yellow;">print</span>(print(df.groupby(<span style="color:green;">"Team"</span>)[<span style="color:green;">"Score"</span>].sum())
+			</pre>
+			<p>Output</p>
+			<pre>
+Team
+A    40
+B    70
+Name: Score, dtype: int64
+			</pre>
+ 			<br><br><br><br>
+
+	  		<button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+	  		<a href = "pandasAggregation.html" class="next-button" id="nextButton">Next &raquo;</a>
+
+        	</div>
+     </section>
+
+<!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    	<!-- Custom JS -->
+    	<script src="../myJS.js" defer></script>
+
+
+	<script>
+	 function scrollToTop() {
+	  window.scrollTo({top:0, behavior: 'smooth'});
+	}
+	</script>
+
+</body>
+</html>

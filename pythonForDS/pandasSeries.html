@@ -29,7 +29,11 @@
 			<ul>
 	   			<li><a href="pandasIntro.html">Introduction to Pandas</a></li>
 				<li class="selected"><a href="pandasSeries.html">Series</a></li>
-                <li><a href="pandasDataFrame.html">DataFrames</a></li>
+				<li><a href="pandasDataFrame.html">DataFrames</a></li>
+				<li><a href="manipulatingData.html">Manipulating Data</a></li>
+				<li><a href="pandasSelection.html">Selection</a></li>
+				<li><a href="pandasFiltering.html">Filtering</a></li>
+				<li><a href="pandasAggregation.html">Aggregation</a></li>
   	  		</ul>
 		</div>
 
@@ -54,7 +58,7 @@ ser = pd.Series()
 
 <span style="color:gray;"># From a list</span>
 ser1 = pd.Series([<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>])
-<span style="color:yellow;">print</span>(ser1)
+<span style="color:yellow;">print</span>("Using a List:",ser1)
 
 <span style="color:gray;"># Using range()</span>
 ser = pd.Series(range(5,10))
@@ -63,19 +67,19 @@ ser = pd.Series(range(5,10))
 <span style="color:gray;"># With custom index</span>
 data = [<span style="color:orange;">10</span>, <span style="color:orange;">20</span>, <span style="color:orange;">30</span>, <span style="color:orange;">40</span>]
 ser2 = pd.Series(data, index=[<span style="color:green;">'a'</span>, <span style="color:green;">'b'</span>, <span style="color:green;">'c'</span>, <span style="color:green;">'d'</span>])
-<span style="color:yellow;">print</span>(ser2)
+<span style="color:yellow;">print</span>("With custom index:",ser2)
 
 <span style="color:gray;"># From a dictionary</span>
 data = {<span style="color:green;">'a'</span><span style="color:orange;"> : </span><span style="color:green;">'apple'</span>, <span style="color:green;">'b'</span><span style="color:orange;"> : </span><span style="color:green;">'ball'</span>, <span style="color:green;">'c'</span><span style="color:orange;"> : </span><span style="color:green;">'cat'</span>}
 ser3 = pd.Series(data)
-<span style="color:yellow;">print</span>(ser3)
+<span style="color:yellow;">print</span>("Using a dictionary:",ser3)
 			</pre>
 			<br>
 			<p><b>Output</b></p>
 			<pre>
 Series([], dtype: float64)
 
-ser1
+Using a List:
 0    10
 1    20
 2    30
@@ -90,18 +94,18 @@ using range()
 4     9
 dtype: int64
 
-ser2
+With custom index:
 a    10
 b    20
 c    30
 d    40
 dtype: int64
 
-ser3
+Using a dictionary:
 a    apple
 b    ball
 c    cat
-dtype: int64
+dtype: str
 			</pre>
 			<br><br>
 
