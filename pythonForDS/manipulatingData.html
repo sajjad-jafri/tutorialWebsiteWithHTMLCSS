@@ -49,6 +49,7 @@ table {
 				<li><a href="pandasSelection.html">Selection</a></li>
 				<li><a href="pandasFiltering.html">Filtering</a></li>
 				<li><a href="pandasAggregation.html">Aggregation</a></li>
+				<li><a href="pandasDataCleaning.html">Data Cleaning</a></li>
   	  		</ul>
 		</div>
 
@@ -186,7 +187,7 @@ Emp 3  Charlie   35    London    Cashier
 Emp 5      Eve   55  New York  Scientist
 			</pre>
 			<br><br>
-			<p>Drop rows where Name == "Alice" (most common case)</p>
+			<p>Drop rows where Name == "Bob" (most common case)</p>
 			<pre>
 df = df[df[<span style="color:green;">'Name'</span>] != <span style="color:green;">'Bob'</span>]
 			</pre>
@@ -205,7 +206,7 @@ Emp 5      Eve   55   New York  Scientist
 
             <hr>
 			<p>Dropping Columns with Column Name</p>
-			<p>Let's understand the concept od axis first. If I try to delete the column Age by just passing:<p>
+			<p>Let's understand the concept of axis first. If I try to delete the column Age by just passing:<p>
 			<p>df = df.drop(['Age'])</p><br>
 			<p>It will through an error:</p>
 			<p><span style="color:red;">KeyError: "['Age'] not found in axis"</span></p>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Basics</title>
+
+    <!-- Font Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../mystyle.css">
+</head>
+
+<body>
+    <!-- Header starts -->
+    <div id="nav-placeholder"></div>
+    <!-- Header ends -->
+
+    <section class="course-inner">
+        <div id="chapter-btn">LLM Basics</div>
+        <div class="syllabi">
+            <ul>
+                <li><a href="generative-ai-introduction.html">Introduction to Generative AI</a></li>
+                <li class="selected"><a href="LLM-basics.html">LLM Basics</a></li>
+                <li><a href="#">Prompt Engineering</a></li>
+                <li><a href="#">RAG Fundamentals</a></li>
+                <li><a href="#">Evaluation and Safety</a></li>
+            </ul>
+        </div>
+
+        <div class="course-content">
+            <h2>What is an LLM?</h2>
+            <p>
+                <b>LLM (Large Language Model)</b> is a type of advanced Artificial Intelligence model designed to:
+            </p>
+            <ul>
+                <li><p>Understand human language</p></li>
+                <li><p>Process text</p></li>
+                <li><p>Generate human-like responses</p></li>
+            </ul>
+            <br>
+            <p>
+                These models are trained on massive amounts of text data (books, websites, articles, and code)
+                and learn language patterns such as grammar, meaning, and context.
+            </p>
+            <br>
+            <p><b>Simple definition:</b> <br>An LLM is a model that can read, understand, and generate human-like text.</p>
+            <br>
+            <hr>
+
+            <h2>Key Features of LLMs</h2>
+            <ul>
+                <li>
+                    <p><b>Massive Scale:</b></p>
+                    <ul>
+                        <li><p>Contain billions of parameters.</p></li>
+                        <li><p>These parameters store learned patterns in language.</p></li>
+                    </ul>
+                </li>
+                <br>
+                <li>
+                    <p><b>General-Purpose Capability:</b></p>
+                    <p>LLMs can perform many tasks:</p>
+                    <ul>
+                        <li><p>Answer questions</p></li>
+                        <li><p>Summarize text</p></li>
+                        <li><p>Translate languages</p></li>
+                        <li><p>Write code</p></li>
+                        <li><p>Generate content</p></li>
+                    </ul>
+                </li>
+                <br>
+                <li>
+                    <p><b>Context Understanding:</b></p>
+                    <ul>
+                        <li><p>Can understand relationships between words.</p></li>
+                        <li><p>Works well even for long text inputs.</p></li>
+                    </ul>
+                </li>
+            </ul>
+            <br>
+            <hr>
+
+            <h2>Examples of Popular LLMs</h2>
+            <ul>
+                <li><p>GPT-4 (OpenAI)</p></li>
+                <li><p>Claude (Anthropic)</p></li>
+                <li><p>Gemini (Google DeepMind)</p></li>
+                <li><p>Llama (Meta)</p></li>
+            </ul>
+            <br>
+            <hr>
+
+            <h2>What Does GPT Mean?</h2>
+            <p><b>GPT</b> = <b>Generative Pre-trained Transformer</b></p>
+            <ul>
+                <li><p><b>Generative:</b> Can generate new content from user input.</p></li>
+                <li><p><b>Pre-trained:</b> Trained beforehand on large text corpora.</p></li>
+                <li><p><b>Transformer:</b> Uses the transformer neural network architecture to model word relationships.
+                It generates data based on pre-trained data.</p></li>
+            </ul>
+            <p>
+                The transformer architecture was introduced in the 2017 research paper
+                "Attention Is All You Need" and uses a <b>self-attention</b> mechanism.
+            </p>
+            <br>
+            <p><b>Self-attention</b> is the core mechanism inside transformer models (like GPT, Claude, Gemini)
+             that lets each word in a sentence "look at" every other word and decide which one are the
+            most relevant. It computes relationships between tokens in parallel, enabling LLMs to capture
+            both nearby and long-range context efficiently.</p>
+            <br>
+            <p><b>Example:</b></p>
+            <p>Sentence: "The bank by the river is wide."</p>
+            <ul style="list-style-type: disc;">
+                <li><p>The word <b>"bank"</b> could mean financial bank or riverbank.</p></li>
+                <li><p>Self-attention lets "bank" look at <b>river"</b> and realize the meaning is geographical,
+                not financial.</p></li>
+                <li><p><i>I want to open account in SBI bank. :) Hope you understood</i></p></li>
+            </ul><br>
+            <p>When GPT reads a sentence, it does not give equal importance to all words. It carefully
+            decides which words are important and which words are less important, is there any relationship
+            between the words etc. This thinking process is called attention.</p>
+            <br>
+            <br>
+            <hr>
+
+            <h2>How Transformer-based LLMs Work</h2>
+            <p>
+                Below steps are the core workflow of a <b>Transformer-based Large Language Model (LLM)</b> such as GPT.</p>
+                <p>LLMs generate text by predicting the next token repeatedly,
+                one step at a time, based on the input and prior generated tokens.
+            </p>
+            <br>
+            <p><b>Transformer / LLM Processing Steps</b></p>
+            <ul>
+                <li>
+                    <p><b>1. Input Sentence: </b>The model receives a sentence.</p>
+                    <p><b>Example:</b></p>
+                    <ul>
+                        <li><p>"I deposited money in the bank."</p></li>
+                    </ul>
+                </li>
+                <br>
+                <li>
+                    <p><b>2. Tokenization: </b>The sentence is broken into smaller units called tokens (words, subwords, or characters).</p>
+                    <p><b>Example:</b></p>
+                    <ul>
+                        <li><p>["I", "deposited", "money", "in", "the", "bank"]</p></li>
+                    </ul>
+                </li>
+                <br>
+                <li>
+                    <p><b>3. Input embedding:</b> Each token is converted into a numeric vector (a list of numbers) so the neural network can process it.</p>
+                    <p><b>Example:</b></p>
+                    <ul>
+                        <li><p>"I"       → [0.12, -0.45, ...]<br>
+                                "money"   → [0.67, 0.21, ...]<br>
+                                "bank"    → [0.91, -0.34, ...]</p></li>
+                    </ul>
+                </li>
+                <br>
+                <li>
+                    <p><b>4. Positional encoding:</b> Adds word-order information.</p>
+                    <p><b>Example:</b></p>
+                    <ul>
+                        <li>
+                            <table>
+                            <tr>
+                                <td><p><b>Token</b></p></td>
+                                <td><p><b>Position</b></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>I</p></td>
+                                <td><p>1</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>deposited</p></td>
+                                <td><p>2</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>money</p></td>
+                                <td><p>3</p></td>
+                            </tr>
+                            <tr>
+                                <td><p>bank</p></td>
+                                <td><p>6</p></td>
+                            </tr>
+                        </table>
+                        </li>
+                    </ul>
+                    <p>Now the model knows the difference between:</p>
+                    <p>Dog bites man, and</p>
+                    <p>Man bites dog</p>
+                </li>
+                <br>
+                <li><p><b>5. Self-Attention (Finding Relationships):</b> Connects important words and assigns attention scores, even when they are far apart.</p>
+                    <p><b>Example:</b></p>
+                    <ul>
+                        <li><p>"I deposited money in the bank."</p></li>
+                    </ul>
+                    <p>The word bank strongly attends to money and deposited, so the model understands:</p>
+                    <p>bank = financial institution</p>
+                    <p>Instead of: </p>
+                    <p>bank = river bank</p>
+
+                </li><br>
+                <li><p><b>6. Feed-Forward Neural Layers:</b> After attention identifies relationships, feed-forward layers
+                    refine and transform the representations, extracting higher-level patterns and meanings.</p>
+                </li>
+                <br>
+                <li><p><b>7. Next-Token Prediction (Decoding):</b> Using all the processed information, the model predicts
+                    the most likely next token and repeats until completion.</p>
+                    <p><b>Example: next-token prediction flow</b></p>
+                    <ul>
+                        <li><p>Input: "We finally sat"</p></li>
+                        <li><p>Model predicts: "down"</p></li><br>
+                        <li><p>New input: "We finally sat down"</p></li>
+                        <li><p>Model predicts: "on"</p></li><br>
+                        <li><p>New input: "We finally sat down on the"</p></li>
+                        <li><p>Possible predictions with different probabilities: bench, beach, chair, floor.</p></li>
+                        <br>
+                        <li><p>The model selects one token (based on decoding settings) and continues.</p></li>
+                    </ul>
+                </li>
+            </ul>
+            <br>
+            <img src="../images/genAI/transformer1.png" alt="ML vs Generative AI"
+            style="width:100%; max-width:600px; height:auto; display:block; margin:auto;">
+            <br>
+            <p>This is the entire working of our LLM. All the LLMs work in the same way.</p>
+            <p>Google Gemini is also a pre-trained Transformer.</p>
+            <p>Gemini, Claude, ChatGPT are all GPT.</p>
+            <br>
+            <hr>
+
+            <h2>Important Clarification</h2>
+            <p>
+                <b>What is LLM?</b> describes the model category and capabilities.
+                <br>
+                <b>How LLM works?</b> describes the transformer-based token prediction process.
+            </p>
+            <p>
+                So your understanding was correct, you just mixed architecture details into the definition section.
+                In this page, they are now separated clearly.
+            </p>
+            <br><br><br>
+
+            <button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+            <a href="#" class="next-button" id="nextButton">Next &raquo;</a>
+        </div>
+    </section>
+
+    <!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    <!-- Custom JS -->
+    <script src="../myJS.js" defer></script>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
