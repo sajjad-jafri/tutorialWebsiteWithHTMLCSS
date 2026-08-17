@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenization</title>
+
+    <!-- Font Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../mystyle.css">
+</head>
+
+<body>
+    <!-- Header starts -->
+    <div id="nav-placeholder"></div>
+    <!-- Header ends -->
+
+    <section class="course-inner">
+        <div id="chapter-btn">Tokenization</div>
+
+        <div class="syllabi">
+            <ul>
+                <li><a href="generative-ai-introduction.html">Introduction to Generative AI</a></li>
+                <li><a href="LLM-basics.html">LLM Basics</a></li>
+                <li class="selected"><a href="tokenization.html">Tokenization</a></li>
+                <li><a href="transformer-arch.html">Transformer Architecture</a></li>
+                <li><a href="#">Prompt Engineering</a></li>
+                <li><a href="#">RAG Fundamentals</a></li>
+                <li><a href="#">Evaluation and Safety</a></li>
+            </ul>
+        </div>
+
+        <div class="course-content">
+            <p>In Generative AI, <b>tokens</b> and <b>tokenization</b> are fundamental concepts because
+                Large Language Models (LLMs) do not process text directly. Instead, they process <b>tokens</b>.</p>
+            <br>
+            <h2>What is a Token?</h2>
+            <p>A token is a small unit of text that an AI model understands and processes.</p>
+            <p>
+                A token may be:
+            </p>
+            <ul>
+                <li><p>A full word</p></li>
+                <li><p>A part of a word (subword)</p></li>
+                <li><p>A punctuation mark</p></li>
+                <li><p>A number</p></li>
+                <li><p>A special symbol</p></li>
+            </ul>
+            <br>
+            <h3>Examples</h3>
+            <p>Text:</p>
+            <pre>I love Generative AI.
+            </pre>
+            <br>
+            <p>Possible tokens:</p>
+            <pre>["I", " love", " Generative", " AI", "."]
+            </pre>
+            <br>
+            <p>Another example:</p>
+            <pre>unbelievable</pre>
+            <br>
+            <p>May be split into:</p>
+            <pre>["un", "believ", "able"]</pre>
+            <p>Note: The exact split depends on the tokenizer used by the model.</p>
+            <br>
+            <hr>
+            <h2>What is Tokenization?</h2>
+            <p>
+                <b>Tokenization</b> is the process of breaking text into smaller pieces called
+                <b>tokens</b> so that an LLM can understand and process the input.
+            </p>
+            <br>
+
+            <h3>Flow</h3>
+            <pre>Input Text
+     ↓
+Tokenizer
+     ↓
+Tokens
+     ↓
+Token IDs
+     ↓
+LLM Processing
+            </pre>
+            <br>
+            <p>Example:</p>
+            <pre>"Hello world"</pre>
+            <br>
+            <p>Tokenized into:</p>
+            <pre>["Hello", " world"]</pre>
+            <br>
+            <p>Then mapped to token IDs:</p>
+            <pre>[15496, 995]</pre>
+            <p>The model works with these numerical IDs, not the original text.</p>
+            <br>
+            <hr>
+
+            <h2>Why Do LLMs Need Tokenization?</h2>
+            <p>
+                Computers do not understand raw text the way humans do. An LLM cannot directly read a sentence like:
+            </p>
+            <p><b>"I am learning Generative AI."</b></p>
+            <br>
+            <p>
+                First, the text must be split into tokens. Then those tokens are converted into numbers
+                so the neural network can process them.
+            </p>
+            <br>
+            <p>
+                Without tokenization, the model would not know how to break language into manageable pieces.
+            </p>
+            <br>
+            <hr>
+
+            <h2>Word, Character, and Subword Tokenization</h2>
+            <p>There are different ways to break text into tokens:</p>
+            <br>
+
+            <ul>
+                <li>
+                    <p><b>1. Word Tokenization:</b></p>
+                    <p>Splits a sentence word by word.</p>
+                    <ul>
+                        <li><p>"I love AI" → ["I", "love", "AI"]</p></li>
+                    </ul>
+                </li>
+                <br>
+
+                <li>
+                    <p><b>2. Character Tokenization:</b></p>
+                    <p>Splits text character by character.</p>
+                    <ul>
+                        <li><p>"AI" → ["A", "I"]</p></li>
+                    </ul>
+                </li>
+                <br>
+
+                <li>
+                    <p><b>3. Subword Tokenization:</b></p>
+                    <p>Splits text into meaningful parts of words.</p>
+                    <ul>
+                        <li><p>"playing" → ["play", "ing"]</p></li>
+                    </ul>
+                </li>
+            </ul>
+            <br>
+
+            <p>
+                Most modern LLMs use <b>subword tokenization</b> because it handles unknown words,
+                spelling variations, and rare words more efficiently.
+            </p>
+            <br>
+            <hr>
+
+            <h2>Context Window</h2>
+            <p>Every model has a maximum number of tokens it can handle at once.</p>
+            <p>
+                In LLMs, input size is usually measured in <b>tokens</b>, not words.
+            </p>
+            <br>
+            <p>
+                This is important because every model has a <b>context window</b>, which means it can only read
+                a limited number of tokens at one time.
+            </p>
+            <br>
+            <p><b>Example:</b></p>
+            <ul>
+                <li><p>A short sentence may take only a few tokens.</p></li>
+                <li><p>A long article may contain thousands of tokens.</p></li>
+            </ul>
+            <br>
+            <p>
+                When you send a prompt to ChatGPT or Copilot:
+            </p>
+            <pre>Total Tokens = Input Tokens + Output Tokens</pre>
+            <br>
+            <p>
+                This is important because LLM pricing and context limits are usually based on token count.
+            </p>
+            <p>Example:</p>
+            <pre>Model Context Window = 128K tokens</pre>
+            <br>
+            <p>This includes:</p>
+            <pre>User Prompt
++ System Instructions
++ Conversation History
++ Generated Response</pre>
+
+            <hr>
+
+            <h2>Why Tokens Matter for GenAI Developers</h2>
+            <p>
+                As a GenAI developer, understanding tokens helps with:
+            </p>
+            <p><b>Cost Optimization</b></p>
+            <ul>
+                <li><p>Fewer tokens = lower API cost.</p></li>
+            </ul><br>
+            <p><b>Performance</b></p>
+            <ul>
+                <li><p>Shorter prompts lead to faster responses.</p></li>
+            </ul><br>
+            <p><b>Context Management</b></p>
+            <ul>
+                <li><p>Stay within model token limits.</p></li>
+            </ul><br>
+            <p><b>Prompt Engineering</b></p>
+            <ul>
+                <li><p>Efficient prompts improve quality and reduce costs.</p></li>
+            </ul>
+
+            <br>
+            <hr>
+
+            <h2>Tokenization Using Python</h2>
+            <br>
+            <h3>1. Basic Tokenization Using Python</h3>
+            <pre>
+text = <span style="color:red">"I love Generative AI."</span>
+
+<span style="color:green"># Split by spaces</span>
+tokens = text.split()
+
+<span style="color:blue">print</span>(<span style="color:red">"Tokens:"</span>, tokens)
+<span style="color:blue">print</span>(<span style="color:red">"Number of tokens:"</span>, <span style="color:blue">len</span>(tokens))</pre>
+            <br>
+            <p><b>Output</b></p>
+            <pre>
+Tokens: ['I', 'love', 'Generative', 'AI.']
+Number of tokens: 4
+            </pre>
+            <p>This is simple but not how modern LLMs tokenize text.</p>
+            <br>
+            <br>
+            <h3>2. Tokenization Using NLTK</h3>
+            <pre>
+<span style="color:blue">import</span> nltk
+<span style="color:blue">from</span> nltk.tokenize <span style="color:blue">import</span> word_tokenize
+
+nltk.download(<span style="color:red">'punkt'</span>)
+
+text = <span style="color:red">"I love Generative AI."</span>
+
+tokens = word_tokenize(text)
+
+<span style="color:blue">print</span>(tokens)
+<span style="color:blue">print</span>(<span style="color:red">"Token Count:"</span>, <span style="color:blue">len</span>(tokens))
+            </pre>
+            <br>
+            <p><b>Output</b></p>
+            <pre>
+['I', 'love', 'Generative', 'AI', '.']
+Token Count: 5
+            </pre>
+            <p>Notice that the period (.) becomes a separate token.</p>
+            <br><br>
+
+            <h3>3. GPT/OpenAI Style Tokenization (tiktoken)</h3>
+            <pre>
+<span style="color:blue">import</span> tiktoken
+
+<span style="color:green"># GPT tokenizer</span>
+encoder = tiktoken.get_encoding(<span style="color:red">"gpt2"</span>) <span style="color:green"># gpt2 is the model</span>
+
+text = <span style="color:red">"I love Generative AI."</span>
+
+tokens = encoder.encode(text)
+
+<span style="color:blue">print</span>(<span style="color:red">"Token IDs:"</span>, tokens)
+<span style="color:blue">print</span>(<span style="color:red">"Token Count:"</span>, <span style="color:blue">len</span>(tokens))
+            </pre>
+            <br>
+            <p><b>
+                Output:
+            </b></p>
+            <pre>
+Token IDs: [40, 1842, 2980, 876, 9552, 13]
+Token Count: 6
+            </pre>
+            <br><br>
+            <h3>4. Convert Tokens Back to Text</h3>
+            <pre>
+<span style="color:blue">import</span> tiktoken
+
+encoder = tiktoken.get_encoding(<span style="color:red">"gpt2"</span>)
+
+token_ids = [13681, 0, 4673, 5215, 20185, 318, 922, 2126]
+
+decoded_text = encoder.decode(token_ids)
+
+<span style="color:blue">print</span>(<span style="color:red">"Decoded text:"</span>, decoded_text)
+            </pre>
+            <br>
+            <p><b>Output:</b></p>
+            <pre>
+Decoded text: Great! learning GenAI is good idea
+            </pre>
+            <p>We can use encode function to encode text into numeric and decode function for vice versa.</p>
+            <br><br>
+            <h3>5. Show Individual Tokens</h3>
+            <pre>
+<span style="color:blue">import</span> tiktoken
+
+encoding = tiktoken.get_encoding(<span style="color:red">"gpt2"</span>)
+
+text = <span style="color:red">"I love machine learning"</span>
+
+token_ids = encoding.encode(text)
+
+<span style="color:blue">print</span>(<span style="color:red">"Token IDs:"</span>, token_ids)
+
+for token_id in token_ids:
+    <span style="color:blue">print</span>(token_id, <span style="color:red">"->"</span>, encoding.decode([token_id]))
+            </pre>
+            <br>
+            <p><b>Output:</b></p>
+            <pre>
+Token IDs: [40, 1842, 4572, 4673]
+40 -> I
+1842 ->  love
+4572 ->  machine
+4673 ->  learning
+            </pre>
+            <br><br>
+            <hr>
+
+            <h2>Summary</h2>
+            <ul>
+                <li><p>Tokenization is the process of splitting text into tokens.</p></li>
+                <li><p>Tokens can be words, subwords, characters, punctuation, or symbols.</p></li>
+                <li><p>LLMs use tokens, not raw text, for processing.</p></li>
+                <li><p>Modern LLMs usually use subword tokenization.</p></li>
+                <li><p>Token count matters because of the model's context window.</p></li>
+                <li><p>To play around with tokenization, visit <a href="https://tiktokenizer.vercel.app/?model=gpt2" style="color:white">tiktokenizer</a></p></li>
+            </ul>
+            <br><br><br>
+
+            <button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+            <a href="./transformer-arch.html" class="next-button" id="nextButton">Next &raquo;</a>
+        </div>
+    </section>
+
+    <!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    <!-- Custom JS -->
+    <script src="../myJS.js" defer></script>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

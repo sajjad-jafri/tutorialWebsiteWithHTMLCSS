@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer Architecture</title>
+
+    <!-- Font Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../mystyle.css">
+</head>
+
+<body>
+    <!-- Header starts -->
+    <div id="nav-placeholder"></div>
+    <!-- Header ends -->
+
+    <section class="course-inner">
+        <div id="chapter-btn">Transformer Architecture</div>
+
+        <div class="syllabi">
+            <ul>
+                <li><a href="generative-ai-introduction.html">Introduction to Generative AI</a></li>
+                <li><a href="LLM-basics.html">LLM Basics</a></li>
+                <li><a href="tokenization.html">Tokenization</a></li>
+                <li class="selected"><a href="transformer-arch.html">Transformer Architecture</a></li>
+                <li><a href="#">Prompt Engineering</a></li>
+            </ul>
+        </div>
+
+        <div class="course-content">
+            <h2>What is Transformer Architecture?</h2>
+            <p>
+                <b>Transformer architecture</b> is a deep learning architecture introduced by Google researchers
+                in 2017 in the famous paper <i>Attention Is All You Need</i>.
+            </p>
+            <br>
+            <p>
+                It is the core architecture behind most modern Large Language Models (LLMs) such as
+                ChatGPT, Claude, and Gemini.
+            </p>
+            <br>
+            <p>
+                The main job of a transformer is to understand relationships between words in a sentence
+                and predict the next most likely word or token.
+            </p>
+            <br>
+            <hr>
+
+            <h2>Why was Transformer Needed?</h2>
+            <p>
+                Before transformers, older models like RNNs and LSTMs were used for language tasks.
+                They worked step by step, which made training slow and made it difficult to understand
+                long-range relationships in text.
+            </p>
+            <br>
+            <p>
+                Transformers solved this problem by processing all words in parallel and by using
+                <b>self-attention</b> to understand which words are important to each other.
+            </p>
+            <br>
+            <hr>
+
+            <h2>Transformer Architecture Diagram</h2>
+            <img src="../images/genAI/transformer_architecture.png"
+                 alt="Transformer Architecture"
+                 style="width:100%; max-width:600px; height:auto; display:block; margin:auto;">
+            <br>
+            <p>
+                This diagram shows the high-level flow of how a transformer processes input text
+                and generates output.
+            </p>
+            <br>
+            <hr>
+
+            <h2>Main Components of Transformer</h2>
+            <p>Transformer architecture mainly divided into  2 layers -- <i>Encoder layer and Decoder layer.</i></p>
+            <p>
+                <b>Encoder layer</b> is mainly responsible for reading input whereas <b>Decoder layer</b> is mainly
+                responsible for writing output.
+            </p>
+            <br>
+            <p>
+                Let's read about components of both layer one by one.
+            </p>
+            <br>
+
+            <h3>Encoder layer</h3>
+            <p>
+                Input embedding with positional encoding is the input for encoding layer.
+            </p>
+            <ul>
+                <li>
+                    <p><b>1. Input Tokens</b></p>
+                    <p>The input sentence is first broken into tokens.</p>
+                </li>
+                <br>
+                <li>
+                    <p><b>2. Input Embeddings</b></p>
+                    <p>Each token is converted into numbers (vectors) so the model can understand and process it.</p>
+                </li>
+                <br>
+                <li>
+                    <p><b>3. Positional Encoding</b></p>
+                    <p>
+                        Since the transformer reads all words at once, it needs position information
+                        to know the order of words in the sentence.<br>
+                        Ex. Dog bites a man --> Meaningful<br>
+                        &nbsp;&nbsp;&nbsp;&emsp;Man bites a Dog --> Meaningless<br>
+                        To get meaningful data, positional encoding is necessary.
+                    </p>
+                </li>
+                <br>
+                <p><b>Final input to encoder = Input embedding + Positional encoding</b></p>
+                <br>
+                <li>
+                    <p><b>4. Multi-Head Attention</b></p>
+                    <p>
+                        Attention helps each word look at other words in the sentence and understand
+                        which ones are important.<br>
+                        Multi-Head means multiple views in parallel.<br><br>
+                        Analogy:<br>
+                        Think of it like instead of reading a sentence with just 1 pair of eyes,
+                        you read it with 8-12 pair of eyes at once, each looking for different kind of
+                        relationships.<br><br>
+                        The idea is to split the job into "multiple heads" & let each head learn something
+                        different. Then combine the results.<br><br>
+                        Example:<br>
+                        Text: "Sharma cold beverages at night"<br>
+                        Head1 --> may think who owns the cafe --> Sharma<br>
+                        Head2 --> What is being consumed --> Drinks<br>
+                        Head3 --> Quality --> Cold<br>
+                        Head4 --> Time? --> Night drinks<br>
+                        Head5 --> type/category? --> drinks only, Not food items.<br><br>
+                        More precisely, if reading a sentence:<br>
+                        Head1 may look for pronouns & what they refer to?<br>
+                        Head2 may look for adjective describing nouns<br>
+                        Head3 may look for cause-effect word<br>
+                        Head4 may look at word-order/grammar.<br><br>
+                        Note:<br>
+                        &emsp;1. All these heads work in parallel to find the meaning & relationships.<br>
+                        &emsp;2. Transformer is responsible to assign how many number of head should be assign to process.
+
+                    </p>
+                </li>
+                <br>
+                <li>
+                    <p><b>5. Add & Norm</b></p>
+                    <p>
+                        Add & Norm is a two-step helper block placed after major layers like attention and FFN layer.
+                        <br><br>
+                        <b>Add</b> modifies the input and adds it back to the layer's new output. It keeps the original
+                        input too so no vital data is lost. Modified and Original input send as a new output.<br>
+                        Analogy: writing a new para, but keep the old draft too. <br><br>
+                        <b>Norm</b> re-format everything so font-size, spacing is consistent before sending to next.<br>
+                        Norm keep the values small and balanced, which prevents over-flow and confusion.<br><br>
+                        [6000, -10, 100, -0.1] ==> [6, -0.010, 0.1, -0.001]<br>
+                        Norm then smooths and balances those numbers (layer normalization) so the network trains smoothly
+                        and stays stable. It prevents exploding or vanishing gradients.
+                    </p>
+                </li>
+                <br>
+                <li>
+                    <p><b>6. Feed-Forward Neural Network</b></p>
+                    <p>
+                        Feed Forward Network (FFN) is a simple neural network that processes each token independently.
+                        It is the "think & process" part after attention.<br><br>
+                        Attention says :- What other words should I look at.<br>
+                        FFN says :- "Now that I've looked, let me process this info & transform it.<br><br>
+                        Analogy:<br>
+                        Classroom:<br>
+                        Attention = Students talking to each other , sharing notes.<br>
+                        FFN = Each student then goes & studies/thinks alone to understand what was shared.<br><br>
+                        In our previous example Sharma drinks<br>
+                        Drinks understood as action, Sharma understood as person.
+                    </p>
+                </li>
+            </ul>
+                <br><br>
+
+                <h3>Decoder layer</h3>
+                <p>
+                    Decoder layer is mainly responsible for generating output one token at a time.
+                </p>
+                <p>
+                    It takes the previous output tokens as input and predicts the next possible token.
+                </p>
+                <br>
+                <p>
+                    Input to decoder = Output tokens generated so far + positional encoding + encoder output
+                </p>
+                <p>
+                    Decoder does not start from zero, it takes already generated words. First time, it starts
+                    with a START token.
+                </p>
+                <br><br>
+                <ul>
+                    <li>
+                        <p><b>1. Output Tokens</b></p>
+                        <p>
+                            The decoder does not receive the full final answer at once.
+                            It starts with a starting token and then keeps generating one token at a time.
+                        </p>
+                        <p>
+                            Example:<br>
+                            If the output is <i>"I am learning AI"</i><br>
+                            Decoder may generate like this:<br>
+                            "I" → "I am" → "I am learning" → "I am learning AI"
+                        </p>
+                    </li>
+                    <br>
+
+                    <li>
+                        <p><b>2. Output Embeddings</b></p>
+                        <p>
+                            Just like encoder input, decoder input tokens are also converted into numerical vectors
+                            so that the model can process them.
+                        </p>
+                    </li>
+                    <br>
+
+                    <li>
+                        <p><b>3. Positional Encoding</b></p>
+                        <p>
+                            Since the decoder also processes token positions, positional encoding is added
+                            so it understands the order of generated words.
+                        </p>
+                    </li>
+                    <br>
+
+                    <li>
+                        <p><b>4. Masked Multi-Head Attention</b></p>
+                        <p>
+                            This is similar to multi-head attention, but here the decoder is not allowed to see future words.
+                            Future words are hidden (masked).
+                        </p>
+                        <br>
+                        <p>
+                            It can only look at the words generated so far, not the next upcoming words.
+                        </p>
+                        <p>
+                            This is called <b>masked attention</b>.
+                        </p>
+                        <br>
+                        <p>
+                            <b>Why masking is needed?</b><br>
+                            Because while generating output, the model should predict the next token based only on past tokens,
+                            not by cheating and looking ahead.
+                        </p>
+                        <p>
+                            Example:<br>
+                            If current output is:<br>
+                            "I am learning"<br>
+                            Then decoder should predict the next token based only on these words,
+                            not by looking at the full final sentence.
+                        </p>
+                        <br>
+                        <p><b>Note:</b></p>
+                        <p>
+                            Masked attention hides future words so that model learns to predict, not copy.<br>
+                            Prevents cheating.
+                        </p>
+                    </li>
+                    <br>
+
+                    <li>
+                        <p><b>5. Add & Norm</b></p>
+                        <p>
+                            Just like in the encoder, Add & Norm helps preserve original information
+                            and keeps the values balanced and stable before sending them forward.
+                        </p>
+                    </li>
+                    <br>
+
+                    <li>
+                        <p><b>6. Encoder-Decoder Attention (cross attention)</b></p>
+                        <p>
+                            This is a special attention layer in the decoder.
+                            Here, the decoder looks at the encoder output to understand the input sentence better.
+                        </p>
+                        <p>
+                            In simple words, decoder asks encoder:
+                            <i>"What did you understand from the input?"</i>
+                        </p>
+                        <p>
+                            This helps the decoder generate output that is connected to the original input.
+                        </p>
+                        <p>
+                            Example:<br>
+                            If encoder reads: <i>"Translate: I love India"</i><br>
+                            Decoder uses encoder output to generate translated text correctly.
+                        </p>
+                    </li>
+                    <br>
+
+                    <li>
+                        <p><b>7. Feed-Forward Neural Network</b></p>
+                        <p>
+                            After attention layers, the decoder uses a feed-forward network
+                            to further process and refine the information for each token.
+                        </p>
+                        <p>
+                            This helps the decoder make a better prediction for the next word.
+                        </p>
+                    </li>
+                    <br>
+
+                    <li>
+                        <p><b>8. Linear Layer + Softmax</b></p>
+                        <p>
+                            At the end, the decoder sends the processed information to a linear layer
+                            and then to a softmax layer.
+                        </p>
+                        <br>
+                        <p>
+                            Linear layer converts model thinking into word scores. It does not choose the word.
+                            It only prepares options.
+                        </p>
+                        <br>
+                        <p>
+                            Softmax converts the scores/values into probabilities for all possible next words.
+                        </p>
+                        <p>
+                            Chooses next token with the highest probability.
+                        </p>
+                        <p>
+                            Example:<br>
+                            Input: "We are going to the"<br>
+                            Possible predictions:<br>
+                            beach → 0.30<br>
+                            market → 0.45<br>
+                            school → 0.15<br>
+                            park → 0.10<br>
+                            Final output token = <b>market</b>
+                        </p>
+                    </li>
+                </ul>
+
+                <br>
+                <p><b>Final output from decoder:</b> Next predicted token</p>
+                <br>
+                <p>
+                    This process repeats again and again until the model generates the complete output sentence.
+                </p>
+                <br>
+            <hr>
+
+            <h2>Simple Summary</h2>
+            <p>
+                Transformer architecture is the foundation of modern language models.
+                It uses embeddings, positional encoding, self-attention, and neural layers
+                to understand text and generate meaningful output.
+            </p>
+            <br>
+            <p>
+                In short, <b>transformers help AI understand context much better than older models</b>.
+            </p>
+
+            <br><br><br>
+
+            <button onclick="scrollToTop()" class="scroll-top-button">&#8593;</button> &emsp;
+            <a href="#" class="next-button" id="nextButton">Next &raquo;</a>
+        </div>
+    </section>
+
+    <!-- Footer Section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+            <div class="credit">&copy; copyright @ 2024 by <span>Learning OnePlace</span> | All rights reserved!</div>
+        </section>
+    </footer>
+    <!-- Footer Section ends -->
+
+    <!-- Custom JS -->
+    <script src="../myJS.js" defer></script>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
